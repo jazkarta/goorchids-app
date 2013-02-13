@@ -10,7 +10,8 @@ lives inside of `dev/venv` in case you ever need to access it):
 
     git clone git@github.com:newfs/goorchids-app.git
     cd goorchids-app
-    git submodules update
+    git submodule init
+    git submodule update
     dev/setup
 
 Next, make sure that you can access your local PostgreSQL server, which
