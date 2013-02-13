@@ -1,0 +1,3 @@
+[submodule "external/gobotany-app"]
+	path = external/gobotany-app
+	url = git@github.com:jazkarta/gobotany-app.git

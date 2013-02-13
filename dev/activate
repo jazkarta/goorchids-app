@@ -1,0 +1,16 @@
+# Source this from your "bash" prompt
+
+# This has to be $0, not ${BASH_SOURCE[0]}, because running "source" on
+# a file does not actually update the BASH_SOURCE array. Only by keying
+# on $0 can we assure that this works for developers whether they are
+# sitting in the "dev" directory or (as should be more usual) out in the
+# main directory of "gobotany-app":
+
+THIS="${BASH_SOURCE[0]}"
+if [ -z "$THIS" ]
+then
+    THIS="$0"
+fi
+DEV=$(dirname "$THIS")
+$DEV/utils/require-setup && source $DEV/venv/bin/activate
+export DJANGO_SETTINGS_MODULE=goorchids.goorchids.settings

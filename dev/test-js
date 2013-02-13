@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+cd $(dirname "${BASH_SOURCE[0]}")
+DEV="$PWD"
+
+source ./utils/install-node
+
+cd ../gobotany/static/scripts
+
+set -x
+exec mocha "$@"
