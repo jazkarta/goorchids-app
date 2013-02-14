@@ -102,7 +102,6 @@ the ``heroku apps:info`` command.  When you visit, you will see an
 exception, because the database tables that it needs have not yet been
 created.  To set up the database, run these commands:
 
-    heroku config:add DJANGO_SETTINGS_MODULE=goorchids.goorchids.settings
     heroku run django-admin.py syncdb --noinput
     heroku run python -m gobotany.core.importer zipimport
     heroku run bin/import-images.sh
