@@ -13,4 +13,4 @@ then
 fi
 DEV=$(dirname "$THIS")
 $DEV/utils/require-setup && source $DEV/venv/bin/activate
-export DJANGO_SETTINGS_MODULE=goorchids.goorchids.settings
+export DJANGO_SETTINGS_MODULE=goorchids.settings
