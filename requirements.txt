@@ -2,6 +2,7 @@
 # Python package, so that developers can use tools like "tox" to create
 # local sandboxes in which to run the application.
 
+-e external/gobotany-app
 -e .
 
 # If Heroku does not see this requirement out here in the requirements
