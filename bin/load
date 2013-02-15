@@ -25,7 +25,7 @@ def schema():
     admin('migrate')
 
 def csv():
-    run('python -m gobotany.core.importer zipimport')
+    run('python -m goorchids.core.importer zipimport')
 
 def images():
     run('python -m gobotany.core.importer taxon-images')
