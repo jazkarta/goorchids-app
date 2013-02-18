@@ -6,6 +6,7 @@ from .models import GoOrchidTaxon
 
 
 class TaxonAdmin(gobotany.core.admin.TaxonAdmin):
+    __doc__ = gobotany.core.admin.TaxonAdmin.__doc__
 
     def formfield_for_dbfield(self, db_field, **kwargs):
         # Make sure our added fields are shown with a Textarea widget
