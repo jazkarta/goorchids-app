@@ -8,8 +8,8 @@ from gobotany.urls import urlpatterns, handler404, handler500
 
 urlpatterns = patterns(
     '',
-    url(r'^loaddata', views.loaddata,
+    url(r'^loaddata/', views.loaddata,
         name='goorchids-loaddata'),
-    url(r'^dumpdata', views.dumpdata,
+    url(r'^dumpdata/', views.dumpdata,
         name='goorchids-dumpdata'),
     ) + urlpatterns

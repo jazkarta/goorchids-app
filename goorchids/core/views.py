@@ -18,7 +18,8 @@ from django.db import (connections, router, transaction, DEFAULT_DB_ALIAS,
 from django.utils.datastructures import SortedDict
 
 
-APPS_TO_HANDLE = ['core', 'search', 'simplekey']
+APPS_TO_HANDLE = ['core', 'search', 'simplekey', 'plantoftheday', 'dkey',
+                  'site']
 EXCLUDED_MODELS = []
 DUMP_NAME = 'goorchids-core-data-{:%Y%m%d%H%M%S}.json'
 DUMP_PATH = '/core-data/'
