@@ -1,0 +1,10 @@
+{% extends "admin/app_index.html" %}
+{% load i18n %}
+{% load url from future %}
+{% block breadcrumbs %}
+{{ block.super }}
+<ul class="ImportExportLinks">
+  <li><a href="{% url 'goorchids-dumpdata' %}">Export Data</a></li>
+  <li><a href="{% url 'goorchids-loaddata' %}">Import Data</a></li>
+</ul>
+{% endblock %}
