@@ -107,7 +107,7 @@ def _load(name):
         with connection.constraint_checks_disabled():
             objects_in_fixture = 0
             loaded_objects_in_fixture = 0
-            with get_latest_fixture() as fixture:
+            with get_latest_fixture(name) as fixture:
                 fixture_name = fixture.filename
                 objects = serializers.deserialize('json', fixture,
                                                   using=using)
