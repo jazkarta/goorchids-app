@@ -1,0 +1,22 @@
+<html>
+<head>
+  <style type="text/css">
+    .message {background-color: yellow;}
+  </style>
+</head>
+<body>
+  <h1>Import Saved Data</h1>
+
+  <form name="loaddata" action="." method="POST">
+    {% if message %}
+    <div class="message">{{message}}</div>
+    {% endif %}
+    <h3>Choose file to restore</h3>
+    {% for name in files %}
+    <input id="name-{{forloop.counter}}" type="radio" name="filename" value="{{name}}" {% if forloop.first %}checked="1"{% endif %}/><label for="name-{{forloop.counter}}">{{name}}</label><br />
+    {% endfor %}
+    {% csrf_token %}
+    <input type="submit" value="Import"/>
+  </form>
+  <a href="{% url admin:app_list 'core' %}">Return to admin</a>
+</body>
