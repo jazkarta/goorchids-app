@@ -2,11 +2,23 @@ from django.contrib import admin
 from django import forms
 import gobotany.core.admin
 from gobotany.core.models import Taxon
-from .models import GoOrchidTaxon
+from .models import GoOrchidTaxon, RegionalConservationStatus
+
+
+class TaxonConservationStatusInline(admin.TabularInline):
+    model = RegionalConservationStatus
+    extra = 1
 
 
 class TaxonAdmin(gobotany.core.admin.TaxonAdmin):
     __doc__ = gobotany.core.admin.TaxonAdmin.__doc__
+
+    inlines = [
+        TaxonConservationStatusInline,
+        gobotany.core.admin.TaxonSynonymInline,
+        gobotany.core.admin.TaxonCommonNameInline,
+        gobotany.core.admin.TaxonLookalikeInline,
+    ]
 
     def formfield_for_dbfield(self, db_field, **kwargs):
         # Make sure our added fields are shown with a Textarea widget
