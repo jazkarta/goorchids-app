@@ -76,11 +76,13 @@ class GoOrchidTaxon(Taxon):
     )
     us_status = models.CharField(
         max_length=2, null=True, blank=True,
-        choices=FEDERAL_STATUS_CODES.items()
+        choices=FEDERAL_STATUS_CODES.items(),
+        verbose_name='US status',
     )
     ca_rank = models.CharField(
         max_length=3, null=True, blank=True,
-        choices=CANADIAN_RANK_CODES.items()
+        choices=CANADIAN_RANK_CODES.items(),
+        verbose_name='Canadian rank',
     )
 
 
