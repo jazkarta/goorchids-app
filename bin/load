@@ -24,9 +24,6 @@ def schema():
         sys.exit(1)
     admin('migrate')
 
-def csv():
-    run('python -m goorchids.core.importer zipimport')
-
 def images():
     run('python -m gobotany.core.importer taxon-images')
 
@@ -58,7 +55,7 @@ def dkey():
 def solr():
     admin('rebuild_index --noinput')
 
-ACTIONS = schema, csv, images, dkey, solr
+ACTIONS = schema, images, dkey, solr
 
 # Helpers.
 
