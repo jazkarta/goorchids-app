@@ -62,12 +62,13 @@ class GoOrchidTaxon(Taxon):
         verbose_name = "taxon"
         verbose_name_plural = "taxa"
 
-    pollination = models.CharField(max_length=1000)
-    mycorrhiza = models.CharField(max_length=1000)
-    monitoring = models.CharField(max_length=1000)
-    propagation = models.CharField(max_length=1000)
-    restoration = models.CharField(max_length=1000)
-    flowering_phenology = models.CharField(max_length=1000)
+    ready_for_display = models.BooleanField(default=True)
+    pollination = models.CharField(max_length=1000, blank=True)
+    mycorrhiza = models.CharField(max_length=1000, blank=True)
+    monitoring = models.CharField(max_length=1000, blank=True)
+    propagation = models.CharField(max_length=1000, blank=True)
+    restoration = models.CharField(max_length=1000, blank=True)
+    flowering_phenology = models.CharField(max_length=1000, blank=True)
 
     # Conservation status
     global_rank = models.CharField(
