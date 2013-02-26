@@ -79,3 +79,28 @@ header nav #search {
 #home .three-col p {
 	margin: 1em 0;
 }
+
+footer .publisher {
+	width: 200px;
+	margin-right: 50px;
+}
+footer .contact {
+	width: 300px;
+	float: left;
+	margin-right: 20px;
+	padding: 18px 0;
+}
+footer .navigation {
+	width: 120px;
+	margin-right: 40px;
+}
+footer .support {
+	width: 220px;
+	float: left;
+}
+footer li {
+	display: block;
+}
+footer li::after {
+	content: none;
+}

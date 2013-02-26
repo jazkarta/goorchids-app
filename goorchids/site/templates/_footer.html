@@ -1,0 +1,35 @@
+{% load gobotany_tags %}
+        <footer>
+            <div class="container">
+                <div class="publisher">
+                    <p class="copyright">All images and text copyright 
+                    &#169; {% include "gobotany/_copyright_years.html" %}
+                    North American Orchid Conservation Center
+                    or respective copyright holders.
+                    All rights reserved.</p>
+                </div>
+                <div class="contact">
+                    <p><a href="http://northamericanorchidcenter.org/">North
+                        American Orchid Conservation Center</a><br />
+                    c/o Smithsonian Environmental Research Center<br />
+                    P.O Box 28, 647 Contees Wharf Rd.<br />
+                    Edgewater, MD 20137<br />
+                    Contact: <a href="mailto:naocc@si.edu">naocc@si.edu</a><br />
+                    <a href="http://northamericanorchidcenter.org/">northamericanorchidcenter.org</a></p>
+                </div>
+                <div class="navigation">
+                    <ul id="footer-nav" class="sections">
+                        {% include "_primary_navigation.html" %}
+                    </ul>
+                    <ul class="prime-items">
+                        <li>{% nav_item 'Privacy Policy' site-privacy %}</li>
+                        <li>{% nav_item 'Terms of Use' site-terms-of-use %}</li>
+                    </ul>
+                </div>
+                <div class="support">
+                    <p>Go Orchids and NAOCC are supported, in part, by the
+                    <a href="http://www.si.edu/">Smithsonian Institution</a> and the
+                    <a href="http://www.usbg.gov/">United States Botanic Garden</a>.</p>
+                </div>
+            </div>
+        </footer>
