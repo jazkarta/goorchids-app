@@ -1,5 +1,5 @@
 from gobotany.core.models import Taxon
-from goorchids.core.models import GoOrchidTaxon
+from .core.models import GoOrchidTaxon
 
 for taxon in Taxon.objects.all():
     t = GoOrchidTaxon(taxon_ptr=taxon)
