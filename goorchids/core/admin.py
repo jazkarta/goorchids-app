@@ -1,13 +1,20 @@
 from django.contrib import admin
 from django import forms
 import gobotany.core.admin
-from gobotany.core.models import Taxon
+from gobotany.core.models import Taxon, PartnerSpecies
 from .models import GoOrchidTaxon, RegionalConservationStatus
 
 
 class TaxonConservationStatusInline(admin.TabularInline):
     model = RegionalConservationStatus
     extra = 1
+
+class TaxonPartnerInline(admin.TabularInline):
+    model = PartnerSpecies
+    extra = 0
+    exclude = ('species_page_heading', 'species_page_blurb')
+    verbose_name = 'Partner'
+    verbose_plural = 'Partner sites'
 
 
 class TaxonAdmin(gobotany.core.admin.TaxonAdmin):
@@ -18,6 +25,7 @@ class TaxonAdmin(gobotany.core.admin.TaxonAdmin):
         gobotany.core.admin.TaxonSynonymInline,
         gobotany.core.admin.TaxonCommonNameInline,
         gobotany.core.admin.TaxonLookalikeInline,
+        TaxonPartnerInline,
     ]
 
     def formfield_for_dbfield(self, db_field, **kwargs):
