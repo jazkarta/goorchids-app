@@ -46,13 +46,8 @@ header nav #search {
 	background: none;
 }
 
-#home .donate {
-	position: static;
+#donate {
 	float: right;
-	margin: 0;
-}
-#home .donate a {
-	position: static;
 }
 
 #home #banner {
