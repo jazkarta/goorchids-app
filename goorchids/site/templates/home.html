@@ -1,0 +1,72 @@
+{% extends "_base.html" %}
+{% load simplekey_extras %}
+
+{% block title %}Go Botany: New England Wild Flower Society{% endblock %}
+{% block title_suffix %}{% endblock %}
+
+{% block more_meta_link %}
+    <link rel="alternate" type="application/atom+xml"
+        title="Atom feed: Plant of the Day"
+        href="http://{{ request.META.HTTP_HOST }}/plantoftheday/atom.xml">
+{% endblock %}
+
+{% block body_attributes %}id="home"{% endblock %}
+
+{% block js_require %}
+    require(['site/home']);
+{% endblock %}
+
+{% block header %}
+    {% include "_header.html" with page="home" %}
+{% endblock %}
+
+{% block body_content %}
+    <div class="content">
+        <div class="container">
+            <div id="banner">
+            {% for image in home_page_images %}
+                <img src="{{ image.image.url }}" alt="">
+            {% endfor %}
+                <div id="overlay">
+                    <h1>Go Orchids</h1>
+                    <p>Go Orchids is a tool to explore orchids native to the
+                    U.S. and Canada. Go Orchids will initially focus on orchids
+                    in New England and the mid-Atlantic. Orchids of the southeast
+                    and Alaska will be added this year and all remaining orchids
+                    in two years.</p>
+                    <p>Learn more about <a href="http://northamericanorchidcenter.org/">NAOCC</a>.
+                      <br/>Learn more about the <a href="/family/orchidaceae/">Orchid family</a>.</p>
+                    <p>To explore Go Orchids, select one of the methods listed
+                    below. Happy orchid hunting!</p>
+                </div>
+            </div>
+            <div class="three-col">
+                {% include "_key_entry.html" with page="home" %}
+            </div>
+            <div id="potd">
+            {% if plant_of_the_day %}
+                <a href="/species/{{ plant_of_the_day.genus_name|lower }}/{{ plant_of_the_day.epithet }}/"
+                    title="Learn more about {{ plant_of_the_day.scientific_name }}">
+                  <img src="{{ plant_of_the_day_image.image_medium }}"
+                       alt="{{ plant_of_the_day.scientific_name }}">
+                </a>
+                <div class="details">
+                    <h3>Plant of the Day:
+                        <span class="latin">{{ plant_of_the_day.scientific_name|italicize_plant|safe }}</span>
+                        <span class="english">{{ plant_of_the_day.common_names.all.0 }}</span>
+                    </h3>
+                    <p>{{ plant_of_the_day.factoid|slice:":274"}}
+                    {% if plant_of_the_day.factoid|length > 274 %}...{% endif %}</p>
+                    <a class="learn-more" href="/species/{{ plant_of_the_day.genus_name|lower }}/{{ plant_of_the_day.epithet }}/">Learn More</a>
+                </div>
+            {% else %}
+                <p>Error: Featured Orchid information missing</p>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% include "_footer.html" %}
+{% endblock %}

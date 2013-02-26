@@ -1,0 +1,81 @@
+#home, #home #all {
+	background: none;
+}
+
+.naocc {
+    margin: 0 0 0 -15px;
+    padding: 14px 0 0 0;
+    width: 154px;
+    position: absolute;
+    top: 0;
+}
+
+.naocc a {
+    background: url(/static/naocc_logo.png) no-repeat transparent;
+    height: 154px;
+    width: 154px;
+    display: block;
+	text-indent: -9000px;
+}
+
+header {
+	height: auto;
+}
+
+#home header nav {
+	background: #ccc;
+	margin-top: 100px;
+	padding-left: 150px;
+	height: 30px;
+}
+
+header nav ul {
+	clear: none;
+}
+
+body#home header nav li.home {
+	background: none;
+	margin: inherit;
+}
+
+#home header nav li.home a, #home header nav li a, header nav a {
+	color: inherit;
+}
+
+header nav #search {
+	background: none;
+}
+
+#home .donate {
+	position: static;
+	float: right;
+	margin: 0;
+}
+#home .donate a {
+	position: static;
+}
+
+#home #banner {
+	position: relative;
+	background: #ccc;
+	height: 400px;
+}
+#home #overlay {
+	left: 20px;
+	height: 380px;
+}
+
+#home .three-col {
+	margin-top: 0;
+	height: 140px;
+	width: 100%;
+	padding: 1em 0;
+}
+#home .three-col > div {
+	width: 30%;
+	float: left;
+	margin-right: 2em;
+}
+#home .three-col p {
+	margin: 1em 0;
+}
