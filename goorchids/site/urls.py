@@ -12,4 +12,6 @@ urlpatterns = patterns(
         taxa_views.family_view, name='site-family'),
     url('^genus/(?P<genus_slug>[a-z]+)/$',
         taxa_views.genus_view, name='site-genus'),
+    url('^species/(?P<genus_slug>[a-z]+)/(?P<epithet>[-a-z]+)/$',
+        taxa_views.species_view, name='site-species'),
     )

@@ -19,7 +19,8 @@ body, body #all, #home, #home #all {
 }
 
 header {
-	height: auto;
+    height: auto;
+    margin-bottom: 2.5em;
 }
 
 #home header nav, header nav {
@@ -125,5 +126,13 @@ footer li::after {
     -moz-column-count: 2; /* Firefox */
     -webkit-column-count: 2; /* Safari and Chrome */
     column-count: 2;
+    column-fill: balance;
+}
+
+#family ul.genera {
+    margin-top: 1em;
+    -moz-column-count: 3; /* Firefox */
+    -webkit-column-count: 3; /* Safari and Chrome */
+    column-count: 3;
     column-fill: balance;
 }
