@@ -1,4 +1,4 @@
-#home, #home #all {
+body, body #all, #home, #home #all {
 	background: none;
 }
 
@@ -22,7 +22,7 @@ header {
 	height: auto;
 }
 
-#home header nav {
+#home header nav, header nav {
 	background: #ccc;
 	margin-top: 100px;
 	padding-left: 150px;
@@ -33,14 +33,17 @@ header nav ul {
 	clear: none;
 }
 
-body#home header nav li.home {
+body#home header nav li.home  {
 	background: none;
 	margin: inherit;
 }
 
-#home header nav li.home a, #home header nav li a, header nav a {
+#home header nav li.home a, #home header nav li a, header nav li a,
+header nav a {
 	color: inherit;
 }
+
+header nav li a:hover { background: none; text-decoration: none; }
 
 header nav #search {
 	background: none;
@@ -98,4 +101,29 @@ footer li {
 }
 footer li::after {
 	content: none;
+}
+
+#sidebar {
+    float: right;
+    border: none;
+    background: #ccc;
+    padding: 15px;
+    margin: 0;
+    width: 200px;
+    margin-left: -230px;
+}
+
+.content #main {
+    float: left;
+    padding: 0;
+    padding-right: 250px;
+    background: none;
+}
+
+#genus ul.species {
+    margin-top: 1em;
+    -moz-column-count: 2; /* Firefox */
+    -webkit-column-count: 2; /* Safari and Chrome */
+    column-count: 2;
+    column-fill: balance;
 }

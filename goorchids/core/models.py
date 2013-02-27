@@ -62,7 +62,7 @@ class GoOrchidTaxon(Taxon):
         verbose_name = "taxon"
         verbose_name_plural = "taxa"
 
-    ready_for_display = models.BooleanField(default=True)
+    ready_for_display = models.BooleanField(default=False)
     pollination = models.CharField(max_length=1000, blank=True)
     mycorrhiza = models.CharField(max_length=1000, blank=True)
     monitoring = models.CharField(max_length=1000, blank=True)
