@@ -1,0 +1,22 @@
+{% extends "_base.html" %}
+
+{% block title %}{{ flatpage.title }}{% endblock %}
+{% block title_suffix %}{% endblock %}
+
+{% block body_attributes %}id="{{url|slugify}}"{% endblock %}
+
+{% block header %}
+    {% include "_header.html" %}
+{% endblock %}
+
+{% block body_content %}
+    <div class="content">
+      <div class="container">
+        {{ flatpage.content }}
+      </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% include "_footer.html" %}
+{% endblock %}

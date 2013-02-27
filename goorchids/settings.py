@@ -2,6 +2,8 @@ from gobotany.settings import *
 import os
 
 
+SITE_ID = 1
+
 STATE_NAMES = {
     # US
     'ak': u'Alaska',
@@ -87,4 +89,9 @@ else:
 INSTALLED_APPS = [
     'goorchids.core',
     'goorchids.site',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
 ] + INSTALLED_APPS
+
+MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',)
