@@ -1,0 +1,17 @@
+@import "../../../../external/gobotany-app/gobotany/static/sass/_common";
+@import "../../../../external/gobotany-app/gobotany/static/sass/_shadowbox";
+
+
+/* Shadowbox overrides */
+#sb-counter {
+    font-family: $headings-font;
+}
+#sb-nav-close {
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 4px; /* Increase activation area a bit */
+    right: -28px !important; /* Place at top right, but not exactly at the
+                                corner so as to avoid Flash video z-index
+                                problem */
+    top: 6px !important;
+}

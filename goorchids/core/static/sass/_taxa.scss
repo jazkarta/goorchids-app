@@ -1,0 +1,470 @@
+/* Styles for taxa (family, genus, species) pages */
+
+@mixin taxa-list {
+    margin-top: 1em;
+    font-size: 14px;
+    list-style: none;
+    @include column-count(3);
+    column-fill: balance;
+    li {
+        margin: 0 0 5px 0;
+    }
+}
+
+body.taxa {
+    #main {
+        h3 {
+            color: #807121;
+            font-size: 30px;
+            line-height: 90%;
+        }
+        h4 {
+            clear: left;
+            font-size: 18px;
+            padding-top: 30px;
+        }
+        ol, ul {
+            line-height: inherit;
+        }
+        p.common {
+            color: #807121;
+            font-family: $headings-font;
+            font-size: 30px;
+            line-height: 155%;
+            margin: 0 0 12px 0;
+        }
+    }
+    .frame {
+        cursor: pointer;
+    }
+
+    @include shadowbox-photo-titles-credits;
+
+    .visit-dkey {
+        margin: 2em 0 0;
+        font-size:  $nav-font-size;
+        font-weight: normal;
+        a {
+            @extend .orange-button;
+        }
+    }
+
+    /* For family and genus pages */
+    .pics {
+        margin-top: 20px;
+        div {
+            float: left;
+            margin-right: 20px;
+        }
+        p {
+            display: inline-block;
+            float: left;
+            font-size: 14px;
+        }
+    }
+    img.zoom {
+        display: inline-block;
+        float: right;
+    }
+
+    &#family {
+        ul.genera {
+            @include taxa-list;
+        }
+        .family-genera-btn {
+            background: url(/static/images/layout/family-btn.png) no-repeat scroll 0 0 transparent;
+            clear: both;
+            display: block;
+            float: left;
+            height: 32px;
+            margin: 15px 0 0;
+            text-indent: -9000px;
+            width: 280px;
+        }
+    }
+    &#genus {
+        ul.species {
+            @include taxa-list;
+        }
+        p.family {
+            font-size: 14px;
+            margin: 0;    
+        }
+        .genus-species-btn {
+            background: url(/static/images/layout/genus-btn.png) no-repeat scroll 0 0 transparent;
+            clear: both;
+            display: block;
+            float: left;
+            height: 32px;
+            margin: 15px 0 0;
+            text-indent: -9000px;
+            width: 280px;
+        }
+    }
+    &#species {
+        #main {
+            h1 {
+                margin-bottom: 0;
+                span.origin {
+                    font-size: 14px;
+                    line-height: 100%;
+                }
+            }
+            h5 {
+                font-size: 14px;
+            }
+            p {
+                margin: 0 0 15px;
+            }
+        }
+        #sb-player {
+            &.html {
+                background: #fff;
+                overflow: hidden;  /* Get rid of vertical scrollbar in WebKit
+                                    * on enlarged N. America dist. map. */
+                padding: 0 5px 5px;
+            }
+            #na-dist-county-map {
+                background: #fff;
+                height: 100%;
+                width: 100%;
+            }
+        }
+        .note {
+            background: #c4bd93;
+            border-bottom: 1px solid #ad9f50;
+            border-top: 1px solid #ad9f50;
+            color: #000;
+            font-family: $headings-font;
+            font-size: 24px;
+            margin-bottom: 0.5em;
+            padding: 0.5em 0;
+            text-align: center;
+            width: 100%;
+        }
+        a.description-control {
+            background: url(/static/images/icons/plus.png) left 50% no-repeat;
+            display: block;
+            margin: 10px 0 12px 0;
+            padding: 3px 0 3px 25px;
+        }
+        ul.full-description {
+            background: #fbfbf8;	
+            border: 1px solid #e1e1dc;	
+            display: none;
+            margin: 0 0 15px 0;
+            > li {
+                border-bottom: 1px solid #e1e1dc;
+                clear: left;
+                display: block;
+                padding: 18px;
+                margin: 0 0 0 0;
+                &:last-child {
+	                border-bottom: none;	
+                }
+                &:hover {
+                    background-color: #fff;
+                }
+                h5 {
+                	background: url(/static/images/icons/plus.png) left 50% no-repeat;
+                    cursor: pointer;
+                    padding-left: 28px;
+                    
+                }
+                div {
+                    display: none;
+                    padding-left: 28px;
+                }
+
+            }
+        }
+        table {
+            border-collapse: collapse;
+            font-size: 12px;
+            margin-bottom: 14px;
+            margin-top: 8px;
+            width: 690px;
+            th, td {
+                line-height: 105%;
+                padding: 6px 4px;
+            }
+            th {
+
+                background: #b4d57f;
+                font-weight: normal;
+                text-transform: uppercase;
+            }
+            td {
+                border: 1px solid #c3d941;
+                border-bottom: 0px;
+                border-top: 0px;
+                text-align: center;
+            }
+            thead {
+                th {
+                    border: 1px solid #c3d941;
+                    border-right: 1px solid #b4d57f;
+                    font-size: 10px;
+                    text-align: center;
+                    vertical-align: bottom;
+                    &:last-child {
+                        border-right-color: #c3d941;
+                    }
+                }
+            }
+            tbody th, thead td {
+                background: inherit;
+                border: 0;
+                font-size: 10px;
+                font-weight: bold;
+                padding-right: 8px;
+                text-align: right;
+                width: 103px;
+            }
+            tbody {
+                th {
+                    padding-left: 0;
+                    white-space: nowrap;
+                    &.status {
+                        font-size: 12px;
+                        font-weight: normal;
+                        padding-left: 40px;
+                        text-align: left;
+                        text-transform: none;
+                    }
+                }
+            }
+        }
+        #sidebar {
+            dt, dd {
+                display: inline;
+            }
+            .lookalikes {
+                dt {
+                    margin-top: 1em;
+                    display: block;
+                }
+                dd {
+                    margin-left: 0;
+                }
+            }
+            .help {
+                line-height: 28px;
+            }
+            .get-help-btn {
+                margin: 0 0 0 10px;
+            }
+            li {
+                line-height: 16px;
+                list-style-type: none;
+            }
+            a {
+                margin-left: 0;
+            }
+        }
+        a {
+            margin-left: 0;
+            &.enlarge {
+                color: #1a2e11;
+                display: block;
+                margin: 0 0 8px 0;
+                &:hover {
+                    text-decoration: none;
+                }
+                img {
+                    vertical-align: middle;
+                }
+            }
+            &.more {
+                cursor: pointer;
+            }
+        }
+        /* Larger gallery styles */
+        .img-gallery {
+   	        float: none;
+	        margin: 0 0 0 0;
+	        width: 710px;
+            .img-container {
+	            height: 273px;
+	            width: 710px;
+            }
+            .frame {
+	            height: 239px;	
+	            width: 700px;
+            }
+            .images {
+                .single-img {
+	                float: left;
+	                position: relative;
+                }
+                img {
+	                float: none;	
+                }
+            }
+            p.caption {
+              	bottom: -22px;
+            	margin: 0 0 0 0;
+	            position: absolute;
+            	right: 0;
+            }
+        }
+        .controls {
+	        position: relative;
+            span {
+	            position: relative;
+	            top: -22px;	
+            }
+        }
+        /* TODO: resolve the two following sections */
+        #species-images {
+            border: 5px solid rgba(255, 255, 255, 0.8);
+            position: absolute;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.6);
+            -moz-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.6);
+            -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.6);
+        }
+        /* Smooth Div Scroll image area */
+        #species-images {
+            height: 239px;
+            margin: 0 0 20px 0;
+            overflow: hidden;
+            position: relative;
+            width: 700px;
+            div.scrollableArea a {
+                border-right: 5px solid #fff;
+                float: left;
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+}
+
+
+/* Begin media queries styles for taxa pages. */
+
+$mini-table-font-size: 10px;
+
+/* Portrait-orientation styles */
+@media only screen and (max-width: 400px) {
+    body.taxa {
+        &#species {
+            #species-images {
+                width: 292px;
+            }
+            #sidebar {
+                padding-bottom: 30px;
+            }
+        }
+    }
+}
+/* Landscape-orientation styles */
+@media only screen and (min-width: 401px) and (max-width: 600px) {
+    body.taxa {
+        &#species {
+            #species-images {
+                width: 452px;
+            }
+            #sidebar {
+                margin-bottom: 14px;
+                padding-bottom: 14px;
+            }
+        }
+    }
+}
+/* These styles are common to both smartphone widths */
+@media only screen and (max-width: 600px) {
+    body.taxa {
+        #main {
+            padding-bottom: 8px;
+            h1 {
+                margin-bottom: 0;
+            }
+            p.common {
+                font-size: 20px;
+                margin: 0;
+            }
+        }
+        &#family, &#genus {
+            #main {
+                p.description {
+                    margin: 4px 0;
+                }
+                h4 {
+                    padding-top: 12px;
+                }
+            }
+        }
+        &#species {
+            #main p {
+                margin-bottom: 10px;
+            }
+            .note {
+                font-size: 18px;
+            }
+            ul.full-description > li div {
+                padding-left: 0;
+            }
+            .characteristics {
+                &.full {
+                    margin-bottom: 0;
+                }
+                dl {
+                    dt {
+                        clear: none;
+                        float: none;
+                        text-align: left;
+                        width: auto;
+                    }
+                    dd {
+                        margin-left: auto;
+                        padding-left: 28px;
+                    }
+                }
+            }
+            #ne-status {   /* Horiz. scroll for status table if too wide */
+                overflow-x: auto;
+                width: 100%;
+                table {
+                    margin-left: 2px;
+                    margin-top: 0;
+                    width: 99%;
+                    th {
+                        text-transform: none;
+                    }
+                    td {
+                        font-size: $mini-table-font-size;
+                    }
+                    thead {
+                        td {
+                            white-space: normal;
+                            width: auto;
+                        }
+                    }
+                    tbody {
+                        th.status {
+                            font-size: $mini-table-font-size;
+                            padding-left: 0;
+                            text-align: right;
+                        }
+                    }
+                }
+            }
+        }
+        .visit-dkey {
+            margin: 14px 0;
+            a {
+                clear: left;
+                display: inline-block;
+            }
+        }
+    }
+}
+/* These styles apply to smartphones and tablets */
+@media only screen and (max-width: 1024px) {
+    /* styles here */
+}
+
+/* End media queries styles for taxa pages */

@@ -15,7 +15,10 @@
 @import "compass/css3/box-shadow";
 @import "compass/css3/images";   /* for gradient, etc. */
 @import "compass/css3/transform";
+@import "compass/css3/columns";
 @import "compass/typography/links/hover-link";
+
+@import "shadowbox";
 
 /* Definitions */
 
@@ -91,6 +94,39 @@ $smallscreen-current-section-color: #85c446;
 
 @mixin highlight-sidebar-nav-item {
 
+}
+
+@mixin shadowbox-photo-titles-credits {
+    /* Override Shadowbox styles to allow multiple title lines for
+     * showing a photo title, photographer credit, and copyright. */
+    #sb-title, #sb-title-inner {
+        height: 76px;
+        line-height: 70%;
+        position: relative;
+    }
+    #sb-title-inner {
+        div {
+            bottom: 6px;
+            position: absolute;
+        }
+        h6 {
+            font-size: 16px;
+            line-height: 110%;
+            margin: 0 0 2px;
+            padding: 0;
+        }
+        span {
+            font-family: $headings-font;
+            font-size: 10px;
+        }
+        a {
+            color: #fff;
+            text-decoration: underline;
+        }
+    }
+    #sb-nav-close {
+        top: 56px !important;
+    }
 }
 
 
@@ -372,11 +408,9 @@ header {
     padding: 8px 0 0;
     @include container-div;
     #main {
-        background: url(/static/images/layout/sidebar-bg.png) repeat-y;
-        float: right;
+        float: left;
         min-height: 545px;
-        padding-bottom: 24px;
-        padding-left: 250px;
+        padding: 0;
         width: 710px;
         .smallscreen-anchor-nav {
             display: none;
@@ -403,12 +437,12 @@ header {
     }
 }
 #sidebar {
-    border-top: 1px solid $border-green;
-    float: left;
+    float: right;
+    background: #ccc;
     height: 100%;
-    margin-right: -230px;
-    padding: $sidebar-box-vertical-padding 0 0;
-    width: 230px;
+    margin: 0;
+    padding: 15px;
+    width: 200px;
     .section {
         padding: 0 17px 16px;
         h4 {
@@ -650,6 +684,7 @@ input.suggest {
  * can contain their own media queries. */
 
 @import "home";
+@import "taxa";
 
 /* Finally, include global media queries for smartphones and tablets. These
  * should be last. */

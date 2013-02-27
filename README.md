@@ -43,10 +43,17 @@ already sitting in your way; in that case, ignore the error):
 
     dropdb gobotany
     createdb -E UTF8 gobotany
-    dev/load
+    dev/django syncdb
+    dev/django migrate goorchids.core
+    dev/django createsuperuser
 
 At this point you are done installing and should be able to test and
 develop the application!
+
+You can load initial data by visiting `/admin/core` and following the
+`Import Data` link.  Choose the latest `auth` export to load user
+data, click `Import`; Then choose the latest `core` export and
+click `Import` to load the Orchid data.
 
 If you ever need to activate the virtual environment so that Python
 prompts or scripts run from your shell have access to the Go Orchids

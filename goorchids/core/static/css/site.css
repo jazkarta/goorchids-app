@@ -155,6 +155,77 @@ table { border-collapse: collapse; border-spacing: 0; }
 
 /* for gradient, etc. */
 /* Definitions */
+/* for gradient, etc. */
+.orange-button, body.taxa .visit-dkey a { min-width: 10em; -webkit-border-radius: 1em; -moz-border-radius: 1em; -ms-border-radius: 1em; -o-border-radius: 1em; border-radius: 1em; -webkit-box-shadow: 0px 1px 4px #a2a64d; -moz-box-shadow: 0px 1px 4px #a2a64d; box-shadow: 0px 1px 4px #a2a64d; border: 1px solid #dc9402; background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dc9402), color-stop(40%, #f0b448), color-stop(100%, #dc9402)); background: -webkit-linear-gradient(top, #dc9402 0%, #f0b448 40%, #dc9402 100%); background: -moz-linear-gradient(top, #dc9402 0%, #f0b448 40%, #dc9402 100%); background: -o-linear-gradient(top, #dc9402 0%, #f0b448 40%, #dc9402 100%); background: linear-gradient(top, #dc9402 0%, #f0b448 40%, #dc9402 100%); padding: 0.3em 0.5em; color: white; text-align: center; text-decoration: none; font-family: "Trebuchet MS", Helvetica, Arial, "Lucida Sans Unicode", sans-serif; font-weight: bold; line-height: 1.5em; letter-spacing: 0.08333em; }
+.orange-button:hover, body.taxa .visit-dkey a:hover { background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e29b0b), color-stop(32%, #f6be59), color-stop(50%, #f6be59), color-stop(100%, #e39d0e)); background: -webkit-linear-gradient(top, #e29b0b 0%, #f6be59 32%, #f6be59 50%, #e39d0e 100%); background: -moz-linear-gradient(top, #e29b0b 0%, #f6be59 32%, #f6be59 50%, #e39d0e 100%); background: -o-linear-gradient(top, #e29b0b 0%, #f6be59 32%, #f6be59 50%, #e39d0e 100%); background: linear-gradient(top, #e29b0b 0%, #f6be59 32%, #f6be59 50%, #e39d0e 100%); }
+.orange-button.disabled, body.taxa .visit-dkey a.disabled { border-color: #ecda92; background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ecda92), color-stop(32%, #f1e3a6), color-stop(50%, #f1e3a6), color-stop(100%, #ecdb93)); background: -webkit-linear-gradient(top, #ecda92 0%, #f1e3a6 32%, #f1e3a6 50%, #ecdb93 100%); background: -moz-linear-gradient(top, #ecda92 0%, #f1e3a6 32%, #f1e3a6 50%, #ecdb93 100%); background: -o-linear-gradient(top, #ecda92 0%, #f1e3a6 32%, #f1e3a6 50%, #ecdb93 100%); background: linear-gradient(top, #ecda92 0%, #f1e3a6 32%, #f1e3a6 50%, #ecdb93 100%); }
+
+#sb-title-inner, #sb-info-inner, #sb-loading-inner, div.sb-message { font-family: "HelveticaNeue-Light","Helvetica Neue",Helvetica,Arial,sans-serif; font-weight: 200; color: #fff; }
+
+#sb-container { position: fixed; margin: 0; padding: 0; top: 0; left: 0; z-index: 999; text-align: left; visibility: hidden; display: none; }
+
+#sb-overlay { position: relative; height: 100%; width: 100%; }
+
+#sb-wrapper { position: absolute; visibility: hidden; width: 100px; }
+
+#sb-wrapper-inner { position: relative; overflow: hidden; height: 100px; }
+
+#sb-body { position: relative; height: 100%; }
+
+#sb-body-inner { position: absolute; height: 100%; width: 100%; }
+
+#sb-player.html { height: 100%; overflow: auto; }
+
+#sb-body img { border: none; }
+
+#sb-loading { position: relative; height: 100%; }
+
+#sb-loading-inner { position: absolute; font-size: 14px; line-height: 24px; height: 24px; top: 50%; margin-top: -12px; width: 100%; text-align: center; }
+
+#sb-loading-inner span { background: url(../images/shadowbox/loading.gif) no-repeat; padding-left: 34px; display: inline-block; }
+
+#sb-body, #sb-loading { background: transparent; }
+
+#sb-title, #sb-info { position: relative; margin: 0; padding: 0; overflow: hidden; }
+
+#sb-title, #sb-title-inner { height: 26px; line-height: 26px; }
+
+#sb-title-inner { font-size: 16px; }
+
+#sb-info, #sb-info-inner { height: 20px; line-height: 20px; }
+
+#sb-info-inner { font-size: 12px; }
+
+#sb-nav { float: right; height: 16px; padding: 2px 0; width: 45%; }
+
+#sb-nav a { display: block; float: right; height: 16px; width: 16px; margin-left: 3px; cursor: pointer; background-repeat: no-repeat; }
+
+#sb-nav-close { position: absolute; width: 32px; height: 32px; top: 48px; right: 48px; cursor: pointer; background-image: url(../images/icons/close-large.png); }
+
+#sb-nav-next { background-image: url(../images/shadowbox/next.png); background-position: 50% 0; padding: 0 14px 14px; }
+
+#sb-nav-previous { background-image: url(../images/shadowbox/previous.png); background-position: 50% 0; padding: 0 14px 14px; }
+
+#sb-nav-play { background-image: url(../images/shadowbox/play.png); }
+
+#sb-nav-pause { background-image: url(../images/shadowbox/pause.png); }
+
+#sb-counter { float: left; width: 45%; }
+
+#sb-counter a { padding: 0 4px 0 0; text-decoration: none; cursor: pointer; color: #fff; }
+
+#sb-counter a.sb-counter-current { text-decoration: underline; }
+
+div.sb-message { font-size: 12px; padding: 10px; text-align: center; }
+
+div.sb-message a:link, div.sb-message a:visited { color: #fff; text-decoration: underline; }
+
+/* Shadowbox overrides */
+#sb-counter { font-family: "Trebuchet MS", Helvetica, Arial, "Lucida Sans Unicode", sans-serif; }
+
+#sb-nav-close { background-position: center; background-repeat: no-repeat; padding: 4px; /* Increase activation area a bit */ right: -28px !important; /* Place at top right, but not exactly at the corner so as to avoid Flash video z-index problem */ top: 6px !important; }
+
+/* Definitions */
 /* Site-wide styles */
 body { background: white; color: black; font-family: Verdana, Geneva, "Lucida Sans Unicode", sans-serif; font-size: 12px; }
 
@@ -228,13 +299,13 @@ header nav #search-suggest .menu span { font-weight: normal; }
 /* Main content and sidebar */
 .content { padding: 8px 0 0; }
 .content .container { margin: 0 auto; padding: 0 10px; width: 960px; }
-.content #main { background: url(/static/images/layout/sidebar-bg.png) repeat-y; float: right; min-height: 545px; padding-bottom: 24px; padding-left: 250px; width: 710px; }
+.content #main { float: left; min-height: 545px; padding: 0; width: 710px; }
 .content #main .smallscreen-anchor-nav { display: none; }
 .content .container.free-sidebar #main { background: none; }
 .content .container.free-sidebar #sidebar { border-top: 0; height: auto; padding: 0; }
 .content .container.no-sidebar #main { background: none; float: none; min-height: none; padding-left: 0; width: auto; }
 
-#sidebar { border-top: 1px solid #c3d941; float: left; height: 100%; margin-right: -230px; padding: 16px 0 0; width: 230px; }
+#sidebar { float: right; background: #ccc; height: 100%; margin: 0; padding: 15px; width: 200px; }
 #sidebar .section { padding: 0 17px 16px; }
 #sidebar .section h4 { margin: 0 0 5px 0; }
 #sidebar .section h4 + p { margin-top: 0; }
@@ -304,5 +375,108 @@ input.suggest + div li span { font-weight: normal; }
 #home .three-col p { margin: 1em 0; }
 #home #potd { /* Plant of the Day */ background: #ccc; border: 3px solid white; clear: left; height: 140px; margin: 15px 0; padding: 10px; }
 
+/* Styles for taxa (family, genus, species) pages */
+body.taxa { /* Override Shadowbox styles to allow multiple title lines for showing a photo title, photographer credit, and copyright. */ /* For family and genus pages */ }
+body.taxa #main h3 { color: #807121; font-size: 30px; line-height: 90%; }
+body.taxa #main h4 { clear: left; font-size: 18px; padding-top: 30px; }
+body.taxa #main ol, body.taxa #main ul { line-height: inherit; }
+body.taxa #main p.common { color: #807121; font-family: "Trebuchet MS", Helvetica, Arial, "Lucida Sans Unicode", sans-serif; font-size: 30px; line-height: 155%; margin: 0 0 12px 0; }
+body.taxa .frame { cursor: pointer; }
+body.taxa #sb-title, body.taxa #sb-title-inner { height: 76px; line-height: 70%; position: relative; }
+body.taxa #sb-title-inner div { bottom: 6px; position: absolute; }
+body.taxa #sb-title-inner h6 { font-size: 16px; line-height: 110%; margin: 0 0 2px; padding: 0; }
+body.taxa #sb-title-inner span { font-family: "Trebuchet MS", Helvetica, Arial, "Lucida Sans Unicode", sans-serif; font-size: 10px; }
+body.taxa #sb-title-inner a { color: #fff; text-decoration: underline; }
+body.taxa #sb-nav-close { top: 56px !important; }
+body.taxa .visit-dkey { margin: 2em 0 0; font-size: 14px; font-weight: normal; }
+body.taxa .pics { margin-top: 20px; }
+body.taxa .pics div { float: left; margin-right: 20px; }
+body.taxa .pics p { display: inline-block; float: left; font-size: 14px; }
+body.taxa img.zoom { display: inline-block; float: right; }
+body.taxa#family ul.genera { margin-top: 1em; font-size: 14px; list-style: none; -webkit-column-count: 3; -moz-column-count: 3; -ms-column-count: 3; -o-column-count: 3; column-count: 3; column-fill: balance; }
+body.taxa#family ul.genera li { margin: 0 0 5px 0; }
+body.taxa#family .family-genera-btn { background: url(/static/images/layout/family-btn.png) no-repeat scroll 0 0 transparent; clear: both; display: block; float: left; height: 32px; margin: 15px 0 0; text-indent: -9000px; width: 280px; }
+body.taxa#genus ul.species { margin-top: 1em; font-size: 14px; list-style: none; -webkit-column-count: 3; -moz-column-count: 3; -ms-column-count: 3; -o-column-count: 3; column-count: 3; column-fill: balance; }
+body.taxa#genus ul.species li { margin: 0 0 5px 0; }
+body.taxa#genus p.family { font-size: 14px; margin: 0; }
+body.taxa#genus .genus-species-btn { background: url(/static/images/layout/genus-btn.png) no-repeat scroll 0 0 transparent; clear: both; display: block; float: left; height: 32px; margin: 15px 0 0; text-indent: -9000px; width: 280px; }
+body.taxa#species { /* Larger gallery styles */ /* TODO: resolve the two following sections */ /* Smooth Div Scroll image area */ }
+body.taxa#species #main h1 { margin-bottom: 0; }
+body.taxa#species #main h1 span.origin { font-size: 14px; line-height: 100%; }
+body.taxa#species #main h5 { font-size: 14px; }
+body.taxa#species #main p { margin: 0 0 15px; }
+body.taxa#species #sb-player.html { background: #fff; overflow: hidden; /* Get rid of vertical scrollbar in WebKit on enlarged N. America dist. map. */ padding: 0 5px 5px; }
+body.taxa#species #sb-player #na-dist-county-map { background: #fff; height: 100%; width: 100%; }
+body.taxa#species .note { background: #c4bd93; border-bottom: 1px solid #ad9f50; border-top: 1px solid #ad9f50; color: #000; font-family: "Trebuchet MS", Helvetica, Arial, "Lucida Sans Unicode", sans-serif; font-size: 24px; margin-bottom: 0.5em; padding: 0.5em 0; text-align: center; width: 100%; }
+body.taxa#species a.description-control { background: url(/static/images/icons/plus.png) left 50% no-repeat; display: block; margin: 10px 0 12px 0; padding: 3px 0 3px 25px; }
+body.taxa#species ul.full-description { background: #fbfbf8; border: 1px solid #e1e1dc; display: none; margin: 0 0 15px 0; }
+body.taxa#species ul.full-description > li { border-bottom: 1px solid #e1e1dc; clear: left; display: block; padding: 18px; margin: 0 0 0 0; }
+body.taxa#species ul.full-description > li:last-child { border-bottom: none; }
+body.taxa#species ul.full-description > li:hover { background-color: #fff; }
+body.taxa#species ul.full-description > li h5 { background: url(/static/images/icons/plus.png) left 50% no-repeat; cursor: pointer; padding-left: 28px; }
+body.taxa#species ul.full-description > li div { display: none; padding-left: 28px; }
+body.taxa#species table { border-collapse: collapse; font-size: 12px; margin-bottom: 14px; margin-top: 8px; width: 690px; }
+body.taxa#species table th, body.taxa#species table td { line-height: 105%; padding: 6px 4px; }
+body.taxa#species table th { background: #b4d57f; font-weight: normal; text-transform: uppercase; }
+body.taxa#species table td { border: 1px solid #c3d941; border-bottom: 0px; border-top: 0px; text-align: center; }
+body.taxa#species table thead th { border: 1px solid #c3d941; border-right: 1px solid #b4d57f; font-size: 10px; text-align: center; vertical-align: bottom; }
+body.taxa#species table thead th:last-child { border-right-color: #c3d941; }
+body.taxa#species table tbody th, body.taxa#species table thead td { background: inherit; border: 0; font-size: 10px; font-weight: bold; padding-right: 8px; text-align: right; width: 103px; }
+body.taxa#species table tbody th { padding-left: 0; white-space: nowrap; }
+body.taxa#species table tbody th.status { font-size: 12px; font-weight: normal; padding-left: 40px; text-align: left; text-transform: none; }
+body.taxa#species #sidebar dt, body.taxa#species #sidebar dd { display: inline; }
+body.taxa#species #sidebar .lookalikes dt { margin-top: 1em; display: block; }
+body.taxa#species #sidebar .lookalikes dd { margin-left: 0; }
+body.taxa#species #sidebar .help { line-height: 28px; }
+body.taxa#species #sidebar .get-help-btn { margin: 0 0 0 10px; }
+body.taxa#species #sidebar li { line-height: 16px; list-style-type: none; }
+body.taxa#species #sidebar a { margin-left: 0; }
+body.taxa#species a { margin-left: 0; }
+body.taxa#species a.enlarge { color: #1a2e11; display: block; margin: 0 0 8px 0; }
+body.taxa#species a.enlarge:hover { text-decoration: none; }
+body.taxa#species a.enlarge img { vertical-align: middle; }
+body.taxa#species a.more { cursor: pointer; }
+body.taxa#species .img-gallery { float: none; margin: 0 0 0 0; width: 710px; }
+body.taxa#species .img-gallery .img-container { height: 273px; width: 710px; }
+body.taxa#species .img-gallery .frame { height: 239px; width: 700px; }
+body.taxa#species .img-gallery .images .single-img { float: left; position: relative; }
+body.taxa#species .img-gallery .images img { float: none; }
+body.taxa#species .img-gallery p.caption { bottom: -22px; margin: 0 0 0 0; position: absolute; right: 0; }
+body.taxa#species .controls { position: relative; }
+body.taxa#species .controls span { position: relative; top: -22px; }
+body.taxa#species #species-images { border: 5px solid rgba(255, 255, 255, 0.8); position: absolute; top: 0; z-index: 100; box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.6); -moz-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.6); -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.6); }
+body.taxa#species #species-images { height: 239px; margin: 0 0 20px 0; overflow: hidden; position: relative; width: 700px; }
+body.taxa#species #species-images div.scrollableArea a { border-right: 5px solid white; float: left; margin: 0; padding: 0; }
+
+/* Begin media queries styles for taxa pages. */
+/* Portrait-orientation styles */
+@media only screen and (max-width: 400px) { body.taxa#species #species-images { width: 292px; }
+  body.taxa#species #sidebar { padding-bottom: 30px; } }
+/* Landscape-orientation styles */
+@media only screen and (min-width: 401px) and (max-width: 600px) { body.taxa#species #species-images { width: 452px; }
+  body.taxa#species #sidebar { margin-bottom: 14px; padding-bottom: 14px; } }
+/* These styles are common to both smartphone widths */
+@media only screen and (max-width: 600px) { body.taxa #main { padding-bottom: 8px; }
+  body.taxa #main h1 { margin-bottom: 0; }
+  body.taxa #main p.common { font-size: 20px; margin: 0; }
+  body.taxa#family #main p.description, body.taxa#genus #main p.description { margin: 4px 0; }
+  body.taxa#family #main h4, body.taxa#genus #main h4 { padding-top: 12px; }
+  body.taxa#species #main p { margin-bottom: 10px; }
+  body.taxa#species .note { font-size: 18px; }
+  body.taxa#species ul.full-description > li div { padding-left: 0; }
+  body.taxa#species .characteristics.full { margin-bottom: 0; }
+  body.taxa#species .characteristics dl dt { clear: none; float: none; text-align: left; width: auto; }
+  body.taxa#species .characteristics dl dd { margin-left: auto; padding-left: 28px; }
+  body.taxa#species #ne-status { /* Horiz. scroll for status table if too wide */ overflow-x: auto; width: 100%; }
+  body.taxa#species #ne-status table { margin-left: 2px; margin-top: 0; width: 99%; }
+  body.taxa#species #ne-status table th { text-transform: none; }
+  body.taxa#species #ne-status table td { font-size: 10px; }
+  body.taxa#species #ne-status table thead td { white-space: normal; width: auto; }
+  body.taxa#species #ne-status table tbody th.status { font-size: 10px; padding-left: 0; text-align: right; }
+  body.taxa .visit-dkey { margin: 14px 0; }
+  body.taxa .visit-dkey a { clear: left; display: inline-block; } }
+/* These styles apply to smartphones and tablets */
+@media only screen and (max-width: 1024px) { /* styles here */ }
+/* End media queries styles for taxa pages */
 /* Finally, include global media queries for smartphones and tablets. These should be last. */
 /* Please do not add new regular styles after the media queries, or they may not get overridden properly. Instead, add them before the media queries. */
