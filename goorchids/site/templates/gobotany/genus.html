@@ -1,5 +1,6 @@
 {% extends "_page_full_sidebar.html" %}
 {% load simplekey_extras %}
+{% load taxon_extras %}
 
 {% block title %}
 Genus: {{ genus.name }} {% if common_name %}({{ common_name }}){% endif %}
@@ -54,23 +55,10 @@ Genus: {{ genus.name }} {% if common_name %}({{ common_name }}){% endif %}
                     {% endfor %}
                 </div>
 
-                <h4>Family</h4>
-                <p class="family">
-                    <a href="{% url taxa-family genus.family.slug %}"
-                    >{{ genus.family.name }}{% if genus.family.common_name %} ({{ genus.family.common_name|cut:"The "|lower }}){% endif %}</a></p>
-
                 <h4>North Americal Species in this Genus</h4>
                 <ul class="species">
                 {% for species in genus.taxa.all %}
-                    <li><i>
-                      {% with ready=species.goorchidtaxon.ready_for_display %}
-                      {% if ready %}
-                      <a href="{% url taxa-species genus.slug species.epithet %}">{{ species.scientific_name }}</a>
-                      {% else %}
-                      {{ species.scientific_name }}
-                      {% endif %}
-                      {% endwith %}
-                    </i></li>
+                    <li><i>{% species_link species %}</i></li>
                 {% endfor %}
                 </ul>
 {% endblock %}
