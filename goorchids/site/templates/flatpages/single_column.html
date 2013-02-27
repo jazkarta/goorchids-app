@@ -1,4 +1,4 @@
-{% extends "_base.html" %}
+{% extends "gobotany/_base.html" %}
 
 {% block title %}{{ flatpage.title }}{% endblock %}
 {% block title_suffix %}{% endblock %}
@@ -6,7 +6,7 @@
 {% block body_attributes %}id="{{url|slugify}}"{% endblock %}
 
 {% block header %}
-    {% include "_header.html" %}
+    {% include "gobotany/_header.html" %}
 {% endblock %}
 
 {% block body_content %}
@@ -18,5 +18,5 @@
 {% endblock %}
 
 {% block footer %}
-    {% include "_footer.html" %}
+    {% include "gobotany/_footer.html" %}
 {% endblock %}
