@@ -1,4 +1,4 @@
-{% extends "_base.html" %}
+{% extends "gobotany/_base.html" %}
 {% load simplekey_extras %}
 
 {% block title %}Go Botany: New England Wild Flower Society{% endblock %}
@@ -17,7 +17,7 @@
 {% endblock %}
 
 {% block header %}
-    {% include "_header.html" with page="home" %}
+    {% include "gobotany/_header.html" with page="home" %}
 {% endblock %}
 
 {% block body_content %}
@@ -68,5 +68,5 @@
 {% endblock %}
 
 {% block footer %}
-    {% include "_footer.html" %}
+    {% include "gobotany/_footer.html" %}
 {% endblock %}
