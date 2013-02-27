@@ -1,4 +1,6 @@
 from gobotany.settings import *
+import os
+
 
 STATE_NAMES = {
     # US
@@ -71,6 +73,10 @@ STATE_NAMES = {
 }
 
 ROOT_URLCONF = 'goorchids.core.urls'
+STATICFILES_DIRS = [
+    os.path.join(os.path.dirname(__file__), 'core', 'static'),
+    os.path.join(os.path.dirname(__file__), '..', 'external', 'gobotany-app', 'gobotany', 'static'),
+]
 
 if 'test' in sys.argv:
     pass

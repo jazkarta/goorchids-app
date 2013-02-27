@@ -6,14 +6,11 @@
                 <ul>
                     {% include "_primary_navigation.html" %}
                 </ul>
-                <span id="donate">
-                    <a href="http://research.serc.si.edu/researchdata/donation_NAOCC_cfm/donation_choose_amount.cfm">Donate</a>
-                </span>
+                <a id="donate" class="button" href="http://research.serc.si.edu/researchdata/donation_NAOCC_cfm/donation_choose_amount.cfm">Donate</a>
                 <div id="search">
                     <form id="search-suggest" action="/search/" autocomplete="off">
-                        <input type="text" name="q" placeholder="Search..."
+                        <input type="search" name="q" placeholder="Search..."
                             value="{{ request.GET.q }}">
-                        <button>Search</button>
                         <div class="menu hidden">
                             <ul></ul>
                         </div>
