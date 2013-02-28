@@ -8,6 +8,10 @@ urlpatterns = patterns(
 
     # Home page
     url(r'^$', views.home_view, name='site-home'),
+    url(r'^location-suggestions/', views.location_suggestions_view,
+        name='site-location-suggestions'),
+    url(r'^key-by-location/', views.redirect_to_simple_key_by_location),
+
     url(r'^family/(?P<family_slug>[a-z]+)/$',
         taxa_views.family_view, name='site-family'),
     url(r'^genus/(?P<genus_slug>[a-z]+)/$',
