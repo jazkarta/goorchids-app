@@ -3,7 +3,7 @@
     <p>Find an orchid by entering your geographic location.</p>
     <form action="/key-by-location/" method="GET">
       <input name="state_distribution" placeholder="Enter state or province"
-             class="suggest" data-suggest-url="/location-suggestions?q=%s" data-submit-on-select="true"/>
+             class="suggest" data-suggest-url="/location-suggestions/?q=%s" data-submit-on-select="true"/>
       <input type="submit" class="button" value="Search" />
     </form>
 </div>
@@ -12,7 +12,7 @@
     <p>Find an orchid by entering the scientific or common name.</p>
     <form action="/search/">
       <input name="q" placeholder="Enter genera or taxon"
-             class="suggest" data-suggest-url="/plant-name-suggestions?q=%s" data-submit-on-select="true"/>
+             class="suggest" data-suggest-url="/plant-name-suggestions/?q=%s" data-submit-on-select="true"/>
       <input type="submit" class="button" value="Search" />
     </form>
 </div>

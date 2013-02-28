@@ -11,6 +11,8 @@ urlpatterns = patterns(
     url(r'^location-suggestions/', views.location_suggestions_view,
         name='site-location-suggestions'),
     url(r'^key-by-location/', views.redirect_to_simple_key_by_location),
+    url(r'^plant-name-suggestions/', views.plant_name_suggestions_view,
+        name='plant-name-suggestions'),
 
     url(r'^family/(?P<family_slug>[a-z]+)/$',
         taxa_views.family_view, name='site-family'),
