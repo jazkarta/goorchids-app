@@ -345,6 +345,20 @@ footer a[href]:hover { text-decoration: underline; }
 .wait-spinner { background: url(/static/images/icons/preloaders-dot-net-lg.gif) no-repeat scroll center center transparent; height: 350px; margin: auto; /* Wait spinner's children are hidden until the parent is unspinnered. */ }
 .wait-spinner * { display: none; }
 
+/* Character/value styles for plant preview popups, species pages, etc. */
+.characteristics { margin-bottom: 16px; }
+.characteristics dl { border: 1px transparent; /* border forces new row in WebKit when char name, but not value, wraps */ margin: 6px 0 0; padding: 0; clear: both; }
+.characteristics dt { clear: left; float: left; font-weight: bold; line-height: 18px; text-align: right; width: 250px; }
+.characteristics dd { line-height: 18px; margin-left: 260px; }
+.characteristics dd ul { list-style-type: disc; margin: 0; padding: 0 0 0 1.3em; text-indent: -0.2em; }
+.characteristics dd ul.compact { margin: 0; padding: 0; text-indent: 0; }
+.characteristics dd ul.compact li { display: inline; }
+.characteristics dd ul.compact li:after { content: ', '; }
+.characteristics dd ul.compact li:last-child:after { content: none; }
+.characteristics dd li { margin: 0; padding: 0 0 0.1em; }
+.characteristics.full dt { width: 270px; }
+.characteristics.full dd { margin-left: 280px; }
+
 /* Text input with suggestions */
 input.suggest + div { background: #fff; border: 1px solid #999999; position: absolute; z-index: 100; }
 input.suggest + div li { font-weight: bold; list-style-type: none; margin: 0; padding: 2px; }
@@ -378,7 +392,7 @@ input.suggest + div li span { font-weight: normal; }
 /* Styles for taxa (family, genus, species) pages */
 body.taxa { /* Override Shadowbox styles to allow multiple title lines for showing a photo title, photographer credit, and copyright. */ /* For family and genus pages */ }
 body.taxa #main h3 { color: #807121; font-size: 30px; line-height: 90%; }
-body.taxa #main h4 { clear: left; font-size: 18px; padding-top: 30px; }
+body.taxa #main h4 { clear: left; font-size: 18px; }
 body.taxa #main ol, body.taxa #main ul { line-height: inherit; }
 body.taxa #main p.common { color: #807121; font-family: "Trebuchet MS", Helvetica, Arial, "Lucida Sans Unicode", sans-serif; font-size: 30px; line-height: 155%; margin: 0 0 12px 0; }
 body.taxa .frame { cursor: pointer; }
@@ -424,13 +438,7 @@ body.taxa#species table thead th:last-child { border-right-color: #c3d941; }
 body.taxa#species table tbody th, body.taxa#species table thead td { background: inherit; border: 0; font-size: 10px; font-weight: bold; padding-right: 8px; text-align: right; width: 103px; }
 body.taxa#species table tbody th { padding-left: 0; white-space: nowrap; }
 body.taxa#species table tbody th.status { font-size: 12px; font-weight: normal; padding-left: 40px; text-align: left; text-transform: none; }
-body.taxa#species #sidebar dt, body.taxa#species #sidebar dd { display: inline; }
-body.taxa#species #sidebar .lookalikes dt { margin-top: 1em; display: block; }
-body.taxa#species #sidebar .lookalikes dd { margin-left: 0; }
-body.taxa#species #sidebar .help { line-height: 28px; }
-body.taxa#species #sidebar .get-help-btn { margin: 0 0 0 10px; }
-body.taxa#species #sidebar li { line-height: 16px; list-style-type: none; }
-body.taxa#species #sidebar a { margin-left: 0; }
+body.taxa#species .taxonomy { background-color: #ccc; width: 200px; float: right; padding: 1em 2em; margin-left: 3em; }
 body.taxa#species a { margin-left: 0; }
 body.taxa#species a.enlarge { color: #1a2e11; display: block; margin: 0 0 8px 0; }
 body.taxa#species a.enlarge:hover { text-decoration: none; }
@@ -445,8 +453,10 @@ body.taxa#species .img-gallery p.caption { bottom: -22px; margin: 0 0 0 0; posit
 body.taxa#species .controls { position: relative; }
 body.taxa#species .controls span { position: relative; top: -22px; }
 body.taxa#species #species-images { border: 5px solid rgba(255, 255, 255, 0.8); position: absolute; top: 0; z-index: 100; box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.6); -moz-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.6); -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.6); }
-body.taxa#species #species-images { height: 239px; margin: 0 0 20px 0; overflow: hidden; position: relative; width: 700px; }
+body.taxa#species #species-images { height: 239px; margin: 0 0 20px 0; overflow: hidden; position: relative; }
 body.taxa#species #species-images div.scrollableArea a { border-right: 5px solid white; float: left; margin: 0; padding: 0; }
+body.taxa#species #conservation-status { width: 50%; padding-right: .5em; float: left; }
+body.taxa#species .namap { width: 50%; padding-left: .5em; float: right; }
 
 /* Begin media queries styles for taxa pages. */
 /* Portrait-orientation styles */

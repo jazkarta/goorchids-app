@@ -25,7 +25,7 @@ def species_link(species):
     is_ready = getattr(species, 'ready_for_display', False)
     if is_ready:
         return '<a href="%s">%s</a>'%(reverse('site-species',
-                                              args=[species.genus.slug, species.slug()]),
+                                              args=[species.genus.slug, species.epithet]),
                                       species.scientific_name)
     else:
         return species.scientific_name

@@ -21,7 +21,6 @@ body.taxa {
         h4 {
             clear: left;
             font-size: 18px;
-            padding-top: 30px;
         }
         ol, ul {
             line-height: inherit;
@@ -235,32 +234,12 @@ body.taxa {
                 }
             }
         }
-        #sidebar {
-            dt, dd {
-                display: inline;
-            }
-            .lookalikes {
-                dt {
-                    margin-top: 1em;
-                    display: block;
-                }
-                dd {
-                    margin-left: 0;
-                }
-            }
-            .help {
-                line-height: 28px;
-            }
-            .get-help-btn {
-                margin: 0 0 0 10px;
-            }
-            li {
-                line-height: 16px;
-                list-style-type: none;
-            }
-            a {
-                margin-left: 0;
-            }
+        .taxonomy {
+            background-color: #ccc;
+            width: 200px;
+            float: right;
+            padding: 1em 2em;
+            margin-left: 3em;
         }
         a {
             margin-left: 0;
@@ -331,13 +310,22 @@ body.taxa {
             margin: 0 0 20px 0;
             overflow: hidden;
             position: relative;
-            width: 700px;
             div.scrollableArea a {
                 border-right: 5px solid #fff;
                 float: left;
                 margin: 0;
                 padding: 0;
             }
+        }
+        #conservation-status {
+            width: 50%;
+            padding-right: .5em;
+            float: left;
+        }
+        .namap {
+            width: 50%;
+            padding-left: .5em;
+            float: right;
         }
     }
 }
