@@ -2,7 +2,7 @@ import json
 from django.utils import timezone
 from datetime import timedelta
 from django import template
-from gobotany.core.models import Taxon, Character, Edit
+from gobotany.core.models import Taxon, Character, Edit, Pile
 from gobotany.editor import views as edit_views
 from django.core.urlresolvers import reverse
 from django.utils.html import escape
@@ -61,9 +61,11 @@ def taxon_edit_link(scientific_name):
 def character_edit_link(short_name):
     try:
         character = Character.objects.get(short_name=short_name)
+        # Character Pile may be null, in which case, use the first Pile
+        pile = character.pile or Pile.objects.all()[0]
         character_link = '<a href="%s">%s</a>'%(
             reverse(edit_views.edit_pile_character,
-                    args=(character.pile.slug,
+                    args=(pile.slug,
                           character.short_name)),
             escape(character.name))
     except ObjectDoesNotExist:
