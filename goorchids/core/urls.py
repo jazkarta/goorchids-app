@@ -9,6 +9,7 @@ from gobotany.urls import urlpatterns, handler404, handler500
 urlpatterns = patterns(
     '',
     url(r'^', include('goorchids.site.urls')),
+    url(r'^edit/', include('goorchids.editor.urls')),
     url(r'^loaddata/', views.loaddata,
         name='goorchids-loaddata'),
     url(r'^dumpdata/', views.dumpdata,

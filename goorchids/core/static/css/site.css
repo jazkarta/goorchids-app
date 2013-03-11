@@ -488,6 +488,24 @@ body.taxa#species .namap { width: 50%; padding-left: .5em; float: right; }
 /* These styles apply to smartphones and tablets */
 @media only screen and (max-width: 1024px) { /* styles here */ }
 /* End media queries styles for taxa pages */
+/* Edit */
+.edit-page .container { width: auto; }
+.edit-page #sidebar { width: 300px; }
+.edit-page #sidebar table { width: 100%; }
+.edit-page #sidebar table tr.odd { background-color: #e1e1dc; }
+.edit-page #sidebar table td, .edit-page #sidebar table th { padding: 5px; }
+.edit-page #sidebar table td.date { width: 7em; text-align: center; }
+.edit-page #main { width: auto; }
+.edit-page table.EditListing, .edit-page table.TaxaListing { width: 100%; }
+.edit-page table.EditListing th, .edit-page table.EditListing td, .edit-page table.TaxaListing th, .edit-page table.TaxaListing td { padding: 5px 10px; text-align: left; }
+.edit-page table.EditListing .date, .edit-page table.TaxaListing .date { text-align: center; }
+.edit-page table.TaxaListing { width: auto; }
+.edit-page form#edit-filter ul { list-style: none; }
+.edit-page form#edit-filter ul li { float: left; margin-right: 20px; }
+.edit-page .NoEdits { margin: 20px 0; text-align: center; }
+.edit-page .pagination { margin: 20px 0; text-align: center; }
+.edit-page .pagination .current { padding: 0 20px; }
+
 /* Search results */
 body.search-results h1 + p { margin-top: 12px; }
 body.search-results #search-results-list { margin: 6px 0 13px; padding: 6px 0 0; }

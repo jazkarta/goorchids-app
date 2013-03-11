@@ -1,0 +1,58 @@
+{% extends "gobotany/_edit_base.html" %}
+
+{% block body_content %}
+{% load edit_trail %}
+
+<h1>Edit History</h1>
+
+<form id="edit-filter" action="./all-edits" method="get">
+  <ul>
+    {{ form.as_ul }}
+  </ul>
+  <input type="submit" value="Filter" />
+</form>
+
+<table class="EditListing">
+  <thead>
+    <tr>
+      <th class="date">Date</th>
+      <th class="coord taxon">Taxon</th>
+      <th class="coord character">Character</th>
+      <th class="author">Editor</th>
+      <th class="orig-value">Original Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for edit in edits %}
+    <tr>
+      <td class="date">{{ edit.datetime|date:"Y-m-d H:i" }}</td>
+      <td class="coord taxon">{{ edit.coordinate1|taxon_edit }}</td>
+      <td class="coord character">{{ edit.coordinate2|character_edit }}</td>
+      <td class="author">{{ edit.author }}</td>
+      <td class="orig-value">{{ edit.old_value|format_old_value }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% if not edits|length %}
+<div class="NoEdits">
+  No Edits Found
+</div>
+{% endif %}
+
+<div class="pagination">
+  <span class="step-links">
+    {% if edits.has_previous %}
+    <a href="?page={{ edits.previous_page_number }}">&larr; previous</a>
+    {% endif %}
+    
+    <span class="current">
+      Page {{ edits.number }} of {{ edits.paginator.num_pages }}
+    </span>
+    
+    {% if edits.has_next %}
+    <a href="?page={{ edits.next_page_number }}">next &rarr;</a>
+    {% endif %}
+  </span>
+</div>
+{% endblock %}

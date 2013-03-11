@@ -1,0 +1,59 @@
+/* Edit */
+
+.edit-page {
+    .container {
+        width: auto;
+    }
+    #sidebar {
+        width: 300px;
+        table {
+            width: 100%;
+            tr.odd {
+                background-color: #e1e1dc;
+            }
+            td, th {
+                padding: 5px;
+            }
+            td.date {
+                width: 7em;
+                text-align: center;
+            }
+        }
+    }
+    #main {
+        width: auto;
+    }
+    table.EditListing, table.TaxaListing {
+        width: 100%;
+        th, td {
+            padding: 5px 10px;
+            text-align: left;
+        }
+        .date {
+            text-align: center;
+        }
+    }
+    table.TaxaListing {
+        width: auto;
+    }
+    form#edit-filter {
+        ul {
+            list-style: none;
+            li {
+                float: left;
+                margin-right: 20px;
+            }
+        }
+    }
+    .NoEdits {
+        margin: 20px 0;
+        text-align: center;
+    }
+    .pagination {
+        margin: 20px 0;
+        text-align: center;
+        .current {
+            padding: 0 20px;
+        }
+    }
+}

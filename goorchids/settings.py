@@ -89,6 +89,7 @@ else:
 INSTALLED_APPS = [
     'goorchids.core',
     'goorchids.site',
+    'goorchids.editor',
     'django.contrib.sites',
     'django.contrib.flatpages',
 ] + INSTALLED_APPS

@@ -1,0 +1,17 @@
+{% extends "gobotany/_edit_base.html" %}
+
+{% block body_content %}
+
+<h1>Piles</h1>
+
+<p>
+  {% for pile in piles %}
+    {{ pile.name }}
+    — <a href="{{ pile.slug }}-characters/">characters</a>
+    | <a href="{{ pile.slug }}-taxa/">taxa</a>
+    <br>
+  {% endfor %}
+</p>
+<a href="{% url goorchids-list-edits %}">Show all changes</a> |
+<a href="{% url goorchids-edited-taxa %}">List all edited taxa</a>
+{% endblock %}

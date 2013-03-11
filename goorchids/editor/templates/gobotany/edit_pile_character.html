@@ -1,0 +1,75 @@
+{% extends "gobotany/_edit_base.html" %}
+
+{% block js_require %}
+    require(['editor/cv'], function (editor_cv) {
+        editor_cv.setup();
+    });
+{% endblock %}
+
+{% block main_content %}
+
+<p>← return to pile <a href="..">{{ pile.slug }}</a></p>
+
+<h1>{{ character.name }}</h1>
+
+<h2>{{ character.short_name }}</h2>
+
+<p class="new">
+  All plants coverage: <b>{{ coverage_percent_full|floatformat:1 }} %</b><br>
+  Simple Key coverage: <b>{{ coverage_percent_simple|floatformat:1 }} %</b>
+</p>
+
+<p>
+  {% if character.friendly_name != character.name %}
+    <b>{{ character.friendly_name }}:</b>
+  {% endif %}
+  {{ character.question }}
+</p>
+
+{% if there_are_any_friendly_texts %}
+<ul>
+  {% for value in values %}
+  <li class="edit-character-definition">
+    <b>{{ value.value_str }}</b>
+    {% if value.friendly_text %}
+    — {{ value.friendly_text }}
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+<p>
+  Species marked with “(fk)” appear in the Full Key only.
+</p>
+
+<p>
+  <span class="all-species-button">All Species</span>
+  <span class="simple-key-button">Simple Key Only</span>
+  <span class="save-button">SAVE CHANGES</span>
+</p>
+
+<div class="pile-character-grid">
+</div>
+
+<div class="value-tips">
+  {% for value in values %}
+  <div>{{ value.value_str }}</div>
+  {% endfor %}
+</div>
+
+{% block sidebar_content %}
+  <h3>Recent Edits</h3>
+  {% load edit_trail %}
+  {% character_edits character %}
+  <a class="AllEditsLink" href="{% url goorchids-list-edits %}">View all edits</a>
+{% endblock %}
+
+<script>
+  character_values = {{ values_json|safe }};
+  grid_data = {{ grid|safe }};
+</script>
+
+{% csrf_token %}
+
+{% endblock %}
