@@ -496,7 +496,7 @@ body.taxa#species .namap { width: 50%; padding-left: .5em; float: right; }
 .edit-page #sidebar table td, .edit-page #sidebar table th { padding: 5px; }
 .edit-page #sidebar table td.date { width: 7em; text-align: center; }
 .edit-page #main { width: auto; }
-.edit-page table.EditListing, .edit-page table.TaxaListing { width: 100%; }
+.edit-page table.EditListing, .edit-page table.TaxaListing { width: 100%; margin-top: 20px; }
 .edit-page table.EditListing th, .edit-page table.EditListing td, .edit-page table.TaxaListing th, .edit-page table.TaxaListing td { padding: 5px 10px; text-align: left; }
 .edit-page table.EditListing .date, .edit-page table.TaxaListing .date { text-align: center; }
 .edit-page table.TaxaListing { width: auto; }

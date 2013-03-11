@@ -16,12 +16,17 @@ class EditSearchForm(forms.Form):
                                required=False)
     author = forms.ChoiceField(label=u'Editor',
                                required=False)
+    taxon = forms.ChoiceField(label=u'Taxon',
+                              required=False)
 
     def __init__(self, *args, **kwargs):
         super(EditSearchForm, self).__init__(*args, **kwargs)
         self.fields['author'].choices = ([('', '----')] +
                     [(e.author, e.author) for e in
-                            models.Edit.objects.distinct('author').all()])
+                     models.Edit.objects.distinct('author').all()])
+        self.fields['taxon'].choices = ([('', '----')] +
+                    [(e.scientific_name, e.scientific_name) for e in
+                     models.Taxon.objects.order_by('scientific_name').all()])
 
 def paginate(values, request, count=50):
     paginator = Paginator(values, count)
@@ -52,6 +57,9 @@ def list_edits(request):
             edits = edits.filter(datetime__range=[start, end])
         if form.cleaned_data['author']:
             edits = edits.filter(author=form.cleaned_data['author'])
+        if form.cleaned_data['taxon']:
+            edits = edits.filter(
+                coordinate1=form.cleaned_data['taxon'])
 
     edits = paginate(edits, request)
 
