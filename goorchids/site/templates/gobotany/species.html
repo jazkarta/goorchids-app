@@ -55,11 +55,11 @@ f{% extends "gobotany/_page_no_sidebar.html" %}
 
                 <div class="taxonomy">
                     <h4>Family</h4>
-                    <p><a href="{% url taxa-family taxon.family.slug %}"
+                    <p><a href="{% url 'taxa-family' taxon.family.slug %}"
                         >{{ taxon.family }}</a></p>
 
                     <h4>Genus</h4>
-                    <p><em><a href="{% url taxa-genus taxon.genus.slug %}"
+                    <p><em><a href="{% url 'taxa-genus' taxon.genus.slug %}"
                         >{{ taxon.genus }}</a></em></p>
                 </div>
 

@@ -7,7 +7,7 @@ Family: {{ family.name }} {% if common_name %}({{ common_name|cut:"The "|lower }
 
 {% block js_top %}
     <script>
-        API_URL = '{% url api-base %}';
+        API_URL = '{% url 'api-base' %}';
     </script>
 
     {# TODO: eventually move elsewhere #}

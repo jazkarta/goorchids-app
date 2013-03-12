@@ -74,6 +74,8 @@ STATE_NAMES = {
     'yt': u'Yukon'
 }
 
+ALLOWED_HOSTS = ['goorchids-staging.herokuapp.com']
+
 ROOT_URLCONF = 'goorchids.core.urls'
 STATICFILES_DIRS = [
     os.path.join(os.path.dirname(__file__), 'core', 'static'),

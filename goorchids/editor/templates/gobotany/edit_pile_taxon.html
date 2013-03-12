@@ -72,7 +72,7 @@
   <h3>Recent Edits</h3>
   {% load edit_trail %}
   {% taxon_edits taxon %}
-  <a class="AllEditsLink" href="{% url goorchids-list-edits %}">View all edits</a>
+  <a class="AllEditsLink" href="{% url 'goorchids-list-edits' %}">View all edits</a>
 {% endblock %}
 
 {% csrf_token %}

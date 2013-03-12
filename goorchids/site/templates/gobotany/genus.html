@@ -8,7 +8,7 @@ Genus: {{ genus.name }} {% if common_name %}({{ common_name }}){% endif %}
 
 {% block js_top %}
     <script>
-        API_URL = '{% url api-base %}';
+        API_URL = '{% url 'api-base' %}';
     </script>
 
     {# TODO: eventually move elsewhere #}
