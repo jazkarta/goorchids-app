@@ -911,8 +911,11 @@ ul.get-more-questions-menu ul li[data-character] { color: black; }
 /* These styles apply to smartphones and tablets */
 @media only screen and (max-width: 1024px) { body.skey.results #question-nav .option-list > li:hover, body.skey.results #question-nav .option-list > li.active, body.skey.results #question-nav .option-list > li.answered.active { background: #fff; } }
 /* End media queries styles for Simple and Full Keys */
+body.skey.results .toplink { display: none; }
+
 @media only screen and (max-width: 400px) { body.skey.results #results-display label { display: inline; }
-  body.skey.results #question-nav .section.family-genus h6 { display: block; } }
+  body.skey.results #question-nav .section.family-genus h6 { display: block; }
+  body.skey.results .toplink { margin-top: 1em; clear: both; text-align: center; } }
 /* Finally, include global media queries for smartphones and tablets. These should be last. */
 /* Begin global media queries styles.  So far there are three sections for smartphones (two fixed-width layouts to cover portrait and landscape orientations, with a section common to both orientations) and some additional styles for tablets. Using fixed-width layouts allows some pages to have a wider central content area for now. Various SASS "partials" (_home.scss, _help.scss, etc.) have their own media queries arranged like the ones below. Think of those as modular extensions to these. */
 /* Portrait-orientation styles */

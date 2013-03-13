@@ -1,5 +1,13 @@
 @import "../../../../external/gobotany-app/gobotany/static/sass/_simplekey";
 
+body.skey.results {
+	
+	.toplink {
+		display: none;
+	}
+
+}
+
 @media only screen and (max-width: 400px) {
 
 	body.skey.results {
@@ -12,6 +20,12 @@
     		.section.family-genus h6 {
 	    		display: block;
    			}
+   		}
+
+   		.toplink {
+   			margin-top: 1em;
+   			clear: both;
+   			text-align: center;
    		}
 
    	}
