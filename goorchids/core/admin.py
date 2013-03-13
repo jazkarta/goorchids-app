@@ -1,7 +1,9 @@
 from django.contrib import admin
 from django import forms
 import gobotany.core.admin
-from gobotany.core.models import Taxon, PartnerSpecies
+from django.contrib.contenttypes import generic
+from gobotany.core.models import (Taxon, PartnerSpecies, ContentImage,
+                                  Genus, Family, CopyrightHolder)
 from .models import GoOrchidTaxon, RegionalConservationStatus
 
 
@@ -9,12 +11,30 @@ class TaxonConservationStatusInline(admin.TabularInline):
     model = RegionalConservationStatus
     extra = 1
 
+
 class TaxonPartnerInline(admin.TabularInline):
     model = PartnerSpecies
     extra = 0
     exclude = ('species_page_heading', 'species_page_blurb')
     verbose_name = 'Partner'
     verbose_plural = 'Partner sites'
+
+
+class GoOrchidTaxonGenericInlineFormset(generic.BaseGenericInlineFormSet):
+    """We need the GenericRelation to point to the parent ContentType 'Taxon',
+    not the subclass"""
+
+    def __init__(self, data=None, files=None, instance=None, **kw):
+        if isinstance(instance, GoOrchidTaxon):
+            instance = instance.taxon_ptr
+        super(GoOrchidTaxonGenericInlineFormset, self).__init__(data=data,
+                                                                files=files,
+                                                                instance=instance,
+                                                                **kw)
+
+class ContentImageInline(generic.GenericTabularInline):
+    model = ContentImage
+    formset = GoOrchidTaxonGenericInlineFormset
 
 
 class TaxonAdmin(gobotany.core.admin.TaxonAdmin):
@@ -26,6 +46,7 @@ class TaxonAdmin(gobotany.core.admin.TaxonAdmin):
         gobotany.core.admin.TaxonCommonNameInline,
         gobotany.core.admin.TaxonLookalikeInline,
         TaxonPartnerInline,
+        ContentImageInline,
     ]
 
     def formfield_for_dbfield(self, db_field, **kwargs):
@@ -39,5 +60,34 @@ class TaxonAdmin(gobotany.core.admin.TaxonAdmin):
         return formfield
 
 
+class GenusAdmin(gobotany.core.admin.GenusAdmin):
+    __doc__ = gobotany.core.admin.GenusAdmin.__doc__
+
+    inlines = gobotany.core.admin.GenusAdmin.inlines + [ContentImageInline]
+
+
+class FamilyAdmin(gobotany.core.admin.FamilyAdmin):
+    __doc__ = gobotany.core.admin.FamilyAdmin.__doc__
+
+    inlines = gobotany.core.admin.FamilyAdmin.inlines + [ContentImageInline]
+
+
+class CopyrightHolderAdmin(gobotany.core.admin._Base):
+    """
+
+    <p>
+    Only images with authors matching a registered Copyright Holder by
+    `coded_name` will be displayed in the site
+    </p>
+    """
+    model = CopyrightHolder
+    ordering = ('expanded_name',)
+
+
 admin.site.unregister(Taxon)
 admin.site.register(GoOrchidTaxon, TaxonAdmin)
+admin.site.unregister(Genus)
+admin.site.register(Genus, GenusAdmin)
+admin.site.unregister(Family)
+admin.site.register(Family, FamilyAdmin)
+admin.site.register(CopyrightHolder, CopyrightHolderAdmin)

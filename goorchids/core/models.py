@@ -86,6 +86,10 @@ class GoOrchidTaxon(Taxon):
         verbose_name='Canadian rank',
     )
 
+    @property
+    def images(self):
+        return self.taxon_ptr.images
+
 
 class RegionalConservationStatus(models.Model):
     """Zero or more conservation status values per species+region."""
