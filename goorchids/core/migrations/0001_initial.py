@@ -219,14 +219,6 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal('core', ['Taxon'])
 
-        # Adding M2M table for field piles on 'Taxon'
-        db.create_table('core_pile_species', (
-            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('taxon', models.ForeignKey(orm['core.taxon'], null=False)),
-            ('pile', models.ForeignKey(orm['core.pile'], null=False))
-        ))
-        db.create_unique('core_pile_species', ['taxon_id', 'pile_id'])
-
         # Adding model 'TaxonCharacterValue'
         db.create_table('core_taxoncharactervalue', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),

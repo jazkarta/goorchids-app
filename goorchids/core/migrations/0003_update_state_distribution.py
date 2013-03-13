@@ -78,7 +78,10 @@ class Migration(DataMigration):
     def forwards(self, orm):
         "Write your forwards methods here."
         already_exists = set()
-        char = orm.Character.objects.filter(short_name__exact='state_distribution').get()
+        char = orm.Character.objects.filter(short_name__exact='state_distribution')
+        if not char.count():
+            return
+        char = char.get()
         for cv in orm.CharacterValue.objects.filter(character_id__exact=char.id).all():
             already_exists.add(cv.value_str)
         for abbrev, state_name in STATE_NAMES.items():
@@ -88,7 +91,7 @@ class Migration(DataMigration):
                 character_id=char.id,
                 value_str=state_name
                 ).save()
-        
+
 
     def backwards(self, orm):
         "Write your backwards methods here."
