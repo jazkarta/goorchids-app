@@ -16,7 +16,7 @@
 {% endblock %}
 
 {% block body_attributes %}class="skey results {{ key|title|lower }}
-    mobile-wide mobile-photos {{ request.GET.m }}"{% endblock %}
+    mobile-wide mobile-photos mobile-inline mobile-gloss {{ request.GET.m }}"{% endblock %}
 
 {% block main_content %}
     {% include "simplekey/_results_modal_dialogs.html" %}
@@ -101,17 +101,21 @@
                         <div class="info">
                             <div class="character-drawing"></div>
                             <div class="hint"></div>
-                            <div class="values"></div>
-                            <div class="actions">
-                              <a class="apply-btn" href="#">Apply</a>
+                            <p>Tip: See glossary below for definitions and
+                               tap images to enlarge.</p>
+                            <div class="scroller">
+                                <div class="values"></div>
+                                <div class="terms none closed">
+                                    <h5>Keyword Definitions</h5>
+                                    <ul>
+                                        <li><span>term 1</span> definition 1</li>
+                                        <li><span>term 2</span> definition 2</li>
+                                    </dl>
+                                </div>
+                                <div class="actions">
+                                  <a class="apply-btn" href="#">Apply</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="terms none closed">
-                            <h5>Terms</h5>
-                            <ul>
-                                <li><span>term 1</span> definition 1</li>
-                                <li><span>term 2</span> definition 2</li>
-                            </dl>
                         </div>
                     </div>
                 </div>
