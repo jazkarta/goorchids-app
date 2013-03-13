@@ -65,6 +65,7 @@ $smallscreen-portrait-box-width: 302px;
 $smallscreen-portrait-form-el-width: $smallscreen-portrait-box-width - 10px;
 $smallscreen-landscape-box-width: 462px;
 $smallscreen-current-section-color: #85c446;
+$smallscreen-choices-border-radius: 8px;
 
 @mixin offscreen {
     display: block;
@@ -749,6 +750,7 @@ input.suggest {
 /* Finally, include global media queries for smartphones and tablets. These
  * should be last. */
 
+@import "../../../../external/gobotany-app/gobotany/static/sass/_site-media-queries";
 
 /* Please do not add new regular styles after the media queries, or they may
  * not get overridden properly. Instead, add them before the media queries. */

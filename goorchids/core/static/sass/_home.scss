@@ -61,3 +61,143 @@
         padding: 10px;
     }
 }
+
+/* Begin media queries styles for Home page */
+
+/* Portrait-orientation styles */
+@media only screen and (max-width: 400px) {
+    #home {
+        #banner {
+            #overlay {
+                top: 115px;
+                width: $smallscreen-portrait-width;
+            }
+            > img {
+                height: 115px;
+                width: $smallscreen-portrait-width;
+            }
+        }
+    }
+}
+/* Landscape-orientation styles */
+@media only screen and (min-width: 401px) and (max-width: 600px) {
+    #home {
+        #banner {
+            #overlay {
+                top: 172px;
+                width: $smallscreen-landscape-width;
+            }
+            > img {
+                height: 172px;
+                width: $smallscreen-landscape-width;
+            }
+        }
+    }
+}
+/* These styles are common to both smartphone widths */
+@media only screen and (max-width: 600px) {
+    #home {
+        .content {
+            margin-top: 0;
+            padding-top: 0;
+        }
+        header {
+            h1 {
+                background-position: -56px -7px;
+                height: 56px;
+                margin-left: 0;
+                width: 200px;
+            }
+            nav {
+                background: #508e31;
+                height: 32px;
+                padding-left: 0;
+                > a:hover {
+                    text-decoration: none;
+                }
+            }
+            .newfs a {
+                background-size: 100px 55px;
+                float: right;
+                height: 55px;
+                width: 101px;
+            }
+        }
+        #banner {
+            margin: 0;
+            position: relative;
+            #overlay {
+                background: #f7fbe9;
+                height: auto;
+                left: 0;
+                padding: 0;
+                text-align: center;
+                h2 {
+                    font-size: 28px;
+                    margin: 6px 0 0;
+                }
+                p {
+                    padding: 0 $smallscreen-margin;
+                }
+                img {
+                    width: 53%;
+                }
+            }
+            #cta {
+                background-position: 50% 0;
+                margin: 6px;
+                &:hover {
+                    background-position: 50% -41px; 
+                }
+                &:active {
+                    background-position: 50% -82px;     
+                }
+            }
+        }
+        .three-col {
+            height: inherit;
+            > div {
+                width: 100%;
+                float: none;               
+            }
+        }
+        #breadcrumb p {
+            line-height: 160%;
+        }
+        #potd {
+            height: auto;
+            padding: $smallscreen-margin;
+            > a {
+                margin: 0;
+                margin-bottom: 4px;
+                margin-right: $smallscreen-margin;
+            }
+            > a, > a img {
+                width: $smallscreen-potd-image-width;
+            }
+            .details {
+                margin: 0;
+                position: inherit;
+                width: inherit;
+                h3 {
+                    line-height: 120%;
+                }
+                h4 {
+                    line-height: 140%;    
+                }
+                p {
+                    height: inherit;
+                    overflow: inherit;
+                }
+                a {
+                    margin-top: 4px;
+                    position: inherit;
+                    top: 0;
+                }
+            }
+        }
+    }
+}
+
+/* End media queries styles for the Home page */
+
