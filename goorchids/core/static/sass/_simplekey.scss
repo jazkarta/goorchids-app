@@ -1,0 +1,19 @@
+@import "../../../../external/gobotany-app/gobotany/static/sass/_simplekey";
+
+@media only screen and (max-width: 400px) {
+
+	body.skey.results {
+
+		#results-display label {
+			display: inline;
+		}
+
+    	#question-nav {
+    		.section.family-genus h6 {
+	    		display: block;
+   			}
+   		}
+
+   	}
+
+}
