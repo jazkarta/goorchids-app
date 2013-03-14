@@ -8,9 +8,9 @@ if [ "$(uname -s)" == "Darwin" ]
 then
     # Because readlink on Mac OS X lacks -f, use the compatible greadlink
     # instead. To get greadlink, install the MacPorts package coreutils.
-    APP=$(greadlink -f $DEV/..)
+    APP=$(greadlink -f $DEV/../external/gobotany-app)
 else
-    APP=$(readlink -f $DEV/..)
+    APP=$(readlink -f $DEV/../external/gobotany-app)
 fi
 
 # Nasty hack for dealing with Ember.js.  Ember.js is written using EcmaScript3

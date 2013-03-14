@@ -1,9 +1,9 @@
 /* RequireJS Build profile for production deployment to Heroku instance */
 ({
-    appDir: '../../gobotany/static/scripts',
+    appDir: '../../external/gobotany-app/gobotany/static/scripts',
     dir: 'build',
     baseUrl: '.',
-    mainConfigFile: '../../gobotany/static/scripts/require_config.js',
+    mainConfigFile: '../../external/gobotany-app/gobotany/static/scripts/require_config.js',
 
     findNestedDependencies: true,
     removeCombined: true,
