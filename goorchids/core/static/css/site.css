@@ -342,6 +342,12 @@ footer li { display: block; line-height: 14px; }
 footer a:hover { text-decoration: none; }
 footer a[href]:hover { text-decoration: underline; }
 
+/* Breadcrumb trails */
+#breadcrumb { color: #000; font-family: "Trebuchet MS", Helvetica, Arial, "Lucida Sans Unicode", sans-serif; font-size: 14px; margin: 0 0 6px; }
+#breadcrumb li { display: inline-block; list-style-type: none; margin-bottom: 8px; }
+#breadcrumb .label { color: #807121; }
+#breadcrumb a::after { color: #807121; content: ' >'; }
+
 /* Wait spinners */
 .wait-spinner { background: url(/static/images/icons/preloaders-dot-net-lg.gif) no-repeat scroll center center transparent; height: 350px; margin: auto; /* Wait spinner's children are hidden until the parent is unspinnered. */ }
 .wait-spinner * { display: none; }
@@ -914,6 +920,8 @@ ul.get-more-questions-menu ul li[data-character] { color: black; }
 /* These styles apply to smartphones and tablets */
 @media only screen and (max-width: 1024px) { body.skey.results #question-nav .option-list > li:hover, body.skey.results #question-nav .option-list > li.active, body.skey.results #question-nav .option-list > li.answered.active { background: #fff; } }
 /* End media queries styles for Simple and Full Keys */
+body.skey.results .instructions.close-filters { display: none; }
+
 @media only screen and (max-width: 400px) { body.skey.results #results-display label { display: inline; }
   body.skey.results #question-nav .section.family-genus h6 { display: block; }
   body.skey.results #question-nav.closed .instructions.close-filters { display: none; } }

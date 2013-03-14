@@ -31,6 +31,7 @@ $heading-green: #000;
 $border-green: #c3d941;
 $light-green: #e1f0d1;
 $green-yellow: #ccdf53;
+$medium-brown: #807121;
 
 $body-color: #fff;
 $text-color: #000;
@@ -588,6 +589,27 @@ footer {
     }
 }
 
+/* Breadcrumb trails */
+#breadcrumb {
+    color: #000;
+    font-family: $headings-font;
+    font-size: 14px;
+    margin: 0 0 6px;
+    li {
+        display: inline-block;
+        list-style-type: none;
+        margin-bottom: 8px;
+    }
+    .label {
+        color: $medium-brown;
+    }
+    a {
+        &::after {
+            color: $medium-brown;
+            content: ' >';
+        }
+    }
+}
 
 /* Wait spinners */
 .wait-spinner {

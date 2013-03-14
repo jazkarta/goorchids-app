@@ -1,5 +1,11 @@
 @import "../../../../external/gobotany-app/gobotany/static/sass/_simplekey";
 
+body.skey.results {
+  .instructions.close-filters {
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 400px) {
 
   body.skey.results {
