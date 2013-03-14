@@ -2,18 +2,21 @@
 
 @media only screen and (max-width: 400px) {
 
-	body.skey.results {
+  body.skey.results {
 
-		#results-display label {
-  		display: inline;
-  	}
+    #results-display label {
+      display: inline;
+    }
 
-  	#question-nav {
-  		.section.family-genus h6 {
-    		display: block;
- 			}
- 		}
+    #question-nav {
+      .section.family-genus h6 {
+        display: block;
+      }
+      &.closed .instructions.close-filters {
+        display: none;
+      }
+    }
 
- 	}
+  }
 
 }
