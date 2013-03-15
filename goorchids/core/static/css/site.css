@@ -496,7 +496,9 @@ body.taxa#species #species-images { border: 5px solid rgba(255, 255, 255, 0.8); 
 body.taxa#species #species-images { height: 239px; margin: 0 0 20px 0; overflow: hidden; position: relative; }
 body.taxa#species #species-images div.scrollableArea a { border-right: 5px solid white; float: left; margin: 0; padding: 0; }
 body.taxa#species #conservation-status { width: 50%; padding-right: .5em; float: left; }
-body.taxa#species .namap { width: 50%; padding-left: .5em; float: right; }
+body.taxa#species .namap { position: relative; width: 50%; padding-left: .5em; float: right; }
+body.taxa#species .namap #na-state-dist-map { width: 350px; height: 352px; }
+body.taxa#species .namap div.trans { cursor: pointer; background: transparent; height: 395px; margin-bottom: 0; padding: 0; position: absolute; top: 45px; width: 350px; }
 
 /* Begin media queries styles for taxa pages. */
 /* Portrait-orientation styles */
