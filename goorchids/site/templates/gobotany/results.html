@@ -16,7 +16,8 @@
 {% endblock %}
 
 {% block body_attributes %}class="skey results {{ key|title|lower }}
-    mobile-wide mobile-photos mobile-inline mobile-gloss mobile-toplink {{ request.GET.m }}"{% endblock %}
+    mobile-wide mobile-photos mobile-inline mobile-gloss mobile-toplink
+    mobile-preview-filters {{ request.GET.m }}"{% endblock %}
 
 {% block main_content %}
     {% include "simplekey/_results_modal_dialogs.html" %}
@@ -133,6 +134,8 @@
                       </span>
                     </h3>
 
+                    <div id="filters-preview"></div>
+
                     <div id="results-tabs" style="display: none;">
                       {% handlebars 'species-view-tabs' %}
                         <li><a {{bindAttr class="App3.show_grid:current"}}
@@ -193,6 +196,12 @@
     {{#if view.filter.value}}
     <a class="clear-filter" {{action "clear"}}>Clear</a>
     {{/if}}
+{% endhandlebars %}
+{% handlebars 'filter-preview' %}
+    <a class="option">
+        <span class="name">{{view.filter.info.friendly_name}}?</span>
+        <span class="value">{{view.display_value}}</span>
+    </a>
 {% endhandlebars %}
 {% include "plantpreview/_popup.html" %}
 {% endblock %}

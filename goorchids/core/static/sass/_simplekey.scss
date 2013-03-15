@@ -1,7 +1,7 @@
 @import "../../../../external/gobotany-app/gobotany/static/sass/_simplekey";
 
 body.skey.results {
-  .instructions.close-filters {
+  .instructions.close-filters, #filters-preview {
     display: none;
   }
 }
@@ -19,6 +19,24 @@ body.skey.results {
         display: block;
       }
       &.closed .instructions.close-filters {
+        display: none;
+      }
+    }
+
+    &.mobile-preview-filters #filters-preview {
+      display: block;
+      border-bottom: solid 1px #000;
+      li {
+        list-item-type: none;
+        display: none;
+        &.answered {
+          display: inline;
+        }
+        .name {
+          font-weight: bold;
+        }
+      }
+      .clear-filter {
         display: none;
       }
     }
