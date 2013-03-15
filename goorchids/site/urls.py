@@ -20,6 +20,9 @@ urlpatterns = patterns(
         taxa_views.genus_view, name='site-genus'),
     url(r'^species/(?P<genus_slug>[a-z]+)/(?P<epithet>[-a-z]+)/$',
         taxa_views.species_view, name='site-species'),
+    url(r'^api/maps/(?P<genus>[^/-]+)-(?P<epithet>[^/]+)-na-state-distribution-map(\.svg|/)',
+        views.north_american_distribution_map,
+        name='na-state-distribution-map'),
     ) + patterns(
     'django.contrib.flatpages.views',
     url(r'^about/$', 'flatpage', {'url': '/about/'}, name='site-about'),

@@ -20,6 +20,7 @@
 
 {% block js_require %}
     require(['taxa/species']);
+    require(['orchid_site/species']);
 {% endblock %}
 
 {% block top_content %}
@@ -230,10 +231,10 @@
                     {% include "gobotany/_map_attribution.html" %}
                     <div>
                         <object
-                            data="/api/maps/{{taxon.genus|lower}}-{{epithet}}-na-distribution-map.svg"
+                            data="/api/maps/{{taxon.genus|lower}}-{{epithet}}-na-state-distribution-map.svg"
                             type="image/svg+xml"
                             title="distribution map for {{ scientific_name }}"
-                            id="na-dist-county-map"> <!--<![endif]-->
+                            id="na-state-dist-map"> <!--<![endif]-->
                         <!--[if lt IE 9]>
                         <object
                             src="/api/maps/{{taxon.genus|lower}}-{{epithet}}-na-distribution-map.svg"

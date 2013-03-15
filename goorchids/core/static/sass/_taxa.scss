@@ -323,9 +323,23 @@ body.taxa {
             float: left;
         }
         .namap {
+            position: relative;
             width: 50%;
             padding-left: .5em;
             float: right;
+            #na-state-dist-map {
+                width: 350px;
+                height: 352px;
+            }
+            div.trans {
+                cursor: pointer;
+                background: transparent;
+                height: 395px;
+                margin-bottom: 0;
+                padding: 0;
+                position: absolute;
+                top: 45px;
+                width: 350px; }
         }
     }
 }

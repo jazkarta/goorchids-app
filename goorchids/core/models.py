@@ -98,7 +98,8 @@ class RegionalConservationStatus(models.Model):
 
     taxon = models.ForeignKey(GoOrchidTaxon, related_name='regional_conservation_statuses')
     region = models.CharField(choices=STATE_NAMES, max_length=80)
-    status = models.CharField(choices=STATE_STATUS_CODES.items(), max_length=2)
+    status = models.CharField(choices=STATE_STATUS_CODES.items(), max_length=2,
+                              default=None, null=True, blank=True)
     rank = models.CharField(choices=STATE_RANK_CODES.items(), max_length=2)
 
     class Meta:

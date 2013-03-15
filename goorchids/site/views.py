@@ -17,7 +17,9 @@ from gobotany.core.partner import which_partner
 from gobotany.taxa.views import _images_with_copyright_holders
 from gobotany.taxa.views import _format_character_value
 from gobotany.taxa.views import _native_to_north_america_status
+from gobotany.api.views import _distribution_map
 from goorchids.core.models import GoOrchidTaxon
+from maps import NorthAmericanOrchidDistributionMap
 from itertools import groupby
 from operator import itemgetter
 import json
@@ -232,3 +234,8 @@ def species_view(request, genus_slug, epithet):
         'epithet': epithet,
         'native_to_north_america': native_to_north_america
     }, context_instance=RequestContext(request))
+
+
+def north_american_distribution_map(request, genus, epithet):
+    distribution_map = NorthAmericanOrchidDistributionMap()
+    return _distribution_map(request, distribution_map, genus, epithet)
