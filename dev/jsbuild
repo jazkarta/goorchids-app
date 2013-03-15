@@ -8,9 +8,9 @@ if [ "$(uname -s)" == "Darwin" ]
 then
     # Because readlink on Mac OS X lacks -f, use the compatible greadlink
     # instead. To get greadlink, install the MacPorts package coreutils.
-    APP=$(greadlink -f $DEV/../external/gobotany-app)
+    APP=$(greadlink -f $DEV/..)
 else
-    APP=$(readlink -f $DEV/../external/gobotany-app)
+    APP=$(readlink -f $DEV/..)
 fi
 
 # Nasty hack for dealing with Ember.js.  Ember.js is written using EcmaScript3
@@ -19,7 +19,7 @@ fi
 # solution, we'll edit out the bad identifiers right before each build.
 # NOTE: Each of these is very specific, because there are places in the Ember code
 # dealing with it's compiler for Handlebars templates, and we don't want to mess with that.
-EMBER_FILE=$APP/gobotany/static/scripts/lib/ember-1.0.pre.js
+EMBER_FILE=$APP/external/gobotany-app/gobotany/static/scripts/lib/ember-1.0.pre.js
 EMBER_HACK='sed -e "s/(char/(chr/g" -e "s/char)/chr)/g" -e "s/\.volatile/.safe_volatile/g"'
 
 if ! grep -q safe_volatile $EMBER_FILE
@@ -46,10 +46,10 @@ then
     mv $EMBER_FILE.orig $EMBER_FILE
 fi
 
-echo "Copying compiled javascript file to $APP/gobotany/static/js"
-mkdir -p $APP/gobotany/static/js
+echo "Copying compiled javascript file to $APP/goorchids/core/static/js"
+mkdir -p $APP/goorchids/core/static/js
 cp $DEV/requirejs/build/gobotany.application.js \
-   $APP/gobotany/static/js/gobotany.application.js
+   $APP/goorchids/core/static/js/gobotany.application.js
 
 echo "Build Complete!"
 echo "See jsbuild.log for details"

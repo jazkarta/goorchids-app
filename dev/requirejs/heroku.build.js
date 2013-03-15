@@ -3,11 +3,14 @@
     appDir: '../../external/gobotany-app/gobotany/static/scripts',
     dir: 'build',
     baseUrl: '.',
-    mainConfigFile: '../../external/gobotany-app/gobotany/static/scripts/require_config.js',
+    mainConfigFile: '../../goorchids/core/static/scripts/require_config.js',
 
     findNestedDependencies: true,
-    removeCombined: true,
+    removeCombined: false,
     preserveLicenseComments: false,
+    paths: {
+        'orchid_site': '../../../../../goorchids/core/static/scripts/orchid_site'
+    },
 
     modules: [
         {
@@ -41,7 +44,8 @@
                 'site/maps_test',
                 'util/activate_search_suggest',
                 'util/suggester_init',
-                'util/location_field_init'
+                'util/location_field_init',
+                'orchid_site/species'
             ],
             create: true
         }
