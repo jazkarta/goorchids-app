@@ -1,0 +1,16 @@
+/*
+  Grid
+*/
+
+.container {
+  @include clearfix;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  max-width: 1040px;
+}
+
+.row {
+  @include clearfix;
+  position: relative;
+}

@@ -1,0 +1,30 @@
+body {
+  background: $background;
+  color: $primary;
+  font-family: 'Open Sans', sans-serif;
+  @include font-size(14);
+  line-height: 1.4;
+}
+
+a {
+  color: $tertiary;
+}
+
+p {
+  line-height: 1.4;
+  padding: 0 0 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $secondary;
+  font-family: 'Droid Serif', serif;
+  padding: 0 0 20px;
+}
+
+h1 {
+  @include font-size(40);
+}
+
+h3 {
+  @include font-size(18);
+}
