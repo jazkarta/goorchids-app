@@ -1,0 +1,22 @@
+/*
+  Layout: Three Col
+*/
+
+.three-col {
+  @include clearfix;
+  @include green-background;
+  padding: 20px 15px;
+  
+  > div {
+    @include span-columns(3 of 9);
+  }
+  
+  h3,
+  p {
+    padding: 0 0 10px;
+  }
+  
+  .button {
+    margin: 10px 0 0;
+  }
+}

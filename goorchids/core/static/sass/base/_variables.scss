@@ -10,7 +10,14 @@
   
   $lime: #f0f2d9;
   
+  
+  $lightestGreen: #c7cfb1;
+  $lighterGreen: #cbd2b4;
+  $lightGreen: #c2c8ac;
   $green: #728f50;
+  $darkGreen: #6f8759;
+  $darkerGreen: #63784f;
+  $darkestGreen: #293619;
   
   $lightestMaroon: #8c565e;
   $lighterMaroon: #764248;
@@ -20,14 +27,28 @@
   $darkerMaroon: #642a35;
   $darkestMaroon: #421720;
   
-  $darkGreen: #293619;
+  $lightestBlue: #8da8bf;
+  $lighterBlue: #577c9d;
+  $lightBlue: #587d9e;
+  $blue: #4e708e;
+  $darkBlue: #446a8b;
+  $darkerBlue: #4c6d8c;
+  
   
   $navy: #294c6b;
 
 
-  $primary: $darkGreen;
+  $primary: $darkestGreen;
   $secondary: $maroon;
   $tertiary: $navy;
   
   $background: $lime;
+
+// Background Gradients
   
+  @mixin green-background {
+    border: 1px solid $lightGreen;
+    border-radius: 2px;
+    @include box-shadow(inset 1px 1px 4px $lightGreen);
+    @include linear-gradient($lightestGreen, $lighterGreen);
+  }

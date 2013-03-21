@@ -1,0 +1,40 @@
+/*
+  Layout: Footer
+*/
+
+footer {
+  border-top: 1px solid $darkerGreen;
+  @include font-size(12);
+  font-weight: 700;
+  @include linear-gradient($darkGreen, $darkerGreen);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  
+  .container {
+    padding: 25px 0;
+  }
+  
+  a {
+    color: $white;
+  }
+  
+  p {
+    line-height: 1.7;
+  }
+  
+  .publisher {
+    @include span-columns(3);
+  }
+  
+  .navigation {
+    @include span-columns(2);
+  }
+  
+  .contact {
+    @include span-columns(4);
+  }
+  
+  .support {
+    @include span-columns(3);
+  }
+}

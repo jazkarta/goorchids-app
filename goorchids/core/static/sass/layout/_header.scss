@@ -8,7 +8,7 @@ header {
   @include linear-gradient($lightestMaroon, $lighterMaroon);
   
   .container {
-    padding: 35px 20px 20px 25px;
+    padding: 30px 20px 20px 25px;
   }
 
   a {
@@ -21,7 +21,8 @@ header {
     @include box-shadow(inset 0 1px 1px $lightestMaroon);
     @include clearfix;
     @include linear-gradient($darkerMaroon, $darkestMaroon);
-    padding: 5px 10px;
+    height: 54px;
+    padding: 7px;
     position: relative;
     vertical-align: middle;
     z-index: 1;
@@ -56,7 +57,7 @@ header {
     .naocc-logo {
       position: absolute;
         left: 0;
-        top: 5px;
+        top: 10px;
         z-index: 4;
       
       &::before {
@@ -64,11 +65,11 @@ header {
         border-bottom: 1px solid $darkestMaroon;
         @include box-shadow(inset 0 1px 0 $lightestMaroon);
         content: " ";
-        height: 49px;
+        height: 52px;
         @include linear-gradient($darkerMaroon, $darkestMaroon);
         position: absolute;
           left: 100px;
-          top: 30px;
+          top: 20px;
         width: 15px;
         z-index: -1;
       }
@@ -80,15 +81,14 @@ header {
         height: 60px;
         @include linear-gradient(#814a51, $lighterMaroon);
         position: absolute;
-          left: -5px;
+          left: -6px;
           bottom: -5px;
-        width: 120px;
+        width: 121px;
         z-index: -2;
       }
     }
     
     #search {
-      padding: 5px 0;
       
       #donate {
         float: right;
