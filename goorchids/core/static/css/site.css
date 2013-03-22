@@ -949,6 +949,10 @@ body.skey.results .instructions.close-filters, body.skey.results #filters-previe
 @media only screen and (max-width: 400px) { body.skey.results #results-display label { display: inline; }
   body.skey.results #question-nav .section.family-genus h6 { display: block; }
   body.skey.results #question-nav.closed .instructions.close-filters { display: none; }
+  body.skey.results.mobile-inline.mobile-gloss .working-area .terms { background: #ccc; }
+  body.skey.results.mobile-inline.mobile-gloss .working-area .terms ul { display: block; }
+  body.skey.results.mobile-inline.mobile-gloss .working-area .terms.closed ul { display: none; }
+  body.skey.results.mobile-inline.mobile-gloss .working-area .terms h5 { cursor: pointer; }
   body.skey.results.mobile-preview-filters #filters-preview { display: block; border-bottom: solid 1px black; }
   body.skey.results.mobile-preview-filters #filters-preview li { list-item-type: none; display: none; }
   body.skey.results.mobile-preview-filters #filters-preview li.answered { display: inline; }

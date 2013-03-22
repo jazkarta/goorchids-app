@@ -23,6 +23,17 @@ body.skey.results {
       }
     }
 
+    &.mobile-inline.mobile-gloss .working-area .terms {
+      background: #ccc;
+      ul { display: block; }
+      &.closed {
+        ul { display: none; }
+      }
+      h5 {
+        cursor: pointer;
+      }
+    }
+
     &.mobile-preview-filters #filters-preview {
       display: block;
       border-bottom: solid 1px #000;
