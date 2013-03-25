@@ -1,0 +1,5 @@
+{% load gobotany_tags %}
+{% with '/static/css/app.css' as file_path %}
+<link rel="stylesheet"
+    href="{{ file_path }}?v={% file_version file_path %}">
+{% endwith %}
