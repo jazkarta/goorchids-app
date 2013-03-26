@@ -174,57 +174,53 @@
 
                 <div id="conservation-status">
                     <h4>Conservation Status</h4>
-                <!--
-                {% with conservation_matrix=taxon.get_conservation_statuses %}
+                    <form>
+                        <p>Select a location to view conservation status:</p>
+                        <select>
+                            <option value=""></option>
+                        {% for conservation_status in taxon.regional_conservation_statuses.all %}
+                            <option value="{{conservation_status.region}}">{{conservation_status.get_region_display}}</option>
+                        {% endfor %}
+                        </select>
+                        <input type="submit" value="Show Status" />
+                    </form> 
+                {% for conservation_status in taxon.regional_conservation_statuses.all %}
                 <table>
                     <thead>
                         <tr>
-                            <td></td>
-                            {% for state_name in conservation_matrix.keys %}
-                            <th>{{ state_name }}</th>
-                            {% endfor %}
+                            <th></th>
+                            <th>Conservation status for: {{conservation_status.get_region_display}}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th>Present?</th>
-                            {% for statuses in conservation_matrix.values %}
-                            <td>
-                                {% if 'present' in statuses %}
-                                present
-                                {% else %}
-                                -
-                                {% endif %}
-                            </td>
-                            {% endfor %}
+                            <th>Global Rank</th>
+                            <td>{{taxon.get_global_rank_display|default_if_none:"N/A"}}</td>
                         </tr>
                         <tr>
-                            <th>Conservation Status:</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <th>US Status</th>
+                            <td>{{taxon.get_us_status_display|default_if_none:"N/A"}}</td>
+                        </tr>
+                        <tr>
+                            <th>{{conservation_status.region}} Rank</th>
+                            <td>{{conservation_status.get_rank_display|default_if_none:"N/A"}}</td>
+                        </tr>
+                        <tr>
+                            <th>{{conservation_status.region}} Status</th>
+                            <td>{{conservation_status.get_status_display|default_if_none:"N/A"}}</td>
+                        </tr>
+                        <tr>
+                            <th>Canadian Rank</th>
+                            <td>{{taxon.get_ca_rank_display|default_if_none:"N/A"}}</td>
+                        </tr>
+                        <tr>
+                            <th>Wetland Status</th>
                             <td></td>
                         </tr>
-                        {% for status_name in conservation_status_rows %}
-                            <tr>
-                                <th class="status">{{ status_name|capfirst }}?</th>
-                                {% for statuses in conservation_matrix.values %}
-                                <td>
-                                    {% if status_name in statuses %}
-                                    {{ status_name }}
-                                    {% else %}
-                                    -
-                                    {% endif %}
-                                </td>
-                                {% endfor %}
-                            </tr>
-                        {% endfor %}
                     </tbody>
                 </table>
-                {% endwith %}
-                --></div>
+                {% endfor %}
+                </div>
 
                 <div class="map namap">
                     <h4>North America Distribution</h4>
