@@ -53,6 +53,14 @@ CANADIAN_RANK_CODES = OrderedDict((
     ('8', 'Accidental')
 ))
 
+WETLAND_STATUS_CODES = OrderedDict((
+    ('OBL', 'Obligate Wetland'),
+    ('FACW', 'Facultative Wetland'),
+    ('FAC', 'Facultative'),
+    ('FACU', 'Facultative Upland'),
+    ('UPL', 'Upland'),
+))
+
 
 class GoOrchidTaxon(Taxon):
     """Subclass the GoBotany taxon model to add orchid-specific fields.
@@ -101,6 +109,8 @@ class RegionalConservationStatus(models.Model):
     status = models.CharField(choices=STATE_STATUS_CODES.items(), max_length=2,
                               default=None, null=True, blank=True)
     rank = models.CharField(choices=STATE_RANK_CODES.items(), max_length=2)
+    wetland_status = models.CharField(choices=WETLAND_STATUS_CODES.items(), max_length=4,
+                                      default=None, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = 'regional conservation statuses'
