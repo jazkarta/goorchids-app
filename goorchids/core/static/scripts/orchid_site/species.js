@@ -25,7 +25,13 @@ define([
                 height: height,
                 width: width
             });
-        }    ));
+        }));
+
+        // Set up the conservation status region switcher
+        $('#region-switcher').change(function() {
+            $('table.conservation-status').hide();
+            $('table.conservation-status[data-region="' + $(this).val() + '"]').show();
+        });
     });
 
 });

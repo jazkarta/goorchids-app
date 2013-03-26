@@ -177,7 +177,8 @@ body.taxa {
 
             }
         }
-        table {
+        table.conservation-status {
+            display: none;
             border-collapse: collapse;
             font-size: 12px;
             margin-bottom: 14px;

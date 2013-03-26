@@ -469,15 +469,15 @@ body.taxa#species ul.full-description > li:last-child { border-bottom: none; }
 body.taxa#species ul.full-description > li:hover { background-color: #fff; }
 body.taxa#species ul.full-description > li h5 { background: url(/static/images/icons/plus.png) left 50% no-repeat; cursor: pointer; padding-left: 28px; }
 body.taxa#species ul.full-description > li div { display: none; padding-left: 28px; }
-body.taxa#species table { border-collapse: collapse; font-size: 12px; margin-bottom: 14px; margin-top: 8px; }
-body.taxa#species table th, body.taxa#species table td { line-height: 105%; padding: 6px 4px; }
-body.taxa#species table th { background: #b4d57f; font-weight: normal; text-transform: uppercase; }
-body.taxa#species table td { border: 1px solid #c3d941; border-bottom: 0px; border-top: 0px; text-align: center; }
-body.taxa#species table thead th { border: 1px solid #c3d941; border-right: 1px solid #b4d57f; font-size: 10px; text-align: center; vertical-align: bottom; }
-body.taxa#species table thead th:last-child { border-right-color: #c3d941; }
-body.taxa#species table tbody th, body.taxa#species table thead td { background: inherit; border: 0; font-size: 10px; font-weight: bold; padding-right: 8px; text-align: right; width: 103px; }
-body.taxa#species table tbody th { padding-left: 0; white-space: nowrap; }
-body.taxa#species table tbody th.status { font-size: 12px; font-weight: normal; padding-left: 40px; text-align: left; text-transform: none; }
+body.taxa#species table.conservation-status { display: none; border-collapse: collapse; font-size: 12px; margin-bottom: 14px; margin-top: 8px; }
+body.taxa#species table.conservation-status th, body.taxa#species table.conservation-status td { line-height: 105%; padding: 6px 4px; }
+body.taxa#species table.conservation-status th { background: #b4d57f; font-weight: normal; text-transform: uppercase; }
+body.taxa#species table.conservation-status td { border: 1px solid #c3d941; border-bottom: 0px; border-top: 0px; text-align: center; }
+body.taxa#species table.conservation-status thead th { border: 1px solid #c3d941; border-right: 1px solid #b4d57f; font-size: 10px; text-align: center; vertical-align: bottom; }
+body.taxa#species table.conservation-status thead th:last-child { border-right-color: #c3d941; }
+body.taxa#species table.conservation-status tbody th, body.taxa#species table.conservation-status thead td { background: inherit; border: 0; font-size: 10px; font-weight: bold; padding-right: 8px; text-align: right; width: 103px; }
+body.taxa#species table.conservation-status tbody th { padding-left: 0; white-space: nowrap; }
+body.taxa#species table.conservation-status tbody th.status { font-size: 12px; font-weight: normal; padding-left: 40px; text-align: left; text-transform: none; }
 body.taxa#species .taxonomy { background-color: #ccc; width: 200px; float: right; padding: 1em 2em; margin-left: 3em; }
 body.taxa#species a { margin-left: 0; }
 body.taxa#species a.enlarge { color: #1a2e11; display: block; margin: 0 0 8px 0; }

@@ -176,7 +176,7 @@
                     <h4>Conservation Status</h4>
                     <form>
                         <p>Select a location to view conservation status:</p>
-                        <select>
+                        <select id="region-switcher">
                             <option value=""></option>
                         {% for conservation_status in taxon.regional_conservation_statuses.all %}
                             <option value="{{conservation_status.region}}">{{conservation_status.get_region_display}}</option>
@@ -185,7 +185,7 @@
                         <input type="submit" value="Show Status" />
                     </form> 
                 {% for conservation_status in taxon.regional_conservation_statuses.all %}
-                <table>
+                <table class="conservation-status" data-region="{{conservation_status.region}}">
                     <thead>
                         <tr>
                             <th></th>
