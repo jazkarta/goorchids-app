@@ -17,10 +17,14 @@
         {# CSS goes here. #}
         {% block css %}
 
-        {% with '/static/css/site.css' as file_path %}
+        {% with '/static/css/app.css' as file_path %}
         <link rel="stylesheet"
             href="{{ file_path }}?v={% file_version file_path %}">
         {% endwith %}
+        
+        <!-- Google Web Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic' rel='stylesheet' type='text/css'>
         
         {% endblock %}
 
