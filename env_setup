@@ -1,0 +1,5 @@
+source dev/activate
+export AWS_ACCESS_KEY_ID=AKIAJOJVEC2DQTBYK5WA
+export AWS_SECRET_ACCESS_KEY=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
+export GOBOTANY_DJANGO_SECRET_KEY="2346sdfjgqrhjkwgf627"
+export PATH=/usr/local/bin:$PATH

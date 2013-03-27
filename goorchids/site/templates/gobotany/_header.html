@@ -1,16 +1,16 @@
     <header>
         <div class="container">
-            <p class="naocc"><a href="http://northamericanorchidcenter.org/">North American Orchid Conservation Center</a></p>
+            <a href="#" class="naocc-logo"><img src="static/images/graphics/naocc-logo.png" alt="North American Orchid Conservation Center" /></a>
             <nav>
-                <a href="javascript:document.getElementById('footer-nav').scrollIntoView();"><span>sections</span></a>
                 <ul>
                     {% include "gobotany/_primary_navigation.html" %}
                 </ul>
-                <a id="donate" class="button" href="http://research.serc.si.edu/researchdata/donation_NAOCC_cfm/donation_choose_amount.cfm">Donate</a>
                 <div id="search">
+                    <a id="donate" class="button" href="http://research.serc.si.edu/researchdata/donation_NAOCC_cfm/donation_choose_amount.cfm">Donate</a>
                     <form id="search-suggest" action="/search/" autocomplete="off">
                         <input type="search" name="q" placeholder="Search..."
                             value="{{ request.GET.q }}">
+                        <input type="submit" data-icon="!" />
                         <div class="menu hidden">
                             <ul></ul>
                         </div>
