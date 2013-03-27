@@ -9,7 +9,7 @@
   padding: 20px 35px;
   
   > div {
-    border-right: 1px solid darken($lightGreen, 10%);
+    border-right: 1px solid $lightGreen;
     @include box-shadow(1px 0 0 $lightestGreen);
     float: left;
     padding: 0 3%;
@@ -21,7 +21,7 @@
     }
     
     &:last-child {
-      border-right: 0;
+      border: 0;
       padding: 0 0 0 3%;
       width: 32.5%;
     }
@@ -42,4 +42,36 @@
   .button {
     margin: 0;
   }
+  
+  // Media Queries
+  @include media(max-width 800px) {
+    padding: 10px 20px;
+    
+    > div {
+      border: 0;
+      border-bottom: 1px solid $lightGreen;
+      @include box-shadow(none);
+      padding: 20px 0;
+      @include span-columns(12);
+      
+      &:first-child {
+        padding: 20px 0;
+        width: 100%;
+      }
+      &:last-child {
+        padding: 20px 0;
+        width: 100%;
+      }
+    }
+    
+    input[type="text"] {
+      display: inline-block;
+      margin: 0 10px 10px 0;
+      width: 60%;
+    }
+    
+    .button {
+      margin: 0 0 10px;
+    }
+  } // 800px
 }

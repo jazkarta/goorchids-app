@@ -39,4 +39,31 @@
       }
     }
   }
+  
+  // Media Queries
+  
+  @include media(max-width 1050px) {
+    #overlay {
+      width: 45%;
+    }
+  }
+  
+  @include media(max-width 780px) {
+    padding: 3%;
+    
+    #overlay {
+      width: 60%;
+    }
+  }
+  
+  @include media(max-width 715px) {
+    @include background-size(contain);
+    height: 0;
+    padding: 47% 0 0;
+    
+    #overlay {
+      padding: 0;
+      width: 100%;
+    }
+  }
 }

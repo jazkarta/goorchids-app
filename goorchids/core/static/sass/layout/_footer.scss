@@ -37,4 +37,26 @@ footer {
   .support {
     @include span-columns(3);
   }
+  
+  @include media(max-width 800px) {
+    @include font-size(14);
+    
+    p {
+      &:last-of-type {
+        padding: 0;
+      }
+    }
+    
+    .container {
+      padding: 5px 20px;
+    }
+  
+    .contact,
+    .navigation,
+    .publisher,
+    .support {
+      @include span-columns(12);
+      padding: 20px 0;
+    }
+  }
 }
