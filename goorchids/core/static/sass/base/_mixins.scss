@@ -12,4 +12,8 @@
 // Layout
   @mixin separator {
     margin: 0 0 45px;
+    
+    @include media(max-width 500px) {
+      margin: 0 0 35px;
+    }
   }

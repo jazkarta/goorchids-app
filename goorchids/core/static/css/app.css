@@ -680,6 +680,11 @@ footer .support:last-child {
   padding: 1%;
   height: 425px;
 }
+@media screen and (max-width: 500px) {
+  #banner {
+    margin: 0 0 35px;
+  }
+}
 #banner .banner-background {
   display: table-cell;
   vertical-align: middle;
@@ -734,6 +739,9 @@ footer .support:last-child {
     padding: 0;
     width: 100%;
   }
+  #banner #overlay p:last-of-type {
+    padding: 0;
+  }
 }
 
 /*
@@ -761,6 +769,11 @@ footer .support:last-child {
 }
 .three-col:after {
   clear: both;
+}
+@media screen and (max-width: 500px) {
+  .three-col {
+    margin: 0 0 35px;
+  }
 }
 .three-col > div {
   border-right: 1px solid #a4aa8d;

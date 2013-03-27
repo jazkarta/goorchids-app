@@ -64,6 +64,12 @@
     #overlay {
       padding: 0;
       width: 100%;
+      
+      p {
+        &:last-of-type {
+          padding: 0;
+        }
+      }
     }
   }
 }

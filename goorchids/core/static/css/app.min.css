@@ -188,6 +188,7 @@ footer .support:last-child { margin-right: 0; }
 
 /* ==== Banner ==== */
 #banner { background-color: #293619; background: url(../images/photography/homepage-banner.jpg) no-repeat 0 0; display: table; margin: 0 0 45px; padding: 1%; height: 425px; }
+@media screen and (max-width: 500px) { #banner { margin: 0 0 35px; } }
 #banner .banner-background { display: table-cell; vertical-align: middle; }
 #banner #overlay { background: #cbd2b4; background: rgba(240, 242, 217, 0.7); padding: 2%; text-shadow: 1px 1px 1px rgba(200, 208, 176, 0.6); width: 35%; }
 #banner #overlay h1 { padding: 0 0 10px; }
@@ -198,13 +199,15 @@ footer .support:last-child { margin-right: 0; }
 @media screen and (max-width: 780px) { #banner { padding: 3%; }
   #banner #overlay { width: 60%; } }
 @media screen and (max-width: 715px) { #banner { -webkit-background-size: contain; -moz-background-size: contain; -ms-background-size: contain; -o-background-size: contain; background-size: contain; height: 0; padding: 47% 0 0; }
-  #banner #overlay { padding: 0; width: 100%; } }
+  #banner #overlay { padding: 0; width: 100%; }
+  #banner #overlay p:last-of-type { padding: 0; } }
 
 /* Layout: Three Col
 */
 .three-col { *zoom: 1; border: 1px solid #a4aa8d; border-radius: 2px; -webkit-box-shadow: inset 1px 1px 4px #a4aa8d; box-shadow: inset 1px 1px 4px #a4aa8d; background-color: #c7cfb1; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c7cfb1), color-stop(100%, #cbd2b4)); background-image: -webkit-linear-gradient(top, #c7cfb1, #cbd2b4); background-image: -moz-linear-gradient(top, #c7cfb1, #cbd2b4); background-image: -ms-linear-gradient(top, #c7cfb1, #cbd2b4); background-image: -o-linear-gradient(top, #c7cfb1, #cbd2b4); background-image: linear-gradient(top, #c7cfb1, #cbd2b4); margin: 0 0 45px; padding: 20px 35px; }
 .three-col:before, .three-col:after { content: " "; display: table; }
 .three-col:after { clear: both; }
+@media screen and (max-width: 500px) { .three-col { margin: 0 0 35px; } }
 .three-col > div { border-right: 1px solid #a4aa8d; -webkit-box-shadow: 1px 0 0 #c7cfb1; box-shadow: 1px 0 0 #c7cfb1; float: left; padding: 0 3%; width: 35%; }
 .three-col > div:first-child { padding: 0 3% 0 0; width: 32.5%; }
 .three-col > div:last-child { border: 0; padding: 0 0 0 3%; width: 32.5%; }
