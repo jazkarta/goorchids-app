@@ -1,24 +1,24 @@
-    <header>
-        <div class="container">
-            <a href="#" class="naocc-logo"><img src="static/images/graphics/naocc-logo.png" alt="North American Orchid Conservation Center" /></a>
-            <nav class="menu-container">
-                <div id="search">
-                    <a id="donate" class="button" href="http://research.serc.si.edu/researchdata/donation_NAOCC_cfm/donation_choose_amount.cfm">Donate</a>
-                    <form id="search-suggest" action="/search/" autocomplete="off">
-                        <input type="search" name="q" placeholder="Search..."
-                            value="{{ request.GET.q }}">
-                        <input type="submit" class="button search-field" value="!" />
-                        <div class="menu hidden">
-                            <ul></ul>
-                        </div>
-                    </form>
-                </div><!-- /#search -->
-                <nav class="main-navigation">
-                  <a href="#" class="button mobile">Menu</a>
-                  <ul>
-                      {% include "gobotany/_primary_navigation.html" %}
-                  </ul>
-                </nav>
-            </nav><!-- /.menu-container -->
-        </div>
+    <header class="global-header">
+      <div class="container">
+        <a href="#" class="naocc-logo"><img src="static/images/graphics/naocc-logo.png" alt="North American Orchid Conservation Center" /></a>
+        <nav class="menu-container">
+          <div id="search">
+            <a id="donate" class="button" href="http://research.serc.si.edu/researchdata/donation_NAOCC_cfm/donation_choose_amount.cfm">Donate</a>
+            <form id="search-suggest" action="/search/" autocomplete="off">
+                <input type="search" name="q" placeholder="Search..."
+                    value="{{ request.GET.q }}">
+                <input type="submit" class="button search-field" value="!" />
+                <div class="menu hidden">
+                    <ul></ul>
+                </div>
+            </form>
+          </div><!-- /#search -->
+          <nav class="main-navigation">
+            <a href="#" class="button mobile">Menu</a>
+            <ul>
+              {% include "gobotany/_primary_navigation.html" %}
+            </ul>
+          </nav>
+        </nav><!-- /.menu-container -->
+      </div>
     </header>

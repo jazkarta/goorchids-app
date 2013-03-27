@@ -36,40 +36,33 @@ header {
       }
     }
     
-    
-    ul {
-      float: left;
-      @include clearfix;
-      padding: 10px 0 10px 100px;
-      
-      li {
-        float: left;
-        padding: 0 35px 0 0;
-        
-        &:last-of-type {
-          padding: 0;
-        }
-      }
-    } // ul
-    
     #search {
       float: right;
     }
   } // nav
 
   @include media(max-width 860px) {
-    #donate {
-      display: none;
-    }
-    nav {
-      #search,
-      ul {
-        float: right;
-      }
-    }
+    
   } // media 860px
 
 } // header
+    
+    .main-navigation {
+      ul {
+        float: left;
+        @include clearfix;
+        padding: 10px 0 10px 100px;
+        
+        li {
+          float: left;
+          padding: 0 35px 0 0;
+          
+          &:last-of-type {
+            padding: 0;
+          }
+        }
+      } // ul
+    }
     
     .naocc-logo {
       position: absolute;

@@ -131,9 +131,33 @@ h1 {
   font-size: 2.5rem;
 }
 
+h2 {
+  font-size: 22px;
+  font-size: 1.375rem;
+}
+
 h3 {
   font-size: 18px;
   font-size: 1.125rem;
+}
+
+/* ==== Base: Utility Classes ==== */
+.desktop {
+  display: block;
+}
+@media screen and (max-width: 870px) {
+  .desktop {
+    display: none;
+  }
+}
+
+.mobile {
+  display: none !important;
+}
+@media screen and (max-width: 870px) {
+  .mobile {
+    display: inline-block !important;
+  }
 }
 
 /*
@@ -390,36 +414,28 @@ header .menu-container a {
 header .menu-container a:not([href]) {
   color: #728f50;
 }
-header .menu-container ul {
+header .menu-container #search {
+  float: right;
+}
+
+.main-navigation ul {
   float: left;
   *zoom: 1;
   padding: 10px 0 10px 100px;
 }
-header .menu-container ul:before, header .menu-container ul:after {
+.main-navigation ul:before, .main-navigation ul:after {
   content: " ";
   display: table;
 }
-header .menu-container ul:after {
+.main-navigation ul:after {
   clear: both;
 }
-header .menu-container ul li {
+.main-navigation ul li {
   float: left;
   padding: 0 35px 0 0;
 }
-header .menu-container ul li:last-of-type {
+.main-navigation ul li:last-of-type {
   padding: 0;
-}
-header .menu-container #search {
-  float: right;
-}
-@media screen and (max-width: 860px) {
-  header #donate {
-    display: none;
-  }
-  header nav #search,
-  header nav ul {
-    float: right;
-  }
 }
 
 .naocc-logo {
@@ -561,6 +577,72 @@ footer .support:last-child {
   padding: 30px 0;
 }
 
+#main {
+  display: block;
+  float: left;
+  margin-right: 4.82916%;
+  width: 65.05695%;
+}
+#main:last-child {
+  margin-right: 0;
+}
+#main h2 {
+  padding: 20px 0;
+}
+#main h2:first-of-type {
+  padding: 0 0 20px;
+}
+#main .VisitLink {
+  display: inline-block;
+  margin: 0 0 20px;
+}
+
+/* ==== Layout: Sidebar ==== */
+#sidebar {
+  border: 1px solid #a4aa8d;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 1px 1px 4px #a4aa8d;
+  box-shadow: inset 1px 1px 4px #a4aa8d;
+  background-color: #c7cfb1;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c7cfb1), color-stop(100%, #cbd2b4));
+  background-image: -webkit-linear-gradient(top, #c7cfb1, #cbd2b4);
+  background-image: -moz-linear-gradient(top, #c7cfb1, #cbd2b4);
+  background-image: -ms-linear-gradient(top, #c7cfb1, #cbd2b4);
+  background-image: -o-linear-gradient(top, #c7cfb1, #cbd2b4);
+  background-image: linear-gradient(top, #c7cfb1, #cbd2b4);
+  padding: 10px 15px;
+  display: block;
+  float: left;
+  margin-right: 4.82916%;
+  width: 30.11389%;
+}
+#sidebar:last-child {
+  margin-right: 0;
+}
+#sidebar > div {
+  border-bottom: 1px solid #a4aa8d;
+  -webkit-box-shadow: 0 1px 0 #c7cfb1;
+  box-shadow: 0 1px 0 #c7cfb1;
+  padding: 30px 0;
+}
+#sidebar > div:first-child {
+  padding: 20px 0 30px;
+}
+#sidebar > div:last-child {
+  border: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  padding: 30px 0 20px;
+}
+#sidebar h3,
+#sidebar p {
+  padding: 0 0 10px;
+}
+#sidebar input,
+#sidebar .button {
+  margin: 0 0 10px;
+}
+
 /* ==== Banner ==== */
 #banner {
   background-color: #293619;
@@ -603,10 +685,10 @@ footer .support:last-child {
 */
 .three-col {
   *zoom: 1;
-  border: 1px solid #c2c8ac;
+  border: 1px solid #a4aa8d;
   border-radius: 2px;
-  -webkit-box-shadow: inset 1px 1px 4px #c2c8ac;
-  box-shadow: inset 1px 1px 4px #c2c8ac;
+  -webkit-box-shadow: inset 1px 1px 4px #a4aa8d;
+  box-shadow: inset 1px 1px 4px #a4aa8d;
   background-color: #c7cfb1;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c7cfb1), color-stop(100%, #cbd2b4));
   background-image: -webkit-linear-gradient(top, #c7cfb1, #cbd2b4);
@@ -625,7 +707,7 @@ footer .support:last-child {
   clear: both;
 }
 .three-col > div {
-  border-right: 1px solid #abb48d;
+  border-right: 1px solid #8d9470;
   -webkit-box-shadow: 1px 0 0 #c7cfb1;
   box-shadow: 1px 0 0 #c7cfb1;
   float: left;

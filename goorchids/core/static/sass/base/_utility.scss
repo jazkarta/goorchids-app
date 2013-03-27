@@ -1,7 +1,7 @@
 /* ==== Base: Utility Classes ==== */
 
 .hidden {
-  display: none;
+  //display: none;
 }
 
 .desktop {
@@ -13,9 +13,9 @@
 }
 
 .mobile {
-  display: none;
+  display: none !important;
   
   @include media(max-width 870px) {
-    display: block;
+    display: inline-block !important;
   }
 }
