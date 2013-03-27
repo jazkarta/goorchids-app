@@ -8,3 +8,8 @@
     font-size: 0px + $size;
     font-size: 0rem + $size/$parentSize;
   }
+  
+// Layout
+  @mixin separator {
+    margin: 0 0 45px;
+  }

@@ -1,0 +1,21 @@
+/* ==== Base: Utility Classes ==== */
+
+.hidden {
+  display: none;
+}
+
+.desktop {
+  display: block;
+  
+  @include media(max-width 870px) {
+    display: none;
+  }
+}
+
+.mobile {
+  display: none;
+  
+  @include media(max-width 870px) {
+    display: block;
+  }
+}

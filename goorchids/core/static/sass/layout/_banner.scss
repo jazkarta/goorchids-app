@@ -3,13 +3,40 @@
 #banner {
   background-color: $darkestGreen;
   background: url(../images/photography/homepage-banner.jpg) no-repeat 0 0; 
-  padding: 0 2%;
+  display: table;
+  @include separator;
+  padding: 1%;
   height: 425px;
+  
+  .banner-background {
+    display: table-cell;
+    vertical-align: middle;
+  }
   
   #overlay {
     background: $lighterGreen;
-    background: rgba(240, 242, 217, 0.5);
+    background: rgba(240, 242, 217, 0.7);
     padding: 2%;
-    width: 40%;
+    text-shadow: 1px 1px 1px rgba(200, 208, 176, 0.6);
+    width: 35%;
+    
+    h1 {
+      padding: 0 0 10px;
+    }
+    
+    ul {
+      border-bottom: 1px solid $green;
+      @include box-shadow(0 1px 0 rgba(200, 208, 176, 0.6));
+      margin: 0 0 10px;
+      padding: 0 0 10px;
+      
+      li {
+        padding: 0 0 5px;
+        
+        span {
+          color: $green;
+        }
+      }
+    }
   }
 }
