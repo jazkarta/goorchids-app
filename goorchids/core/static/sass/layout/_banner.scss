@@ -1,0 +1,15 @@
+/* ==== Banner ==== */
+
+#banner {
+  background-color: $darkestGreen;
+  background: url(../images/photography/homepage-banner.jpg) no-repeat 0 0; 
+  padding: 0 2%;
+  height: 425px;
+  
+  #overlay {
+    background: $lighterGreen;
+    background: rgba(240, 242, 217, 0.5);
+    padding: 2%;
+    width: 40%;
+  }
+}

@@ -96,11 +96,14 @@ img { max-width: 100%; }
 
 /* Components: Input
 */
-input { color: #293619; display: block; font-family: "Open Sans", sans-serif; font-size: 12px; font-size: 0.75rem; padding: 5px; width: 100%; }
+input[type="text"], input[type="email"], input[type="password"], input[type="search"] { border: 1px solid #999999; color: #293619; display: block; font-family: "Open Sans", sans-serif; font-size: 12px; font-size: 0.75rem; line-height: 1.5; padding: 7px 5px; vertical-align: middle; -webkit-appearance: none; width: 100%; }
 
 /* Components: Buttons
 */
 input.button, .button { border: 1px solid #4c6d8c; border-radius: 2px; -webkit-box-shadow: inset 1px 1px 1px #8da8bf; box-shadow: inset 1px 1px 1px #8da8bf; color: white; display: inline-block; font-family: "Open Sans", sans-serif; font-weight: 700; font-size: 14px; font-size: 0.875rem; line-height: 1; background-color: #4e708e; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4e708e), color-stop(100%, #446a8b)); background-image: -webkit-linear-gradient(top, #4e708e, #446a8b); background-image: -moz-linear-gradient(top, #4e708e, #446a8b); background-image: -ms-linear-gradient(top, #4e708e, #446a8b); background-image: -o-linear-gradient(top, #4e708e, #446a8b); background-image: linear-gradient(top, #4e708e, #446a8b); margin: 20px 0 0; padding: 8px 20px; text-shadow: 1px 1px 1px #294c6b; vertical-align: middle; -webkit-font-smoothing: antialiased; width: auto; }
+input.button:hover, .button:hover { background: #294c6b; -webkit-box-shadow: none; box-shadow: none; }
+input.button.search-field, .button.search-field { border: 0; -webkit-box-shadow: none; box-shadow: none; color: #293619; font-family: 'icomoon'; font-size: 18px; font-size: 1.125rem; background-color: #c7c7c7; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c7c7c7), color-stop(100%, darkgrey)); background-image: -webkit-linear-gradient(top, #c7c7c7, darkgrey); background-image: -moz-linear-gradient(top, #c7c7c7, darkgrey); background-image: -ms-linear-gradient(top, #c7c7c7, darkgrey); background-image: -o-linear-gradient(top, #c7c7c7, darkgrey); background-image: linear-gradient(top, #c7c7c7, darkgrey); padding: 4px 10px; text-shadow: none; }
+input.button.search-field:hover, .button.search-field:hover { background: darkgrey; }
 
 header .button { border: 1px solid #446a8b; background-color: #577c9d; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #577c9d), color-stop(100%, #587d9e)); background-image: -webkit-linear-gradient(top, #577c9d, #587d9e); background-image: -moz-linear-gradient(top, #577c9d, #587d9e); background-image: -ms-linear-gradient(top, #577c9d, #587d9e); background-image: -o-linear-gradient(top, #577c9d, #587d9e); background-image: linear-gradient(top, #577c9d, #587d9e); margin: 0 0 0 15px; padding: 10px 15px; text-transform: uppercase; }
 
@@ -129,9 +132,11 @@ header nav #search:last-child { margin-right: 0; }
 .naocc-logo::after { content: " "; border-radius: 0 0 120px 120px; display: block; height: 60px; background-color: #814a51; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #814a51), color-stop(100%, #764248)); background-image: -webkit-linear-gradient(top, #814a51, #764248); background-image: -moz-linear-gradient(top, #814a51, #764248); background-image: -ms-linear-gradient(top, #814a51, #764248); background-image: -o-linear-gradient(top, #814a51, #764248); background-image: linear-gradient(top, #814a51, #764248); position: absolute; left: -6px; bottom: -5px; width: 121px; z-index: -2; }
 
 #search #donate { float: right; }
-#search #search-suggest { float: right; }
+#search #search-suggest { float: right; position: relative; width: 50%; }
 #search .menu { position: absolute; }
 #search .menu.hidden { display: none; }
+#search input[type="search"] { padding: 7px 35px 7px 5px; }
+#search input[type="submit"] { position: absolute; top: 6px; right: 5px; }
 
 /* Layout: Footer
 */
@@ -151,6 +156,10 @@ footer .support:last-child { margin-right: 0; }
 /* Layout: Content
 */
 .content { padding: 30px 0; }
+
+/* ==== Banner ==== */
+#banner { background-color: #293619; background: url(../images/photography/homepage-banner.jpg) no-repeat 0 0; padding: 0 2%; height: 425px; }
+#banner #overlay { background: #cbd2b4; background: rgba(240, 242, 217, 0.5); padding: 2%; width: 40%; }
 
 /* Layout: Three Col
 */

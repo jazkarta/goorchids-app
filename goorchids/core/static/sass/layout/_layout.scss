@@ -2,8 +2,11 @@
   Layout
 */
 
+// Global Layout
 @import 'header';
 @import 'footer';
 @import 'content';
 
+// Homepage
+@import 'banner';
 @import 'three-col';

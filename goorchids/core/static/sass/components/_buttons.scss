@@ -20,6 +20,26 @@ input.button,
   vertical-align: middle;
   -webkit-font-smoothing: antialiased;
   width: auto;
+  
+  &:hover {
+    background: $navy;
+    @include box-shadow(none);
+  }
+  
+  &.search-field {
+    border: 0;
+    @include box-shadow(none);
+    color: $darkestGreen;
+    font-family: 'icomoon';
+    @include font-size(18);
+    @include linear-gradient($lighterGray, $lightGray);
+    padding: 4px 10px;
+    text-shadow: none;
+    
+    &:hover {
+      background: $lightGray;
+    }
+  }
 }
 
   // Header Button
