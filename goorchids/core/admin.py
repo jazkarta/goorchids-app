@@ -26,11 +26,19 @@ class GoOrchidTaxonGenericInlineFormset(generic.BaseGenericInlineFormSet):
 
     def __init__(self, data=None, files=None, instance=None, **kw):
         if isinstance(instance, GoOrchidTaxon):
-            instance = instance.taxon_ptr
+            if hasattr(instance, 'taxon_ptr'):
+                instance = instance.taxon_ptr
+            else:
+                # Create a temporary Taxon object to mirror our
+                # ephemeral GoOrchidTaxon
+                taxon_proxy = Taxon()
+                taxon_proxy.__dict__ = instance.__dict__
+                instance = taxon_proxy
         super(GoOrchidTaxonGenericInlineFormset, self).__init__(data=data,
                                                                 files=files,
                                                                 instance=instance,
                                                                 **kw)
+
 
 class ContentImageInline(generic.GenericTabularInline):
     model = ContentImage
