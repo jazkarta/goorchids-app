@@ -7,6 +7,6 @@ set -e
 
 source $(dirname "$0")/s3-init.sh
 TEMP=$(mktemp)
-s3cmd ls -r s3://newfs/taxon-images/ | gzip -c9 > $TEMP
-s3cmd put $TEMP s3://newfs/ls-taxon-images.gz
+s3cmd ls -r s3://goorchids/taxon-images/ | gzip -c9 > $TEMP
+s3cmd put $TEMP s3://goorchids/ls-taxon-images.gz
 rm $TEMP

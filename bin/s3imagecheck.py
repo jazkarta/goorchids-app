@@ -26,7 +26,7 @@ THUMBNAIL_SIZES = '160x149', '239x239', '1000s1000'
 url_pattern = re.compile(r'/taxon-images/[A-Z]')
 
 def main():
-    operator = Operator('newfs')
+    operator = Operator('goorchids')
     family_names = operator.list_families()
     for family_name in family_names:
         if ONLY_FAMILY and family_name != ONLY_FAMILY:
@@ -125,7 +125,7 @@ class Operator(object):
     """
     def __init__(self, bucket_name):
         boto_connection = boto.connect_s3()
-        self.bucket = boto_connection.get_bucket('newfs')
+        self.bucket = boto_connection.get_bucket('goorchids')
 
         self.t0 = time.time()
         self.directory_count = 0
