@@ -1,6 +1,10 @@
 {% extends "gobotany/_page_no_sidebar.html" %}
 {% load verbatim %}
 
+{% block css %}
+{% include "gobotany/_new_css.html" %}
+{% endblock %}
+
 {% block title %}{{ subgroup_results_page.title }}{% endblock %}
 
 {% block js_require %}
