@@ -5,7 +5,6 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.shortcuts import render_to_response
 from gobotany.core import botany
-from gobotany.core.models import HomePageImage
 from gobotany.core.models import Taxon
 from gobotany.core.models import Genus
 from gobotany.core.models import Synonym
@@ -23,18 +22,6 @@ from maps import NorthAmericanOrchidDistributionMap
 from itertools import groupby
 from operator import itemgetter
 import json
-
-
-# Home page
-
-def home_view(request):
-    """View for the home page of the Go Orchids site."""
-
-    home_page_images = HomePageImage.objects.all()
-
-    return render_to_response('home.html', {
-        'home_page_images': home_page_images,
-        }, context_instance=RequestContext(request))
 
 
 def location_suggestions_view(request):

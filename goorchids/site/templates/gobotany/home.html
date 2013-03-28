@@ -56,13 +56,13 @@
                        alt="{{ plant_of_the_day.scientific_name }}">
                 </a>
                 <div class="details">
-                    <h3>Plant of the Day:
+                    <h3>Featured Orchid</h3>
                         <span class="latin">{{ plant_of_the_day.scientific_name|italicize_plant|safe }}</span>
                         <span class="english">{{ plant_of_the_day.common_names.all.0 }}</span>
                     </h3>
                     <p>{{ plant_of_the_day.factoid|slice:":274"}}
                     {% if plant_of_the_day.factoid|length > 274 %}...{% endif %}</p>
-                    <a class="learn-more" href="/species/{{ plant_of_the_day.genus_name|lower }}/{{ plant_of_the_day.epithet }}/">Learn More</a>
+                    <a class="learn-more" href="/species/{{ plant_of_the_day.genus_name|lower }}/{{ plant_of_the_day.epithet }}/">Learn More &raquo;</a>
                 </div>
             {% else %}
                 <p>Error: Featured Orchid information missing</p>
