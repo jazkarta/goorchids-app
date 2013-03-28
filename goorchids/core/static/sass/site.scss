@@ -622,6 +622,128 @@ footer {
 }
 
 
+/* Glossary-term links */
+.gloss {
+    border-bottom: 1px dashed $border-green;
+    color: $link-green;
+    cursor: pointer;
+    &:hover {
+        border-bottom: 1px dashed $link-green;
+    }
+}
+
+/* Tooltips for working area images and highlighted glossary terms */
+.gb-tooltip {
+    border: 1px solid $tooltip-border-color;
+    display: none;   /* initially invisible, fades in */
+    padding: 8px;
+    position: absolute;
+    width: 300px;
+    z-index: 1000;
+    @include background(linear-gradient(top center,
+        $tooltip-background-top-color, $tooltip-background-bottom-color));
+    @include single-box-shadow($tooltip-shadow-color, 0px, 1px, 4px);
+    @include border-radius(2px);
+    .arrow {
+        background: $tooltip-background-bottom-color;
+        border: 1px solid $tooltip-border-color;
+        /* rotated borders, same color as bottom of tooltip */
+        border-bottom-color: $tooltip-background-bottom-color;
+        border-right-color: $tooltip-background-bottom-color;
+        bottom: -7px;
+        height: 11px;
+        left: 10px;
+        position: absolute;
+        width: 11px;
+        @include single-box-shadow($tooltip-shadow-color, -1px, -1px, 1px);
+        @include rotate($tooltip-arrow-rotation);
+    }
+}
+
+/* Glossary tooltip */
+.glosstip {
+    line-height: 16px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    max-width: 30em;
+    img {
+        background: $tooltip-background-top-color;
+        border: 1px solid $tooltip-border-color;
+        bottom: 110%;
+        padding: 4px;
+        position: absolute;
+        @include single-box-shadow($tooltip-shadow-color, 1px, 1px, 2px);
+        @include border-radius(2px);
+    }
+}
+
+/* Glossary */
+
+#glossary {
+    #alphabet {
+        height: 33px;
+        list-style-type: none;
+        margin: 7px 0;
+        padding: 0;
+        width: 712px; /* 2px wider than its parent box so no wrap in Moz */
+        li {
+            border-left: 1px solid #e1e1dc;
+            float: left;
+            font-size: 18px;
+            margin: 0;
+            padding: 0 7px;
+            &:first-child {
+                border-left: 0;
+            }
+            &.inactive {
+                color: #ccc;
+            }
+            .current a {
+                color: #000;
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    #terms {
+        background-color: #fff;
+        border: 1px solid #e1e1dc;
+        clear: left;
+        margin: 0 0 24px 0;
+        width: 710px;
+        dt, dd {
+            border-top: 1px solid #e1e1dc;
+            min-height: 24px;
+        }
+        dt {
+            clear: left;
+            float: left;
+            line-height: 27px;
+            padding: 7px 10px 0 38px;
+            width: 190px;
+            &:first-child, &:first-child + dd {
+                border-top: 0;
+            }
+            a {
+                float: left;
+                margin-left: -34px;
+            }
+        }
+        dd {
+            margin-left: 224px;
+            padding: 13px;
+        }
+        img {
+            padding-left: 4px;
+            padding-top: 1px;
+        }
+    }
+}
+
+
+
 /* Character/value styles for plant preview popups, species pages, etc. */
 .characteristics {
     margin-bottom: 16px;
