@@ -20,7 +20,7 @@ from django.utils.datastructures import SortedDict
 
 APPS_TO_HANDLE = ['core', 'search', 'simplekey', 'plantoftheday', 'dkey',
                   'site']
-EXCLUDED_MODELS = []
+EXCLUDED_MODELS = ['core.PartnerSite',]
 DUMP_NAME = 'goorchids-core-data-{:%Y%m%d%H%M%S}.json'
 DUMP_PATH = '/core-data/'
 
@@ -49,7 +49,8 @@ def dumpdata(request):
     with closing(StringIO()) as compressed_data:
         with gzip.GzipFile(filename=f_name, mode='wb',
                            fileobj=compressed_data) as compressor:
-            compressor.write(serializers.serialize('json', objects, indent=2))
+            compressor.write(serializers.serialize('json', objects, indent=2,
+                                                   use_natural_keys=True))
         compressed_data.seek(0)
         default_storage.save(DUMP_PATH + f_name + '.gz', compressed_data)
 
