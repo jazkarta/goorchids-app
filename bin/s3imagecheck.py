@@ -93,24 +93,28 @@ def check_image(operator, key):
     if r.status_code != 200:
         operator.error(key, 'Making image public; status code was {}'
                        .format(r.status_code))
-        key.make_public(headers=headers_for(key))
+        key.set_acl('public-read')
         r = operator.head(key.name)
 
     content_type = r.headers.get('content-type')
     correct_type, encoding = mimetypes.guess_type(key.name)
+    metadata = headers_for(key)
+    metadata.update({'content-type': content_type_for(key)})
 
     if correct_type is not None and content_type != correct_type:
         operator.error(key, 'Fixing bad content-type: {}'.format(content_type))
+        key.metadata.update(metadata)
         key.copy(key.bucket, key.name, preserve_acl=True,
-                 metadata={'content-type': content_type_for(key)})
+                 metadata=key.metadata)
         r = operator.head(key.name)
 
     cache_control = r.headers.get('cache-control')
     if cache_control != CACHE_CONTROL:
         operator.error(key, 'Fixing bad cache-control value: {}'
                        .format(cache_control))
-        # TODO: this make_public() call might not actually set the header?
-        key.make_public(headers=headers_for(key))
+        key.metadata.update(metadata)
+        key.copy(key.bucket, key.name, preserve_acl=True,
+                 metadata=key.metadata)
 
 
 class Operator(object):
