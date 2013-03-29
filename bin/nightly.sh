@@ -12,4 +12,5 @@ else
     echo
 fi
 
+python -m gobotany.core.importer copyright-holders copyright_holders.csv
 python -m gobotany.core.importer taxon-images
