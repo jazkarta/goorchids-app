@@ -11,4 +11,5 @@ else
     echo '$READ_ONLY is set - skipping S3 scanning and thumbnailing'
     echo
 fi
-$(dirname "$0")/load images
+
+python -m gobotany.core.importer taxon-images
