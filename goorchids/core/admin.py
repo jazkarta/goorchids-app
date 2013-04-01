@@ -57,6 +57,8 @@ class TaxonAdmin(gobotany.core.admin.TaxonAdmin):
         ContentImageInline,
     ]
 
+    exclude = ('wetland_indicator_code',)
+
     def formfield_for_dbfield(self, db_field, **kwargs):
         # Make sure our added fields are shown with a Textarea widget
         formfield = super(TaxonAdmin, self).formfield_for_dbfield(
