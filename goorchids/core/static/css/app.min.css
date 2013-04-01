@@ -184,7 +184,7 @@ footer .support:last-child { margin-right: 0; }
 .no-sidebar #main { display: block; float: left; margin-right: 2.35765%; width: 100%; margin-right: 0; }
 .no-sidebar #main:last-child { margin-right: 0; }
 
-.main-content { display: block; float: left; margin-right: 4.82916%; width: 65.05695%; }
+.main-content { display: block; float: left; margin-right: 2.35765%; width: 74.41059%; }
 .main-content:last-child { margin-right: 0; }
 
 /* ==== Layout: Sidebar ==== */
@@ -195,6 +195,8 @@ footer .support:last-child { margin-right: 0; }
 #sidebar > div:last-child { border: 0; -webkit-box-shadow: none; box-shadow: none; padding: 30px 0 20px; }
 #sidebar h3, #sidebar p { padding: 0 0 10px; }
 #sidebar input, #sidebar .button { margin: 0 0 10px; }
+#sidebar.taxonomy { display: block; float: left; margin-right: 2.35765%; width: 23.23176%; }
+#sidebar.taxonomy:last-child { margin-right: 0; }
 
 /* ==== Banner ==== */
 #banner { background-color: #293619; background: url(../images/photography/homepage-banner.jpg) no-repeat 0 0; display: table; margin: 0 0 45px; padding: 1%; height: 425px; }

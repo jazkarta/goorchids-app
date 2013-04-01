@@ -647,8 +647,8 @@ footer .support:last-child {
 .main-content {
   display: block;
   float: left;
-  margin-right: 4.82916%;
-  width: 65.05695%;
+  margin-right: 2.35765%;
+  width: 74.41059%;
 }
 .main-content:last-child {
   margin-right: 0;
@@ -698,6 +698,15 @@ footer .support:last-child {
 #sidebar input,
 #sidebar .button {
   margin: 0 0 10px;
+}
+#sidebar.taxonomy {
+  display: block;
+  float: left;
+  margin-right: 2.35765%;
+  width: 23.23176%;
+}
+#sidebar.taxonomy:last-child {
+  margin-right: 0;
 }
 
 /* ==== Banner ==== */

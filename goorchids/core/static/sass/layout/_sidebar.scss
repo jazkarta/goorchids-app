@@ -29,4 +29,8 @@
   .button {
     margin: 0 0 10px;
   }
+  
+  &.taxonomy {
+    @include span-columns(3);
+  }
 }
