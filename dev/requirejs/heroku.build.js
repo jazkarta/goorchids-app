@@ -42,7 +42,6 @@
                 'site/species_list',
                 'site/home',
                 'site/maps_test',
-                'util/activate_search_suggest',
                 'util/suggester_init',
                 'util/location_field_init',
                 'orchid_site/species'
