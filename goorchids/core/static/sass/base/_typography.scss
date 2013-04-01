@@ -11,9 +11,17 @@ a {
   text-decoration: none;
 }
 
+em {
+  font-style: italic;
+}
+
 p {
   line-height: 1.7;
   padding: 0 0 20px;
+}
+
+strong {
+  font-weight: 600;
 }
 
 h1, h2, h3, h4, h5, h6 {

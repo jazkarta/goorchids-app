@@ -2,7 +2,7 @@
   Layout: Header
 */
 
-header {
+.global-header {
   @include font-size(15);
   line-height: 1;
   @include linear-gradient($lightestMaroon, $lighterMaroon);

@@ -1,0 +1,22 @@
+/*
+  Modules: Characteristics
+*/
+
+.characteristics {
+  
+  dl {
+    padding: 0 0 5px;
+    
+    dt,
+    dd,
+    ul,
+    li {
+      display: inline-block;
+    }
+  }
+  
+  dt {
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}

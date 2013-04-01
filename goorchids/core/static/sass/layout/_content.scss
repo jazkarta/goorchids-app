@@ -22,3 +22,14 @@
     margin: 0 0 20px;
   }
 }
+
+  .no-sidebar {
+    #main {
+      @include span-columns(12);
+      @include omega;
+    }
+  }
+  
+.main-content {
+  @include span-columns(4 of 6);
+}

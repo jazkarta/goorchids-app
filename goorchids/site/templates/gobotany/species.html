@@ -32,223 +32,201 @@
     {% endif %}
 {% endblock %}
 
-{% block main_content %}                
-                <h1><span class="scientific">{{ scientific_name|italicize_plant|safe }}</span></h1>
-                {% if common_names %}
-                    <p class="common nogloss">{% for common_name in common_names %}{% if not forloop.first %}, {% endif %}{{ common_name }}{% endfor %}</p>
-                {% endif %}
+{% block main_content %}
+    <header>
+      <hgroup>
+        <h1><span class="scientific">{{ scientific_name|italicize_plant|safe }}</span></h1>
+        {% if common_names %}
+        <h2 class="common nogloss">{% for common_name in common_names %}{% if not forloop.first %}, {% endif %}{{ common_name }}{% endfor %}</h2>
+        {% endif %}
+      </hgroup>
+    </header>
+    
+    <div id="species-images">
+        {% for i in images %}
+            <a href="{{ i.image_medium }}"
+                {% if forloop.counter == 1 %}id="startimage"{% endif %}
+                title="{% photo_credit i scientific_name %}">
+                <img src="{{ i.thumb_large }}"
+                    alt="{% photo_credit i scientific_name %}">
+            </a>
+        {% endfor %}
+    </div>
 
-                <div id="species-images">
-                    {% for i in images %}
-                        <a href="{{ i.image_medium }}"
-                            {% if forloop.counter == 1 %}id="startimage"{% endif %}
-                            title="{% photo_credit i scientific_name %}">
-                            <img src="{{ i.thumb_large }}"
-                                alt="{% photo_credit i scientific_name %}">
-                        </a>
-                    {% endfor %}
+    <div class="row">
+      
+      <div class="main-content">
+        
+        <section class="content-area">
+        {% if partner_heading or partner_blurb %}
+          <h2>{{ partner_heading }}</h2>
+          <p>{{ partner_blurb }} </p>
+        {% endif %}
+        </section>
+        
+        <section class="content-area">
+          <h2>Facts About</h2>
+          <p>
+              {% if taxon.factoid|length > 0 %}
+                  {{ taxon.factoid }}
+              {% else %}
+                  N/A
+              {% endif %}
+          </p>
+        </section>
+
+        <section class="content-area">
+          <h2>Habitat</h2>
+          <p>
+            {% with habitats=taxon.get_habitats %}
+            {% if habitats|length > 0 %}
+              {{ habitats|habitat_names|join:", "|capfirst }}
+            {% else %}
+              (missing)
+            {% endif %}
+            {% endwith %}
+          </p>
+        </section>
+        
+        <section class="content-area">
+          <h2>Characteristics</h2>
+          <div class="characteristics">
+              {% if brief_characteristics %}
+                  {% for character in brief_characteristics %}
+                      <dl>
+                          <dt>{{ character.name }}</dt>
+                          <dd>
+                              {% if character.values|length_is:"1" %}
+                                  {{ character.values.0 }}
+                              {% else %}
+                                  <ul{% if character.name in compact_multivalue_characters %} class="compact"{% endif %}>
+                                  {% for val in character.values %}
+                                      <li{% if forloop.last %} class="last"{% endif %}>{{ val }}</li>
+                                  {% endfor %}
+                                  </ul>
+                              {% endif %}
+                          </dd>
+                      </dl>
+                  {% endfor %}
+              {% else %}
+                  <p>No “plant preview characters” have been established
+                    for the “{{ pile.friendly_name }}” ({{ pile.name }})
+                    pile.</p>
+              {% endif %}
+          </div>
+          <a class="description-control" href="#">Show All Characteristics</a>
+          <ul class="full-description">
+            {% for character_group in all_characteristics %}
+  	        <li>
+              <h5>{{ character_group.name|capfirst }}</h5>
+              <div class="characteristics full">
+                  {% for character in character_group.characters %}
+                  <dl>
+                      <dt>{{ character.name }}</dt>
+                      <dd>
+                      {% if character.values|length_is:"1" %}
+                          {{ character.values.0 }}
+                      {% else %}
+                          <ul{% if character.name in compact_multivalue_characters %} class="compact"{% endif %}>
+                          {% for val in character.values %}
+                              <li{% if forloop.last %} class="last">{{ val }}{% else %}>{{ val }}{% endif %}</li>
+                          {% endfor %}
+                          </ul>
+                      {% endif %}
+                      {% if character.short_name == 'flowering_phenology_om' %}
+                      <p>{{taxon.flowering_phenology}}</p>
+                      {% endif %}
+                      </dd>
+                  </dl>
+                  {% endfor %}
+              </div>
+            </li>
+            {% endfor %}
+            <li>
+                <h5>Facts and Uses</h5>
+                <div class="characteristics full">
+                    <dl>
+                        <dt>Pollination</dt>
+                        <dd>{{ taxon.pollination}}</dd>
+                    </dl>
+                    <dl>
+                        <dt>Mycorrhiza</dt>
+                        <dd>{{ taxon.mycorrhiza}}</dd>
+                    </dl>
+                    <dl>
+                        <dt>Monitoring</dt>
+                        <dd>{{ taxon.monitoring}}</dd>
+                    </dl>
+                    <dl>
+                        <dt>Propagation</dt>
+                        <dd>{{ taxon.propagation}}</dd>
+                    </dl>
+                    <dl>
+                        <dt>Restoration</dt>
+                        <dd>{{ taxon.restoration}}</dd>
+                    </dl>
                 </div>
+                <span style="clear: left;">&nbsp;</span>
+            </li>
+          </ul>
+          
+          <h2>Native to North America</h2>
+          <p>{{ native_to_north_america }}</p>
+        </section>
+        
+      </div><!-- /.main-content -->
+      
+      <aside id="sidebar" class="taxonomy">
+        <div class="category">
+          <h4>Family</h4>
+          <p><a href="{% url 'taxa-family' taxon.family.slug %}"
+              >{{ taxon.family }}</a></p>
+        </div>
+        <div class="category">
+          <h4>Genus</h4>
+          <p><em><a href="{% url 'taxa-genus' taxon.genus.slug %}"
+              >{{ taxon.genus }}</a></em></p>
+        </div>
+      </aside><!-- /.sidebar -->
+    
+    </div><!-- /.row -->
 
-                {% if partner_heading or partner_blurb %}
-                  <h2>{{ partner_heading }}</h2>
-                  <p>{{ partner_blurb }} </p>
-                {% endif %}
-
-                <div class="taxonomy">
-                    <h4>Family</h4>
-                    <p><a href="{% url 'taxa-family' taxon.family.slug %}"
-                        >{{ taxon.family }}</a></p>
-
-                    <h4>Genus</h4>
-                    <p><em><a href="{% url 'taxa-genus' taxon.genus.slug %}"
-                        >{{ taxon.genus }}</a></em></p>
-                </div>
-
-                <h2>Facts About</h2>
-                <p>
-                    {% if taxon.factoid|length > 0 %}
-                        {{ taxon.factoid }}
-                    {% else %}
-                        N/A
-                    {% endif %}
-                </p>
-
-                <h2>Habitat</h2>
-                <p>
-                  {% with habitats=taxon.get_habitats %}
-                  {% if habitats|length > 0 %}
-                    {{ habitats|habitat_names|join:", "|capfirst }}
-                  {% else %}
-                    (missing)
-                  {% endif %}
-                  {% endwith %}
-                </p>
-
-                <h2>Characteristics</h2>
-                <div class="characteristics">
-                    {% if brief_characteristics %}
-                        {% for character in brief_characteristics %}
-                            <dl>
-                                <dt>{{ character.name }}</dt>
-                                <dd>
-                                    {% if character.values|length_is:"1" %}
-                                        {{ character.values.0 }}
-                                    {% else %}
-                                        <ul{% if character.name in compact_multivalue_characters %} class="compact"{% endif %}>
-                                        {% for val in character.values %}
-                                            <li{% if forloop.last %} class="last"{% endif %}>{{ val }}</li>
-                                        {% endfor %}
-                                        </ul>
-                                    {% endif %}
-                                </dd>
-                            </dl>
-                        {% endfor %}
-                    {% else %}
-                        <p>No “plant preview characters” have been established
-                          for the “{{ pile.friendly_name }}” ({{ pile.name }})
-                          pile.</p>
-                    {% endif %}
-                </div>
-                <a class="description-control" href="#" 
-                    style="background-image: url(/static/images/icons/plus.png)">Show 
-                    All Characteristics</a>
-                <ul class="full-description">
-                    {% for character_group in all_characteristics %}
-				        <li>
-                            <h5>{{ character_group.name|capfirst }}</h5>
-                            <div class="characteristics full">
-                                {% for character in character_group.characters %}
-                                <dl>
-                                    <dt>{{ character.name }}</dt>
-                                    <dd>
-                                    {% if character.values|length_is:"1" %}
-                                        {{ character.values.0 }}
-                                    {% else %}
-                                        <ul{% if character.name in compact_multivalue_characters %} class="compact"{% endif %}>
-                                        {% for val in character.values %}
-                                            <li{% if forloop.last %} class="last"{% endif %}>{{ val }}</li>
-                                        {% endfor %}
-                                        </ul>
-                                    {% endif %}
-                                    {% if character.short_name == 'flowering_phenology_om' %}
-                                    <p>{{taxon.flowering_phenology}}</p>
-                                    {% endif %}
-                                    </dd>
-                                </dl>
-                                {% endfor %}
-                            </div>
-                        </li>
-                    {% endfor %}
-                        <li>
-                            <h5>Facts and Uses</h5>
-                            <div class="characteristics full">
-                                <dl>
-                                    <dt>Pollination</dt>
-                                    <dd>{{ taxon.pollination}}</dd>
-                                </dl>
-                                <dl>
-                                    <dt>Mycorrhiza</dt>
-                                    <dd>{{ taxon.mycorrhiza}}</dd>
-                                </dl>
-                                <dl>
-                                    <dt>Monitoring</dt>
-                                    <dd>{{ taxon.monitoring}}</dd>
-                                </dl>
-                                <dl>
-                                    <dt>Propagation</dt>
-                                    <dd>{{ taxon.propagation}}</dd>
-                                </dl>
-                                <dl>
-                                    <dt>Restoration</dt>
-                                    <dd>{{ taxon.restoration}}</dd>
-                                </dl>
-                            </div>
-                            <span style="clear: left;">&nbsp;</span>
-                        </li>
-                </ul>
+    <div class="row">
+      <section class="content-area">
+        <div class="map namap">
+          <h4>North America Distribution</h4>
+          {% include "gobotany/_map_attribution.html" %}
+          <div>
+              <object
+                  data="/api/maps/{{taxon.genus|lower}}-{{epithet}}-na-state-distribution-map.svg"
+                  type="image/svg+xml"
+                  title="distribution map for {{ scientific_name }}"
+                  id="na-state-dist-map"> <!--<![endif]-->
+              <!--[if lt IE 9]>
+              <object
+                  src="/api/maps/{{taxon.genus|lower}}-{{epithet}}-na-distribution-map.svg"
+                  classid="image/svg+xml"
+                  title="distribution map for {{ scientific_name }}"
+                  id="na-dist-county-map"> <![endif]-->
+              <!--[if gte IE 9]>
+              <object
+                  data="/api/maps/{{taxon.genus|lower}}-{{epithet}}-na-distribution-map.svg"
+                  type="image/svg+xml"
+                  title="distribution map for {{ scientific_name }}"
+                  id="na-dist-county-map"> <![endif]-->
+              </object>
+          </div>
+          <div class="trans"></div>
+          <a class="enlarge" href="#">
+              <img src="/static/images/icons/zoom.png" alt="">
+              Enlarge</a>
+        </div>
+      </section>
+    </div>
                 
-                <h2>Native to North America</h2>
-                <p>{{ native_to_north_america }}</p>
+
                 
-                <h2>North American Conservation Status &amp; Distribution</h2>
 
-                <div id="conservation-status">
-                    <h4>Conservation Status</h4>
-                    <form>
-                        <p>Select a location to view conservation status:</p>
-                        <select id="region-switcher">
-                            <option value=""></option>
-                        {% for conservation_status in taxon.regional_conservation_statuses.all %}
-                            <option value="{{conservation_status.region}}">{{conservation_status.get_region_display}}</option>
-                        {% endfor %}
-                        </select>
-                        <input type="submit" value="Show Status" />
-                    </form> 
-                {% for conservation_status in taxon.regional_conservation_statuses.all %}
-                <table class="conservation-status" data-region="{{conservation_status.region}}">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Conservation status for: {{conservation_status.get_region_display}}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>Global Rank</th>
-                            <td>{{taxon.get_global_rank_display|default_if_none:"N/A"}}</td>
-                        </tr>
-                        <tr>
-                            <th>US Status</th>
-                            <td>{{taxon.get_us_status_display|default_if_none:"N/A"}}</td>
-                        </tr>
-                        <tr>
-                            <th>{{conservation_status.region}} Rank</th>
-                            <td>{{conservation_status.get_rank_display|default_if_none:"N/A"}}</td>
-                        </tr>
-                        <tr>
-                            <th>{{conservation_status.region}} Status</th>
-                            <td>{{conservation_status.get_status_display|default_if_none:"N/A"}}</td>
-                        </tr>
-                        <tr>
-                            <th>Canadian Rank</th>
-                            <td>{{taxon.get_ca_rank_display|default_if_none:"N/A"}}</td>
-                        </tr>
-                        <tr>
-                            <th>Wetland Status</th>
-                            <td>{{conservation_status.get_wetland_status_display|default_if_none:"N/A"}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                {% endfor %}
-                </div>
-
-                <div class="map namap">
-                    <h4>North America Distribution</h4>
-                    {% include "gobotany/_map_attribution.html" %}
-                    <div>
-                        <object
-                            data="/api/maps/{{taxon.genus|lower}}-{{epithet}}-na-state-distribution-map.svg"
-                            type="image/svg+xml"
-                            title="distribution map for {{ scientific_name }}"
-                            id="na-state-dist-map"> <!--<![endif]-->
-                        <!--[if lt IE 9]>
-                        <object
-                            src="/api/maps/{{taxon.genus|lower}}-{{epithet}}-na-distribution-map.svg"
-                            classid="image/svg+xml"
-                            title="distribution map for {{ scientific_name }}"
-                            id="na-dist-county-map"> <![endif]-->
-                        <!--[if gte IE 9]>
-                        <object
-                            data="/api/maps/{{taxon.genus|lower}}-{{epithet}}-na-distribution-map.svg"
-                            type="image/svg+xml"
-                            title="distribution map for {{ scientific_name }}"
-                            id="na-dist-county-map"> <![endif]-->
-                        </object>
-                    </div>
-                    <div class="trans"></div>
-                    <a class="enlarge" href="#">
-                        <img src="/static/images/icons/zoom.png" alt="">
-                        Enlarge</a>
-                </div>
+                
 
 {% endblock %}

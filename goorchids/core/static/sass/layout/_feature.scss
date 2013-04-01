@@ -1,0 +1,28 @@
+/*
+  Layout: Featured Section
+*/
+
+#potd {
+  @include clearfix;
+  
+  .picture-wrapper {
+    @include span-columns(3);
+  }
+  
+  .details {
+    @include span-columns(9);
+  }
+  
+  .latin {
+    padding: 0 10px 0 0;
+  }
+  
+  h3,
+  p {
+    padding: 0 0 5px;
+  }
+  
+  p:last-of-type {
+    padding: 0 0 10px;
+  }
+}
