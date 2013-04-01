@@ -37,6 +37,17 @@
 {% endblock %}
 
 {% block main_content %}
+  {% if not ready_for_display and not perms.editor.botanist %}
+    <p>Sorry, this species is not ready for display.</p>
+  {% else %}
+
+    {% if not ready_for_display %}
+    <p class="warning">
+      Note: This species has not yet been marked as 'ready for display,'
+      and its species page can only be previewed by botanists.
+    </p>
+    {% endif %}
+
     <header>
       <hgroup>
         <h1><span class="scientific">{{ scientific_name|italicize_plant|safe }}</span></h1>
@@ -227,10 +238,6 @@
         </div>
       </section>
     </div>
-                
-
-                
-
-                
+  {% endif %}
 
 {% endblock %}
