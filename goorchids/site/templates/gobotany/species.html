@@ -98,14 +98,14 @@
               {% if brief_characteristics %}
                   {% for character in brief_characteristics %}
                       <dl>
-                          <dt>{{ character.name }}</dt>
+                          <dt>{{ character.name }}:</dt>
                           <dd>
                               {% if character.values|length_is:"1" %}
                                   {{ character.values.0 }}
                               {% else %}
                                   <ul{% if character.name in compact_multivalue_characters %} class="compact"{% endif %}>
                                   {% for val in character.values %}
-                                      <li{% if forloop.last %} class="last"{% endif %}>{{ val }}</li>
+                                      <li{% if forloop.last %} class="last">{{val}}{% else %}>{{val}}, {% endif %}</li>
                                   {% endfor %}
                                   </ul>
                               {% endif %}
@@ -126,14 +126,14 @@
               <div class="characteristics full">
                   {% for character in character_group.characters %}
                   <dl>
-                      <dt>{{ character.name }}</dt>
+                      <dt>{{ character.name }}:</dt>
                       <dd>
                       {% if character.values|length_is:"1" %}
                           {{ character.values.0 }}
                       {% else %}
                           <ul{% if character.name in compact_multivalue_characters %} class="compact"{% endif %}>
                           {% for val in character.values %}
-                              <li{% if forloop.last %} class="last">{{ val }}{% else %}>{{ val }}{% endif %}</li>
+                              <li{% if forloop.last %} class="last">{{ val }}{% else %}>{{ val }}, {% endif %}</li>
                           {% endfor %}
                           </ul>
                       {% endif %}
