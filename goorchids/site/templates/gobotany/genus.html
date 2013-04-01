@@ -55,7 +55,7 @@ Genus: {{ genus.name }} {% if common_name %}({{ common_name }}){% endif %}
                     {% endfor %}
                 </div>
 
-                <h4>North Americal Species in this Genus</h4>
+                <h4>North American Species in this Genus</h4>
                 <ul class="species">
                 {% for species in genus.taxa.all %}
                     <li><i>{% species_link species %}</i></li>
