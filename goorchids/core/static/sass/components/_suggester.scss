@@ -1,0 +1,61 @@
+/* Text input with suggestions */
+
+input.suggest {
+    & + div {
+        background: #fff;
+        border: 1px solid #999;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 100;
+        li {
+            font-weight: bold;
+            list-style-type: none;
+            margin: 0;
+            padding: 2px;
+            &.selected {
+                background-color: $lighterGreen;
+            }
+            span {
+                font-weight: normal;
+            }
+        }
+    }
+}
+
+#search-suggest .menu {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-bottom-color: #999;
+    border-right-color: #999;
+    margin: 0 auto;
+    position: absolute;
+    text-align: left;
+    width: 256px;
+    z-index: 101;
+    li {
+        clear: left;
+        display: block;
+        float: left;
+        font-weight: bold;
+        margin: 0;
+        padding: 3px;
+        width: 250px;
+        &.highlighted {
+            background-color: $lighterGreen;
+        }
+    }
+    a {
+        color: $black;
+        cursor: default;
+        height: inherit;
+        padding: 0;
+        text-decoration: none;
+    }
+    a:hover, li:hover {
+        background: $lightGreen;
+    }
+    span {
+        font-weight: normal;
+    }
+}
