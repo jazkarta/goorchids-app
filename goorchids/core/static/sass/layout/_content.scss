@@ -33,3 +33,14 @@
 .main-content {
   @include span-columns(9);
 }
+
+// Media Queries
+
+  #main,
+  .main-content {
+    @include media(max-width 815px) {
+      @include span-columns(12);
+      @include omega;
+      margin: 0 0 45px;
+    }
+  }

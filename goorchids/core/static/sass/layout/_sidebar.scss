@@ -33,4 +33,23 @@
   &.taxonomy {
     @include span-columns(3);
   }
+  
+  @include media(max-width 820px) {
+    @include span-columns(12);
+    
+    > div {
+      padding: 15px 0 !important;
+      
+      form {
+        padding: 0 100px 0 0;
+        position: relative;
+        
+        .button {
+          position: absolute;
+            top: 1px;
+            right: 0;
+        }
+      }
+    } // div
+  } // media 820px
 }
