@@ -64,7 +64,7 @@ h3 { font-size: 18px; font-size: 1.125rem; }
 */
 /* UI: Icons
 */
-@font-face { font-family: 'icomoon'; src: url("../fonts/icomoon.eot"); src: url("../fonts/icomoon.eot?#iefix") format("embedded-opentype"), url("../fonts/icomoon.woff") format("woff"), url("../fonts/icomoon.ttf") format("truetype"), url("../fonts/icomoon.svg#icomoon") format("svg"); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'icomoon'; src: url("../icomoon/fonts/icomoon.eot"); src: url("../icomoon/fonts/icomoon.eot?#iefix") format("embedded-opentype"), url("../icomoon/fonts/icomoon.woff") format("woff"), url("../icomoon/fonts/icomoon.ttf") format("truetype"), url("../icomoon/fonts/icomoon.svg#icomoon") format("svg"); font-weight: normal; font-style: normal; }
 
 /* Use the following CSS code if you want to use data attributes for inserting your icons */
 [data-icon]:before { font-family: 'icomoon'; content: attr(data-icon); speak: none; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; -webkit-font-smoothing: antialiased; }
@@ -75,7 +75,7 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-.icon-search, .icon-plus, .icon-minus, .icon-checkmark, .icon-caret-up, .icon-caret-down, .icon-caret-left, .icon-caret-right, .icon-circle-arrow-up, .icon-circle-arrow-down, .icon-cancel-circle, .icon-close { font-family: 'icomoon'; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; -webkit-font-smoothing: antialiased; }
+.icon-search, .icon-plus, .icon-minus, .icon-checkmark, .icon-caret-up, .icon-caret-down, .icon-caret-left, .icon-caret-right, .icon-circle-arrow-up, .icon-circle-arrow-down, .icon-cancel-circle, .icon-close, .icon-leaf, .icon-indexmanager, .icon-list, .icon-th-large, .icon-arrow-left, .icon-arrow-right, .icon-arrow-down, .icon-arrow-up { font-family: 'icomoon'; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; -webkit-font-smoothing: antialiased; }
 
 .icon-search:before { content: "\21"; }
 
@@ -101,6 +101,22 @@ you can use the generic selector below, but it's slower:
 
 .icon-close:before { content: "\2c"; }
 
+.icon-leaf:before { content: "\2d"; }
+
+.icon-indexmanager:before { content: "\2e"; }
+
+.icon-list:before { content: "\2f"; }
+
+.icon-th-large:before { content: "\30"; }
+
+.icon-arrow-left:before { content: "\31"; }
+
+.icon-arrow-right:before { content: "\32"; }
+
+.icon-arrow-down:before { content: "\33"; }
+
+.icon-arrow-up:before { content: "\34"; }
+
 /* Components
 */
 /* Components: Images
@@ -120,6 +136,13 @@ input.button.search-field:hover, .button.search-field:hover { background: darkgr
 
 header .button { border: 1px solid #446a8b; background-color: #577c9d; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #577c9d), color-stop(100%, #587d9e)); background-image: -webkit-linear-gradient(top, #577c9d, #587d9e); background-image: -moz-linear-gradient(top, #577c9d, #587d9e); background-image: -ms-linear-gradient(top, #577c9d, #587d9e); background-image: -o-linear-gradient(top, #577c9d, #587d9e); background-image: linear-gradient(top, #577c9d, #587d9e); margin: 0 0 0 15px; padding: 10px 15px; text-transform: uppercase; }
 
+/* Components: Pagination
+*/
+.search-navigation { *zoom: 1; }
+.search-navigation:before, .search-navigation:after { content: " "; display: table; }
+.search-navigation:after { clear: both; }
+.search-navigation li { display: inline-block; }
+
 /* Layout
 */
 /* Layout: Header
@@ -133,12 +156,41 @@ header .button { border: 1px solid #446a8b; background-color: #577c9d; backgroun
 .global-header .menu-container a { color: white; text-decoration: none; }
 .global-header .menu-container a:not([href]) { color: #728f50; }
 .global-header .menu-container #search { float: right; }
+@media screen and (max-width: 865px) { .global-header .container { padding: 0; }
+  .global-header .logo-container, .global-header .menu-container, .global-header .main-navigation, .global-header #search { display: block; *zoom: 1; float: none; padding: 0 20px; width: 100%; }
+  .global-header .logo-container:before, .global-header .logo-container:after, .global-header .menu-container:before, .global-header .menu-container:after, .global-header .main-navigation:before, .global-header .main-navigation:after, .global-header #search:before, .global-header #search:after { content: " "; display: table; }
+  .global-header .logo-container:after, .global-header .menu-container:after, .global-header .main-navigation:after, .global-header #search:after { clear: both; }
+  .global-header .logo-container .naocc-logo { display: inline-block; position: relative; vertical-align: middle; width: 50px; }
+  .global-header .logo-container .naocc-logo:after, .global-header .logo-container .naocc-logo:before { display: none; }
+  .global-header .logo-container h1 { display: inline-block; font-size: 22px; font-size: 1.375rem; padding: 15px 0 0 10px; vertical-align: middle; }
+  .global-header .menu-container { background: none; border: 0; -webkit-box-shadow: none; box-shadow: none; height: auto; padding: 15px 0 0; }
+  .global-header .menu-container #search { float: none; padding: 0 200px 10px 20px; position: relative; width: 100%; }
+  .global-header .menu-container #search #donate { position: absolute; right: 100px; }
+  .global-header .menu-container #search #search-suggest { float: none; width: 100%; }
+  .global-header .menu-container #search #search-suggest input[type="submit"] { top: 4px; }
+  .global-header .menu-container .main-navigation { background: #642a35; border: 1px solid #421720; border-right: 0; border-left: 0; -webkit-box-shadow: inset 0 1px 1px #733944; box-shadow: inset 0 1px 1px #733944; padding: 0; position: relative; }
+  .global-header .menu-container .main-navigation .button { position: absolute; right: 20px; top: -48px; }
+  .global-header .menu-container .main-navigation ul { float: none; padding: 0; }
+  .global-header .menu-container .main-navigation ul li { float: none; padding: 0; position: relative; }
+  .global-header .menu-container .main-navigation ul li a { border-bottom: 1px solid #421720; -webkit-box-shadow: 0 1px 1px #733944; box-shadow: 0 1px 1px #733944; cursor: pointer; display: block; font-size: 13px; font-size: 0.8125rem; letter-spacing: 1px; line-height: 1; padding: 10px 20px; text-shadow: 1px 1px 0 #421720; text-transform: uppercase; }
+  .global-header .menu-container .main-navigation ul li a:hover { background: #421720; }
+  .global-header .menu-container .main-navigation ul li a[href="/"] { background: #421720; }
+  .global-header .menu-container .main-navigation ul li .icon-arrow-right { color: white; color: rgba(255, 255, 255, 0.8); display: inline-block; position: absolute; top: 8px; right: 20px; text-shadow: 1px 1px 0 #421720; } }
+@media screen and (max-width: 570px) { .global-header .logo-container .naocc-logo { width: 45px; }
+  .global-header .logo-container h1 { font-size: 18px; font-size: 1.125rem; padding: 15px 0 0 10px; }
+  .global-header .menu-container #search { padding: 0 110px 10px 20px; }
+  .global-header .menu-container #search #donate { display: none; } }
+@media screen and (max-width: 470px) { .global-header .logo-container .naocc-logo { width: 35px; }
+  .global-header .logo-container h1 { font-size: 14px; font-size: 0.875rem; padding: 15px 0 0 5px; } }
 
 .main-navigation ul { float: left; *zoom: 1; padding: 10px 0 10px 100px; }
 .main-navigation ul:before, .main-navigation ul:after { content: " "; display: table; }
 .main-navigation ul:after { clear: both; }
 .main-navigation ul li { float: left; padding: 0 35px 0 0; }
 .main-navigation ul li:last-of-type { padding: 0; }
+.main-navigation ul li .icon-arrow-right { display: none; }
+
+.logo-container h1 { color: white; display: none; }
 
 .naocc-logo { position: absolute; left: 0; top: 10px; z-index: 4; }
 .naocc-logo::before { border-top: 1px solid #421720; border-bottom: 1px solid #421720; -webkit-box-shadow: inset 0 1px 0 #8c565e; box-shadow: inset 0 1px 0 #8c565e; content: " "; height: 52px; background-color: #642a35; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #642a35), color-stop(100%, #421720)); background-image: -webkit-linear-gradient(top, #642a35, #421720); background-image: -moz-linear-gradient(top, #642a35, #421720); background-image: -ms-linear-gradient(top, #642a35, #421720); background-image: -o-linear-gradient(top, #642a35, #421720); background-image: linear-gradient(top, #642a35, #421720); position: absolute; left: 100px; top: 20px; width: 15px; z-index: -1; }

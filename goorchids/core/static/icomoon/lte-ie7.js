@@ -17,7 +17,15 @@ window.onload = function() {
 			'icon-circle-arrow-up' : '&#x29;',
 			'icon-circle-arrow-down' : '&#x2a;',
 			'icon-cancel-circle' : '&#x2b;',
-			'icon-close' : '&#x2c;'
+			'icon-close' : '&#x2c;',
+			'icon-leaf' : '&#x2d;',
+			'icon-indexmanager' : '&#x2e;',
+			'icon-list' : '&#x2f;',
+			'icon-th-large' : '&#x30;',
+			'icon-arrow-left' : '&#x31;',
+			'icon-arrow-right' : '&#x32;',
+			'icon-arrow-down' : '&#x33;',
+			'icon-arrow-up' : '&#x34;'
 		},
 		els = document.getElementsByTagName('*'),
 		i, attr, html, c, el;

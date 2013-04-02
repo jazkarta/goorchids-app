@@ -41,10 +41,174 @@
     }
   } // nav
 
-  @include media(max-width 860px) {
+  @include media(max-width 865px) {
+  
+    .container {
+      padding: 0;
+    }
+  
+    .logo-container,
+    .menu-container,
+    .main-navigation,
+    #search {
+      display: block;
+      @include clearfix;
+      float: none;
+      padding: 0 20px;
+      width: 100%;
+    }
     
-  } // media 860px
-
+    .logo-container {
+      
+      .naocc-logo {
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+        width: 50px;
+        
+        &:after,
+        &:before {
+          display: none;
+        }
+      }
+      
+      h1 {
+        display: inline-block;
+        @include font-size(22);
+        padding: 15px 0 0 10px;
+        vertical-align: middle;
+      }
+    } // .logo-container
+    
+    .menu-container {
+      background: none;
+      border: 0;
+      @include box-shadow(none);
+      height: auto;
+      padding: 15px 0 0;
+      
+      #search {
+        float: none;
+        padding: 0 200px 10px 20px;
+        position: relative;
+        width: 100%;
+        
+        #donate {
+          position: absolute;
+            right: 100px;
+        }
+        
+        #search-suggest {
+          float: none;
+          width: 100%;
+          
+          input[type="submit"] {
+            top: 4px;
+          }
+        }
+      }
+      
+      .main-navigation {
+        background: $darkerMaroon;
+        border: 1px solid $darkestMaroon;
+        border-right: 0;
+        border-left: 0;
+        @include box-shadow(inset 0 1px 1px $maroon);
+        padding: 0;
+        position: relative;
+        
+        .button {
+          position: absolute;
+            right: 20px;
+            top: -48px;
+        }
+        
+        ul {
+          float: none;
+          padding: 0;
+          
+          li {
+            float: none;
+            padding: 0;
+            position: relative;
+            
+            a {
+              border-bottom: 1px solid $darkestMaroon;
+              @include box-shadow(0 1px 1px $maroon);
+              cursor: pointer;
+              display: block;
+              @include font-size(13);
+              letter-spacing: 1px;
+              line-height: 1;
+              padding: 10px 20px;
+              text-shadow: 1px 1px 0 $darkestMaroon;
+              text-transform: uppercase;
+              
+              &:hover {
+                background: $darkestMaroon;
+              }
+              
+              &[href="/"] {
+                background: $darkestMaroon;
+              }
+            }
+            
+            .icon-arrow-right {
+              color: $white;
+              color: rgba(255, 255, 255, 0.8);
+              display: inline-block;
+              position: absolute;
+                top: 8px;
+                right: 20px;
+              text-shadow: 1px 1px 0 $darkestMaroon;
+            }
+          }
+        }
+      } // .main-navigation
+      
+    } // .menu-container
+    
+  } // media 865px
+  
+  @include media(max-width 570px) {
+    
+    .logo-container {
+      
+      .naocc-logo {
+        width: 45px;
+      }
+      
+      h1 {
+        @include font-size(18);
+        padding: 15px 0 0 10px;
+      }
+    } // .logo-container
+    
+    .menu-container {
+      #search {
+        padding: 0 110px 10px 20px;
+      
+        #donate {
+          display: none;
+        }
+      }
+    }
+    
+  } // media 570px
+  
+  @include media(max-width 470px) {
+    .logo-container {
+      
+      .naocc-logo {
+        width: 35px;
+      }
+      
+      h1 {
+        @include font-size(14);
+        padding: 15px 0 0 5px;
+      }
+    } // .logo-container
+  }
 } // header
     
     .main-navigation {
@@ -60,8 +224,19 @@
           &:last-of-type {
             padding: 0;
           }
+          
+          .icon-arrow-right {
+            display: none;
+          }
         }
       } // ul
+    }
+    
+    .logo-container {
+      h1 {
+        color: $white;
+        display: none;
+      }
     }
     
     .naocc-logo {

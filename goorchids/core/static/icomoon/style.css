@@ -27,7 +27,7 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-.icon-search, .icon-plus, .icon-minus, .icon-checkmark, .icon-caret-up, .icon-caret-down, .icon-caret-left, .icon-caret-right, .icon-circle-arrow-up, .icon-circle-arrow-down, .icon-cancel-circle, .icon-close {
+.icon-search, .icon-plus, .icon-minus, .icon-checkmark, .icon-caret-up, .icon-caret-down, .icon-caret-left, .icon-caret-right, .icon-circle-arrow-up, .icon-circle-arrow-down, .icon-cancel-circle, .icon-close, .icon-leaf, .icon-indexmanager, .icon-list, .icon-th-large, .icon-arrow-left, .icon-arrow-right, .icon-arrow-down, .icon-arrow-up {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -72,4 +72,28 @@ you can use the generic selector below, but it's slower:
 }
 .icon-close:before {
 	content: "\2c";
+}
+.icon-leaf:before {
+	content: "\2d";
+}
+.icon-indexmanager:before {
+	content: "\2e";
+}
+.icon-list:before {
+	content: "\2f";
+}
+.icon-th-large:before {
+	content: "\30";
+}
+.icon-arrow-left:before {
+	content: "\31";
+}
+.icon-arrow-right:before {
+	content: "\32";
+}
+.icon-arrow-down:before {
+	content: "\33";
+}
+.icon-arrow-up:before {
+	content: "\34";
 }
