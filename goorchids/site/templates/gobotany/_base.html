@@ -17,7 +17,7 @@
         {# CSS goes here. #}
         {% block css %}
 
-        {% with '/static/css/site.css' as file_path %}
+        {% with '/static/css/app.css' as file_path %}
         <link rel="stylesheet"
             href="{{ file_path }}?v={% file_version file_path %}">
         {% endwith %}
