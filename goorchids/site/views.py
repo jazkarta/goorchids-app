@@ -135,8 +135,6 @@ def species_view(request, genus_slug, epithet):
         else:
             key = 'full'
     
-    ready_for_display = taxon.ready_for_display
-
     species_images = botany.species_images(taxon)
     images = _images_with_copyright_holders(species_images)
 
@@ -211,6 +209,7 @@ def species_view(request, genus_slug, epithet):
             if partner_species else None,
         'partner_blurb': partner_species.species_page_blurb
             if partner_species else None,
+        'ready_for_display': taxon.ready_for_display,
         'compact_multivalue_characters': COMPACT_MULTIVALUE_CHARACTERS,
         'brief_characteristics': preview_characters,
         'all_characteristics': all_characteristics,
