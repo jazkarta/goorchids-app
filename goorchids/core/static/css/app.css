@@ -546,23 +546,35 @@ header .button {
     top: 4px;
   }
   .global-header .menu-container .main-navigation {
-    background: #642a35;
-    border: 1px solid #421720;
-    border-right: 0;
-    border-left: 0;
-    -webkit-box-shadow: inset 0 1px 1px #733944;
-    box-shadow: inset 0 1px 1px #733944;
     padding: 0;
     position: relative;
   }
   .global-header .menu-container .main-navigation .button {
+    display: inline-block;
     position: absolute;
     right: 20px;
     top: -48px;
   }
+  .global-header .menu-container .main-navigation #mobile-menu:checked + ul {
+    border: 1px solid #421720;
+    border-right: 0;
+    border-left: 0;
+    height: 136px;
+  }
   .global-header .menu-container .main-navigation ul {
+    background: #642a35;
+    border: 0;
+    -webkit-box-shadow: inset 0 1px 1px #733944;
+    box-shadow: inset 0 1px 1px #733944;
     float: none;
+    height: 0;
+    overflow: hidden;
     padding: 0;
+    -webkit-transition: height 0.5s linear;
+    -moz-transition: height 0.5s linear;
+    -ms-transition: height 0.5s linear;
+    -o-transition: height 0.5s linear;
+    transition: height 0.5s linear;
   }
   .global-header .menu-container .main-navigation ul li {
     float: none;
@@ -626,6 +638,12 @@ header .button {
   }
 }
 
+.main-navigation .button {
+  display: none;
+}
+.main-navigation #mobile-menu {
+  display: none;
+}
 .main-navigation ul {
   float: left;
   *zoom: 1;
