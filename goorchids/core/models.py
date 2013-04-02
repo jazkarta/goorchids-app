@@ -108,7 +108,8 @@ class RegionalConservationStatus(models.Model):
     region = models.CharField(choices=STATE_NAMES, max_length=80)
     status = models.CharField(choices=STATE_STATUS_CODES.items(), max_length=2,
                               default=None, null=True, blank=True)
-    rank = models.CharField(choices=STATE_RANK_CODES.items(), max_length=2)
+    rank = models.CharField(choices=STATE_RANK_CODES.items(), max_length=2,
+                            default=None, null=True, blank=True)
     wetland_status = models.CharField(choices=WETLAND_STATUS_CODES.items(), max_length=4,
                                       default=None, null=True, blank=True)
 
