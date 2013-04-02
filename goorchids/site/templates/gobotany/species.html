@@ -208,6 +208,59 @@
 
     <div class="row">
       <section class="content-area">
+
+        <h2>North American Conservation Status &amp; Distribution</h2>
+
+        <div id="conservation-status">
+            <h4>Conservation Status</h4>
+            <form>
+                <p>Select a location to view conservation status:</p>
+                <select id="region-switcher">
+                    <option value=""></option>
+                {% for conservation_status in taxon.regional_conservation_statuses.all %}
+                    <option value="{{conservation_status.region}}">{{conservation_status.get_region_display}}</option>
+                {% endfor %}
+                </select>
+                <input type="submit" value="Show Status" />
+            </form> 
+        {% for conservation_status in taxon.regional_conservation_statuses.all %}
+        <table class="conservation-status" data-region="{{conservation_status.region}}">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Conservation status for: {{conservation_status.get_region_display}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Global Rank</th>
+                    <td>{{taxon.get_global_rank_display|default_if_none:"N/A"}}</td>
+                </tr>
+                <tr>
+                    <th>US Status</th>
+                    <td>{{taxon.get_us_status_display|default_if_none:"N/A"}}</td>
+                </tr>
+                <tr>
+                    <th>{{conservation_status.region}} Rank</th>
+                    <td>{{conservation_status.get_rank_display|default_if_none:"N/A"}}</td>
+                </tr>
+                <tr>
+                    <th>{{conservation_status.region}} Status</th>
+                    <td>{{conservation_status.get_status_display|default_if_none:"N/A"}}</td>
+                </tr>
+                <tr>
+                    <th>Canadian Rank</th>
+                    <td>{{taxon.get_ca_rank_display|default_if_none:"N/A"}}</td>
+                </tr>
+                <tr>
+                    <th>Wetland Status</th>
+                    <td>{{conservation_status.get_wetland_status_display|default_if_none:"N/A"}}</td>
+                </tr>
+            </tbody>
+        </table>
+        {% endfor %}
+        </div>
+        
         <div class="map namap">
           <h4>North America Distribution</h4>
           {% include "gobotany/_map_attribution.html" %}
