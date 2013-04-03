@@ -11,7 +11,7 @@ from django.utils.safestring import mark_safe
 
 register = template.Library()
 
-BASE_TABLE = """
+BASE_TABLE = u"""
   <table>
     <thead>
       <tr>
@@ -27,7 +27,7 @@ BASE_TABLE = """
   </table>
 """
 
-BASE_ROW = """
+BASE_ROW = u"""
       <tr class="{row_class}">
         <td class="date">{date:%Y-%m-%d %H:%M}</td>
         <td class="author">{author}</td>
@@ -96,7 +96,7 @@ def taxon_edits(taxon):
                             old_value=format_old_value(edit.old_value),
                             coord=character_link,
                             row_class=i%2 and 'even' or 'odd'))
-    return BASE_TABLE%('Character', '\n'.join(rows))
+    return BASE_TABLE%('Character', u'\n'.join(rows))
 
 @register.simple_tag
 def character_edits(character):
@@ -122,4 +122,4 @@ def character_edits(character):
                             old_value=format_old_value(edit.old_value),
                             coord=taxon_link,
                             row_class=i%2 and 'even' or 'odd'))
-    return BASE_TABLE%('Taxon', '\n'.join(rows))
+    return BASE_TABLE%('Taxon', u'\n'.join(rows))
