@@ -9,14 +9,6 @@
 #main {
   @include span-columns(4 of 6);
   
-  h2 {
-    padding: 20px 0;
-    
-    &:first-of-type {
-      padding: 0 0 20px;
-    }
-  }
-  
   .VisitLink {
     display: inline-block;
     margin: 0 0 20px;

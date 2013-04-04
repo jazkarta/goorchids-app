@@ -49,11 +49,16 @@ h1, h2, h3, h4, h5, h6 { color: #733944; font-family: "Droid Serif", serif; padd
 
 h1 { font-size: 40px; font-size: 2.5rem; }
 
-h2 { font-size: 22px; font-size: 1.375rem; }
+h2 { font-size: 22px; font-size: 1.375rem; padding: 20px 0 10px; }
+h2:first-child { padding: 0 0 10px; }
 
 h3 { font-size: 18px; font-size: 1.125rem; }
 
+header h1, header h2, header h3, header h4, header h5, header h6 { padding: 0 0 10px; }
+
 /* ==== Base: Utility Classes ==== */
+.hidden { display: none; }
+
 .desktop { display: block; }
 @media screen and (max-width: 870px) { .desktop { display: none; } }
 
@@ -225,8 +230,6 @@ footer .support:last-child { margin-right: 0; }
 
 #main { display: block; float: left; margin-right: 4.82916%; width: 65.05695%; }
 #main:last-child { margin-right: 0; }
-#main h2 { padding: 20px 0; }
-#main h2:first-of-type { padding: 0 0 20px; }
 #main .VisitLink { display: inline-block; margin: 0 0 20px; }
 
 .no-sidebar #main { display: block; float: left; margin-right: 2.35765%; width: 100%; margin-right: 0; }
@@ -246,8 +249,9 @@ footer .support:last-child { margin-right: 0; }
 #sidebar > div:last-child { border: 0; -webkit-box-shadow: none; box-shadow: none; padding: 30px 0 20px; }
 #sidebar h3, #sidebar p { padding: 0 0 10px; }
 #sidebar input, #sidebar .button { margin: 0 0 10px; }
-#sidebar.taxonomy { display: block; float: left; margin-right: 2.35765%; width: 23.23176%; }
-#sidebar.taxonomy:last-child { margin-right: 0; }
+#sidebar.taxonomy { float: right; margin: 0 0 15px 15px; width: 20%; }
+#sidebar.taxonomy > div { padding: 10px 0; }
+#sidebar.taxonomy > div h4, #sidebar.taxonomy > div p { padding: 0 0 5px; }
 @media screen and (max-width: 820px) { #sidebar { display: block; float: left; margin-right: 2.35765%; width: 100%; }
   #sidebar:last-child { margin-right: 0; }
   #sidebar > div { padding: 15px 0 !important; }
@@ -311,6 +315,18 @@ footer .support:last-child { margin-right: 0; }
 .characteristics dl { padding: 0 0 5px; }
 .characteristics dl dt, .characteristics dl dd, .characteristics dl ul, .characteristics dl li { display: inline-block; }
 .characteristics dt { font-weight: 600; text-transform: uppercase; }
+
+.content-area { padding: 0 0 25px; }
+.content-area h2, .content-area p, .content-area dl { padding: 0 0 10px; }
+
+.full-description { display: none; }
+
+.genera, .species { *zoom: 1; }
+.genera:before, .genera:after, .species:before, .species:after { content: " "; display: table; }
+.genera:after, .species:after { clear: both; }
+.genera > li, .species > li { display: block; float: left; margin-right: 2.35765%; width: 48.82117%; padding: 0 0 10px; }
+.genera > li:last-child, .species > li:last-child { margin-right: 0; }
+.genera > li:nth-child(even), .species > li:nth-child(even) { margin-right: 0; }
 
 /* Components: Pagination
 */

@@ -1,0 +1,27 @@
+.content-area {
+  padding: 0 0 25px;
+  
+  h2,
+  p,
+  dl {
+    padding: 0 0 10px;
+  }
+}
+
+  .full-description {
+    display: none;
+  }
+  
+  .genera,
+  .species {
+    @include clearfix;
+    
+    > li {
+      @include span-columns(6);
+      padding: 0 0 10px;
+      
+      &:nth-child(even) {
+        @include omega;
+      }
+    }
+  }

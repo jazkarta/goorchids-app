@@ -31,7 +31,18 @@
   }
   
   &.taxonomy {
-    @include span-columns(3);
+    float: right;
+    margin: 0 0 15px 15px;
+    width: 20%;
+    
+    > div {
+      padding: 10px 0;
+      
+      h4,
+      p {
+        padding: 0 0 5px;
+      }
+    }
   }
   
   @include media(max-width 820px) {

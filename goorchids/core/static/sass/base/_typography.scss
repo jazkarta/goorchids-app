@@ -36,8 +36,19 @@ h1 {
 
 h2 {
   @include font-size(22);
+  padding: 20px 0 10px;
+  
+  &:first-child {
+    padding: 0 0 10px;
+  }
 }
 
 h3 {
   @include font-size(18);
+}
+
+header {
+  h1, h2, h3, h4, h5, h6 {
+    padding: 0 0 10px;
+  }
 }
