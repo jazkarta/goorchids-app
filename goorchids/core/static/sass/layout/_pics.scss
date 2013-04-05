@@ -1,0 +1,15 @@
+.pics {
+  @include clearfix;
+  margin: 25px 0;
+  
+  .img-gallery {
+    border: 5px solid $white;
+    @include box-shadow(inset 0 0 0 1px $gray, 1px 1px 3px $gray);
+    float: left;
+    margin: 0 10px 0 0;
+    
+    img {
+      display: block;
+    }
+  }
+}

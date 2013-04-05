@@ -26,10 +26,12 @@ Family: {{ family.name }} {% if common_name %}({{ common_name|cut:"The "|lower }
 {% block body_attributes %}id="family" class="taxa"{% endblock %}
 
 {% block main_content %}
-                <h1>Family: {{ family.name }}</h1>
-                {% if common_name %}
-                    <p class="common">{{ common_name|cut:"The "|lower }}</p>
-                {% endif %}
+                <header class="family-header">
+                  <h1>Family: {{ family.name }}</h1>
+                  {% if common_name %}
+                      <h2 class="common">{{ common_name|cut:"The "|lower }}</h2>
+                  {% endif %}
+                </header>
                 <p class="description">
                 {% if family.description %}
                     {{ family.description }}

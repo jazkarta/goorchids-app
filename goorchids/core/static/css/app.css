@@ -1081,6 +1081,28 @@ footer .support:last-child {
   padding: 0 0 10px;
 }
 
+.pics {
+  *zoom: 1;
+  margin: 25px 0;
+}
+.pics:before, .pics:after {
+  content: " ";
+  display: table;
+}
+.pics:after {
+  clear: both;
+}
+.pics .img-gallery {
+  border: 5px solid white;
+  -webkit-box-shadow: inset 0 0 0 1px #999999, 1px 1px 3px #999999;
+  box-shadow: inset 0 0 0 1px #999999, 1px 1px 3px #999999;
+  float: left;
+  margin: 0 10px 0 0;
+}
+.pics .img-gallery img {
+  display: block;
+}
+
 /*
   Layout: Three Col
 */
