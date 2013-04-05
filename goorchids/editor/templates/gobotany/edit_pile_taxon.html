@@ -67,6 +67,9 @@
   {% endfor %}
 </div>
 
+{% csrf_token %}
+
+{% endblock %}
 {% block sidebar_content %}
   <h3>Recent Edits</h3>
   {% load edit_trail %}
@@ -74,6 +77,3 @@
   <a class="AllEditsLink" href="{% url 'goorchids-list-edits' %}">View all edits</a>
 {% endblock %}
 
-{% csrf_token %}
-
-{% endblock %}

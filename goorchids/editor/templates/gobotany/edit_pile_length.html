@@ -1,12 +1,12 @@
 {% extends "gobotany/_edit_base.html" %}
 
 {% block js_require %}
-    require(['editor/cv'], function (editor_cv) {
+    require(['editor/cv'], function(editor_cv) {
         editor_cv.setup();
     });
 {% endblock %}
 
-{% block main_content %}
+{% block body_content %}
 
 <p>
  ← return to pile <a href="..">{{ pile.slug }}</a><br />
@@ -29,19 +29,6 @@
   {{ character.question }}
 </p>
 
-{% if there_are_any_friendly_texts %}
-<ul>
-  {% for value in values %}
-  <li class="edit-character-definition">
-    <b>{{ value.value_str }}</b>
-    {% if value.friendly_text %}
-    — {{ value.friendly_text }}
-    {% endif %}
-  </li>
-  {% endfor %}
-</ul>
-{% endif %}
-
 <p>
   Species marked with “(fk)” appear in the Full Key only.
 </p>
@@ -53,18 +40,26 @@
 </p>
 
 <div class="pile-character-grid">
-</div>
-
-<div class="value-tips">
-  {% for value in values %}
-  <div>{{ value.value_str }}</div>
+  {% for kind, thing, minmax in grid %}
+    {% if kind == 'family' %}
+      {% with family=thing %}
+      <h3>{{ family.name }}</h3>
+      {% endwith %}
+    {% else %}
+      {% with name=thing min=minmax.0 max=minmax.1 %}
+      <div><i>{{ name }}</i>
+        Min <input
+          {% if min == None %}class="empty"{% else %}value={{ min }}{% endif %}
+        >
+        Max <input
+          {% if max == None %}class="empty"{% else %}value={{ max }}{% endif %}
+        >
+        {{ character.unit }}
+      </div>
+      {% endwith %}
+    {% endif %}
   {% endfor %}
 </div>
-
-<script>
-  character_values = {{ values_json|safe }};
-  grid_data = {{ grid|safe }};
-</script>
 
 {% csrf_token %}
 
@@ -76,4 +71,3 @@
   {% character_edits character %}
   <a class="AllEditsLink" href="{% url 'goorchids-list-edits' %}">View all edits  </a>
 {% endblock %}
-
