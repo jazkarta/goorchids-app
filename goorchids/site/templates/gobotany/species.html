@@ -136,61 +136,71 @@
                   pile.</p>
             {% endif %}
         </div>
-        <a class="description-control accordion-header">Show All Characteristics</a>
-        <ul class="full-description hidden">
-          {% for character_group in all_characteristics %}
-	        <li>
-            <h5 class="accordion-header">{{ character_group.name|capfirst }}</h5>
-            <div class="characteristics hidden">
-                {% for character in character_group.characters %}
-                <dl>
-                    <dt>{{ character.name }}:</dt>
-                    <dd>
-                    {% if character.values|length_is:"1" %}
-                        {{ character.values.0 }}
-                    {% else %}
-                        <ul{% if character.name in compact_multivalue_characters %} class="compact"{% endif %}>
-                        {% for val in character.values %}
-                            <li{% if forloop.last %} class="last">{{ val }}{% else %}>{{ val }}, {% endif %}</li>
-                        {% endfor %}
-                        </ul>
-                    {% endif %}
-                    {% if character.short_name == 'flowering_phenology_om' %}
-                    <p>{{taxon.flowering_phenology}}</p>
-                    {% endif %}
-                    </dd>
-                </dl>
-                {% endfor %}
-            </div>
-          </li>
-          {% endfor %}
-          <li>
-              <h5 class="accordion-header">Facts and Uses</h5>
-              <div class="characteristics hidden">
-                  <dl>
-                      <dt>Pollination</dt>
-                      <dd>{{ taxon.pollination}}</dd>
-                  </dl>
-                  <dl>
-                      <dt>Mycorrhiza</dt>
-                      <dd>{{ taxon.mycorrhiza}}</dd>
-                  </dl>
-                  <dl>
-                      <dt>Monitoring</dt>
-                      <dd>{{ taxon.monitoring}}</dd>
-                  </dl>
-                  <dl>
-                      <dt>Propagation</dt>
-                      <dd>{{ taxon.propagation}}</dd>
-                  </dl>
-                  <dl>
-                      <dt>Restoration</dt>
-                      <dd>{{ taxon.restoration}}</dd>
-                  </dl>
+        <div class="accordion">
+          <a class="accordion-header" href="#">Show All Characteristics</a>
+          <ul class="accordion-body hidden">
+            {% for character_group in all_characteristics %}
+  	        <li>
+              <div class="accordion">
+                <a href="#" class="accordion-header">
+                  <h5>{{ character_group.name|capfirst }}</h5>
+                </a>
+                <div class="characteristics accordion-body hidden">
+                    {% for character in character_group.characters %}
+                    <dl>
+                        <dt>{{ character.name }}:</dt>
+                        <dd>
+                        {% if character.values|length_is:"1" %}
+                            {{ character.values.0 }}
+                        {% else %}
+                            <ul{% if character.name in compact_multivalue_characters %} class="compact"{% endif %}>
+                            {% for val in character.values %}
+                                <li{% if forloop.last %} class="last">{{ val }}{% else %}>{{ val }}, {% endif %}</li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                        {% if character.short_name == 'flowering_phenology_om' %}
+                        <p>{{taxon.flowering_phenology}}</p>
+                        {% endif %}
+                        </dd>
+                    </dl>
+                    {% endfor %}
+                </div>
               </div>
-              <span style="clear: left;">&nbsp;</span>
-          </li>
-        </ul>
+            </li>
+            {% endfor %}
+            <li>
+              <div class="accordion">
+                <a href="#" class="accordion-header">
+                  <h5>Facts and Uses</h5>
+                </a>
+                <div class="characteristics accordion-body hidden">
+                    <dl>
+                        <dt>Pollination</dt>
+                        <dd>{{ taxon.pollination}}</dd>
+                    </dl>
+                    <dl>
+                        <dt>Mycorrhiza</dt>
+                        <dd>{{ taxon.mycorrhiza}}</dd>
+                    </dl>
+                    <dl>
+                        <dt>Monitoring</dt>
+                        <dd>{{ taxon.monitoring}}</dd>
+                    </dl>
+                    <dl>
+                        <dt>Propagation</dt>
+                        <dd>{{ taxon.propagation}}</dd>
+                    </dl>
+                    <dl>
+                        <dt>Restoration</dt>
+                        <dd>{{ taxon.restoration}}</dd>
+                    </dl>
+                </div>
+                <span style="clear: left;">&nbsp;</span>
+              </div>
+            </li>
+          </ul>
+        </div>
         
         <h2>Native to North America</h2>
         <p>{{ native_to_north_america }}</p>

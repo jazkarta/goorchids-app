@@ -32,6 +32,25 @@ define([
             $('table.conservation-status').hide();
             $('table.conservation-status[data-region="' + $(this).val() + '"]').show();
         });
+
+        // Set up accordions for characteristics
+        $('.accordion-header').each(function() {
+            var $header = $(this);
+            var $accordion = $header.closest('.accordion');
+            var $body = $accordion.children('.accordion-body');
+            $header.prepend('<span class="accordion-icon"><span class="icon-plus"></span></span>');
+            $header.click(function(e) {
+                e.preventDefault();
+                $header.toggleClass('active');
+                if ($header.hasClass('active')) {
+                    $header.html($header.html().replace('Show', 'Hide'));
+                } else {
+                    $header.html($header.html().replace('Hide', 'Show'));
+                }
+                $body.toggleClass('hidden');
+                $header.find('.accordion-icon span').toggleClass('icon-plus').toggleClass('icon-minus');
+            });
+        });
     });
 
 });
