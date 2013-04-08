@@ -32,10 +32,6 @@
     {% endif %}
 {% endblock %}
 
-{% block css %}
-  {% include "gobotany/_new_css.html" %}
-{% endblock %}
-
 {% block main_content %}
   {% if not ready_for_display and not perms.editor.botanist %}
     <p>Sorry, this species is not ready for display.</p>
@@ -140,21 +136,11 @@
                   pile.</p>
             {% endif %}
         </div>
-        <a class="description-control" href="#">
-          <span class="accordion-icon">
-            <span class="icon-minus"></span>
-          </span>
-          Show All Characteristics
-        </a>
+        <a class="description-control accordion-header">Show All Characteristics</a>
         <ul class="full-description hidden">
           {% for character_group in all_characteristics %}
 	        <li>
-            <a href="#" class="accordion-header">
-              <span class="accordion-icon">
-                <span class="icon-minus"></span>
-              </span>
-              <h5>{{ character_group.name|capfirst }}</h5>
-            </a><!-- /.accordion-header -->
+            <h5 class="accordion-header">{{ character_group.name|capfirst }}</h5>
             <div class="characteristics hidden">
                 {% for character in character_group.characters %}
                 <dl>
@@ -179,12 +165,7 @@
           </li>
           {% endfor %}
           <li>
-              <a href="#" class="accordion-header">
-                <span class="accordion-icon">
-                  <span class="icon-minus"></span>
-                </span>
-                <h5>Facts and Uses</h5>
-              </a><!-- /.accordion-header -->
+              <h5 class="accordion-header">Facts and Uses</h5>
               <div class="characteristics hidden">
                   <dl>
                       <dt>Pollination</dt>
