@@ -1,0 +1,114 @@
+{% extends "gobotany/_page_full_sidebar.html" %}
+{% load gobotany_tags %}
+{% load humanize %}
+{% load search_highlight %}
+{% load simplekey_extras %}
+
+{% block title %}{{ query }}: Search{% endblock %}
+
+{% block body_attributes %}class="search-results"{% endblock %}
+
+{% block main_content %}
+                <h1>
+                    {% if paginator.count > 0 %}
+                        {% if page.number > 1 %}
+                            Page {{ page.number }}:
+                        {% endif %}
+                        {{ paginator.count|intcomma }}
+                    {% else %}
+                        No
+                    {% endif %}
+                    result{% if paginator.count != 1 %}s{% endif %}
+                    for
+                    <strong>{{ query }}</strong>
+                </h1>
+
+                {% if page.object_list|length == 0 %}
+                    <p>Please adjust your search and try again.</p>
+                {% else %}
+                    <ul id="search-results-list">
+                    {% for result in page.object_list %}
+                        <li>
+                            <a href="{{ result.url }}">
+                            {% if result.model_name == 'taxon' %}
+                                <img
+                                    src="/static/images/icons/icon-leaf.png"
+                                    alt="" title="Species page">
+                            {% endif %}
+                            {% if result.model_name == 'family' %}
+                                <img
+                                    src="/static/images/icons/icon-family.png"
+                                    alt="" title="Family page">
+                            {% endif %}
+                            {% if result.model_name == 'genus' %}
+                                <img
+                                    src="/static/images/icons/icon-genus.png"
+                                    alt="" title="Genus page">
+                            {% endif %}
+                            {% if result.model_name == 'plainpage' %}
+                                <img
+                                    src="/static/images/icons/icon-help.png"
+                                    alt="" title="Help page">
+                            {% endif %}
+                            {% if result.model_name == 'glossaryterm' %}
+                                <img
+                                    src="/static/images/icons/icon-glossary.png"
+                                    alt="" title="Glossary page">
+                            {% endif %}
+                            {% if result.model_name == 'groupslistpage' %}
+                                <img
+                                    src="/static/images/icons/icon-groups-list.png"
+                                    alt="" title="Simple Key plant groups page">
+                            {% endif %}
+                            {% if result.model_name == 'subgroupslistpage' %}
+                                <img src="/static/images/icons/icon-groups-list.png"
+                                    alt="" title="Simple Key plant subgroups page">
+                            {% endif %}
+                            {% if result.model_name == 'subgroupresultspage' %}
+                                <img src="/static/images/icons/icon-grid.png"
+                                    alt=""
+                                    title="Simple Key plant group results page">
+                            {% endif %}
+                            {% if result.model_name == 'page' %}
+                                <img src="/static/images/icons/icon-groups-list.png"
+                                    alt="" title="Dichotomous Key page">
+                            {% endif %}
+                            {{ result.title|quick_highlight:query|safe }}
+                            </a>
+                            <p>
+                            {% search_highlight result.text with query as result_excerpt ignore_between '\n--\n' %}{{ result_excerpt }}
+                            </p>
+                        </li>
+                    {% endfor %}
+                    </ul>
+
+                    <div class="search-navigation">
+                        <ul>
+                        {% if page.has_previous %}
+                            <li><a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">Previous</a></li>
+                        {% endif %}
+
+                        {# Set a maximum number of pages to display. #}
+                        {% for page_num in paginator.page_range|slice:':20' %}
+                            {% if page_num == page.number %}
+                                <li>{{ page_num }}</li>
+                            {% else %}
+                            <li><a href="?q={{ query }}&amp;page={{ page_num }}">{{ page_num }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        {# Display ellipsis if omitting some pages. #}
+                        {% if paginator.page_range|length > 20 %}
+                            <li>...</li>
+                        {% endif %}
+
+                        {% if page.has_next %}
+                            <li><a href="?q={{ query }}&amp;page={{ page.next_page_number }}">Next</a></li>
+                        {% endif %}
+                        </ul>
+                    </div>
+                {% endif %}
+{% endblock %}
+
+{% block sidebar_content %}
+    {% include "gobotany/_sidebar_items.html" %}
+{% endblock %}
