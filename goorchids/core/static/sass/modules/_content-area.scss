@@ -25,3 +25,10 @@
       }
     }
   }
+  
+  .content-area {
+    #conservation-status,
+    .map {
+      @include span-columns(6);
+    }
+  }
