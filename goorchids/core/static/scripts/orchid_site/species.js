@@ -4,6 +4,7 @@
 define([
     'bridge/jquery',
     'bridge/shadowbox',
+    'select2/select2.min'
 ], function($, Shadowbox, shadowbox_init) {
     $(document).ready(function() {
         // Because the map is in an <object> element, a transparent div
@@ -28,7 +29,7 @@ define([
         }));
 
         // Set up the conservation status region switcher
-        $('#region-switcher').change(function() {
+        $('#region-switcher').select2().change(function() {
             $('table.conservation-status').hide();
             $('table.conservation-status[data-region="' + $(this).val() + '"]').show();
         });

@@ -9,6 +9,7 @@
     removeCombined: false,
     preserveLicenseComments: false,
     paths: {
+        'select2': '../../../../../goorchids/core/static/scripts/select2',
         'orchid_site': '../../../../../goorchids/core/static/scripts/orchid_site'
     },
 

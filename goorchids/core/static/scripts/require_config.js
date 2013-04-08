@@ -7,6 +7,7 @@ requirejs.config({
         'mapping': 'mapping',
         'plantpreview': 'plantpreview',
         'plantshare': 'plantshare',
+        'select2': 'select2',
         'simplekey': 'simplekey',
         'site': 'site',
         'taxa': 'taxa',
