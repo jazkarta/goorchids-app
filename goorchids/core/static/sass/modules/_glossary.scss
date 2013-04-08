@@ -1,3 +1,56 @@
+/* Glossary-term links */
+.gloss {
+    border-bottom: 1px dashed $lightBlue;
+    color: $navy;
+    cursor: pointer;
+    &:hover {
+        border-bottom: 1px dashed $navy;
+    }
+}
+
+$tooltip-background-color: $lighterGreen;
+$tooltip-shadow-color: $lightGreen;
+
+/* Tooltips for working area images and highlighted glossary terms */
+.gb-tooltip {
+    background: $tooltip-background-color;
+    border: none;
+    display: none;   /* initially invisible, fades in */
+    padding: 8px;
+    position: absolute;
+    width: 300px;
+    z-index: 1000;
+    @include box-shadow(1px 1px 4px $tooltip-shadow-color);
+    .arrow {
+        background: $tooltip-background-color;
+        border: none;
+        bottom: -6px;
+        height: 11px;
+        left: 10px;
+        position: absolute;
+        width: 11px;
+        @include box-shadow(-1px -1px 2px $tooltip-shadow-color);
+        @include transform( rotate(225deg) );
+    }
+}
+
+/* Glossary tooltip */
+.glosstip {
+    line-height: 16px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    max-width: 30em;
+    img {
+        background: $tooltip-background-color;
+        bottom: 110%;
+        padding: 4px;
+        position: absolute;
+        @include box-shadow(1px 1px 2px $tooltip-shadow-color);
+    }
+}
+
+/* Glossary page */
 #glossary {
     #alphabet {
         height: 33px;
