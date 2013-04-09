@@ -5,7 +5,6 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.shortcuts import render_to_response
 from gobotany.core import botany
-from gobotany.core.models import Taxon
 from gobotany.core.models import Genus
 from gobotany.core.models import Synonym
 from gobotany.core.models import CommonName
@@ -48,7 +47,7 @@ def _plant_name_suggestions(query, querytype='istartswith'):
     assert querytype in ('istartswith', 'icontains')
 
     fieldmap = {
-        Taxon: ('scientific_name',),
+        GoOrchidTaxon: ('scientific_name',),
         Genus: ('name', 'common_name'),
         CommonName: ('common_name',),
         Synonym: ('scientific_name',),
@@ -62,10 +61,11 @@ def _plant_name_suggestions(query, querytype='istartswith'):
                 exclude_field = field
             else:
                 exclude_field = field + '__istartswith'
-            suggestions += list(model.objects.filter(
-                **{include_field: query}).
-                exclude(**{exclude_field: query}).
-                values_list(field, flat=True))
+            q = model.objects.filter(**{include_field: query})
+            q = q.exclude(**{exclude_field: query})
+            if model is GoOrchidTaxon:
+                q = q.filter(ready_for_display=True)
+            suggestions += list(q.values_list(field, flat=True))
 
     suggestions.sort()
     return suggestions
