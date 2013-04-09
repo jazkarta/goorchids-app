@@ -239,11 +239,11 @@
                     <td>{{taxon.get_us_status_display|default_if_none:"N/A"}}</td>
                 </tr>
                 <tr>
-                    <th>{{conservation_status.region}} Rank</th>
+                    <th>{{conservation_status.get_region_display}} Rank</th>
                     <td>{{conservation_status.get_rank_display|default_if_none:"N/A"}}</td>
                 </tr>
                 <tr>
-                    <th>{{conservation_status.region}} Status</th>
+                    <th>{{conservation_status.get_region_display}} Status</th>
                     <td>{{conservation_status.get_status_display|default_if_none:"N/A"}}</td>
                 </tr>
                 <tr>
