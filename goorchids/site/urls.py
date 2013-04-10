@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import patterns, url
-
+from haystack.forms import HighlightedSearchForm
 from goorchids.site import views
 from gobotany.taxa import views as taxa_views
 from gobotany.site import views as site_views
@@ -14,6 +14,16 @@ urlpatterns = patterns(
     url(r'^key-by-location/', views.redirect_to_simple_key_by_location),
     url(r'^plant-name-suggestions/', views.plant_name_suggestions_view,
         name='plant-name-suggestions'),
+
+    # Search results
+    url(r'^search/$',
+        views.GoOrchidsSearchView(
+            template='search.html',
+            form_class=HighlightedSearchForm,
+        ),
+        name='search',
+    ),
+
 
     url(r'^family/(?P<family_slug>[a-z]+)/$',
         taxa_views.family_view, name='site-family'),

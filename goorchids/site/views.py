@@ -16,6 +16,7 @@ from gobotany.taxa.views import _images_with_copyright_holders
 from gobotany.taxa.views import _format_character_value
 from gobotany.taxa.views import _native_to_north_america_status
 from gobotany.api.views import _distribution_map
+from gobotany.search.views import GoBotanySearchView
 from goorchids.core.models import GoOrchidTaxon
 from maps import NorthAmericanOrchidDistributionMap
 from itertools import groupby
@@ -221,3 +222,16 @@ def species_view(request, genus_slug, epithet):
 def north_american_distribution_map(request, genus, epithet):
     distribution_map = NorthAmericanOrchidDistributionMap()
     return _distribution_map(request, distribution_map, genus, epithet)
+
+
+class GoOrchidsSearchView(GoBotanySearchView):
+
+    def get_results(self):
+        res = []
+        for r in super(GoOrchidsSearchView, self).get_results():
+            if r._model is not GoOrchidTaxon:
+                res.append(r)
+            else:
+                if r.object.ready_for_display:
+                    res.append(r)
+        return res
