@@ -6,7 +6,8 @@
   padding: 30px 0;
 }
 
-#main {
+#main,
+.no-sidebar #main .main-content-wrapper {
   @include span-columns(4 of 6);
   
   .VisitLink {
