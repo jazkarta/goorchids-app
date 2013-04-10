@@ -217,7 +217,8 @@
 
         <h2>North American Conservation Status &amp; Distribution</h2>
 
-        <div id="conservation-status">
+        <!--
+<div id="conservation-status">
             <h4>Conservation Status</h4>
             <form>
                 <p>Select a location to view conservation status:</p>
@@ -265,6 +266,427 @@
             </tbody>
         </table>
         {% endfor %}
+        </div>
+-->
+        
+        <div id="conservation-status">
+            <h4>Conservation Status</h4>
+            <form>
+                <p>Select a location to view conservation status:</p>
+                <select id="region-switcher">
+                    <option value=""></option>
+                
+                    <option value="ct">Connecticut</option>
+                
+                    <option value="de">Delaware</option>
+                
+                    <option value="ma">Massachusetts</option>
+                
+                    <option value="md">Maryland</option>
+                
+                    <option value="nh">New Hampshire</option>
+                
+                    <option value="nj">New Jersey</option>
+                
+                    <option value="ny">New York</option>
+                
+                    <option value="pa">Pennsylvania</option>
+                
+                    <option value="ri">Rhode Island</option>
+                
+                    <option value="va">Virginia</option>
+                
+                    <option value="vt">Vermont</option>
+                
+                </select>
+                <input type="submit" value="Show Status" />
+            </form> 
+        
+        <table class="conservation-status" data-region="ct">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Conservation status for: Connecticut</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Global Rank</th>
+                    <td>Apparently Secure</td>
+                </tr>
+                <tr>
+                    <th>US Status</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Connecticut Rank</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Connecticut Status</th>
+                    <td>Species of Concern</td>
+                </tr>
+                <tr>
+                    <th>Canadian Rank</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Wetland Status</th>
+                    <td>Obligate Wetland</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <table class="conservation-status" data-region="de">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Conservation status for: Delaware</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Global Rank</th>
+                    <td>Apparently Secure</td>
+                </tr>
+                <tr>
+                    <th>US Status</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Delaware Rank</th>
+                    <td>Possible Extirpated</td>
+                </tr>
+                <tr>
+                    <th>Delaware Status</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Canadian Rank</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Wetland Status</th>
+                    <td>Obligate Wetland</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <table class="conservation-status" data-region="ma">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Conservation status for: Massachusetts</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Global Rank</th>
+                    <td>Apparently Secure</td>
+                </tr>
+                <tr>
+                    <th>US Status</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Massachusetts Rank</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Massachusetts Status</th>
+                    <td>Threatened</td>
+                </tr>
+                <tr>
+                    <th>Canadian Rank</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Wetland Status</th>
+                    <td>Obligate Wetland</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <table class="conservation-status" data-region="md">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Conservation status for: Maryland</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Global Rank</th>
+                    <td>Apparently Secure</td>
+                </tr>
+                <tr>
+                    <th>US Status</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Maryland Rank</th>
+                    <td>Possible Extirpated</td>
+                </tr>
+                <tr>
+                    <th>Maryland Status</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Canadian Rank</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Wetland Status</th>
+                    <td>Obligate Wetland</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <table class="conservation-status" data-region="nh">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Conservation status for: New Hampshire</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Global Rank</th>
+                    <td>Apparently Secure</td>
+                </tr>
+                <tr>
+                    <th>US Status</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>New Hampshire Rank</th>
+                    <td>Highly State Rare</td>
+                </tr>
+                <tr>
+                    <th>New Hampshire Status</th>
+                    <td>Endangered</td>
+                </tr>
+                <tr>
+                    <th>Canadian Rank</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Wetland Status</th>
+                    <td>Obligate Wetland</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <table class="conservation-status" data-region="nj">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Conservation status for: New Jersey</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Global Rank</th>
+                    <td>Apparently Secure</td>
+                </tr>
+                <tr>
+                    <th>US Status</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>New Jersey Rank</th>
+                    <td>State Rare</td>
+                </tr>
+                <tr>
+                    <th>New Jersey Status</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Canadian Rank</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Wetland Status</th>
+                    <td>Obligate Wetland</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <table class="conservation-status" data-region="ny">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Conservation status for: New York</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Global Rank</th>
+                    <td>Apparently Secure</td>
+                </tr>
+                <tr>
+                    <th>US Status</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>New York Rank</th>
+                    <td>State Rare</td>
+                </tr>
+                <tr>
+                    <th>New York Status</th>
+                    <td>Threatened</td>
+                </tr>
+                <tr>
+                    <th>Canadian Rank</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Wetland Status</th>
+                    <td>Obligate Wetland</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <table class="conservation-status" data-region="pa">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Conservation status for: Pennsylvania</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Global Rank</th>
+                    <td>Apparently Secure</td>
+                </tr>
+                <tr>
+                    <th>US Status</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Pennsylvania Rank</th>
+                    <td>Highly State Rare</td>
+                </tr>
+                <tr>
+                    <th>Pennsylvania Status</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Canadian Rank</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Wetland Status</th>
+                    <td>Obligate Wetland</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <table class="conservation-status" data-region="ri">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Conservation status for: Rhode Island</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Global Rank</th>
+                    <td>Apparently Secure</td>
+                </tr>
+                <tr>
+                    <th>US Status</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Rhode Island Rank</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Rhode Island Status</th>
+                    <td>Endangered</td>
+                </tr>
+                <tr>
+                    <th>Canadian Rank</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Wetland Status</th>
+                    <td>Obligate Wetland</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <table class="conservation-status" data-region="va">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Conservation status for: Virginia</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Global Rank</th>
+                    <td>Apparently Secure</td>
+                </tr>
+                <tr>
+                    <th>US Status</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Virginia Rank</th>
+                    <td>Highly State Rare</td>
+                </tr>
+                <tr>
+                    <th>Virginia Status</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Canadian Rank</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Wetland Status</th>
+                    <td>Obligate Wetland</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <table class="conservation-status" data-region="vt">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Conservation status for: Vermont</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Global Rank</th>
+                    <td>Apparently Secure</td>
+                </tr>
+                <tr>
+                    <th>US Status</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Vermont Rank</th>
+                    <td>Highly State Rare</td>
+                </tr>
+                <tr>
+                    <th>Vermont Status</th>
+                    <td>Threatened</td>
+                </tr>
+                <tr>
+                    <th>Canadian Rank</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Wetland Status</th>
+                    <td>Obligate Wetland</td>
+                </tr>
+            </tbody>
+        </table>
+        
         </div>
         
         <div class="map namap">
