@@ -933,7 +933,7 @@ footer .support:last-child {
 }
 #sidebar.taxonomy {
   float: right;
-  margin: 0 0 15px 15px;
+  margin: 30px 0 15px 30px;
   width: 20%;
 }
 #sidebar.taxonomy > div {
@@ -1218,22 +1218,42 @@ footer .support:last-child {
 }
 
 .accordion-body {
-  border-bottom: 1px solid #728f50;
+  border-bottom: 1px solid #293619;
   padding: 15px 0 0;
 }
 .accordion-body .accordion {
   margin: 0;
   padding: 0;
 }
+.accordion-body .accordion-body {
+  background: #cbd2b4;
+  border: 1px solid #293619;
+  border-bottom: 0;
+  padding: 10px 15px 0;
+}
 .accordion-body .accordion-header {
-  background: #c7cfb1;
-  border: 1px solid #728f50;
+  background: #6f8759;
+  border: 1px solid #293619;
   border-bottom: 0;
   display: block;
   padding: 5px 10px;
+  text-shadow: 1px 1px 1px #293619;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  -ms-transition: background 0.3s ease-in-out;
+  -o-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+}
+.accordion-body .accordion-header:hover {
+  background: #435929;
+  text-shadow: none;
+}
+.accordion-body .accordion-header.active {
+  background: #293619;
 }
 .accordion-body .accordion-header .accordion-icon,
 .accordion-body .accordion-header h5 {
+  color: white;
   display: inline-block;
 }
 .accordion-body .accordion-header h5 {
@@ -1331,6 +1351,10 @@ footer .support:last-child {
   display: inline-block;
   padding: 0 5px 0 0;
 }
+.search-navigation li.current a {
+  background: #293619;
+  border: 1px solid #293619;
+}
 .search-navigation li a {
   border: 1px solid #63784f;
   border-radius: 2px;
@@ -1355,6 +1379,40 @@ footer .support:last-child {
 .search-navigation li a:hover {
   border: 1px solid #293619;
   background: #293619;
+}
+
+#search-results-list {
+  *zoom: 1;
+}
+#search-results-list:before, #search-results-list:after {
+  content: " ";
+  display: table;
+}
+#search-results-list:after {
+  clear: both;
+}
+#search-results-list li {
+  *zoom: 1;
+  padding: 0 0 20px;
+}
+#search-results-list li:before, #search-results-list li:after {
+  content: " ";
+  display: table;
+}
+#search-results-list li:after {
+  clear: both;
+}
+#search-results-list li > a {
+  display: block;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0 0 5px;
+}
+#search-results-list li > a img {
+  display: inline-block;
+  padding: 0 5px 0 0;
+  vertical-align: top;
 }
 
 /* Text input with suggestions */

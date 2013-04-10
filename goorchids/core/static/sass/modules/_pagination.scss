@@ -10,6 +10,13 @@
     display: inline-block;
     padding: 0 5px 0 0;
     
+    &.current {
+      a {
+        background: $darkestGreen;
+        border: 1px solid $darkestGreen;
+      }
+    } // .current
+    
     a {
       border: 1px solid $darkerGreen;
       border-radius: 2px;
@@ -25,6 +32,6 @@
         border: 1px solid $darkestGreen;
         background: $darkestGreen;
       }
-    }
-  }
+    } // li a
+  } // li
 }

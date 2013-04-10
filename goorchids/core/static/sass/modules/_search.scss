@@ -1,0 +1,21 @@
+#search-results-list {
+  @include clearfix;
+  
+  li {
+    @include clearfix;
+    padding: 0 0 20px;
+    
+    > a {
+      display: block;
+      @include font-size(16);
+      line-height: 1.7;
+      margin: 0 0 5px;
+      
+      img {
+        display: inline-block;
+        padding: 0 5px 0 0;
+        vertical-align: top;
+      }
+    }
+  }
+}

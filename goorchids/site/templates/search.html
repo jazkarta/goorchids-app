@@ -91,7 +91,7 @@
                         {# Set a maximum number of pages to display. #}
                         {% for page_num in paginator.page_range|slice:':20' %}
                             {% if page_num == page.number %}
-                                <li>{{ page_num }}</li>
+                                <li class="current"><a href="javascript:void(0)">{{ page_num }}</a></li>
                             {% else %}
                             <li><a href="?q={{ query }}&amp;page={{ page_num }}">{{ page_num }}</a></li>
                             {% endif %}

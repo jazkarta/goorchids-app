@@ -13,7 +13,7 @@
   }
   
   .accordion-body {
-    border-bottom: 1px solid $green;
+    border-bottom: 1px solid $darkestGreen;
     padding: 15px 0 0;
     
     .accordion {
@@ -21,15 +21,34 @@
       padding: 0;
     }
     
+    .accordion-body {
+      background: $lighterGreen;
+      border: 1px solid $darkestGreen;
+      border-bottom: 0;
+      padding: 10px 15px 0;
+    }
+    
     .accordion-header {
-      background: $lightestGreen;
-      border: 1px solid $green;
+      background: $darkGreen;
+      border: 1px solid $darkestGreen;
       border-bottom: 0;
       display: block;
       padding: 5px 10px;
+      text-shadow: 1px 1px 1px $darkestGreen;
+      @include transition(background .3s ease-in-out);
+      
+      &:hover {
+        background: lighten($darkestGreen, 10%);
+        text-shadow: none;
+      }
+      
+      &.active {
+        background: $darkestGreen;
+      }
       
       .accordion-icon,
       h5 {
+        color: $white;
         display: inline-block;
       }
       
