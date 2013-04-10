@@ -46,7 +46,8 @@ class ContentImageInline(generic.GenericTabularInline):
 
 
 class TaxonAdmin(gobotany.core.admin.TaxonAdmin):
-    __doc__ = gobotany.core.admin.TaxonAdmin.__doc__
+    __doc__ = gobotany.core.admin.TaxonAdmin.__doc__.replace('Go Botany',
+                                                             'Go Orchids')
 
     inlines = [
         TaxonConservationStatusInline,
@@ -71,13 +72,15 @@ class TaxonAdmin(gobotany.core.admin.TaxonAdmin):
 
 
 class GenusAdmin(gobotany.core.admin.GenusAdmin):
-    __doc__ = gobotany.core.admin.GenusAdmin.__doc__
+    __doc__ = gobotany.core.admin.GenusAdmin.__doc__.replace('Go Botany',
+                                                             'Go Orchids')
 
     inlines = gobotany.core.admin.GenusAdmin.inlines + [ContentImageInline]
 
 
 class FamilyAdmin(gobotany.core.admin.FamilyAdmin):
-    __doc__ = gobotany.core.admin.FamilyAdmin.__doc__
+    __doc__ = gobotany.core.admin.FamilyAdmin.__doc__.replace('Go Botany',
+                                                             'Go Orchids')
 
     inlines = gobotany.core.admin.FamilyAdmin.inlines + [ContentImageInline]
 
