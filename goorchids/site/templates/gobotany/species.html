@@ -97,6 +97,13 @@
         </p>
       </section>
 
+      {% if taxon.variety_notes %}
+      <section class="content-area">
+          <h2>Notes on Subspecies and Varieties</h2>
+          <p>{{ taxon.variety_notes|italicize_plant|safe }}</p>
+      </div>
+      {% endif %}
+
       <section class="content-area">
         <h2>Ecosystem Type</h2>
         <p>
