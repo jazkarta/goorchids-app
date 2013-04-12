@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django import forms
+from django.db import models
+from django.forms.widgets import Textarea
 import gobotany.core.admin
 from django.contrib.contenttypes import generic
 from gobotany.core.models import (Taxon, PartnerSpecies, ContentImage,
@@ -48,6 +50,10 @@ class ContentImageInline(generic.GenericTabularInline):
 class TaxonAdmin(gobotany.core.admin.TaxonAdmin):
     __doc__ = gobotany.core.admin.TaxonAdmin.__doc__.replace('Go Botany',
                                                              'Go Orchids')
+    # Replace all single line text widgets with a text area
+    formfield_overrides = {
+        models.CharField: {'widget': Textarea},
+    }
 
     inlines = [
         TaxonConservationStatusInline,
