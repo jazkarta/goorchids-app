@@ -46,7 +46,8 @@
 
     <header>
       <hgroup>
-        <h1><span class="scientific">{{ scientific_name|italicize_plant|safe }}</span></h1>
+        <h1><span class="scientific">{{ scientific_name|italicize_plant|safe }}</span>
+        <span class="origin">{{ taxon.taxonomic_authority }}</span></h1>
         {% if common_names %}
         <h2 class="common nogloss">{% for common_name in common_names %}{% if not forloop.first %}, {% endif %}{{ common_name }}{% endfor %}</h2>
         {% endif %}
