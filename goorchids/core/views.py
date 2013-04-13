@@ -19,7 +19,7 @@ from django.utils.datastructures import SortedDict
 
 
 APPS_TO_HANDLE = ['core', 'search', 'simplekey', 'plantoftheday', 'dkey',
-                  'site']
+                  'site', 'flatpages', 'sites']
 EXCLUDED_MODELS = ['core.PartnerSite',]
 DUMP_NAME = 'goorchids-core-data-{:%Y%m%d%H%M%S}.json'
 DUMP_PATH = '/core-data/'
