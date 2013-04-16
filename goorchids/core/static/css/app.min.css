@@ -144,6 +144,8 @@ input.button.search-field:hover, .button.search-field:hover { background: darkgr
 
 header .button { border: 1px solid #446a8b; background-color: #577c9d; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #577c9d), color-stop(100%, #587d9e)); background-image: -webkit-linear-gradient(top, #577c9d, #587d9e); background-image: -moz-linear-gradient(top, #577c9d, #587d9e); background-image: -ms-linear-gradient(top, #577c9d, #587d9e); background-image: -o-linear-gradient(top, #577c9d, #587d9e); background-image: linear-gradient(top, #577c9d, #587d9e); margin: 0 0 0 15px; padding: 10px 15px; text-transform: uppercase; }
 
+.select2-offscreen { min-width: 180px; }
+
 /* Layout
 */
 /* Layout: Header
@@ -456,7 +458,7 @@ div.scrollableArea { position: relative; width: auto; *zoom: 1; }
 div.scrollableArea:before, div.scrollableArea:after { content: " "; display: table; }
 div.scrollableArea:after { clear: both; }
 
-#species-images { position: relative; }
+#species-images { display: inline-block; position: relative; }
 
 .scrollWrapper { -webkit-box-shadow: 0 0 10px 1px #cccccc; box-shadow: 0 0 10px 1px #cccccc; position: relative; }
 .scrollWrapper img { border: 7px solid white; border-left: 0; float: left; display: block; }

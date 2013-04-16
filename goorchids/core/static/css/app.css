@@ -414,6 +414,10 @@ header .button {
   text-transform: uppercase;
 }
 
+.select2-offscreen {
+  min-width: 180px;
+}
+
 /*
   Layout
 */
@@ -1690,6 +1694,7 @@ div.scrollableArea:after {
 }
 
 #species-images {
+  display: inline-block;
   position: relative;
 }
 
