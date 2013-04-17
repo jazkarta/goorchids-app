@@ -1,3 +1,7 @@
-.select2-offscreen {
-  min-width: 180px;
+.select2-container {
+  vertical-align: middle;
 }
+
+  .select2-search {
+    display: none;
+  }

@@ -1,0 +1,74 @@
+.species-header {
+  padding: 0 0 20px;
+  
+  h1 {
+    padding: 0;
+    
+    .origin {
+      @include font-size(20);
+    }
+  }
+}
+
+#species {
+  .content-area {
+    h2,
+    h4 {
+      color: #333;
+      padding: 0 0 10px;
+    }
+  }
+}
+
+#conservation-status {
+  input.button {
+    margin: 0 0 0 15px;
+  }
+  
+  @include media(max-width 500px) {
+    .select2-container {
+      display: none;
+    }
+    .select2-offscreen {
+      display: block;
+      position: relative;
+      left: auto;
+      width: 100%;
+    }
+    input.button {
+      display: block;
+      margin: 15px 0;
+      width: 100%;
+    }
+  }
+}
+
+// Table
+.conservation-status {
+  background: $lightGreen;
+  border-radius: 3px;
+  @include box-shadow(inset 0 0 5px rgba(0, 0, 0, .5));
+  margin: 25px 0 0;
+  overflow: hidden;
+  width: 100%;
+  
+  th,
+  td {
+    padding: 15px;
+  }
+  
+  td {
+    background: $lighterGreen;
+    border-left: 1px solid $darkGreen;
+  }
+  
+  tr {
+    border-bottom: 1px solid $darkGreen;
+  }
+  
+  thead {
+    th:first-child {
+      border-right: 1px solid $darkGreen;
+    }
+  }
+}
