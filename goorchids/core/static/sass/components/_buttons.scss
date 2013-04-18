@@ -26,6 +26,25 @@ input.button,
     @include box-shadow(none);
   }
   
+  &.large {
+    @include font-size(20);
+    padding: 15px 30px;
+  }
+  
+  &.red {
+    border: 1px solid $darkMaroon;
+    @include box-shadow(inset 1px 1px 1px $lightestMaroon);
+    @include linear-gradient($lighterMaroon, $maroon);
+    text-shadow: 1px 1px 1px $darkestMaroon;
+  }
+  
+  &.green {
+    border: 1px solid $darkerGreen;
+    @include box-shadow(inset 1px 1px 1px $lightestGreen);
+    @include linear-gradient($green, $darkGreen);
+    text-shadow: 1px 1px 1px $darkestGreen;
+  }
+  
   &.search-field {
     border: 0;
     @include box-shadow(none);

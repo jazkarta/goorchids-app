@@ -376,6 +376,40 @@ input.button:hover,
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+input.button.large,
+.button.large {
+  font-size: 20px;
+  font-size: 1.25rem;
+  padding: 15px 30px;
+}
+input.button.red,
+.button.red {
+  border: 1px solid #764248;
+  -webkit-box-shadow: inset 1px 1px 1px #8c565e;
+  box-shadow: inset 1px 1px 1px #8c565e;
+  background-color: #764248;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #764248), color-stop(100%, #733944));
+  background-image: -webkit-linear-gradient(top, #764248, #733944);
+  background-image: -moz-linear-gradient(top, #764248, #733944);
+  background-image: -ms-linear-gradient(top, #764248, #733944);
+  background-image: -o-linear-gradient(top, #764248, #733944);
+  background-image: linear-gradient(top, #764248, #733944);
+  text-shadow: 1px 1px 1px #421720;
+}
+input.button.green,
+.button.green {
+  border: 1px solid #63784f;
+  -webkit-box-shadow: inset 1px 1px 1px #c7cfb1;
+  box-shadow: inset 1px 1px 1px #c7cfb1;
+  background-color: #728f50;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #728f50), color-stop(100%, #6f8759));
+  background-image: -webkit-linear-gradient(top, #728f50, #6f8759);
+  background-image: -moz-linear-gradient(top, #728f50, #6f8759);
+  background-image: -ms-linear-gradient(top, #728f50, #6f8759);
+  background-image: -o-linear-gradient(top, #728f50, #6f8759);
+  background-image: linear-gradient(top, #728f50, #6f8759);
+  text-shadow: 1px 1px 1px #293619;
+}
 input.button.search-field,
 .button.search-field {
   border: 0;
@@ -1292,6 +1326,114 @@ footer .support:last-child {
 }
 .conservation-status thead th:first-child {
   border-right: 1px solid #6f8759;
+}
+
+.skey #main {
+  *zoom: 1;
+}
+.skey #main:before, .skey #main:after {
+  content: " ";
+  display: table;
+}
+.skey #main:after {
+  clear: both;
+}
+.skey .sidebar {
+  background: #d6dcbf;
+  border-radius: 3px;
+  overflow: hidden;
+  display: block;
+  float: left;
+  margin-right: 2.35765%;
+  width: 23.23176%;
+}
+.skey .sidebar:last-child {
+  margin-right: 0;
+}
+.skey .sidebar .instructions {
+  background: #c7cfb1;
+  -webkit-box-shadow: inset 0 0 5px #a4aa8d;
+  box-shadow: inset 0 0 5px #a4aa8d;
+  padding: 15px;
+}
+.skey .sidebar .instructions h5 {
+  color: #333333;
+  font-family: "Open Sans", helvetica, arial, sans-serif;
+  font-weight: 700;
+  padding: 0;
+}
+.skey .sidebar .option-list > li {
+  border-bottom: 1px solid #9a9f86;
+}
+.skey .sidebar .option-list > li .option {
+  display: block;
+  padding: 15px;
+}
+.skey .sidebar .option-list > li .working-area {
+  background: #c7cfb1;
+  -webkit-box-shadow: inset 0 0 5px #a4aa8d;
+  box-shadow: inset 0 0 5px #a4aa8d;
+  padding: 5px 15px;
+}
+.skey .main-content-wrapper {
+  display: block;
+  float: left;
+  margin-right: 2.35765%;
+  width: 74.41059%;
+}
+.skey .main-content-wrapper:last-child {
+  margin-right: 0;
+}
+.skey .main-content-wrapper #results-tabs {
+  *zoom: 1;
+}
+.skey .main-content-wrapper #results-tabs:before, .skey .main-content-wrapper #results-tabs:after {
+  content: " ";
+  display: table;
+}
+.skey .main-content-wrapper #results-tabs:after {
+  clear: both;
+}
+.skey .main-content-wrapper #results-tabs li {
+  float: left;
+  padding: 0 0 0 5px;
+}
+.skey .main-content-wrapper #results-tabs li a {
+  border: 1px solid #c6c8b0;
+  border-radius: 3px 3px 0 0;
+  -webkit-box-shadow: 0 0 5px #c6c8b0;
+  box-shadow: 0 0 5px #c6c8b0;
+  display: inline-block;
+  padding: 5px 25px;
+  position: relative;
+}
+.skey .main-content-wrapper #results-tabs li a:before {
+  background: #f0f2d9;
+  content: " ";
+  bottom: -8px;
+  display: block;
+  height: 7px;
+  left: 0;
+  position: absolute;
+  z-index: 20;
+  width: 100%;
+}
+.skey .main-content-wrapper #results-tabs li a.current:before {
+  bottom: -5px;
+}
+.skey .main-content-wrapper .results-tabs-content {
+  background: #f0f2d9;
+  border-top: 1px solid #c6c8b0;
+  margin-top: -1px;
+  padding: 25px 0;
+}
+.skey #intro-overlay {
+  position: fixed;
+  left: 0 !important;
+  top: 15% !important;
+  text-align: center;
+  width: 100%;
+  z-index: 9999;
 }
 
 /*

@@ -1,0 +1,103 @@
+.skey { // simpley key body class
+  #main {
+    @include clearfix;
+  }
+  
+  // SIDEBAR
+  .sidebar {
+    background: #d6dcbf;
+    border-radius: 3px;
+    overflow: hidden;
+    @include span-columns(3);
+    
+    .instructions {
+      background: $lightestGreen;
+      @include box-shadow(inset 0 0 5px $lightGreen);
+      padding: 15px;
+      
+      h5 {
+        color: $darkerGray;
+        font-family: 'Open Sans', helvetica, arial, sans-serif;
+        font-weight: 700;
+        padding: 0;
+      }
+    }
+    
+    .option-list {
+      
+      > li {
+        border-bottom: 1px solid #9a9f86;
+
+        .option {
+          display: block;
+          padding: 15px;
+        }
+        
+        .working-area {
+          background: $lightestGreen;
+          @include box-shadow(inset 0 0 5px $lightGreen);
+          padding: 5px 15px;
+        } //.working-area
+      }
+    } // .option-list
+  } // .sidebar
+  
+  // MAIN CONTENT
+  .main-content-wrapper {
+    @include span-columns(9);
+    
+    #results-tabs {
+      @include clearfix;
+    
+      li {
+        float: left;
+        padding: 0 0 0 5px;
+        
+        a {
+          border: 1px solid #c6c8b0;
+          border-radius: 3px 3px 0 0;
+          @include box-shadow(0 0 5px #c6c8b0);
+          display: inline-block;
+          padding: 5px 25px;
+          position: relative;
+          
+          &:before {
+            background: $lime;
+            content: " ";
+            bottom: -8px;
+            display: block;
+            height: 7px;
+            left: 0;
+            position: absolute;
+            z-index: 20;
+            width: 100%;
+          }
+          
+          &.current {
+            &:before {
+              bottom: -5px;
+            }
+          }
+        }
+      }
+    } // #results-tabs
+    
+    .results-tabs-content {
+      background: $lime;
+      border-top: 1px solid #c6c8b0;
+      margin-top: -1px;
+      padding: 25px 0;
+    } // .results-tabs-content
+    
+  } // .main-content-wrapper
+  
+  // Modal
+  #intro-overlay {
+    position: fixed;
+      left: 0 !important;
+      top: 15% !important;
+    text-align: center;
+    width: 100%;
+    z-index: 9999;
+  }
+}
