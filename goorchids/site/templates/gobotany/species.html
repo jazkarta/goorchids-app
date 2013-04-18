@@ -215,18 +215,17 @@
 
         <h2>North American Conservation Status &amp; Distribution</h2>
 
-        <!--
-<div id="conservation-status">
+        <div id="conservation-status">
             <h4>Conservation Status</h4>
             <form>
                 <p>Select a location to view conservation status:</p>
                 <select id="region-switcher">
-                    <option value=""></option>
+                    <option value="">Select a Region</option>
                 {% for conservation_status in taxon.regional_conservation_statuses.all %}
                     <option value="{{conservation_status.region}}">{{conservation_status.get_region_display}}</option>
                 {% endfor %}
                 </select>
-                <input type="submit" value="Show Status" />
+                <input type="submit" class="button small" value="Show Status" />
             </form> 
         {% for conservation_status in taxon.regional_conservation_statuses.all %}
         <table class="conservation-status" data-region="{{conservation_status.region}}">
@@ -264,79 +263,6 @@
             </tbody>
         </table>
         {% endfor %}
-        </div>
--->
-        
-        <div id="conservation-status">
-            <h4>Conservation Status</h4>
-            <form>
-                <p>Select a location to view conservation status:</p>
-                <select id="region-switcher">
-                    <option value="">Select a Region</option>
-                
-                    <option value="ct">Connecticut</option>
-                
-                    <option value="de">Delaware</option>
-                
-                    <option value="ma">Massachusetts</option>
-                
-                    <option value="md">Maryland</option>
-                
-                    <option value="nh">New Hampshire</option>
-                
-                    <option value="nj">New Jersey</option>
-                
-                    <option value="ny">New York</option>
-                
-                    <option value="pa">Pennsylvania</option>
-                
-                    <option value="ri">Rhode Island</option>
-                
-                    <option value="va">Virginia</option>
-                
-                    <option value="vt">Vermont</option>
-                
-                </select>
-                <input type="submit" class="button small" value="Show Status" />
-            </form> 
-        
-        <table class="conservation-status" data-region="ct">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Conservation status for: Connecticut</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>Global Rank</th>
-                    <td>Apparently Secure</td>
-                </tr>
-                <tr>
-                    <th>US Status</th>
-                    <td>N/A</td>
-                </tr>
-                <tr>
-                    <th>Connecticut Rank</th>
-                    <td>N/A</td>
-                </tr>
-                <tr>
-                    <th>Connecticut Status</th>
-                    <td>Species of Concern</td>
-                </tr>
-                <tr>
-                    <th>Canadian Rank</th>
-                    <td>N/A</td>
-                </tr>
-                <tr>
-                    <th>Wetland Status</th>
-                    <td>Obligate Wetland</td>
-                </tr>
-            </tbody>
-        </table>
-        
-        
-        
         </div>
         
         <div class="map namap">
