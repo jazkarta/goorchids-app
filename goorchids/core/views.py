@@ -1,5 +1,6 @@
 import gzip
 import sys
+import argparse
 import traceback
 from StringIO import StringIO
 from datetime import datetime
@@ -16,6 +17,9 @@ from django.core.files.storage import default_storage
 from django.db import (connections, router, transaction, DEFAULT_DB_ALIAS,
       IntegrityError, DatabaseError)
 from django.utils.datastructures import SortedDict
+
+from gobotany.core.models import (TaxonCharacterValue, CharacterValue,
+                                  ContentImage)
 
 
 APPS_TO_HANDLE = ['core', 'search', 'simplekey', 'plantoftheday', 'dkey',
@@ -105,11 +109,16 @@ def _load(name):
     transaction.managed(True, using=using)
 
     try:
+        # First remove all character values, assignments and images to
+        # avoid import conflicts and data duplication
+        TaxonCharacterValue.objects.all().delete()
+        CharacterValue.objects.all().delete()
+        ContentImage.objects.all().delete()
         with connection.constraint_checks_disabled():
             objects_in_fixture = 0
             loaded_objects_in_fixture = 0
             with get_latest_fixture(name) as fixture:
-                fixture_name = fixture.filename
+                fixture_name = fixture.name
                 objects = serializers.deserialize('json', fixture,
                                                   using=using)
                 for obj in objects:
@@ -165,3 +174,17 @@ def _load(name):
     return 'Successfully Loaded %s objects from fixture %s'%(
         loaded_objects_in_fixture,
         fixture_name)
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(
+        prog="importer",
+        description='Import GoOrchids fixture by name'
+        )
+
+    parser.add_argument('filename', nargs="?")
+    args = parser.parse_args()
+    if not args.filename:
+        name = list_data_files()[0]
+    else:
+        name = args.filename
+    print _load(name)
