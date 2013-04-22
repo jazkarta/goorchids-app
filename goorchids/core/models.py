@@ -1,6 +1,9 @@
 from collections import OrderedDict
 from django.conf import settings
+from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
+from django.dispatch import receiver
+from gobotany.plantoftheday.models import PlantOfTheDay
 from gobotany.core.models import Taxon
 
 
@@ -123,3 +126,14 @@ class RegionalConservationStatus(models.Model):
 
     def __unicode__(self):
         return u'%s: %s, %s' % (self.region, self.status, self.rank)
+
+
+@receiver(models.signals.post_save, sender=GoOrchidTaxon)
+def update_potd_after_taxon_save(sender, **kw):
+    """After a taxon is saved, make sure it has an entry in the plantoftheday table."""
+    instance = kw['instance']
+    try:
+        PlantOfTheDay.objects.filter(
+            scientific_name=instance.scientific_name, partner_short_name='gobotany').get()
+    except ObjectDoesNotExist:
+        PlantOfTheDay(scientific_name=instance.scientific_name, partner_short_name='gobotany').save()
