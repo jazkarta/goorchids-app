@@ -2,7 +2,12 @@
 {% load verbatim %}
 
 {% block css %}
-{% include "gobotany/_new_css.html" %}
+<link rel="stylesheet" type="text/css"
+    href="http://localhost:8000/app.css">
+
+<!-- Google Web Fonts -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic' rel='stylesheet' type='text/css'>
 {% endblock %}
 
 {% block title %}{{ subgroup_results_page.title }}{% endblock %}
