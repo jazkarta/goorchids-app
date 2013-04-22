@@ -228,7 +228,7 @@
                 <input type="submit" class="button small" value="Show Status" />
             </form> 
         {% for conservation_status in taxon.regional_conservation_statuses.all %}
-        <table class="conservation-status" data-region="{{conservation_status.region}}">
+        <table class="conservation-status hidden" data-region="{{conservation_status.region}}">
             <thead>
                 <tr>
                     <th></th>

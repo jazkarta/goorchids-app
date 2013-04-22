@@ -29,10 +29,15 @@ define([
         }));
 
         // Set up the conservation status region switcher
-        $('#region-switcher').select2().change(function() {
-            $('table.conservation-status').hide();
-            $('table.conservation-status[data-region="' + $(this).val() + '"]').show();
-        });
+        var update_region_tables = function() {
+            $('table.conservation-status').addClass('hidden');
+            $('table.conservation-status[data-region="' + $('#region-switcher').val() + '"]').removeClass('hidden');
+        };
+        $('#region-switcher').select2().change(function() { update_region_tables(); });
+        update_region_tables();
+        $('#conservation-status .button').click(function(e) {
+            e.preventDefault();
+        })
 
         // Set up accordions for characteristics
         $('.accordion-header').each(function() {
