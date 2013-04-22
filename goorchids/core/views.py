@@ -20,11 +20,13 @@ from django.utils.datastructures import SortedDict
 
 from gobotany.core.models import (TaxonCharacterValue, CharacterValue,
                                   ContentImage)
+from gobotany.core.importer import Importer
+from gobotany.site.models import SearchSuggestion
 
 
 APPS_TO_HANDLE = ['core', 'search', 'simplekey', 'plantoftheday', 'dkey',
                   'site', 'flatpages', 'sites']
-EXCLUDED_MODELS = ['core.PartnerSite',]
+EXCLUDED_MODELS = ['core.PartnerSite', 'site.SearchSuggestion']
 DUMP_NAME = 'goorchids-core-data-{:%Y%m%d%H%M%S}.json'
 DUMP_PATH = '/core-data/'
 
@@ -114,6 +116,7 @@ def _load(name):
         TaxonCharacterValue.objects.all().delete()
         CharacterValue.objects.all().delete()
         ContentImage.objects.all().delete()
+        SearchSuggestion.objects.all().delete()
         with connection.constraint_checks_disabled():
             objects_in_fixture = 0
             loaded_objects_in_fixture = 0
@@ -149,6 +152,9 @@ def _load(name):
         # any invalid keys that might have been added
         table_names = [model._meta.db_table for model in models]
         connection.check_constraints(table_names=table_names)
+
+        # Rebuild the search suggestion table
+        Importer().import_search_suggestions()
 
     except (SystemExit, KeyboardInterrupt):
         raise
