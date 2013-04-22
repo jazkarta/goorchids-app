@@ -74,7 +74,11 @@ STATE_NAMES = {
     'yt': u'Yukon'
 }
 
-ALLOWED_HOSTS = ['goorchids-staging.herokuapp.com']
+ALLOWED_HOSTS = [
+    'goorchids.northamericanorchidcenter.org',
+    'goorchids-staging.herokuapp.com',
+    'goorchids.herokuapp.com',
+]
 
 ROOT_URLCONF = 'goorchids.core.urls'
 STATICFILES_DIRS = [
