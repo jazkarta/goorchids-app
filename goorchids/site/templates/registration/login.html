@@ -1,0 +1,34 @@
+{% extends "gobotany/_page_free_sidebar.html" %}
+
+{% comment %}
+Currently this page is just meant to give the user an error message if
+their login attempt fails and to let them try again. The normal starting
+point for logging in is the main PlantShare page, not here.
+{% endcomment %}
+
+{% block title %}Log In: PlantShare{% endblock %}
+
+{% block body_attributes %}id="log-in" class="plantshare"{% endblock %}
+
+{% block main_content %}
+<h1>Log In</h1>
+
+    <form method="post" action="{% url 'auth_login' %}" class="login">
+        {% csrf_token %}
+        {% comment %} 
+        Conform to Django auth's AuthenticationForm fields for now, until we create
+        a nice template tag or widget for this, so it can appear on every page.
+        Otherwise, we'd have to manually create an AuthenticationForm in every single
+        view or create a context processor for it.
+        {% endcomment %}
+        <label for="id_username">Username</label>
+        <input id="id_username" type="text" name="username" maxlength="30"
+            autofocus>
+        <label for="id_password">Password</label>
+        <input type="password" name="password" id="id_password">
+        <input type="submit" class="button" value="Login">
+        <input type="hidden" name="next"
+        value="{% if next %}{{ next }}{% else %}{% url 'site-home' %}{% endif %}">
+    </form>
+
+{% endblock %}

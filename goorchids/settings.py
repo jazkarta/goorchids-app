@@ -93,6 +93,11 @@ else:
     AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME',
                                              'goorchids')
 
+INSTALLED_APPS.remove('gobotany.plantshare')
+INSTALLED_APPS.remove('piston')
+INSTALLED_APPS.remove('facebook_connect')
+INSTALLED_APPS.remove('captcha')
+
 INSTALLED_APPS = [
     'goorchids.core',
     'goorchids.site',
@@ -103,3 +108,5 @@ INSTALLED_APPS = [
 
 MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',)
+
+LOGIN_URL = '/accounts/login'
