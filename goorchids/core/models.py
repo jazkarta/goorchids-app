@@ -137,3 +137,12 @@ def update_potd_after_taxon_save(sender, **kw):
             scientific_name=instance.scientific_name, partner_short_name='gobotany').get()
     except ObjectDoesNotExist:
         PlantOfTheDay(scientific_name=instance.scientific_name, partner_short_name='gobotany').save()
+
+
+class ImportLog(models.Model):
+    """Log of imports run"""
+    filename = models.CharField(max_length=100)
+    start = models.DateTimeField()
+    duration = models.IntegerField(null=True)
+    success = models.NullBooleanField(null=True)
+    message = models.TextField(null=True)

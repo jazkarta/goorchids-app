@@ -3,8 +3,8 @@ import sys
 import argparse
 import traceback
 import time
-from StringIO import StringIO
 from datetime import datetime
+from StringIO import StringIO
 from contextlib import contextmanager, closing
 
 from django.contrib.auth.decorators import permission_required
@@ -23,12 +23,19 @@ from gobotany.core.models import (TaxonCharacterValue, CharacterValue,
                                   ContentImage)
 from gobotany.site.models import PlantNameSuggestion, SearchSuggestion
 from gobotany.core.importer import Importer
+from .models import ImportLog
+
+from rq import Queue
+from redis.exceptions import ConnectionError
+from worker import conn
+
+q = Queue('low', connection=conn)
 
 
 APPS_TO_HANDLE = ['core', 'search', 'simplekey', 'plantoftheday', 'dkey',
                   'site', 'flatpages', 'sites']
-EXCLUDED_MODELS = ['core.PartnerSite', 'site.SearchSuggestion',
-                   'site.PlantNameSuggestion']
+EXCLUDED_MODELS = ['core.PartnerSite', 'core.ImportLog',
+                   'site.SearchSuggestion', 'site.PlantNameSuggestion']
 DUMP_NAME = 'goorchids-core-data-{:%Y%m%d%H%M%S}.json'
 DUMP_PATH = '/core-data/'
 
@@ -92,13 +99,24 @@ def loaddata(request):
     files = list_data_files()
     if 'filename' in request.POST:
         filename = request.POST['filename']
-        message = _load(filename)
+        log_entry = ImportLog(filename=filename, start=datetime.now())
+        try:
+            job = q.enqueue_call(func=_load, args=(filename, log_entry),
+                                 timeout=3600) # 10 minute timeout
+            message = (u'Data import running in background (Job Id: %s).  '
+                       'Data load will complete in a few minutes.'%job.id)
+        except ConnectionError:
+            # Redis not running, try to run synchronously
+            message = _load(filename, log_entry)
+            message += ' (async data load failed)'
 
+    latest_logs = ImportLog.objects.order_by('-start')[:5]
     return render_to_response('goorchids/loaddata.html', {'files': files,
-                                                          'message': message},
+                                                          'message': message,
+                                                          'logs': latest_logs},
                               context_instance=RequestContext(request))
 
-def _load(name):
+def _load(name, log_entry=None):
     # code blatantly stolen from django.core.management.commands.loaddatax
     style = no_style()
     using = DEFAULT_DB_ALIAS
@@ -172,6 +190,11 @@ def _load(name):
             ''.join(traceback.format_exception(sys.exc_type,
                                                sys.exc_value,
                                                sys.exc_traceback)))
+        if log_entry:
+            log_entry.success = False
+            log_entry.message = msg
+            log_entry.duration = time.time() - s_time
+            log_entry.save()
         return msg
 
     # If we found even one object in a fixture, we need to reset the
@@ -190,9 +213,17 @@ def _load(name):
     Importer().import_plant_name_suggestions(None)
 
     end_time = time.time()
-    return 'Successfully Loaded %s objects from fixture %s in %d seconds'%(
+    msg = 'Successfully Loaded %s objects from fixture %s in %d seconds'%(
         loaded_objects_in_fixture,
         fixture_name, end_time - s_time)
+
+    if log_entry:
+        log_entry.success = True
+        log_entry.message = msg
+        log_entry.duration = end_time - s_time
+        log_entry.save()
+
+    return msg
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(

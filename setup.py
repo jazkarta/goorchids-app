@@ -2,7 +2,12 @@ from distutils.core import setup
 from setuptools import find_packages
 
 requirements = [
-    'gobotany'
+    'gobotany',
+
+    # Job queue for export/import
+    'redis',
+    'rq',
+    'honcho',
     ]
 
 packages = find_packages()

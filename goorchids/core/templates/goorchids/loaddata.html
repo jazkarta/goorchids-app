@@ -18,5 +18,23 @@
     {% csrf_token %}
     <input type="submit" value="Import"/>
   </form>
+  <h4>Import History</h4>
+  <table border="1">
+    <thead>
+      <tr><th>Date</th><th>Filename</th><th>Success</th><th>Duration</th><th>Message</th></tr>
+    </thead>
+    <tbody>
+      {% for entry in logs %}
+      <tr>
+        <td>{{ entry.start|date:"SHORT_DATETIME_FORMAT" }}</td>
+        <td>{{ entry.filename }}</td>
+        <td style="text-align: center">{{ entry.success }}</td>
+        <td style="text-align: center">{{ entry.duration }}s</td>
+        <td>{{ entry.message }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <br />
   <a href="{% url 'admin:app_list' 'core' %}">Return to admin</a>
 </body>

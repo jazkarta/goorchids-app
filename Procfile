@@ -1,4 +1,4 @@
-web: gunicorn goorchids.wsgi -b "0.0.0.0:$PORT" -w 3
+web: honcho -f ProcfileHoncho start
 s3imagecheck: bin/s3imagecheck.py
 s3imagescan: bin/s3imagescan.sh
 s3thumbnail: bin/s3thumbnail.sh
