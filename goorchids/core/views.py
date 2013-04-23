@@ -2,6 +2,7 @@ import gzip
 import sys
 import argparse
 import traceback
+import time
 from StringIO import StringIO
 from datetime import datetime
 from contextlib import contextmanager, closing
@@ -20,16 +21,23 @@ from django.utils.datastructures import SortedDict
 
 from gobotany.core.models import (TaxonCharacterValue, CharacterValue,
                                   ContentImage)
+from gobotany.site.models import PlantNameSuggestion, SearchSuggestion
+from gobotany.core.importer import Importer
 
 
 APPS_TO_HANDLE = ['core', 'search', 'simplekey', 'plantoftheday', 'dkey',
                   'site', 'flatpages', 'sites']
-EXCLUDED_MODELS = ['core.PartnerSite',]
+EXCLUDED_MODELS = ['core.PartnerSite', 'site.SearchSuggestion',
+                   'site.PlantNameSuggestion']
 DUMP_NAME = 'goorchids-core-data-{:%Y%m%d%H%M%S}.json'
 DUMP_PATH = '/core-data/'
 
 @permission_required('superuser')
 def dumpdata(request):
+    # Rebuild the search suggestion tables before dump
+    Importer().import_search_suggestions()
+    Importer().import_plant_name_suggestions(None)
+
     from django.db.models import get_app, get_model
     excluded_models = set()
     for exclude in EXCLUDED_MODELS:
@@ -108,12 +116,17 @@ def _load(name):
     transaction.enter_transaction_management(using=using)
     transaction.managed(True, using=using)
 
+    s_time = time.time()
     try:
-        # First remove all character values, assignments and images to
-        # avoid import conflicts and data duplication
+        # First remove all character values, assignments, images and
+        # generated values to avoid import conflicts and data
+        # duplication
         TaxonCharacterValue.objects.all().delete()
         CharacterValue.objects.all().delete()
         ContentImage.objects.all().delete()
+        PlantNameSuggestion.objects.all().delete()
+        SearchSuggestion.objects.all().delete()
+
         with connection.constraint_checks_disabled():
             objects_in_fixture = 0
             loaded_objects_in_fixture = 0
@@ -171,9 +184,15 @@ def _load(name):
 
     transaction.commit(using=using)
     transaction.leave_transaction_management(using=using)
-    return 'Successfully Loaded %s objects from fixture %s'%(
+
+    # Rebuild the search suggestion tables
+    Importer().import_search_suggestions()
+    Importer().import_plant_name_suggestions(None)
+
+    end_time = time.time()
+    return 'Successfully Loaded %s objects from fixture %s in %d seconds'%(
         loaded_objects_in_fixture,
-        fixture_name)
+        fixture_name, end_time - s_time)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
