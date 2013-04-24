@@ -44,7 +44,17 @@ def dumpdata(request):
     # Rebuild the search suggestion tables before dump
     Importer().import_search_suggestions()
     Importer().import_plant_name_suggestions(None)
+    try:
+        job = q.enqueue(_dump)
+        message = 'Export job started (job id: %s)'%job.id
+    except ConnectionError:
+        message = _dump()
 
+    return HttpResponse(message,
+                        mimetype='text/plain; charset=utf-8')
+
+def _dump():
+    s_time = time.time()
     from django.db.models import get_app, get_model
     excluded_models = set()
     for exclude in EXCLUDED_MODELS:
@@ -73,8 +83,9 @@ def dumpdata(request):
         compressed_data.seek(0)
         default_storage.save(DUMP_PATH + f_name + '.gz', compressed_data)
 
-    return HttpResponse('Data exported as %s.gz'%f_name,
-                        mimetype='text/plain; charset=utf-8')
+    return '%d objects exported to %s in %d seconds'%(len(objects), f_name,
+                                                      time.time() - s_time)
+
 
 def list_data_files():
     directories, filenames = default_storage.listdir(DUMP_PATH)
