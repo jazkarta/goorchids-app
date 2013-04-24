@@ -105,7 +105,7 @@ table {
 body {
   background: #f0f2d9;
   color: #293619;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 1.4;
@@ -131,7 +131,7 @@ strong {
 
 h1, h2, h3, h4, h5, h6 {
   color: #733944;
-  font-family: "Droid Serif", serif;
+  font-family: 'Droid Serif', serif;
   padding: 0 0 20px;
 }
 
@@ -330,7 +330,7 @@ input[type="search"] {
   box-shadow: inset 1px 1px 1px #c7c7c7;
   color: #293619;
   display: block;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   font-size: 0.75rem;
   line-height: 1.5;
@@ -351,7 +351,7 @@ input.button,
   box-shadow: inset 1px 1px 1px #8da8bf;
   color: white;
   display: inline-block;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 700;
   font-size: 14px;
   font-size: 0.875rem;
@@ -1358,7 +1358,7 @@ footer .support:last-child {
 }
 .skey .sidebar .instructions h5 {
   color: #333333;
-  font-family: "Open Sans", helvetica, arial, sans-serif;
+  font-family: 'Open Sans', helvetica, arial, sans-serif;
   font-weight: 700;
   padding: 0;
 }
@@ -1955,7 +1955,7 @@ div.scrollableArea:after {
 /* Text input with suggestions */
 input.suggest + div {
   background: #fff;
-  border: 1px solid #999999;
+  border: 1px solid #999;
   position: absolute;
   left: 0;
   top: 0;
@@ -2032,17 +2032,27 @@ input.suggest + div li span {
 }
 
 /* Glossary page */
+#glossary #main h1 {
+  padding: 0 0 10px;
+}
 #glossary #alphabet {
-  height: 33px;
+  *zoom: 1;
   list-style-type: none;
-  margin: 7px 0;
+  margin: 0 0 20px;
   padding: 0;
+}
+#glossary #alphabet:before, #glossary #alphabet:after {
+  content: " ";
+  display: table;
+}
+#glossary #alphabet:after {
+  clear: both;
 }
 #glossary #alphabet li {
   border-left: 1px solid #e1e1dc;
   float: left;
   font-size: 15px;
-  margin: 0;
+  margin: 5px 0 0;
   padding: 0 7px;
 }
 #glossary #alphabet li:first-child {
@@ -2051,10 +2061,12 @@ input.suggest + div li span {
 #glossary #alphabet li.inactive {
   color: #ccc;
 }
-#glossary #alphabet li .current a {
-  color: #000;
+#glossary #alphabet li.current a {
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #eee;
+  -webkit-font-smoothing: antialiased;
 }
-#glossary #alphabet li .current a:hover {
+#glossary #alphabet li.current a:hover {
   text-decoration: none;
 }
 #glossary #terms {
@@ -2070,15 +2082,16 @@ input.suggest + div li span {
   clear: left;
   float: left;
   line-height: 27px;
-  padding: 7px 10px 0 38px;
+  padding: 7px 10px 0;
   width: 190px;
 }
 #glossary #terms dt:first-child, #glossary #terms dt:first-child + dd {
   border-top: 0;
 }
 #glossary #terms dt a {
-  float: left;
-  margin-left: -34px;
+  display: inline-block;
+  margin: 0 5px 0 0;
+  vertical-align: middle;
 }
 #glossary #terms dd {
   margin-left: 190px;

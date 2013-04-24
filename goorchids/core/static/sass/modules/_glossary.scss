@@ -52,16 +52,21 @@ $tooltip-shadow-color: $lightGreen;
 
 /* Glossary page */
 #glossary {
+    
+    #main h1 {
+      padding: 0 0 10px;
+    }
+
     #alphabet {
-        height: 33px;
+        @include clearfix;
         list-style-type: none;
-        margin: 7px 0;
+        margin: 0 0 20px;
         padding: 0;
         li {
             border-left: 1px solid #e1e1dc;
             float: left;
             font-size: 15px;
-            margin: 0;
+            margin: 5px 0 0;
             padding: 0 7px;
             &:first-child {
                 border-left: 0;
@@ -69,8 +74,11 @@ $tooltip-shadow-color: $lightGreen;
             &.inactive {
                 color: #ccc;
             }
-            .current a {
-                color: #000;
+            &.current a {
+                font-weight: bold;
+                text-shadow: 1px 1px 1px #eee;
+                -webkit-font-smoothing: antialiased;
+                
                 &:hover {
                     text-decoration: none;
                 }
@@ -89,14 +97,15 @@ $tooltip-shadow-color: $lightGreen;
             clear: left;
             float: left;
             line-height: 27px;
-            padding: 7px 10px 0 38px;
+            padding: 7px 10px 0;
             width: 190px;
             &:first-child, &:first-child + dd {
                 border-top: 0;
             }
             a {
-                float: left;
-                margin-left: -34px;
+                display: inline-block;
+                margin: 0 5px 0 0;
+                vertical-align: middle;
             }
         }
         dd {
