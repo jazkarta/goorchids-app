@@ -185,7 +185,13 @@ def _load(name, log_entry=None):
             if objects_in_fixture == 0:
                 transaction.rollback(using=using)
                 transaction.leave_transaction_management(using=using)
-                return "No fixture data found. (File format may be invalid.)"
+                msg = "No fixture data found. (File format may be invalid.)"
+                if log_entry:
+                    log_entry.success = False
+                    log_entry.message = msg
+                    log_entry.duration = time.time() - s_time
+                    log_entry.save()
+                return msg
 
         # Since we disabled constraint checks, we must manually check for
         # any invalid keys that might have been added
