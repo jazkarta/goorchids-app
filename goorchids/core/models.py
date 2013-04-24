@@ -4,7 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.dispatch import receiver
 from gobotany.plantoftheday.models import PlantOfTheDay
-from gobotany.core.models import Taxon
+from gobotany.core.models import Taxon, TaxonManager
 
 
 GLOBAL_RANK_CODES = OrderedDict((
@@ -69,6 +69,8 @@ class GoOrchidTaxon(Taxon):
     """Subclass the GoBotany taxon model to add orchid-specific fields.
     """
 
+    objects = TaxonManager()
+
     class Meta:
         verbose_name = "taxon"
         verbose_name_plural = "taxa"
@@ -102,6 +104,11 @@ class GoOrchidTaxon(Taxon):
         return self.taxon_ptr.images
 
 
+class ConservationStatusManager(TaxonManager):
+    def get_by_natural_key(self, region, scientific_name):
+        return self.get(region=region, taxon__scientific_name=scientific_name)
+
+
 class RegionalConservationStatus(models.Model):
     """Zero or more conservation status values per species+region."""
 
@@ -116,6 +123,8 @@ class RegionalConservationStatus(models.Model):
     wetland_status = models.CharField(choices=WETLAND_STATUS_CODES.items(), max_length=4,
                                       default=None, null=True, blank=True)
 
+    objects = ConservationStatusManager()
+
     class Meta:
         verbose_name_plural = 'regional conservation statuses'
         ordering = ('region', 'status', 'rank')
@@ -126,6 +135,11 @@ class RegionalConservationStatus(models.Model):
 
     def __unicode__(self):
         return u'%s: %s, %s' % (self.region, self.status, self.rank)
+
+    def natural_key(self):
+        return (self.region,) + self.taxon.natural_key()
+
+    natural_key.dependencies = ['core.GoOrchidTaxon']
 
 
 @receiver(models.signals.post_save, sender=GoOrchidTaxon)
