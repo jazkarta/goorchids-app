@@ -35,9 +35,6 @@ define([
         };
         $('#region-switcher').select2().change(function() { update_region_tables(); });
         update_region_tables();
-        $('#conservation-status .button').click(function(e) {
-            e.preventDefault();
-        })
 
         // Set up accordions for characteristics
         $('.accordion-header').each(function() {
