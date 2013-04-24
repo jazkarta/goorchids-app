@@ -225,8 +225,29 @@
                     <option value="{{conservation_status.region}}">{{conservation_status.get_region_display}}</option>
                 {% endfor %}
                 </select>
-                <input type="submit" class="button small" value="Show Status" />
-            </form> 
+            </form>
+            <table class="conservation-status" data-region="">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Conservation status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Global Rank</th>
+                        <td>{{taxon.get_global_rank_display|default_if_none:"N/A"}}</td>
+                    </tr>
+                    <tr>
+                        <th>US Status</th>
+                        <td>{{taxon.get_us_status_display|default_if_none:"N/A"}}</td>
+                    </tr>
+                    <tr>
+                        <th>Canadian Rank</th>
+                        <td>{{taxon.get_ca_rank_display|default_if_none:"N/A"}}</td>
+                    </tr>
+                </tbody>
+            </table>
         {% for conservation_status in taxon.regional_conservation_statuses.all %}
         <table class="conservation-status hidden" data-region="{{conservation_status.region}}">
             <thead>
