@@ -3,6 +3,8 @@ from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from django.conf.urls.defaults import include, patterns, url
+
+from gobotany.taxa import views as taxa_views
 from . import views
 
 
@@ -26,6 +28,8 @@ urlpatterns = patterns(
     url(r'^accounts/', include('registration.auth_urls')),
     url(r'^', include('gobotany.search.urls')),
     url(r'^', include('gobotany.site.urls')),
+    url('^species/(?P<genus_slug>[a-z]+)/(?P<epithet>[-a-z\. ]+)/$',
+        taxa_views.species_view, name='taxa-species'),
     url(r'^', include('gobotany.taxa.urls')),
     url(r'^', include('gobotany.simplekey.urls')),)
 
