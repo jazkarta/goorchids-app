@@ -73,12 +73,12 @@
             </div>
     
             <div class="section clear">
-                <a class="clear-all-btn left">Start Over: Clear All</a>
+                Start Over: <a href="#" class="clear-all-btn left">Clear All</a>
             </div>
     
-            <div class="section help">
-                <a href="{% url 'site-getting-started' %}"
-                    class="get-help-btn left">Need help? Get Help</a>
+            <div class="section help hidden">
+                Need help? <a href="{% url 'site-getting-started' %}"
+                    class="get-help-btn left">Get Help</a>
             </div>
 
             <div class="section instructions close-filters">Close filters</div>
@@ -168,7 +168,7 @@
     {# TODO: eventually move elsewhere #}
     {% include "simplekey/_partner_site_js.html" %}
 
-    <div id="intro-overlay">
+    <div id="intro-overlay" class="hidden">
        <div class="number-of-species">
             <a href="#" class="button large red"><span class="number">…</span> possible matches</a>
         </div>
@@ -176,7 +176,7 @@
             <a href="#" class="button large">Answer questions here</a>
         </div>
         <div class="continue">
-            <a href="#" class="button large green">Continue</a>
+            <a class="button large green">Continue</a>
         </div>
     </div>
 {% endblock %}
