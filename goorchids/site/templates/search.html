@@ -82,6 +82,7 @@
                     {% endfor %}
                     </ul>
 
+                    {% if paginator.num_pages > 1 %}
                     <div class="search-navigation">
                         <ul>
                         {% if page.has_previous %}
@@ -106,6 +107,7 @@
                         {% endif %}
                         </ul>
                     </div>
+                    {% endif %}
                 {% endif %}
 {% endblock %}
 
