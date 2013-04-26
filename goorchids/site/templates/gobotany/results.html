@@ -22,6 +22,7 @@
     require(['simplekey/results'], function (results) {
         results.results_page_init(args);
     });
+    require(['orchid_site/results']);
 {% endblock %}
 
 {% block body_attributes %}class="skey results {{ key|title|lower }}

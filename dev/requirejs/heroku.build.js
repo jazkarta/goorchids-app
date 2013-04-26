@@ -45,7 +45,8 @@
                 'site/maps_test',
                 'util/suggester_init',
                 'util/location_field_init',
-                'orchid_site/species'
+                'orchid_site/species',
+                'orchid_site/results'
             ],
             create: true
         }
