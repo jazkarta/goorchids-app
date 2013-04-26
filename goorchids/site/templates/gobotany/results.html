@@ -185,11 +185,12 @@
 {% handlebars 'filter-view' %}
     <a class="option">
         <span class="name">{{view.filter.info.friendly_name}}?</span>
-        <span class="value">{{view.display_value}}</span>
+        <span class="value">{{view.display_value}}
+          {{#if view.filter.value}}
+          <a class="clear-filter" {{action "clear"}}>Clear</a>
+          {{/if}}
+        </span>
     </a>
-    {{#if view.filter.value}}
-    <a class="clear-filter" {{action "clear"}}>Clear</a>
-    {{/if}}
 {% endhandlebars %}
 {% handlebars 'filter-preview' %}
     <a class="option">
