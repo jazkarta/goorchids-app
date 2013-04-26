@@ -74,8 +74,19 @@
         border-bottom: 1px solid #9a9f86;
 
         .option {
+          cursor: pointer;
           display: block;
           padding: 15px;
+          position: relative;
+          
+          &:after {
+            content: "\26";
+            font-family: 'icomoon';
+            position: absolute;
+              right: 15px;
+              top: 17px;
+            z-index: 10;
+          }
         }
         
         .working-area {
@@ -93,8 +104,33 @@
     .section {
       padding: 15px;
       
+      &.clear {
+        padding: 15px 15px 5px;
+        text-align: center;
+      }
+      &.help {
+        padding: 5px 15px 15px;
+        text-align: center;
+      }
+      
       p:last-child {
         padding: 0;
+      }
+      
+      .already-know {
+        h6 {
+          padding: 0 0 10px;
+        }
+        label {
+          display: block;
+          padding: 0 0 5px;
+        }
+        .button {
+          margin: 0 0 0 10px;
+        }
+        .ember-view {
+          margin: 0 0 5px;
+        }
       }
       
       .get-choices,
@@ -104,7 +140,11 @@
         margin: 0;
       }
       
-      
+      .get-choices {
+        display: block;
+        margin: 0 0 10px;
+        text-align: center;
+      }
     }
     
   } // .sidebar

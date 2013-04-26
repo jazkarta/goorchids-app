@@ -397,6 +397,30 @@ input.button.large, .skey .sidebar .section input.large.get-choices,
   font-size: 1.25rem;
   padding: 15px 30px;
 }
+input.button.white, .skey .sidebar .section input.white.get-choices,
+.skey .sidebar .section input.white.clear-all-btn,
+.skey .sidebar .section input.white.get-help-btn,
+.button.white,
+.skey .sidebar .section .white.get-choices,
+.skey .sidebar .section .white.clear-all-btn,
+.skey .sidebar .section .white.get-help-btn {
+  border: 1px solid #c0c0c0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #293619;
+  font-size: 11px;
+  font-size: 0.6875rem;
+  background-color: #e9e9e9;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e9e9e9), color-stop(100%, #bfbfbd));
+  background-image: -webkit-linear-gradient(top, #e9e9e9, #bfbfbd);
+  background-image: -moz-linear-gradient(top, #e9e9e9, #bfbfbd);
+  background-image: -ms-linear-gradient(top, #e9e9e9, #bfbfbd);
+  background-image: -o-linear-gradient(top, #e9e9e9, #bfbfbd);
+  background-image: linear-gradient(top, #e9e9e9, #bfbfbd);
+  padding: 5px 7px;
+  text-shadow: none;
+  text-transform: uppercase;
+}
 input.button.red, .skey .sidebar .section input.red.get-choices,
 .skey .sidebar .section input.red.clear-all-btn,
 .skey .sidebar .section input.red.get-help-btn,
@@ -1514,8 +1538,18 @@ footer .support:last-child {
   border-bottom: 1px solid #9a9f86;
 }
 .skey .sidebar .option-list > li .option {
+  cursor: pointer;
   display: block;
   padding: 15px;
+  position: relative;
+}
+.skey .sidebar .option-list > li .option:after {
+  content: "\26";
+  font-family: 'icomoon';
+  position: absolute;
+  right: 15px;
+  top: 17px;
+  z-index: 10;
 }
 .skey .sidebar .option-list > li .working-area {
   background: #c7cfb1;
@@ -1529,13 +1563,41 @@ footer .support:last-child {
 .skey .sidebar .section {
   padding: 15px;
 }
+.skey .sidebar .section.clear {
+  padding: 15px 15px 5px;
+  text-align: center;
+}
+.skey .sidebar .section.help {
+  padding: 5px 15px 15px;
+  text-align: center;
+}
 .skey .sidebar .section p:last-child {
   padding: 0;
+}
+.skey .sidebar .section .already-know h6 {
+  padding: 0 0 10px;
+}
+.skey .sidebar .section .already-know label {
+  display: block;
+  padding: 0 0 5px;
+}
+.skey .sidebar .section .already-know .button, .skey .sidebar .section .already-know .get-choices,
+.skey .sidebar .section .already-know .clear-all-btn,
+.skey .sidebar .section .already-know .get-help-btn {
+  margin: 0 0 0 10px;
+}
+.skey .sidebar .section .already-know .ember-view {
+  margin: 0 0 5px;
 }
 .skey .sidebar .section .get-choices,
 .skey .sidebar .section .clear-all-btn,
 .skey .sidebar .section .get-help-btn {
   margin: 0;
+}
+.skey .sidebar .section .get-choices {
+  display: block;
+  margin: 0 0 10px;
+  text-align: center;
 }
 .skey .main-content-wrapper .plant-list {
   *zoom: 1;
