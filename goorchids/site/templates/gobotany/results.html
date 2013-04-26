@@ -126,7 +126,14 @@
           </h3>
         </header>
         
-        
+        <div id="results-tabs" class="hidden">
+          {% handlebars 'species-view-tabs' %}
+            <li><a {{bindAttr class="App3.show_grid:current"}}
+                   {{action choose_grid_view}}>Photos</a></li>
+            <li><a {{bindAttr class="App3.show_list:current"}}
+                   {{action choose_list_view}}>List</a></li>
+          {% endhandlebars %}
+        </div><!-- /#results-tabs -->        
   
         <div id="results-section">
   
@@ -151,7 +158,7 @@
             <div class="plant-list">
                 <div class="wait"></div>
             </div>
-            <div class="toplink">
+            <div class="toplink hidden">
                 <a href="#top" class="button">Back to top</a>
             </div>
           </section><!-- /.results-tabs-content -->
