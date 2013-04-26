@@ -1,14 +1,59 @@
 .skey { // simpley key body class
+  
+  img.arrow {
+    display: none;
+  }
+  
   #main {
     @include clearfix;
+    
+    .main-content-wrapper {
+      @include span-columns(9);
+      @include omega;
+    }
+    
+    @include media(max-width 865px) {
+          
+      .main-content-wrapper {
+        @include span-columns(8 of 12);
+        @include omega;
+      }
+    }
+    
+    @include media(max-width 650px) {
+      .main-content-wrapper {
+        @include span-columns(12);
+      }
+    }
+    
+    @include media(max-width 500px) {
+      .main-content-wrapper {
+        border-top: 1px solid $green;
+        margin: 30px 0 0;
+        padding: 20px 0 0;
+      }
+      
+      .results-tabs-content {
+        padding: 10px 0;
+      }
+    }
   }
   
   // SIDEBAR
   .sidebar {
     background: #d6dcbf;
     border-radius: 3px;
-    overflow: hidden;
+    @include font-size(13);
+    position: relative;
     @include span-columns(3);
+    
+    @include media(max-width 865px) {
+      @include span-columns(4 of 12);
+    }
+    
+    @include media(max-width 650px) {
+      @include span-columns(12);
+    }
     
     .instructions {
       background: $lightestGreen;
@@ -36,15 +81,118 @@
         .working-area {
           background: $lightestGreen;
           @include box-shadow(inset 0 0 5px $lightGreen);
-          padding: 5px 15px;
+          padding: 10px 15px;
+          
+          .closed {
+            display: none;
+          }
         } //.working-area
       }
     } // .option-list
+    
+    .section {
+      padding: 15px;
+      
+      p:last-child {
+        padding: 0;
+      }
+      
+      .get-choices,
+      .clear-all-btn,
+      .get-help-btn {
+        @extend .button;
+        margin: 0;
+      }
+      
+      
+    }
+    
   } // .sidebar
   
   // MAIN CONTENT
   .main-content-wrapper {
-    @include span-columns(9);
+    
+    .plant-list {
+      @include clearfix;
+      height: auto !important;
+      
+      .plant {
+        background: #f7f9ed;
+        @include box-shadow(0 0 3px $gray);
+        @include font-size(12);
+        padding: 5px;
+        //min-height: 220px;
+        margin: 15px 10px 0 0;
+        text-align: center;
+        @include span-columns(3);
+        left: auto !important;
+        top: auto !important;
+        
+        &:nth-child(4n) {
+          @include omega;
+        }
+        
+        @include media(max-width 865px) {
+          min-height: 222px;
+          @include span-columns(4);
+          
+          &:nth-child(4n) {
+            @include span-columns(4);
+          }
+          
+          &:nth-child(3n) {
+            @include omega;
+          }
+        }
+        
+        @include media(max-width 500px) {
+          @include span-columns(6);
+          
+          &:nth-child(4n),
+          &:nth-child(3n) {
+            @include span-columns(6);
+          }
+          
+          &:nth-child(2n) {
+            @include omega;
+          }
+        }
+        
+        .plant-name {
+          line-height: 1.4;
+          padding: 10px 0 0;
+          
+          .latin {
+            display: block;
+            font-style: italic;
+          }
+        }
+        
+        .plant-img-container {
+          display: inline-block;
+          line-height: 1;
+          position: relative;
+          
+          img {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            line-height: 1;
+          }
+          
+          &:after {
+            @include box-shadow(inset 0 0 0 5px rgba(255, 255, 255, .6));
+            content: " ";
+            height: 100%;
+            position: absolute;
+              top: 0;
+              left: 0;
+            width: 100%;
+          }
+        }
+        
+      } // .in-results
+    } // .plant-list
     
     #results-tabs {
       @include clearfix;
@@ -84,10 +232,25 @@
     
     .results-tabs-content {
       background: $lime;
-      border-top: 1px solid #c6c8b0;
+      //border-top: 1px solid #c6c8b0;
       margin-top: -1px;
       padding: 25px 0;
     } // .results-tabs-content
+    
+    .ember-view {
+      @include clearfix;
+    }
+
+    .main-content-header {
+      h1 {
+        display: inline-block;
+      }
+    
+      .species-count-heading {
+        float: right;
+        margin: 20px 0;
+      }
+    }
     
   } // .main-content-wrapper
   
@@ -99,5 +262,24 @@
     text-align: center;
     width: 100%;
     z-index: 9999;
+  }
+  
+  .toplink {
+    background: rgba(255, 255, 255, .5);
+    padding: 10px;
+    position: fixed;
+    bottom: 20%;
+    right: 10px;
+    
+    .button {
+      margin: 0;
+    }
+  }
+  
+  #plant-detail-modal {
+    background: $white;
+    border-radius: 5px;
+    @include font-size(13);
+    padding: 10px 15px;
   }
 }
