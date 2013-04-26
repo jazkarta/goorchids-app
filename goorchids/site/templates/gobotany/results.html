@@ -59,7 +59,7 @@
                         elementId="families"
                         contentBinding="App3.family_choices"
                         selectionBinding="App3.family_value"}}
-                      <button id="family_clear">Clear</button>
+                      <button id="family_clear" class="button white">Clear</button>
                     {% endhandlebars %}
                     <label>Genus:</label>
                     {% handlebars %}
@@ -67,7 +67,7 @@
                         elementId="genera"
                         contentBinding="App3.genus_choices"
                         selectionBinding="App3.genus_value"}}
-                      <button id="genus_clear">Clear</button>
+                      <button id="genus_clear" class="button white">Clear</button>
                     {% endhandlebars %}
                 </div>
             </div>
@@ -85,11 +85,8 @@
 
         </div><!-- /#question-nav -->
         
-        <div class="working-area" aria-live="polite" aria-relevant="additions removals">
-          <img class="arrow" alt=""
-              src="/static/images/layout/working-area-arrow.png">
-          <a href="#" class="close"></a>
-  
+        <div class="working-area modal" aria-live="polite" aria-relevant="additions removals" style="display: none">
+
           <h4 class="question"></h4>
           <div>
             <div class="info">
@@ -107,7 +104,7 @@
                   </ul>
                 </div>
                 <div class="actions">
-                  <a class="apply-btn" href="#">Apply</a>
+                  <a class="apply-btn button" href="#">Apply</a>
                 </div>
               </div><!-- /.scroller -->
             </div><!-- /.info -->
@@ -118,11 +115,6 @@
       <div class="main-content-wrapper">
         <header class="main-content-header">
           <h1>{{ subgroup_results_page.main_heading|capfirst }}</h1>
-        </header>
-        
-        
-  
-        <div id="results-section">
           <h3 class="species-count-heading">
             <span>
               {% handlebars %}
@@ -132,16 +124,11 @@
               {% endhandlebars %}
             </span>
           </h3>
+        </header>
+        
+        
   
-  
-          <div id="results-tabs">
-            {% handlebars 'species-view-tabs' %}
-              <li><a {{bindAttr class="App3.show_grid:current"}}
-                     {{action choose_grid_view}}>Photos</a></li>
-              <li><a {{bindAttr class="App3.show_list:current"}}
-                     {{action choose_list_view}}>List</a></li>
-            {% endhandlebars %}
-          </div><!-- /#results-tabs -->
+        <div id="results-section">
   
           <section class="results-tabs-content">
             <div>
