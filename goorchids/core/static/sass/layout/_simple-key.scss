@@ -185,6 +185,11 @@
   // MAIN CONTENT
   .main-content-wrapper {
     
+    .select2-container {
+      margin: 0 0 0 5px;
+      width: 20%;
+    }
+    
     .plant-list {
       @include clearfix;
       position: relative;

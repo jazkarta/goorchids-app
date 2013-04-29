@@ -386,6 +386,7 @@ footer .support:last-child { margin-right: 0; }
 .skey .sidebar .section .already-know .select2-container { width: 65%; }
 .skey .sidebar .section .get-choices, .skey .sidebar .section .clear-all-btn, .skey .sidebar .section .get-help-btn { margin: 0; }
 .skey .sidebar .section .get-choices { display: block; margin: 0 0 10px; text-align: center; }
+.skey .main-content-wrapper .select2-container { margin: 0 0 0 5px; width: 20%; }
 .skey .main-content-wrapper .plant-list { *zoom: 1; position: relative; }
 .skey .main-content-wrapper .plant-list:before, .skey .main-content-wrapper .plant-list:after { content: " "; display: table; }
 .skey .main-content-wrapper .plant-list:after { clear: both; }

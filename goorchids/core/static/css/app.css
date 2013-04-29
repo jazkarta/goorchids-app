@@ -1634,6 +1634,10 @@ footer .support:last-child {
   margin: 0 0 10px;
   text-align: center;
 }
+.skey .main-content-wrapper .select2-container {
+  margin: 0 0 0 5px;
+  width: 20%;
+}
 .skey .main-content-wrapper .plant-list {
   *zoom: 1;
   position: relative;
