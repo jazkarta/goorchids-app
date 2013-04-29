@@ -351,12 +351,13 @@ footer .support:last-child { margin-right: 0; }
 .skey #main:after { clear: both; }
 .skey #main .main-content-wrapper { display: block; float: left; margin-right: 2.35765%; width: 74.41059%; margin-right: 0; }
 .skey #main .main-content-wrapper:last-child { margin-right: 0; }
+@media screen and (max-width: 1024px) { .skey #main .select2-container { display: none; }
+  .skey #main .select2-container + select { position: relative; left: auto; } }
 @media screen and (max-width: 865px) { .skey #main .main-content-wrapper { display: block; float: left; margin-right: 2.35765%; width: 65.88078%; margin-right: 0; }
   .skey #main .main-content-wrapper:last-child { margin-right: 0; } }
-@media screen and (max-width: 650px) { .skey #main .main-content-wrapper { display: block; float: left; margin-right: 2.35765%; width: 100%; }
+@media screen and (max-width: 650px) { .skey #main .main-content-wrapper { border-top: 1px solid #728f50; margin: 30px 0 0; padding: 20px 0 0; display: block; float: left; margin-right: 2.35765%; width: 100%; }
   .skey #main .main-content-wrapper:last-child { margin-right: 0; } }
-@media screen and (max-width: 500px) { .skey #main .main-content-wrapper { border-top: 1px solid #728f50; margin: 30px 0 0; padding: 20px 0 0; }
-  .skey #main .results-tabs-content { padding: 10px 0; } }
+@media screen and (max-width: 500px) { .skey #main .results-tabs-content { padding: 10px 0; } }
 .skey .sidebar { background: #d6dcbf; border-radius: 3px; font-size: 13px; font-size: 0.8125rem; position: relative; display: block; float: left; margin-right: 2.35765%; width: 23.23176%; }
 .skey .sidebar:last-child { margin-right: 0; }
 @media screen and (max-width: 865px) { .skey .sidebar { display: block; float: left; margin-right: 2.35765%; width: 31.76157%; }
@@ -420,7 +421,7 @@ footer .support:last-child { margin-right: 0; }
 .skey .main-content-wrapper #results-tabs li a { border: 1px solid #c6c8b0; border-radius: 3px 3px 0 0; -webkit-box-shadow: 0 0 5px #c6c8b0; box-shadow: 0 0 5px #c6c8b0; display: inline-block; padding: 5px 25px; position: relative; }
 .skey .main-content-wrapper #results-tabs li a:before { background: #f0f2d9; content: " "; bottom: -8px; display: block; height: 7px; left: 0; position: absolute; z-index: 20; width: 100%; }
 .skey .main-content-wrapper #results-tabs li a.current:before { bottom: -5px; }
-.skey .main-content-wrapper .results-tabs-content { background: #f0f2d9; margin-top: -1px; padding: 25px 0; }
+.skey .main-content-wrapper #results-display { padding: 10px 0 15px; }
 .skey .main-content-wrapper .ember-view { *zoom: 1; }
 .skey .main-content-wrapper .ember-view:before, .skey .main-content-wrapper .ember-view:after { content: " "; display: table; }
 .skey .main-content-wrapper .ember-view:after { clear: both; }

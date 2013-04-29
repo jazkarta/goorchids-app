@@ -12,6 +12,17 @@
       @include omega;
     }
     
+    @include media(max-width 1024px) {
+      .select2-container {
+        display: none;
+        
+        + select {
+          position: relative;
+          left: auto;
+        }
+      }
+    }
+    
     @include media(max-width 865px) {
           
       .main-content-wrapper {
@@ -22,16 +33,14 @@
     
     @include media(max-width 650px) {
       .main-content-wrapper {
+        border-top: 1px solid $green;
+        margin: 30px 0 0;
+        padding: 20px 0 0;
         @include span-columns(12);
       }
     }
     
     @include media(max-width 500px) {
-      .main-content-wrapper {
-        border-top: 1px solid $green;
-        margin: 30px 0 0;
-        padding: 20px 0 0;
-      }
       
       .results-tabs-content {
         padding: 10px 0;
@@ -340,11 +349,15 @@
     } // #results-tabs
     
     .results-tabs-content {
-      background: $lime;
+      //background: $lime;
       //border-top: 1px solid #c6c8b0;
-      margin-top: -1px;
-      padding: 25px 0;
+      //margin-top: -1px;
+      //padding: 25px 0;
     } // .results-tabs-content
+    
+    #results-display {
+      padding: 10px 0 15px;
+    }
     
     .ember-view {
       @include clearfix;

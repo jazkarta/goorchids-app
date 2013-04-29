@@ -1453,6 +1453,15 @@ footer .support:last-child {
 .skey #main .main-content-wrapper:last-child {
   margin-right: 0;
 }
+@media screen and (max-width: 1024px) {
+  .skey #main .select2-container {
+    display: none;
+  }
+  .skey #main .select2-container + select {
+    position: relative;
+    left: auto;
+  }
+}
 @media screen and (max-width: 865px) {
   .skey #main .main-content-wrapper {
     display: block;
@@ -1467,6 +1476,9 @@ footer .support:last-child {
 }
 @media screen and (max-width: 650px) {
   .skey #main .main-content-wrapper {
+    border-top: 1px solid #728f50;
+    margin: 30px 0 0;
+    padding: 20px 0 0;
     display: block;
     float: left;
     margin-right: 2.35765%;
@@ -1477,11 +1489,6 @@ footer .support:last-child {
   }
 }
 @media screen and (max-width: 500px) {
-  .skey #main .main-content-wrapper {
-    border-top: 1px solid #728f50;
-    margin: 30px 0 0;
-    padding: 20px 0 0;
-  }
   .skey #main .results-tabs-content {
     padding: 10px 0;
   }
@@ -1819,10 +1826,8 @@ footer .support:last-child {
 .skey .main-content-wrapper #results-tabs li a.current:before {
   bottom: -5px;
 }
-.skey .main-content-wrapper .results-tabs-content {
-  background: #f0f2d9;
-  margin-top: -1px;
-  padding: 25px 0;
+.skey .main-content-wrapper #results-display {
+  padding: 10px 0 15px;
 }
 .skey .main-content-wrapper .ember-view {
   *zoom: 1;
