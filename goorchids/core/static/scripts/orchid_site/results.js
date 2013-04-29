@@ -6,6 +6,10 @@ define([
     'bridge/ember',
     'select2/select2.min'
 ], function($, Ember) {
+    $('.continue').click(function(e) {
+        e.preventDefault();
+    });
+
     // Make Ember selectboxes use select2
     // (from http://stackoverflow.com/questions/14910785/ember-select-with-custom-select-plugin-how-to-bind-the-two)
     Ember.Select.reopen({
