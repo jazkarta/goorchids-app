@@ -129,7 +129,7 @@
                             {% else %}
                                 <ul{% if character.name in compact_multivalue_characters %} class="compact"{% endif %}>
                                 {% for val in character.values %}
-                                    <li{% if forloop.last %} class="last">{{val}}{% else %}>{{val}}, {% endif %}</li>
+                                    <li{% if forloop.last %} class="last">{{val}}{% else %}>{{val}}{% endif %}</li>
                                 {% endfor %}
                                 </ul>
                             {% endif %}
@@ -161,7 +161,7 @@
                         {% else %}
                             <ul{% if character.name in compact_multivalue_characters %} class="compact"{% endif %}>
                             {% for val in character.values %}
-                                <li{% if forloop.last %} class="last">{{ val }}{% else %}>{{ val }}, {% endif %}</li>
+                                <li{% if forloop.last %} class="last">{{ val }}{% else %}>{{ val }}{% endif %}</li>
                             {% endfor %}
                             </ul>
                         {% endif %}
