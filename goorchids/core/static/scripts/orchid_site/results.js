@@ -10,6 +10,11 @@ define([
         e.preventDefault();
     });
 
+    $('.toplink').click(function(e) {
+        e.preventDefault();
+        $('body,html').animate({scrollTop: $('#question-nav').offset().top}, 200);
+    });
+
     // Make Ember selectboxes use select2
     // (from http://stackoverflow.com/questions/14910785/ember-select-with-custom-select-plugin-how-to-bind-the-two)
     Ember.Select.reopen({
