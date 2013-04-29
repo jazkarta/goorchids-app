@@ -5,18 +5,46 @@
 .characteristics {
   
   dl {
+    @include clearfix;
     padding: 0 0 5px;
     
     dt,
-    dd,
-    ul,
-    li {
-      display: inline-block;
+    dd {
+      display: block;
+      float: left;
+    }
+    
+    dt {
+      text-align: right;
+      padding: 0 10px 0 0;
+      width: 30%;
+    }
+    
+    dd {
+      width: 70%;
+      
+      ul {
+        display: inline-block;
+        list-style: disc;
+        padding: 0 0 0 15px;
+        vertical-align: text-top;
+      }
     }
   }
   
   dt {
     font-weight: 600;
     text-transform: uppercase;
+  }
+  
+  @include media(max-width 800px) {
+    dl {
+      dt {
+        width: 40%;
+      }
+      dd {
+        width: 60%;
+      }
+    }
   }
 }

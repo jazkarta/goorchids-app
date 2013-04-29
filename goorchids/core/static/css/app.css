@@ -2124,17 +2124,46 @@ div.sb-message a:link, div.sb-message a:visited {
   Modules: Characteristics
 */
 .characteristics dl {
+  *zoom: 1;
   padding: 0 0 5px;
 }
+.characteristics dl:before, .characteristics dl:after {
+  content: " ";
+  display: table;
+}
+.characteristics dl:after {
+  clear: both;
+}
 .characteristics dl dt,
-.characteristics dl dd,
-.characteristics dl ul,
-.characteristics dl li {
+.characteristics dl dd {
+  display: block;
+  float: left;
+}
+.characteristics dl dt {
+  text-align: right;
+  padding: 0 10px 0 0;
+  width: 30%;
+}
+.characteristics dl dd {
+  width: 70%;
+}
+.characteristics dl dd ul {
   display: inline-block;
+  list-style: disc;
+  padding: 0 0 0 15px;
+  vertical-align: text-top;
 }
 .characteristics dt {
   font-weight: 600;
   text-transform: uppercase;
+}
+@media screen and (max-width: 800px) {
+  .characteristics dl dt {
+    width: 40%;
+  }
+  .characteristics dl dd {
+    width: 60%;
+  }
 }
 
 .content-area {
