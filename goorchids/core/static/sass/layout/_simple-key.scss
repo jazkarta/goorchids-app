@@ -73,6 +73,22 @@
       > li {
         border-bottom: 1px solid #9a9f86;
 
+        &.active {
+          .option {
+            background: $darkerGreen;
+            color: $white;
+            @include transition(background .5s ease-in-out);
+            
+            &:after {
+              content: "\25";
+            }
+            
+            .gloss {
+              color: $white;
+            }
+          }
+        }
+
         .option {
           cursor: pointer;
           display: block;
@@ -86,6 +102,15 @@
               right: 15px;
               top: 17px;
             z-index: 10;
+          }
+          
+          ._clear-filter {
+            background: url(../images/graphics/icon-close.png) no-repeat 0 0;
+            display: inline-block;
+            @include hide-text;
+            height: 16px;
+            width: 16px;
+            vertical-align: middle;
           }
         }
         
@@ -105,9 +130,14 @@
       padding: 15px;
       
       &.clear {
-        padding: 15px 15px 5px;
+        padding: 15px 15px 10px;
         text-align: center;
+        
+        .button {
+          margin: 0 0 0 15px;
+        }
       }
+      
       &.help {
         padding: 5px 15px 15px;
         text-align: center;
@@ -130,6 +160,9 @@
         }
         .ember-view {
           margin: 0 0 5px;
+        }
+        .select2-container {
+          width: 65%;
         }
       }
       
@@ -154,26 +187,57 @@
     
     .plant-list {
       @include clearfix;
-      height: auto !important;
+      position: relative;
+      
+      @include media(max-width 1024px) {
+        height: auto !important;
+      }
       
       .plant {
         background: #f7f9ed;
-        @include box-shadow(0 0 3px $gray);
+        border: 1px solid $lighterGreen;
+        @include box-sizing(content-box);
+        display: block;
         @include font-size(12);
-        padding: 5px;
-        //min-height: 220px;
-        margin: 15px 10px 0 0;
+        height: 210px;
+        padding: 8px 6px;
+        position: absolute;
         text-align: center;
-        @include span-columns(3);
-        left: auto !important;
-        top: auto !important;
+        width: 160px;
         
-        &:nth-child(4n) {
-          @include omega;
+        &.genus_join_left {
+          border-left: 0;
+        }
+        
+        &.genus_join_right {
+          border-right: 0;
+          padding-right: 12px;
+        }
+        
+        @include media(max-width 1024px) {
+          border: 0;
+          @include box-shadow(0 0 3px 1px $lightGray);
+          @include box-sizing(border-box);
+          height: auto;
+          min-height: 220px;
+          padding: 5px;
+          margin: 10px 0 0;
+          position: relative;
+          @include span-columns(3);
+          left: auto !important;
+          top: auto !important;
+          
+          &.genus_join_right {
+            padding-right: 5px;
+          }
+          
+          &:nth-child(4n) {
+            @include omega;
+          }
         }
         
         @include media(max-width 865px) {
-          min-height: 222px;
+          min-height: 210px;
           @include span-columns(4);
           
           &:nth-child(4n) {
