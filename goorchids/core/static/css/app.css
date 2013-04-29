@@ -1535,11 +1535,29 @@ footer .support:last-child {
     padding: 8px 10px;
     position: relative;
   }
-  .skey .sidebar .working-area .choice:after {
+  .skey .sidebar .working-area .choice.checked label:after {
+    background: #666;
+    border: 1px solid #333;
+    -webkit-box-shadow: inset 1px 1px 2px #333333;
+    box-shadow: inset 1px 1px 2px #333333;
+    color: white;
+    content: "Selected";
+    font-weight: 400;
+  }
+  .skey .sidebar .working-area .choice .gloss {
+    color: #c7cfb1;
+    border-bottom: 1px dashed #c7cfb1;
+  }
+  .skey .sidebar .working-area .choice input {
+    display: none;
+  }
+  .skey .sidebar .working-area .choice label:after {
     border: 1px solid #c0c0c0;
     -webkit-box-shadow: none;
     box-shadow: none;
     color: #293619;
+    cursor: pointer;
+    display: inline-block;
     font-size: 11px;
     font-size: 0.6875rem;
     font-weight: 600;
@@ -1558,22 +1576,10 @@ footer .support:last-child {
     position: absolute;
     top: 5px;
     right: 10px;
+    z-index: 10;
   }
-  .skey .sidebar .working-area .choice.checked:after {
-    background: #666;
-    border: 1px solid #333;
-    -webkit-box-shadow: inset 1px 1px 2px #333333;
-    box-shadow: inset 1px 1px 2px #333333;
-    color: white;
-    content: "Selected";
-    font-weight: 400;
-  }
-  .skey .sidebar .working-area .choice .gloss {
-    color: #c7cfb1;
-    border-bottom: 1px dashed #c7cfb1;
-  }
-  .skey .sidebar .working-area .choice input {
-    display: none;
+  .skey .sidebar .working-area .choice label:after:hover {
+    background: #aaa;
   }
 }
 .skey .sidebar .instructions {
