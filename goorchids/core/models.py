@@ -103,6 +103,10 @@ class GoOrchidTaxon(Taxon):
     def images(self):
         return self.taxon_ptr.images
 
+    def clean(self):
+        """Trim whitespace on scientific name"""
+        self.scientific_name = self.scientific_name.strip()
+
 
 class ConservationStatusManager(TaxonManager):
     def get_by_natural_key(self, region, scientific_name):
