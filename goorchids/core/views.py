@@ -23,7 +23,7 @@ from gobotany.core.models import (TaxonCharacterValue, CharacterValue,
                                   ContentImage)
 from gobotany.site.models import PlantNameSuggestion, SearchSuggestion
 from gobotany.core.importer import Importer
-from .models import ImportLog
+from .models import RegionalConservationStatus, ImportLog
 
 from rq import Queue
 from redis.exceptions import ConnectionError
@@ -155,6 +155,7 @@ def _load(name, log_entry=None):
         ContentImage.objects.all().delete()
         PlantNameSuggestion.objects.all().delete()
         SearchSuggestion.objects.all().delete()
+        RegionalConservationStatus.objects.all().delete()
 
         with connection.constraint_checks_disabled():
             objects_in_fixture = 0
