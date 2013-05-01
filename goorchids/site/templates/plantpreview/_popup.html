@@ -1,0 +1,53 @@
+{% load verbatim %}
+{% handlebars_template "plantpreview-popup-template" %}
+<div id="plant-detail-modal">
+  <div class="modal-wrap">
+    <div class="inner">
+      <h3 class="heading">
+        {{plant.scientific_name}} <span>{{plant.common_name}}</span>
+      </h3>
+      <div id="plant-details">
+	<div class="list-item">
+	  <div class="img-gallery">
+	    <div class="frame"></div>
+	    <div class="img-container">
+	      <div class="images">
+                {{#each plant.images}}
+                <img src="{{large_thumb_url}}" alt="{{title}}">
+                {{/each}}
+	      </div>
+	    </div>
+	    <div class="controls">
+	      <a class="prev">Prev</a>
+	      <a class="next">Next</a>
+	    </div>
+	  </div>
+          <div class="details">
+            <p class="facts">{{{plant.factoid}}}</p>
+	    <div class="characteristics">
+              {{#each characters}}
+              <dl>
+                <dt>{{friendly_name}}</dt>
+                <dd>
+                  {{#if is_sequence}}
+                    <ul {{#if is_compact}}class="compact"{{/if}}>
+                      {{#each display_value}}
+                      <li>{{this}}</li>
+                      {{/each}}
+                    </ul>
+                  {{else}}
+                    {{{display_value}}}
+                  {{/if}}
+                </dd>
+              </dl>
+              {{/each}}
+            </div>
+            <a href="{{plant_url}}" class="go-to-species-page button large">Go to Species Page</a>
+	  </div>
+	  <div class="clearit"></div>
+	</div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endhandlebars_template %}
