@@ -105,7 +105,7 @@ table {
 body {
   background: #f0f2d9;
   color: #293619;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 1.4;
@@ -131,7 +131,7 @@ strong {
 
 h1, h2, h3, h4, h5, h6 {
   color: #733944;
-  font-family: 'Droid Serif', serif;
+  font-family: "Droid Serif", serif;
   padding: 0 0 20px;
 }
 
@@ -213,7 +213,7 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-.icon-search, .icon-plus, .icon-minus, .icon-checkmark, .icon-caret-up, .icon-caret-down, .icon-caret-left, .icon-caret-right, .icon-circle-arrow-up, .icon-circle-arrow-down, .icon-cancel-circle, .icon-close, .icon-leaf, .icon-indexmanager, .icon-list, .icon-th-large, .icon-arrow-left, .icon-arrow-right, .icon-arrow-down, .icon-arrow-up {
+.icon-search, .icon-plus, .icon-minus, .icon-checkmark, .icon-caret-up, .icon-caret-down, .icon-caret-left, .icon-caret-right, .icon-circle-arrow-up, .icon-circle-arrow-down, .icon-cancel-close, .icon-close, .icon-leaf, .icon-indexmanager, .icon-list, .icon-th-large, .icon-arrow-left, .icon-arrow-right, .icon-arrow-down, .icon-arrow-up {
   font-family: 'icomoon';
   speak: none;
   font-style: normal;
@@ -264,7 +264,7 @@ you can use the generic selector below, but it's slower:
   content: "\2a";
 }
 
-.icon-cancel-circle:before {
+.icon-cancel-close:before {
   content: "\2b";
 }
 
@@ -330,7 +330,7 @@ input[type="search"] {
   box-shadow: inset 1px 1px 1px #c7c7c7;
   color: #293619;
   display: block;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 12px;
   font-size: 0.75rem;
   line-height: 1.5;
@@ -356,7 +356,7 @@ input.button, .skey .sidebar .section input.get-choices,
   box-shadow: inset 1px 1px 1px #8da8bf;
   color: white;
   display: inline-block;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-size: 14px;
   font-size: 0.875rem;
@@ -404,7 +404,7 @@ input.button.white, .skey .sidebar .section input.white.get-choices,
 .skey .sidebar .section .white.get-choices,
 .skey .sidebar .section .white.clear-all-btn,
 .skey .sidebar .section .white.get-help-btn {
-  border: 1px solid #c0c0c0;
+  border: 1px solid silver;
   -webkit-box-shadow: none;
   box-shadow: none;
   color: #293619;
@@ -1537,7 +1537,7 @@ footer .support:last-child {
   }
   .skey .sidebar .working-area .choice.checked label:after {
     background: #666;
-    border: 1px solid #333;
+    border: 1px solid #333333;
     -webkit-box-shadow: inset 1px 1px 2px #333333;
     box-shadow: inset 1px 1px 2px #333333;
     color: white;
@@ -1552,7 +1552,7 @@ footer .support:last-child {
     display: none;
   }
   .skey .sidebar .working-area .choice label:after {
-    border: 1px solid #c0c0c0;
+    border: 1px solid silver;
     -webkit-box-shadow: none;
     box-shadow: none;
     color: #293619;
@@ -1590,9 +1590,44 @@ footer .support:last-child {
 }
 .skey .sidebar .instructions h5 {
   color: #333333;
-  font-family: 'Open Sans', helvetica, arial, sans-serif;
+  font-family: "Open Sans", helvetica, arial, sans-serif;
   font-weight: 700;
   padding: 0;
+}
+.skey .sidebar .close-filters {
+  display: none;
+}
+@media screen and (max-width: 500px) {
+  .skey .sidebar .close-filters {
+    display: block;
+  }
+}
+.skey .sidebar .filter-header {
+  cursor: none;
+  display: block;
+}
+.skey .sidebar .filter-header .icon-plus,
+.skey .sidebar .filter-header .icon-minus {
+  display: none;
+  font-size: 10px;
+  font-size: 0.625rem;
+  float: right;
+  margin: 5px 0 0;
+  text-shadow: 1px 1px 1px white;
+}
+@media screen and (max-width: 500px) {
+  .skey .sidebar .section {
+    display: none;
+  }
+  .skey .sidebar .section.filter-header {
+    display: block;
+  }
+  .skey .sidebar .section.filter-header.active ~ .section {
+    display: block;
+  }
+  .skey .sidebar .section.filter-header.active ~ .section.hidden {
+    display: none;
+  }
 }
 .skey .sidebar .option-list > li {
   border-bottom: 1px solid #9a9f86;
@@ -1911,6 +1946,7 @@ footer .support:last-child {
   position: fixed;
   bottom: 20%;
   right: 10px;
+  z-index: 10;
 }
 .skey .toplink .button, .skey .toplink .sidebar .section .get-choices, .skey .sidebar .section .toplink .get-choices,
 .skey .toplink .sidebar .section .clear-all-btn,
@@ -2249,16 +2285,44 @@ div.sb-message a:link, div.sb-message a:visited {
   display: block;
   float: left;
   margin-right: 2.35765%;
-  width: 48.82117%;
+  width: 31.76157%;
   padding: 0 0 10px;
 }
 .genera > li:last-child,
 .species > li:last-child {
   margin-right: 0;
 }
-.genera > li:nth-child(even),
-.species > li:nth-child(even) {
+.genera > li:nth-child(3n),
+.species > li:nth-child(3n) {
   margin-right: 0;
+}
+@media screen and (max-width: 500px) {
+  .genera,
+  .species {
+    display: block;
+    float: left;
+    margin-right: 2.35765%;
+    width: 48.82117%;
+  }
+  .genera:last-child,
+  .species:last-child {
+    margin-right: 0;
+  }
+  .genera:nth-child(3n),
+  .species:nth-child(3n) {
+    display: block;
+    float: left;
+    margin-right: 2.35765%;
+    width: 48.82117%;
+  }
+  .genera:nth-child(3n):last-child,
+  .species:nth-child(3n):last-child {
+    margin-right: 0;
+  }
+  .genera:nth-child(even),
+  .species:nth-child(even) {
+    margin-right: 0;
+  }
 }
 
 .content-area #conservation-status,
@@ -2475,7 +2539,7 @@ div.scrollableArea:after {
 /* Text input with suggestions */
 input.suggest + div {
   background: #fff;
-  border: 1px solid #999;
+  border: 1px solid #999999;
   position: absolute;
   left: 0;
   top: 0;
@@ -2499,6 +2563,7 @@ input.suggest + div li span {
   border-bottom: 1px dashed #587d9e;
   color: #294c6b;
   cursor: pointer;
+  font-weight: 600;
 }
 .gloss:hover {
   border-bottom: 1px dashed #294c6b;
@@ -2583,7 +2648,7 @@ input.suggest + div li span {
 }
 #glossary #alphabet li.current a {
   font-weight: bold;
-  text-shadow: 1px 1px 1px #eee;
+  text-shadow: 1px 1px 1px #eeeeee;
   -webkit-font-smoothing: antialiased;
 }
 #glossary #alphabet li.current a:hover {

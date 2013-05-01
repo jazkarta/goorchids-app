@@ -36,7 +36,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 .row:before, .row:after { content: " "; display: table; }
 .row:after { clear: both; }
 
-body { background: #f0f2d9; color: #293619; font-family: 'Open Sans', sans-serif; font-size: 14px; font-size: 0.875rem; line-height: 1.4; }
+body { background: #f0f2d9; color: #293619; font-family: "Open Sans", sans-serif; font-size: 14px; font-size: 0.875rem; line-height: 1.4; }
 
 a { color: #294c6b; text-decoration: none; }
 
@@ -46,7 +46,7 @@ p { line-height: 1.7; padding: 0 0 20px; }
 
 strong { font-weight: 600; }
 
-h1, h2, h3, h4, h5, h6 { color: #733944; font-family: 'Droid Serif', serif; padding: 0 0 20px; }
+h1, h2, h3, h4, h5, h6 { color: #733944; font-family: "Droid Serif", serif; padding: 0 0 20px; }
 
 h1 { font-size: 40px; font-size: 2.5rem; }
 
@@ -81,7 +81,7 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-.icon-search, .icon-plus, .icon-minus, .icon-checkmark, .icon-caret-up, .icon-caret-down, .icon-caret-left, .icon-caret-right, .icon-circle-arrow-up, .icon-circle-arrow-down, .icon-cancel-circle, .icon-close, .icon-leaf, .icon-indexmanager, .icon-list, .icon-th-large, .icon-arrow-left, .icon-arrow-right, .icon-arrow-down, .icon-arrow-up { font-family: 'icomoon'; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; -webkit-font-smoothing: antialiased; }
+.icon-search, .icon-plus, .icon-minus, .icon-checkmark, .icon-caret-up, .icon-caret-down, .icon-caret-left, .icon-caret-right, .icon-circle-arrow-up, .icon-circle-arrow-down, .icon-cancel-close, .icon-close, .icon-leaf, .icon-indexmanager, .icon-list, .icon-th-large, .icon-arrow-left, .icon-arrow-right, .icon-arrow-down, .icon-arrow-up { font-family: 'icomoon'; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; -webkit-font-smoothing: antialiased; }
 
 .icon-search:before { content: "\21"; }
 
@@ -103,7 +103,7 @@ you can use the generic selector below, but it's slower:
 
 .icon-circle-arrow-down:before { content: "\2a"; }
 
-.icon-cancel-circle:before { content: "\2b"; }
+.icon-cancel-close:before { content: "\2b"; }
 
 .icon-close:before { content: "\2c"; }
 
@@ -133,14 +133,14 @@ img { max-width: 100%; }
 
 /* Components: Input
 */
-input[type="text"], input[type="email"], input[type="password"], input[type="search"] { border: 1px solid #999999; -webkit-box-shadow: inset 1px 1px 1px #c7c7c7; box-shadow: inset 1px 1px 1px #c7c7c7; color: #293619; display: block; font-family: 'Open Sans', sans-serif; font-size: 12px; font-size: 0.75rem; line-height: 1.5; padding: 7px 5px; vertical-align: middle; -webkit-appearance: none; width: 100%; }
+input[type="text"], input[type="email"], input[type="password"], input[type="search"] { border: 1px solid #999999; -webkit-box-shadow: inset 1px 1px 1px #c7c7c7; box-shadow: inset 1px 1px 1px #c7c7c7; color: #293619; display: block; font-family: "Open Sans", sans-serif; font-size: 12px; font-size: 0.75rem; line-height: 1.5; padding: 7px 5px; vertical-align: middle; -webkit-appearance: none; width: 100%; }
 
 /* Components: Buttons
 */
-input.button, .skey .sidebar .section input.get-choices, .skey .sidebar .section input.clear-all-btn, .skey .sidebar .section input.get-help-btn, .button, .skey .sidebar .section .get-choices, .skey .sidebar .section .clear-all-btn, .skey .sidebar .section .get-help-btn { border: 1px solid #4c6d8c; border-radius: 2px; -webkit-box-shadow: inset 1px 1px 1px #8da8bf; box-shadow: inset 1px 1px 1px #8da8bf; color: white; display: inline-block; font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 14px; font-size: 0.875rem; line-height: 1; background-color: #4e708e; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4e708e), color-stop(100%, #446a8b)); background-image: -webkit-linear-gradient(top, #4e708e, #446a8b); background-image: -moz-linear-gradient(top, #4e708e, #446a8b); background-image: -ms-linear-gradient(top, #4e708e, #446a8b); background-image: -o-linear-gradient(top, #4e708e, #446a8b); background-image: linear-gradient(top, #4e708e, #446a8b); margin: 20px 0 0; padding: 8px 20px; text-shadow: 1px 1px 1px #294c6b; vertical-align: middle; -webkit-font-smoothing: antialiased; width: auto; }
+input.button, .skey .sidebar .section input.get-choices, .skey .sidebar .section input.clear-all-btn, .skey .sidebar .section input.get-help-btn, .button, .skey .sidebar .section .get-choices, .skey .sidebar .section .clear-all-btn, .skey .sidebar .section .get-help-btn { border: 1px solid #4c6d8c; border-radius: 2px; -webkit-box-shadow: inset 1px 1px 1px #8da8bf; box-shadow: inset 1px 1px 1px #8da8bf; color: white; display: inline-block; font-family: "Open Sans", sans-serif; font-weight: 700; font-size: 14px; font-size: 0.875rem; line-height: 1; background-color: #4e708e; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4e708e), color-stop(100%, #446a8b)); background-image: -webkit-linear-gradient(top, #4e708e, #446a8b); background-image: -moz-linear-gradient(top, #4e708e, #446a8b); background-image: -ms-linear-gradient(top, #4e708e, #446a8b); background-image: -o-linear-gradient(top, #4e708e, #446a8b); background-image: linear-gradient(top, #4e708e, #446a8b); margin: 20px 0 0; padding: 8px 20px; text-shadow: 1px 1px 1px #294c6b; vertical-align: middle; -webkit-font-smoothing: antialiased; width: auto; }
 input.button:hover, .skey .sidebar .section input.get-choices:hover, .skey .sidebar .section input.clear-all-btn:hover, .skey .sidebar .section input.get-help-btn:hover, .button:hover, .skey .sidebar .section .get-choices:hover, .skey .sidebar .section .clear-all-btn:hover, .skey .sidebar .section .get-help-btn:hover { background: #294c6b; -webkit-box-shadow: none; box-shadow: none; }
 input.button.large, .skey .sidebar .section input.large.get-choices, .skey .sidebar .section input.large.clear-all-btn, .skey .sidebar .section input.large.get-help-btn, .button.large, .skey .sidebar .section .large.get-choices, .skey .sidebar .section .large.clear-all-btn, .skey .sidebar .section .large.get-help-btn { font-size: 20px; font-size: 1.25rem; padding: 15px 30px; }
-input.button.white, .skey .sidebar .section input.white.get-choices, .skey .sidebar .section input.white.clear-all-btn, .skey .sidebar .section input.white.get-help-btn, .button.white, .skey .sidebar .section .white.get-choices, .skey .sidebar .section .white.clear-all-btn, .skey .sidebar .section .white.get-help-btn { border: 1px solid #c0c0c0; -webkit-box-shadow: none; box-shadow: none; color: #293619; font-size: 11px; font-size: 0.6875rem; background-color: #e9e9e9; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e9e9e9), color-stop(100%, #bfbfbd)); background-image: -webkit-linear-gradient(top, #e9e9e9, #bfbfbd); background-image: -moz-linear-gradient(top, #e9e9e9, #bfbfbd); background-image: -ms-linear-gradient(top, #e9e9e9, #bfbfbd); background-image: -o-linear-gradient(top, #e9e9e9, #bfbfbd); background-image: linear-gradient(top, #e9e9e9, #bfbfbd); padding: 5px 7px; text-shadow: none; text-transform: uppercase; }
+input.button.white, .skey .sidebar .section input.white.get-choices, .skey .sidebar .section input.white.clear-all-btn, .skey .sidebar .section input.white.get-help-btn, .button.white, .skey .sidebar .section .white.get-choices, .skey .sidebar .section .white.clear-all-btn, .skey .sidebar .section .white.get-help-btn { border: 1px solid silver; -webkit-box-shadow: none; box-shadow: none; color: #293619; font-size: 11px; font-size: 0.6875rem; background-color: #e9e9e9; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e9e9e9), color-stop(100%, #bfbfbd)); background-image: -webkit-linear-gradient(top, #e9e9e9, #bfbfbd); background-image: -moz-linear-gradient(top, #e9e9e9, #bfbfbd); background-image: -ms-linear-gradient(top, #e9e9e9, #bfbfbd); background-image: -o-linear-gradient(top, #e9e9e9, #bfbfbd); background-image: linear-gradient(top, #e9e9e9, #bfbfbd); padding: 5px 7px; text-shadow: none; text-transform: uppercase; }
 input.button.red, .skey .sidebar .section input.red.get-choices, .skey .sidebar .section input.red.clear-all-btn, .skey .sidebar .section input.red.get-help-btn, .button.red, .skey .sidebar .section .red.get-choices, .skey .sidebar .section .red.clear-all-btn, .skey .sidebar .section .red.get-help-btn { border: 1px solid #764248; -webkit-box-shadow: inset 1px 1px 1px #8c565e; box-shadow: inset 1px 1px 1px #8c565e; background-color: #764248; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #764248), color-stop(100%, #733944)); background-image: -webkit-linear-gradient(top, #764248, #733944); background-image: -moz-linear-gradient(top, #764248, #733944); background-image: -ms-linear-gradient(top, #764248, #733944); background-image: -o-linear-gradient(top, #764248, #733944); background-image: linear-gradient(top, #764248, #733944); text-shadow: 1px 1px 1px #421720; }
 input.button.green, .skey .sidebar .section input.green.get-choices, .skey .sidebar .section input.green.clear-all-btn, .skey .sidebar .section input.green.get-help-btn, .button.green, .skey .sidebar .section .green.get-choices, .skey .sidebar .section .green.clear-all-btn, .skey .sidebar .section .green.get-help-btn { border: 1px solid #63784f; -webkit-box-shadow: inset 1px 1px 1px #c7cfb1; box-shadow: inset 1px 1px 1px #c7cfb1; background-color: #728f50; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #728f50), color-stop(100%, #6f8759)); background-image: -webkit-linear-gradient(top, #728f50, #6f8759); background-image: -moz-linear-gradient(top, #728f50, #6f8759); background-image: -ms-linear-gradient(top, #728f50, #6f8759); background-image: -o-linear-gradient(top, #728f50, #6f8759); background-image: linear-gradient(top, #728f50, #6f8759); text-shadow: 1px 1px 1px #293619; }
 input.button.search-field, .skey .sidebar .section input.search-field.get-choices, .skey .sidebar .section input.search-field.clear-all-btn, .skey .sidebar .section input.search-field.get-help-btn, .button.search-field, .skey .sidebar .section .search-field.get-choices, .skey .sidebar .section .search-field.clear-all-btn, .skey .sidebar .section .search-field.get-help-btn { border: 0; -webkit-box-shadow: none; box-shadow: none; color: #293619; font-family: 'icomoon'; font-size: 18px; font-size: 1.125rem; background-color: #c7c7c7; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c7c7c7), color-stop(100%, darkgrey)); background-image: -webkit-linear-gradient(top, #c7c7c7, darkgrey); background-image: -moz-linear-gradient(top, #c7c7c7, darkgrey); background-image: -ms-linear-gradient(top, #c7c7c7, darkgrey); background-image: -o-linear-gradient(top, #c7c7c7, darkgrey); background-image: linear-gradient(top, #c7c7c7, darkgrey); padding: 4px 10px; text-shadow: none; }
@@ -365,13 +365,21 @@ footer .support:last-child { margin-right: 0; }
 @media screen and (max-width: 650px) { .skey .sidebar { display: block; float: left; margin-right: 2.35765%; width: 100%; }
   .skey .sidebar:last-child { margin-right: 0; }
   .skey .sidebar .working-area .choice { background: #6f8759; border-bottom: 1px solid #293619; color: white; padding: 8px 10px; position: relative; }
-  .skey .sidebar .working-area .choice.checked label:after { background: #666; border: 1px solid #333; -webkit-box-shadow: inset 1px 1px 2px #333333; box-shadow: inset 1px 1px 2px #333333; color: white; content: "Selected"; font-weight: 400; }
+  .skey .sidebar .working-area .choice.checked label:after { background: #666; border: 1px solid #333333; -webkit-box-shadow: inset 1px 1px 2px #333333; box-shadow: inset 1px 1px 2px #333333; color: white; content: "Selected"; font-weight: 400; }
   .skey .sidebar .working-area .choice .gloss { color: #c7cfb1; border-bottom: 1px dashed #c7cfb1; }
   .skey .sidebar .working-area .choice input { display: none; }
-  .skey .sidebar .working-area .choice label:after { border: 1px solid #c0c0c0; -webkit-box-shadow: none; box-shadow: none; color: #293619; cursor: pointer; display: inline-block; font-size: 11px; font-size: 0.6875rem; font-weight: 600; line-height: 1; background-color: #e9e9e9; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e9e9e9), color-stop(100%, #bfbfbd)); background-image: -webkit-linear-gradient(top, #e9e9e9, #bfbfbd); background-image: -moz-linear-gradient(top, #e9e9e9, #bfbfbd); background-image: -ms-linear-gradient(top, #e9e9e9, #bfbfbd); background-image: -o-linear-gradient(top, #e9e9e9, #bfbfbd); background-image: linear-gradient(top, #e9e9e9, #bfbfbd); padding: 5px 7px; text-shadow: none; text-transform: uppercase; content: "Select"; position: absolute; top: 5px; right: 10px; z-index: 10; }
+  .skey .sidebar .working-area .choice label:after { border: 1px solid silver; -webkit-box-shadow: none; box-shadow: none; color: #293619; cursor: pointer; display: inline-block; font-size: 11px; font-size: 0.6875rem; font-weight: 600; line-height: 1; background-color: #e9e9e9; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e9e9e9), color-stop(100%, #bfbfbd)); background-image: -webkit-linear-gradient(top, #e9e9e9, #bfbfbd); background-image: -moz-linear-gradient(top, #e9e9e9, #bfbfbd); background-image: -ms-linear-gradient(top, #e9e9e9, #bfbfbd); background-image: -o-linear-gradient(top, #e9e9e9, #bfbfbd); background-image: linear-gradient(top, #e9e9e9, #bfbfbd); padding: 5px 7px; text-shadow: none; text-transform: uppercase; content: "Select"; position: absolute; top: 5px; right: 10px; z-index: 10; }
   .skey .sidebar .working-area .choice label:after:hover { background: #aaa; } }
 .skey .sidebar .instructions { background: #c7cfb1; -webkit-box-shadow: inset 0 0 5px #a4aa8d; box-shadow: inset 0 0 5px #a4aa8d; padding: 15px; }
-.skey .sidebar .instructions h5 { color: #333333; font-family: 'Open Sans', helvetica, arial, sans-serif; font-weight: 700; padding: 0; }
+.skey .sidebar .instructions h5 { color: #333333; font-family: "Open Sans", helvetica, arial, sans-serif; font-weight: 700; padding: 0; }
+.skey .sidebar .close-filters { display: none; }
+@media screen and (max-width: 500px) { .skey .sidebar .close-filters { display: block; } }
+.skey .sidebar .filter-header { cursor: none; display: block; }
+.skey .sidebar .filter-header .icon-plus, .skey .sidebar .filter-header .icon-minus { display: none; font-size: 10px; font-size: 0.625rem; float: right; margin: 5px 0 0; text-shadow: 1px 1px 1px white; }
+@media screen and (max-width: 500px) { .skey .sidebar .section { display: none; }
+  .skey .sidebar .section.filter-header { display: block; }
+  .skey .sidebar .section.filter-header.active ~ .section { display: block; }
+  .skey .sidebar .section.filter-header.active ~ .section.hidden { display: none; } }
 .skey .sidebar .option-list > li { border-bottom: 1px solid #9a9f86; }
 .skey .sidebar .option-list > li.active .option { background: #63784f; color: white; -webkit-transition: background 0.5s ease-in-out; -moz-transition: background 0.5s ease-in-out; -ms-transition: background 0.5s ease-in-out; -o-transition: background 0.5s ease-in-out; transition: background 0.5s ease-in-out; }
 .skey .sidebar .option-list > li.active .option:after { content: "\25"; }
@@ -435,7 +443,7 @@ footer .support:last-child { margin-right: 0; }
 .skey .main-content-wrapper .main-content-header h1 { display: inline-block; }
 .skey .main-content-wrapper .main-content-header .species-count-heading { float: right; margin: 20px 0; }
 .skey #intro-overlay { position: fixed; left: 0 !important; top: 15% !important; text-align: center; width: 100%; z-index: 9999; }
-.skey .toplink { background: rgba(255, 255, 255, 0.5); padding: 10px; position: fixed; bottom: 20%; right: 10px; }
+.skey .toplink { background: rgba(255, 255, 255, 0.5); padding: 10px; position: fixed; bottom: 20%; right: 10px; z-index: 10; }
 .skey .toplink .button, .skey .toplink .sidebar .section .get-choices, .skey .sidebar .section .toplink .get-choices, .skey .toplink .sidebar .section .clear-all-btn, .skey .sidebar .section .toplink .clear-all-btn, .skey .toplink .sidebar .section .get-help-btn, .skey .sidebar .section .toplink .get-help-btn { margin: 0; }
 .skey #plant-detail-modal { background: white; border-radius: 5px; font-size: 13px; font-size: 0.8125rem; padding: 10px 15px; }
 
@@ -538,9 +546,14 @@ div.sb-message a:link, div.sb-message a:visited { color: #fff; text-decoration: 
 .genera, .species { *zoom: 1; }
 .genera:before, .genera:after, .species:before, .species:after { content: " "; display: table; }
 .genera:after, .species:after { clear: both; }
-.genera > li, .species > li { display: block; float: left; margin-right: 2.35765%; width: 48.82117%; padding: 0 0 10px; }
+.genera > li, .species > li { display: block; float: left; margin-right: 2.35765%; width: 31.76157%; padding: 0 0 10px; }
 .genera > li:last-child, .species > li:last-child { margin-right: 0; }
-.genera > li:nth-child(even), .species > li:nth-child(even) { margin-right: 0; }
+.genera > li:nth-child(3n), .species > li:nth-child(3n) { margin-right: 0; }
+@media screen and (max-width: 500px) { .genera, .species { display: block; float: left; margin-right: 2.35765%; width: 48.82117%; }
+  .genera:last-child, .species:last-child { margin-right: 0; }
+  .genera:nth-child(3n), .species:nth-child(3n) { display: block; float: left; margin-right: 2.35765%; width: 48.82117%; }
+  .genera:nth-child(3n):last-child, .species:nth-child(3n):last-child { margin-right: 0; }
+  .genera:nth-child(even), .species:nth-child(even) { margin-right: 0; } }
 
 .content-area #conservation-status, .content-area .map { display: block; float: left; margin-right: 2.35765%; width: 48.82117%; }
 .content-area #conservation-status:last-child, .content-area .map:last-child { margin-right: 0; }
@@ -594,13 +607,13 @@ div.scrollableArea:after { clear: both; }
 .scrollWrapper #startimage img { border-left: 7px solid white; }
 
 /* Text input with suggestions */
-input.suggest + div { background: #fff; border: 1px solid #999; position: absolute; left: 0; top: 0; z-index: 100; }
+input.suggest + div { background: #fff; border: 1px solid #999999; position: absolute; left: 0; top: 0; z-index: 100; }
 input.suggest + div li { font-weight: bold; list-style-type: none; margin: 0; padding: 2px; }
 input.suggest + div li.selected { background-color: #cbd2b4; }
 input.suggest + div li span { font-weight: normal; }
 
 /* Glossary-term links */
-.gloss { border-bottom: 1px dashed #587d9e; color: #294c6b; cursor: pointer; }
+.gloss { border-bottom: 1px dashed #587d9e; color: #294c6b; cursor: pointer; font-weight: 600; }
 .gloss:hover { border-bottom: 1px dashed #294c6b; }
 
 /* Tooltips for working area images and highlighted glossary terms */
@@ -619,7 +632,7 @@ input.suggest + div li span { font-weight: normal; }
 #glossary #alphabet li { border-left: 1px solid #e1e1dc; float: left; font-size: 15px; margin: 5px 0 0; padding: 0 7px; }
 #glossary #alphabet li:first-child { border-left: 0; }
 #glossary #alphabet li.inactive { color: #ccc; }
-#glossary #alphabet li.current a { font-weight: bold; text-shadow: 1px 1px 1px #eee; -webkit-font-smoothing: antialiased; }
+#glossary #alphabet li.current a { font-weight: bold; text-shadow: 1px 1px 1px #eeeeee; -webkit-font-smoothing: antialiased; }
 #glossary #alphabet li.current a:hover { text-decoration: none; }
 #glossary #terms { background-color: #fff; border: 1px solid #e1e1dc; clear: left; }
 #glossary #terms dt, #glossary #terms dd { border-top: 1px solid #e1e1dc; min-height: 24px; }
