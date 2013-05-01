@@ -33,7 +33,7 @@
   you can use the generic selector below, but it's slower:
   [class*="icon-"] {
   */
-  .icon-search, .icon-plus, .icon-minus, .icon-checkmark, .icon-caret-up, .icon-caret-down, .icon-caret-left, .icon-caret-right, .icon-circle-arrow-up, .icon-circle-arrow-down, .icon-cancel-circle, .icon-close, .icon-leaf, .icon-indexmanager, .icon-list, .icon-th-large, .icon-arrow-left, .icon-arrow-right, .icon-arrow-down, .icon-arrow-up {
+  .icon-search, .icon-plus, .icon-minus, .icon-checkmark, .icon-caret-up, .icon-caret-down, .icon-caret-left, .icon-caret-right, .icon-circle-arrow-up, .icon-circle-arrow-down, .icon-cancel-close, .icon-close, .icon-leaf, .icon-indexmanager, .icon-list, .icon-th-large, .icon-arrow-left, .icon-arrow-right, .icon-arrow-down, .icon-arrow-up {
   	font-family: 'icomoon';
   	speak: none;
   	font-style: normal;
@@ -73,7 +73,7 @@
   .icon-circle-arrow-down:before {
   	content: "\2a";
   }
-  .icon-cancel-circle:before {
+  .icon-cancel-close:before {
   	content: "\2b";
   }
   .icon-close:before {

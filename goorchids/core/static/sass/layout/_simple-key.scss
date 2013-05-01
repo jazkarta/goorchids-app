@@ -135,6 +135,48 @@
       }
     }
     
+    .close-filters {
+      display: none;
+      
+      @include media(max-width 500px) {
+        display: block;
+      }
+    }
+    
+    .filter-header {
+      cursor: none;
+      display: block;
+      
+      .icon-plus,
+      .icon-minus {
+        display: none;
+        @include font-size(10);
+        float: right;
+        margin: 5px 0 0;
+        text-shadow: 1px 1px 1px $white;
+      }
+    }
+    
+    .section {
+      @include media(max-width 500px) {
+        display: none;
+        
+        &.filter-header {
+          cursor: pointer;
+          display: block;
+          
+          &.active {
+            ~ .section {
+              display: block;
+            }
+            ~ .section.hidden {
+              display: none;
+            }
+          }
+        }
+      } // max-width 500px
+    } // .section
+    
     .option-list {
       
       > li {

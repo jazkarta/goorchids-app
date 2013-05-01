@@ -17,8 +17,20 @@
     @include clearfix;
     
     > li {
-      @include span-columns(6);
+      @include span-columns(4);
       padding: 0 0 10px;
+      
+      &:nth-child(3n) {
+        @include omega;
+      }
+    }
+    
+    @include media(max-width 500px) {
+      @include span-columns(6);
+      
+      &:nth-child(3n) {
+        @include span-columns(6);
+      }
       
       &:nth-child(even) {
         @include omega;
