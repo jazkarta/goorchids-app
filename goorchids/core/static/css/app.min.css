@@ -445,6 +445,7 @@ footer .support:last-child { margin-right: 0; }
 .skey .main-content-wrapper .main-content-header h1 { display: inline-block; }
 .skey .main-content-wrapper .main-content-header .species-count-heading { float: right; margin: 20px 0; }
 .skey #intro-overlay { position: fixed; left: 0 !important; top: 15% !important; text-align: center; width: 100%; z-index: 9999; }
+.skey #intro-overlay .continue { cursor: pointer; }
 .skey .toplink { background: rgba(255, 255, 255, 0.5); padding: 10px; position: fixed; bottom: 20%; right: 10px; z-index: 10; }
 .skey .toplink .button, .skey .toplink .sidebar .section .get-choices, .skey .sidebar .section .toplink .get-choices, .skey .toplink .sidebar .section .clear-all-btn, .skey .sidebar .section .toplink .clear-all-btn, .skey .toplink .sidebar .section .get-help-btn, .skey .sidebar .section .toplink .get-help-btn { margin: 0; }
 

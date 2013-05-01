@@ -4,12 +4,8 @@
 define([
     'bridge/jquery',
     'bridge/ember',
-    'select2/select2.min'
+    'select2/select2.min',
 ], function($, Ember) {
-    $('.continue').click(function(e) {
-        e.preventDefault();
-    });
-
     $('.toplink').click(function(e) {
         e.preventDefault();
         $('body,html').animate({scrollTop: $('#question-nav').offset().top}, 200);

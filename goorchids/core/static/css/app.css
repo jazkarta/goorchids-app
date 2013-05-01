@@ -1961,6 +1961,9 @@ footer .support:last-child {
   width: 100%;
   z-index: 9999;
 }
+.skey #intro-overlay .continue {
+  cursor: pointer;
+}
 .skey .toplink {
   background: rgba(255, 255, 255, 0.5);
   padding: 10px;

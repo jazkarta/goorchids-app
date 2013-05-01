@@ -498,6 +498,9 @@
     text-align: center;
     width: 100%;
     z-index: 9999;
+    .continue {
+      cursor: pointer;
+    }
   }
   
   .toplink {
