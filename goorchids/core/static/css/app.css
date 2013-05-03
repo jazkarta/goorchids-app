@@ -1409,6 +1409,9 @@ footer .support:last-child {
     width: 100%;
   }
 }
+#conservation-status select#region-switcher {
+  width: 50%;
+}
 
 .conservation-status {
   background: #a4aa8d;

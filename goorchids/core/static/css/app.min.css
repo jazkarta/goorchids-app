@@ -340,6 +340,7 @@ footer .support:last-child { margin-right: 0; }
 @media screen and (max-width: 500px) { #conservation-status .select2-container { display: none; }
   #conservation-status .select2-offscreen { display: block; position: relative; left: auto; width: 100%; }
   #conservation-status input.button, #conservation-status .skey .sidebar .section input.get-choices, .skey .sidebar .section #conservation-status input.get-choices, #conservation-status .skey .sidebar .section input.clear-all-btn, .skey .sidebar .section #conservation-status input.clear-all-btn, #conservation-status .skey .sidebar .section input.get-help-btn, .skey .sidebar .section #conservation-status input.get-help-btn { display: block; margin: 15px 0; width: 100%; } }
+#conservation-status select#region-switcher { width: 50%; }
 
 .conservation-status { background: #a4aa8d; border-radius: 3px; -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5); box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5); margin: 25px 0 0; overflow: hidden; width: 100%; }
 .conservation-status th, .conservation-status td { padding: 15px; }
