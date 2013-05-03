@@ -44,15 +44,7 @@
 
             <div class="section family-genus">
                 <div class="already-know">
-                    <h6>Already know the family or genus?</h6>
-                    <label>Family:</label>
-                    {% handlebars %}
-                      {{view Ember.Select viewName="select"
-                        elementId="families"
-                        contentBinding="App3.family_choices"
-                        selectionBinding="App3.family_value"}}
-                      <button id="family_clear" class="button white">Clear</button>
-                    {% endhandlebars %}
+                    <h6>Already know the genus?</h6>
                     <label>Genus:</label>
                     {% handlebars %}
                       {{view Ember.Select viewName="select"
