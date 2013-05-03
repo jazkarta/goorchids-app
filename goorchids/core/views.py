@@ -22,6 +22,7 @@ from django.utils.datastructures import SortedDict
 from gobotany.core.models import (TaxonCharacterValue, CharacterValue,
                                   ContentImage)
 from gobotany.site.models import PlantNameSuggestion, SearchSuggestion
+from gobotany.search.models import PlainPage
 from gobotany.core.importer import Importer
 from .models import RegionalConservationStatus, ImportLog
 
@@ -156,6 +157,7 @@ def _load(name, log_entry=None):
         PlantNameSuggestion.objects.all().delete()
         SearchSuggestion.objects.all().delete()
         RegionalConservationStatus.objects.all().delete()
+        PlainPage.objects.all().delete()
 
         with connection.constraint_checks_disabled():
             objects_in_fixture = 0
