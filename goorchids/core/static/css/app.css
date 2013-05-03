@@ -1777,7 +1777,7 @@ footer .support:last-child {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  display: block;
+  display: none;
   font-size: 12px;
   font-size: 0.75rem;
   height: 210px;
@@ -1785,6 +1785,9 @@ footer .support:last-child {
   position: absolute;
   text-align: center;
   width: 160px;
+}
+.skey .main-content-wrapper .plant-list .plant.in-results {
+  display: block;
 }
 .skey .main-content-wrapper .plant-list .plant.genus_join_left {
   border-left: 0;
@@ -1804,70 +1807,14 @@ footer .support:last-child {
     height: auto;
     min-height: 220px;
     padding: 5px;
-    margin: 10px 0 0;
+    margin: 5px;
     position: relative;
-    display: block;
     float: left;
-    margin-right: 2.35765%;
-    width: 23.23176%;
-    left: auto !important;
     top: auto !important;
-  }
-  .skey .main-content-wrapper .plant-list .plant:last-child {
-    margin-right: 0;
+    left: auto !important;
   }
   .skey .main-content-wrapper .plant-list .plant.genus_join_right {
     padding-right: 5px;
-  }
-  .skey .main-content-wrapper .plant-list .plant:nth-child(4n) {
-    margin-right: 0;
-  }
-}
-@media screen and (max-width: 865px) {
-  .skey .main-content-wrapper .plant-list .plant {
-    min-height: 210px;
-    display: block;
-    float: left;
-    margin-right: 2.35765%;
-    width: 31.76157%;
-  }
-  .skey .main-content-wrapper .plant-list .plant:last-child {
-    margin-right: 0;
-  }
-  .skey .main-content-wrapper .plant-list .plant:nth-child(4n) {
-    display: block;
-    float: left;
-    margin-right: 2.35765%;
-    width: 31.76157%;
-  }
-  .skey .main-content-wrapper .plant-list .plant:nth-child(4n):last-child {
-    margin-right: 0;
-  }
-  .skey .main-content-wrapper .plant-list .plant:nth-child(3n) {
-    margin-right: 0;
-  }
-}
-@media screen and (max-width: 500px) {
-  .skey .main-content-wrapper .plant-list .plant {
-    display: block;
-    float: left;
-    margin-right: 2.35765%;
-    width: 48.82117%;
-  }
-  .skey .main-content-wrapper .plant-list .plant:last-child {
-    margin-right: 0;
-  }
-  .skey .main-content-wrapper .plant-list .plant:nth-child(4n), .skey .main-content-wrapper .plant-list .plant:nth-child(3n) {
-    display: block;
-    float: left;
-    margin-right: 2.35765%;
-    width: 48.82117%;
-  }
-  .skey .main-content-wrapper .plant-list .plant:nth-child(4n):last-child, .skey .main-content-wrapper .plant-list .plant:nth-child(3n):last-child {
-    margin-right: 0;
-  }
-  .skey .main-content-wrapper .plant-list .plant:nth-child(2n) {
-    margin-right: 0;
   }
 }
 .skey .main-content-wrapper .plant-list .plant .plant-name {

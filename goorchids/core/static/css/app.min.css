@@ -410,23 +410,12 @@ footer .support:last-child { margin-right: 0; }
 .skey .main-content-wrapper .plant-list:before, .skey .main-content-wrapper .plant-list:after { content: " "; display: table; }
 .skey .main-content-wrapper .plant-list:after { clear: both; }
 @media screen and (max-width: 1024px) { .skey .main-content-wrapper .plant-list { height: auto !important; } }
-.skey .main-content-wrapper .plant-list .plant { background: #f7f9ed; border: 1px solid #cbd2b4; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; display: block; font-size: 12px; font-size: 0.75rem; height: 210px; padding: 8px 6px; position: absolute; text-align: center; width: 160px; }
+.skey .main-content-wrapper .plant-list .plant { background: #f7f9ed; border: 1px solid #cbd2b4; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; display: none; font-size: 12px; font-size: 0.75rem; height: 210px; padding: 8px 6px; position: absolute; text-align: center; width: 160px; }
+.skey .main-content-wrapper .plant-list .plant.in-results { display: block; }
 .skey .main-content-wrapper .plant-list .plant.genus_join_left { border-left: 0; }
 .skey .main-content-wrapper .plant-list .plant.genus_join_right { border-right: 0; padding-right: 12px; }
-@media screen and (max-width: 1024px) { .skey .main-content-wrapper .plant-list .plant { border: 0; -webkit-box-shadow: 0 0 3px 1px darkgrey; box-shadow: 0 0 3px 1px darkgrey; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; height: auto; min-height: 220px; padding: 5px; margin: 10px 0 0; position: relative; display: block; float: left; margin-right: 2.35765%; width: 23.23176%; left: auto !important; top: auto !important; }
-  .skey .main-content-wrapper .plant-list .plant:last-child { margin-right: 0; }
-  .skey .main-content-wrapper .plant-list .plant.genus_join_right { padding-right: 5px; }
-  .skey .main-content-wrapper .plant-list .plant:nth-child(4n) { margin-right: 0; } }
-@media screen and (max-width: 865px) { .skey .main-content-wrapper .plant-list .plant { min-height: 210px; display: block; float: left; margin-right: 2.35765%; width: 31.76157%; }
-  .skey .main-content-wrapper .plant-list .plant:last-child { margin-right: 0; }
-  .skey .main-content-wrapper .plant-list .plant:nth-child(4n) { display: block; float: left; margin-right: 2.35765%; width: 31.76157%; }
-  .skey .main-content-wrapper .plant-list .plant:nth-child(4n):last-child { margin-right: 0; }
-  .skey .main-content-wrapper .plant-list .plant:nth-child(3n) { margin-right: 0; } }
-@media screen and (max-width: 500px) { .skey .main-content-wrapper .plant-list .plant { display: block; float: left; margin-right: 2.35765%; width: 48.82117%; }
-  .skey .main-content-wrapper .plant-list .plant:last-child { margin-right: 0; }
-  .skey .main-content-wrapper .plant-list .plant:nth-child(4n), .skey .main-content-wrapper .plant-list .plant:nth-child(3n) { display: block; float: left; margin-right: 2.35765%; width: 48.82117%; }
-  .skey .main-content-wrapper .plant-list .plant:nth-child(4n):last-child, .skey .main-content-wrapper .plant-list .plant:nth-child(3n):last-child { margin-right: 0; }
-  .skey .main-content-wrapper .plant-list .plant:nth-child(2n) { margin-right: 0; } }
+@media screen and (max-width: 1024px) { .skey .main-content-wrapper .plant-list .plant { border: 0; -webkit-box-shadow: 0 0 3px 1px darkgrey; box-shadow: 0 0 3px 1px darkgrey; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; height: auto; min-height: 220px; padding: 5px; margin: 5px; position: relative; float: left; top: auto !important; left: auto !important; }
+  .skey .main-content-wrapper .plant-list .plant.genus_join_right { padding-right: 5px; } }
 .skey .main-content-wrapper .plant-list .plant .plant-name { line-height: 1.4; padding: 10px 0 0; }
 .skey .main-content-wrapper .plant-list .plant .plant-name .latin { display: block; font-style: italic; }
 .skey .main-content-wrapper .plant-list .plant .plant-img-container { display: inline-block; line-height: 1; position: relative; }

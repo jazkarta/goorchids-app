@@ -320,12 +320,12 @@
       @include media(max-width 1024px) {
         height: auto !important;
       }
-      
+
       .plant {
         background: #f7f9ed;
         border: 1px solid $lighterGreen;
         @include box-sizing(content-box);
-        display: block;
+        display: none;
         @include font-size(12);
         height: 210px;
         padding: 8px 6px;
@@ -333,6 +333,10 @@
         text-align: center;
         width: 160px;
         
+        &.in-results {
+          display: block;
+        }
+
         &.genus_join_left {
           border-left: 0;
         }
@@ -349,44 +353,14 @@
           height: auto;
           min-height: 220px;
           padding: 5px;
-          margin: 10px 0 0;
+          margin: 5px;
           position: relative;
-          @include span-columns(3);
-          left: auto !important;
+          float: left;
           top: auto !important;
+          left: auto !important;
           
           &.genus_join_right {
             padding-right: 5px;
-          }
-          
-          &:nth-child(4n) {
-            @include omega;
-          }
-        }
-        
-        @include media(max-width 865px) {
-          min-height: 210px;
-          @include span-columns(4);
-          
-          &:nth-child(4n) {
-            @include span-columns(4);
-          }
-          
-          &:nth-child(3n) {
-            @include omega;
-          }
-        }
-        
-        @include media(max-width 500px) {
-          @include span-columns(6);
-          
-          &:nth-child(4n),
-          &:nth-child(3n) {
-            @include span-columns(6);
-          }
-          
-          &:nth-child(2n) {
-            @include omega;
           }
         }
         
