@@ -2007,10 +2007,10 @@ footer .support:last-child {
   border: 5px solid rgba(255, 255, 255, 0.8);
   -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.6);
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.6);
-  height: 229px;
+  height: 79%;
   position: absolute;
   top: 0;
-  width: 229px;
+  width: 100%;
   z-index: 100;
 }
 #plant-detail-modal .img-gallery .img-container {
@@ -2027,8 +2027,7 @@ footer .support:last-child {
   width: 12000px;
 }
 #plant-detail-modal .img-gallery .controls {
-  margin: 8px 0 12px 0;
-  text-center: center;
+  text-align: center;
 }
 #plant-detail-modal .img-gallery .controls a {
   cursor: pointer;
@@ -2051,10 +2050,25 @@ footer .support:last-child {
 #plant-detail-modal .img-gallery .controls a.next {
   background: url(/static/images/icons/next-larger.png) 0 0 no-repeat rgba(0, 0, 0, 0);
 }
-#plant-detail-modal .img-gallery .details {
+#plant-detail-modal .details {
   float: left;
   margin: 0 0 0 10px;
   width: 610px;
+}
+#plant-detail-modal .details p {
+  line-height: 1.4;
+  padding: 0 0 5px;
+}
+#plant-detail-modal .details .button, #plant-detail-modal .details .skey .sidebar .section .get-choices, .skey .sidebar .section #plant-detail-modal .details .get-choices,
+#plant-detail-modal .details .skey .sidebar .section .clear-all-btn,
+.skey .sidebar .section #plant-detail-modal .details .clear-all-btn,
+#plant-detail-modal .details .skey .sidebar .section .get-help-btn,
+.skey .sidebar .section #plant-detail-modal .details .get-help-btn {
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1;
+  margin: 10px 0 0;
+  padding: 10px 40px;
 }
 
 /*
