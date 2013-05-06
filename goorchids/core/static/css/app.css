@@ -89,6 +89,11 @@ table {
 .container:after {
   clear: both;
 }
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 0 10px;
+  }
+}
 
 .row {
   *zoom: 1;
@@ -105,7 +110,7 @@ table {
 body {
   background: #f0f2d9;
   color: #293619;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 1.4;
@@ -135,7 +140,7 @@ strong {
 
 h1, h2, h3, h4, h5, h6 {
   color: #733944;
-  font-family: "Droid Serif", serif;
+  font-family: 'Droid Serif', serif;
   padding: 0 0 20px;
 }
 
@@ -334,7 +339,7 @@ input[type="search"] {
   box-shadow: inset 1px 1px 1px #c7c7c7;
   color: #293619;
   display: block;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   font-size: 0.75rem;
   line-height: 1.5;
@@ -360,7 +365,7 @@ input.button, .skey .sidebar .section input.get-choices,
   box-shadow: inset 1px 1px 1px #8da8bf;
   color: white;
   display: inline-block;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 700;
   font-size: 14px;
   font-size: 0.875rem;
@@ -408,7 +413,7 @@ input.button.white, .skey .sidebar .section input.white.get-choices,
 .skey .sidebar .section .white.get-choices,
 .skey .sidebar .section .white.clear-all-btn,
 .skey .sidebar .section .white.get-help-btn {
-  border: 1px solid silver;
+  border: 1px solid #c0c0c0;
   -webkit-box-shadow: none;
   box-shadow: none;
   color: #293619;
@@ -752,12 +757,18 @@ header .skey .sidebar .section .get-help-btn,
   }
 }
 @media screen and (max-width: 470px) {
+  .global-header .menu-container #search {
+    padding: 0 110px 10px 10px;
+  }
+  .global-header .logo-container {
+    padding: 0 10px;
+  }
   .global-header .logo-container .naocc-logo {
     width: 35px;
   }
   .global-header .logo-container h1 {
-    font-size: 14px;
-    font-size: 0.875rem;
+    font-size: 12px;
+    font-size: 0.75rem;
     padding: 15px 0 0 5px;
   }
 }
@@ -1544,7 +1555,7 @@ footer .support:last-child {
   }
   .skey .sidebar .working-area .choice.checked label:after {
     background: #666;
-    border: 1px solid #333333;
+    border: 1px solid #333;
     -webkit-box-shadow: inset 1px 1px 2px #333333;
     box-shadow: inset 1px 1px 2px #333333;
     color: white;
@@ -1559,7 +1570,7 @@ footer .support:last-child {
     display: none;
   }
   .skey .sidebar .working-area .choice label:after {
-    border: 1px solid silver;
+    border: 1px solid #c0c0c0;
     -webkit-box-shadow: none;
     box-shadow: none;
     color: #293619;
@@ -1597,7 +1608,7 @@ footer .support:last-child {
 }
 .skey .sidebar .instructions h5 {
   color: #333333;
-  font-family: "Open Sans", helvetica, arial, sans-serif;
+  font-family: 'Open Sans', helvetica, arial, sans-serif;
   font-weight: 700;
   padding: 0;
 }
@@ -1674,12 +1685,12 @@ footer .support:last-child {
     margin: 0 0 0 10px;
   }
   .skey .sidebar .option-list > li .option .icon-cancel-close:before {
-    border: 1px solid silver;
+    border: 1px solid #c0c0c0;
     -webkit-box-shadow: none;
     box-shadow: none;
     color: #293619;
     content: "Clear";
-    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 11px;
     font-size: 0.6875rem;
     background-color: #e9e9e9;
@@ -1933,31 +1944,55 @@ footer .support:last-child {
 #plant-detail-modal {
   background: white;
   border-radius: 5px;
+  *zoom: 1;
   font-size: 13px;
   font-size: 0.8125rem;
-  padding: 10px 15px;
+  padding: 25px 15px;
+}
+#plant-detail-modal:before, #plant-detail-modal:after {
+  content: " ";
+  display: table;
+}
+#plant-detail-modal:after {
+  clear: both;
 }
 #plant-detail-modal h3.heading {
   font-size: 24px;
   font-size: 1.5rem;
   font-style: italic;
-  margin: 0 0 0 245px;
+  margin: 0 0 20px;
   padding: 13px 0 0 20px;
+}
+#plant-detail-modal h3.heading span {
+  border-left: 1px solid darkgrey;
+  font-style: normal;
+  padding: 0 0 0 10px;
+  margin: 0 0 0 5px;
 }
 #plant-detail-modal #plant-details {
   padding: 10px 10px 0;
+}
+#plant-detail-modal .list-item {
+  *zoom: 1;
+}
+#plant-detail-modal .list-item:before, #plant-detail-modal .list-item:after {
+  content: " ";
+  display: table;
+}
+#plant-detail-modal .list-item:after {
+  clear: both;
 }
 #plant-detail-modal .img-gallery {
   float: left;
   margin: 0 10px 0 0;
   position: relative;
-  width: 244px;
+  width: 25%;
 }
 #plant-detail-modal .img-gallery .frame {
   border: 5px solid rgba(255, 255, 255, 0.8);
   -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.6);
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.6);
-  height: 79%;
+  height: 240px;
   position: absolute;
   top: 0;
   width: 100%;
@@ -1965,9 +2000,9 @@ footer .support:last-child {
 }
 #plant-detail-modal .img-gallery .img-container {
   height: 239px;
-  overflow: hidden;
   position: relative;
-  width: 239px;
+  overflow: hidden;
+  width: 100%;
 }
 #plant-detail-modal .img-gallery .img-container .images {
   clear: both;
@@ -2002,12 +2037,12 @@ footer .support:last-child {
 }
 #plant-detail-modal .details {
   float: left;
-  margin: 0 0 0 10px;
-  width: 610px;
+  margin: 0 0 0 5%;
+  width: 65%;
 }
 #plant-detail-modal .details p {
   line-height: 1.4;
-  padding: 0 0 5px;
+  padding: 0 0 15px;
 }
 #plant-detail-modal .details .button, #plant-detail-modal .details .skey .sidebar .section .get-choices, .skey .sidebar .section #plant-detail-modal .details .get-choices,
 #plant-detail-modal .details .skey .sidebar .section .clear-all-btn,
@@ -2017,7 +2052,7 @@ footer .support:last-child {
   font-size: 18px;
   font-size: 1.125rem;
   line-height: 1;
-  margin: 10px 0 0;
+  margin: 15px 0 0;
   padding: 10px 40px;
 }
 
@@ -2152,8 +2187,8 @@ footer .support:last-child {
   position: absolute;
   width: 32px;
   height: 32px;
-  top: 48px;
-  right: 48px;
+  top: 30px;
+  right: 5px;
   cursor: pointer;
   background-image: url(../images/icons/close-large.png);
 }
@@ -2597,7 +2632,7 @@ div.scrollableArea:after {
 /* Text input with suggestions */
 input.suggest + div {
   background: #fff;
-  border: 1px solid #999999;
+  border: 1px solid #999;
   position: absolute;
   left: 0;
   top: 0;
@@ -2706,7 +2741,7 @@ input.suggest + div li span {
 }
 #glossary #alphabet li.current a {
   font-weight: bold;
-  text-shadow: 1px 1px 1px #eeeeee;
+  text-shadow: 1px 1px 1px #eee;
   -webkit-font-smoothing: antialiased;
 }
 #glossary #alphabet li.current a:hover {

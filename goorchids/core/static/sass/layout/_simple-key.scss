@@ -494,30 +494,42 @@
   #plant-detail-modal {
     background: $white;
     border-radius: 5px;
+    @include clearfix;
     @include font-size(13);
-    padding: 10px 15px;
+    padding: 25px 15px;
     
     h3.heading {
       @include font-size(24);
       font-style: italic;
-      margin: 0 0 0 245px;
+      margin: 0 0 20px;
       padding: 13px 0 0 20px;
+      
+      span {
+        border-left: 1px solid $lightGray;
+        font-style: normal;
+        padding: 0 0 0 10px;
+        margin: 0 0 0 5px;
+      }
     }
     
     #plant-details {
       padding: 10px 10px 0;
     }
     
+    .list-item {
+      @include clearfix;
+    }
+    
     .img-gallery {
       float: left;
       margin: 0 10px 0 0;
       position: relative;
-      width: 244px;
+      width: 25%;
       
       .frame {
         border: 5px solid rgba(255, 255, 255, 0.8);
         @include box-shadow(0px 0px 4px rgba(0, 0, 0, 0.6));
-        height: 79%;
+        height: 240px;
         position: absolute;
           top: 0;
         width: 100%;
@@ -526,9 +538,9 @@
       
       .img-container {
         height: 239px;
-        overflow: hidden;
         position: relative;
-        width: 239px;
+        overflow: hidden;
+        width: 100%;
         
         .images {
           clear: both;
@@ -566,18 +578,18 @@
     
     .details {
       float: left;
-      margin: 0 0 0 10px;
-      width: 610px;
+      margin: 0 0 0 5%;
+      width: 65%;
       
       p {
         line-height: 1.4;
-        padding: 0 0 5px;
+        padding: 0 0 15px;
       }
       
       .button {
         @include font-size(18);
         line-height: 1;
-        margin: 10px 0 0;
+        margin: 15px 0 0;
         padding: 10px 40px;
       }
     }
