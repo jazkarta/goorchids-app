@@ -245,6 +245,24 @@
           .closed {
             display: none;
           }
+          
+          .drawing {
+            img {
+              max-height: 15%;
+              max-width: none;
+            }
+          }
+          
+          label {
+            display: block;
+            padding: 10px 0;
+            
+            input {
+              display: inline-block;
+              margin: 0 5px 0 0;
+            }
+          }
+
         } //.working-area
       }
     } // .option-list
@@ -364,6 +382,10 @@
           }
         }
         
+        @include media(max-width 775px) {
+          width: 140px;
+        }
+        
         .plant-name {
           line-height: 1.4;
           padding: 10px 0 0;
@@ -372,6 +394,11 @@
             display: block;
             font-style: italic;
           }
+        }
+        
+        .missing-image {
+          background: #ccc;
+          padding: 55px 30px 35px;
         }
         
         .plant-img-container {

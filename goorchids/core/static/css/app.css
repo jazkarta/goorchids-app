@@ -1715,6 +1715,18 @@ footer .support:last-child {
 .skey .sidebar .option-list > li .working-area .closed {
   display: none;
 }
+.skey .sidebar .option-list > li .working-area .drawing img {
+  max-height: 15%;
+  max-width: none;
+}
+.skey .sidebar .option-list > li .working-area label {
+  display: block;
+  padding: 10px 0;
+}
+.skey .sidebar .option-list > li .working-area label input {
+  display: inline-block;
+  margin: 0 5px 0 0;
+}
 .skey .sidebar .section {
   padding: 15px;
 }
@@ -1828,6 +1840,11 @@ footer .support:last-child {
     padding-right: 5px;
   }
 }
+@media screen and (max-width: 775px) {
+  .skey .main-content-wrapper .plant-list .plant {
+    width: 140px;
+  }
+}
 .skey .main-content-wrapper .plant-list .plant .plant-name {
   line-height: 1.4;
   padding: 10px 0 0;
@@ -1835,6 +1852,10 @@ footer .support:last-child {
 .skey .main-content-wrapper .plant-list .plant .plant-name .latin {
   display: block;
   font-style: italic;
+}
+.skey .main-content-wrapper .plant-list .plant .missing-image {
+  background: #ccc;
+  padding: 55px 30px 35px;
 }
 .skey .main-content-wrapper .plant-list .plant .plant-img-container {
   display: inline-block;
