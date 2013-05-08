@@ -354,11 +354,12 @@ input[type="search"] {
 */
 input.button, .skey .sidebar .section input.get-choices,
 .skey .sidebar .section input.clear-all-btn,
-.skey .sidebar .section input.get-help-btn,
+.skey .sidebar .section input.get-help-btn, .modal-wrap input.get-choices-ready,
 .button,
 .skey .sidebar .section .get-choices,
 .skey .sidebar .section .clear-all-btn,
-.skey .sidebar .section .get-help-btn {
+.skey .sidebar .section .get-help-btn,
+.modal-wrap .get-choices-ready {
   border: 1px solid #4c6d8c;
   border-radius: 2px;
   -webkit-box-shadow: inset 1px 1px 1px #8da8bf;
@@ -386,33 +387,36 @@ input.button, .skey .sidebar .section input.get-choices,
 }
 input.button:hover, .skey .sidebar .section input.get-choices:hover,
 .skey .sidebar .section input.clear-all-btn:hover,
-.skey .sidebar .section input.get-help-btn:hover,
+.skey .sidebar .section input.get-help-btn:hover, .modal-wrap input.get-choices-ready:hover,
 .button:hover,
 .skey .sidebar .section .get-choices:hover,
 .skey .sidebar .section .clear-all-btn:hover,
-.skey .sidebar .section .get-help-btn:hover {
+.skey .sidebar .section .get-help-btn:hover,
+.modal-wrap .get-choices-ready:hover {
   background: #294c6b;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
 input.button.large, .skey .sidebar .section input.large.get-choices,
 .skey .sidebar .section input.large.clear-all-btn,
-.skey .sidebar .section input.large.get-help-btn,
+.skey .sidebar .section input.large.get-help-btn, .modal-wrap input.large.get-choices-ready,
 .button.large,
 .skey .sidebar .section .large.get-choices,
 .skey .sidebar .section .large.clear-all-btn,
-.skey .sidebar .section .large.get-help-btn {
+.skey .sidebar .section .large.get-help-btn,
+.modal-wrap .large.get-choices-ready {
   font-size: 20px;
   font-size: 1.25rem;
   padding: 15px 30px;
 }
 input.button.white, .skey .sidebar .section input.white.get-choices,
 .skey .sidebar .section input.white.clear-all-btn,
-.skey .sidebar .section input.white.get-help-btn,
+.skey .sidebar .section input.white.get-help-btn, .modal-wrap input.white.get-choices-ready,
 .button.white,
 .skey .sidebar .section .white.get-choices,
 .skey .sidebar .section .white.clear-all-btn,
-.skey .sidebar .section .white.get-help-btn {
+.skey .sidebar .section .white.get-help-btn,
+.modal-wrap .white.get-choices-ready {
   border: 1px solid #c0c0c0;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -432,11 +436,12 @@ input.button.white, .skey .sidebar .section input.white.get-choices,
 }
 input.button.red, .skey .sidebar .section input.red.get-choices,
 .skey .sidebar .section input.red.clear-all-btn,
-.skey .sidebar .section input.red.get-help-btn,
+.skey .sidebar .section input.red.get-help-btn, .modal-wrap input.red.get-choices-ready,
 .button.red,
 .skey .sidebar .section .red.get-choices,
 .skey .sidebar .section .red.clear-all-btn,
-.skey .sidebar .section .red.get-help-btn {
+.skey .sidebar .section .red.get-help-btn,
+.modal-wrap .red.get-choices-ready {
   border: 1px solid #764248;
   -webkit-box-shadow: inset 1px 1px 1px #8c565e;
   box-shadow: inset 1px 1px 1px #8c565e;
@@ -451,11 +456,12 @@ input.button.red, .skey .sidebar .section input.red.get-choices,
 }
 input.button.green, .skey .sidebar .section input.green.get-choices,
 .skey .sidebar .section input.green.clear-all-btn,
-.skey .sidebar .section input.green.get-help-btn,
+.skey .sidebar .section input.green.get-help-btn, .modal-wrap input.green.get-choices-ready,
 .button.green,
 .skey .sidebar .section .green.get-choices,
 .skey .sidebar .section .green.clear-all-btn,
-.skey .sidebar .section .green.get-help-btn {
+.skey .sidebar .section .green.get-help-btn,
+.modal-wrap .green.get-choices-ready {
   border: 1px solid #63784f;
   -webkit-box-shadow: inset 1px 1px 1px #c7cfb1;
   box-shadow: inset 1px 1px 1px #c7cfb1;
@@ -470,11 +476,12 @@ input.button.green, .skey .sidebar .section input.green.get-choices,
 }
 input.button.search-field, .skey .sidebar .section input.search-field.get-choices,
 .skey .sidebar .section input.search-field.clear-all-btn,
-.skey .sidebar .section input.search-field.get-help-btn,
+.skey .sidebar .section input.search-field.get-help-btn, .modal-wrap input.search-field.get-choices-ready,
 .button.search-field,
 .skey .sidebar .section .search-field.get-choices,
 .skey .sidebar .section .search-field.clear-all-btn,
-.skey .sidebar .section .search-field.get-help-btn {
+.skey .sidebar .section .search-field.get-help-btn,
+.modal-wrap .search-field.get-choices-ready {
   border: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -494,20 +501,22 @@ input.button.search-field, .skey .sidebar .section input.search-field.get-choice
 }
 input.button.search-field:hover, .skey .sidebar .section input.search-field.get-choices:hover,
 .skey .sidebar .section input.search-field.clear-all-btn:hover,
-.skey .sidebar .section input.search-field.get-help-btn:hover,
+.skey .sidebar .section input.search-field.get-help-btn:hover, .modal-wrap input.search-field.get-choices-ready:hover,
 .button.search-field:hover,
 .skey .sidebar .section .search-field.get-choices:hover,
 .skey .sidebar .section .search-field.clear-all-btn:hover,
-.skey .sidebar .section .search-field.get-help-btn:hover {
+.skey .sidebar .section .search-field.get-help-btn:hover,
+.modal-wrap .search-field.get-choices-ready:hover {
   background: darkgrey;
 }
 input.button.small, .skey .sidebar .section input.small.get-choices,
 .skey .sidebar .section input.small.clear-all-btn,
-.skey .sidebar .section input.small.get-help-btn,
+.skey .sidebar .section input.small.get-help-btn, .modal-wrap input.small.get-choices-ready,
 .button.small,
 .skey .sidebar .section .small.get-choices,
 .skey .sidebar .section .small.clear-all-btn,
-.skey .sidebar .section .small.get-help-btn {
+.skey .sidebar .section .small.get-help-btn,
+.modal-wrap .small.get-choices-ready {
   font-size: 12px;
   font-size: 0.75rem;
   padding: 6px 10px;
@@ -517,7 +526,7 @@ header .button, header .skey .sidebar .section .get-choices, .skey .sidebar .sec
 header .skey .sidebar .section .clear-all-btn,
 .skey .sidebar .section header .clear-all-btn,
 header .skey .sidebar .section .get-help-btn,
-.skey .sidebar .section header .get-help-btn {
+.skey .sidebar .section header .get-help-btn, header .modal-wrap .get-choices-ready, .modal-wrap header .get-choices-ready {
   border: 1px solid #446a8b;
   background-color: #577c9d;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #577c9d), color-stop(100%, #587d9e));
@@ -678,7 +687,7 @@ header .skey .sidebar .section .get-help-btn,
   .global-header .menu-container .main-navigation .skey .sidebar .section .clear-all-btn,
   .skey .sidebar .section .global-header .menu-container .main-navigation .clear-all-btn,
   .global-header .menu-container .main-navigation .skey .sidebar .section .get-help-btn,
-  .skey .sidebar .section .global-header .menu-container .main-navigation .get-help-btn {
+  .skey .sidebar .section .global-header .menu-container .main-navigation .get-help-btn, .global-header .menu-container .main-navigation .modal-wrap .get-choices-ready, .modal-wrap .global-header .menu-container .main-navigation .get-choices-ready {
     display: inline-block;
     position: absolute;
     right: 20px;
@@ -777,7 +786,7 @@ header .skey .sidebar .section .get-help-btn,
 .main-navigation .skey .sidebar .section .clear-all-btn,
 .skey .sidebar .section .main-navigation .clear-all-btn,
 .main-navigation .skey .sidebar .section .get-help-btn,
-.skey .sidebar .section .main-navigation .get-help-btn {
+.skey .sidebar .section .main-navigation .get-help-btn, .main-navigation .modal-wrap .get-choices-ready, .modal-wrap .main-navigation .get-choices-ready {
   display: none;
 }
 .main-navigation #mobile-menu {
@@ -1080,7 +1089,9 @@ footer .support:last-child {
 #sidebar .skey .sidebar .section .clear-all-btn,
 .skey .sidebar .section #sidebar .clear-all-btn,
 #sidebar .skey .sidebar .section .get-help-btn,
-.skey .sidebar .section #sidebar .get-help-btn {
+.skey .sidebar .section #sidebar .get-help-btn,
+#sidebar .modal-wrap .get-choices-ready,
+.modal-wrap #sidebar .get-choices-ready {
   margin: 0 0 10px;
 }
 #sidebar.taxonomy {
@@ -1128,7 +1139,7 @@ footer .support:last-child {
   #sidebar > div form .skey .sidebar .section .clear-all-btn,
   .skey .sidebar .section #sidebar > div form .clear-all-btn,
   #sidebar > div form .skey .sidebar .section .get-help-btn,
-  .skey .sidebar .section #sidebar > div form .get-help-btn {
+  .skey .sidebar .section #sidebar > div form .get-help-btn, #sidebar > div form .modal-wrap .get-choices-ready, .modal-wrap #sidebar > div form .get-choices-ready {
     position: absolute;
     top: 1px;
     right: 0;
@@ -1333,7 +1344,7 @@ footer .support:last-child {
 .three-col .skey .sidebar .section .clear-all-btn,
 .skey .sidebar .section .three-col .clear-all-btn,
 .three-col .skey .sidebar .section .get-help-btn,
-.skey .sidebar .section .three-col .get-help-btn {
+.skey .sidebar .section .three-col .get-help-btn, .three-col .modal-wrap .get-choices-ready, .modal-wrap .three-col .get-choices-ready {
   margin: 0;
 }
 @media screen and (max-width: 800px) {
@@ -1371,7 +1382,7 @@ footer .support:last-child {
   .three-col .skey .sidebar .section .clear-all-btn,
   .skey .sidebar .section .three-col .clear-all-btn,
   .three-col .skey .sidebar .section .get-help-btn,
-  .skey .sidebar .section .three-col .get-help-btn {
+  .skey .sidebar .section .three-col .get-help-btn, .three-col .modal-wrap .get-choices-ready, .modal-wrap .three-col .get-choices-ready {
     margin: 0 0 10px;
   }
 }
@@ -1397,7 +1408,7 @@ footer .support:last-child {
 #conservation-status .skey .sidebar .section input.clear-all-btn,
 .skey .sidebar .section #conservation-status input.clear-all-btn,
 #conservation-status .skey .sidebar .section input.get-help-btn,
-.skey .sidebar .section #conservation-status input.get-help-btn {
+.skey .sidebar .section #conservation-status input.get-help-btn, #conservation-status .modal-wrap input.get-choices-ready, .modal-wrap #conservation-status input.get-choices-ready {
   margin: 0 0 0 15px;
 }
 @media screen and (max-width: 500px) {
@@ -1414,7 +1425,7 @@ footer .support:last-child {
   #conservation-status .skey .sidebar .section input.clear-all-btn,
   .skey .sidebar .section #conservation-status input.clear-all-btn,
   #conservation-status .skey .sidebar .section input.get-help-btn,
-  .skey .sidebar .section #conservation-status input.get-help-btn {
+  .skey .sidebar .section #conservation-status input.get-help-btn, #conservation-status .modal-wrap input.get-choices-ready, .modal-wrap #conservation-status input.get-choices-ready {
     display: block;
     margin: 15px 0;
     width: 100%;
@@ -1524,6 +1535,10 @@ footer .support:last-child {
 }
 .skey .sidebar:last-child {
   margin-right: 0;
+}
+.skey .sidebar .scroll {
+  max-height: 450px;
+  overflow: scroll;
 }
 @media screen and (max-width: 865px) {
   .skey .sidebar {
@@ -1736,7 +1751,7 @@ footer .support:last-child {
 }
 .skey .sidebar .section.clear .button, .skey .sidebar .section.clear .get-choices,
 .skey .sidebar .section.clear .clear-all-btn,
-.skey .sidebar .section.clear .get-help-btn {
+.skey .sidebar .section.clear .get-help-btn, .skey .sidebar .section.clear .modal-wrap .get-choices-ready, .modal-wrap .skey .sidebar .section.clear .get-choices-ready {
   margin: 0 0 0 15px;
 }
 .skey .sidebar .section.help {
@@ -1755,7 +1770,7 @@ footer .support:last-child {
 }
 .skey .sidebar .section .already-know .button, .skey .sidebar .section .already-know .get-choices,
 .skey .sidebar .section .already-know .clear-all-btn,
-.skey .sidebar .section .already-know .get-help-btn {
+.skey .sidebar .section .already-know .get-help-btn, .skey .sidebar .section .already-know .modal-wrap .get-choices-ready, .modal-wrap .skey .sidebar .section .already-know .get-choices-ready {
   margin: 0 0 0 10px;
 }
 .skey .sidebar .section .already-know .ember-view {
@@ -1946,6 +1961,26 @@ footer .support:last-child {
 .skey #intro-overlay .continue {
   cursor: pointer;
 }
+.skey #intro-overlay .number-of-questions .button, .skey #intro-overlay .number-of-questions .sidebar .section .get-choices, .skey .sidebar .section #intro-overlay .number-of-questions .get-choices,
+.skey #intro-overlay .number-of-questions .sidebar .section .clear-all-btn,
+.skey .sidebar .section #intro-overlay .number-of-questions .clear-all-btn,
+.skey #intro-overlay .number-of-questions .sidebar .section .get-help-btn,
+.skey .sidebar .section #intro-overlay .number-of-questions .get-help-btn, .skey #intro-overlay .number-of-questions .modal-wrap .get-choices-ready, .modal-wrap .skey #intro-overlay .number-of-questions .get-choices-ready {
+  position: relative;
+}
+.skey #intro-overlay .number-of-questions .button:after, .skey #intro-overlay .number-of-questions .sidebar .section .get-choices:after, .skey .sidebar .section #intro-overlay .number-of-questions .get-choices:after,
+.skey #intro-overlay .number-of-questions .sidebar .section .clear-all-btn:after,
+.skey .sidebar .section #intro-overlay .number-of-questions .clear-all-btn:after,
+.skey #intro-overlay .number-of-questions .sidebar .section .get-help-btn:after,
+.skey .sidebar .section #intro-overlay .number-of-questions .get-help-btn:after, .skey #intro-overlay .number-of-questions .modal-wrap .get-choices-ready:after, .modal-wrap .skey #intro-overlay .number-of-questions .get-choices-ready:after {
+  border-top: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  border-right: 25px solid #4e6f91;
+  content: " ";
+  position: absolute;
+  left: -30px;
+  top: 0;
+}
 .skey .toplink {
   background: rgba(255, 255, 255, 0.5);
   padding: 10px;
@@ -1958,7 +1993,7 @@ footer .support:last-child {
 .skey .toplink .sidebar .section .clear-all-btn,
 .skey .sidebar .section .toplink .clear-all-btn,
 .skey .toplink .sidebar .section .get-help-btn,
-.skey .sidebar .section .toplink .get-help-btn {
+.skey .sidebar .section .toplink .get-help-btn, .skey .toplink .modal-wrap .get-choices-ready, .modal-wrap .skey .toplink .get-choices-ready {
   margin: 0;
 }
 
@@ -1976,6 +2011,9 @@ footer .support:last-child {
 }
 #plant-detail-modal:after {
   clear: both;
+}
+#plant-detail-modal .modal-wrap {
+  padding: 0;
 }
 #plant-detail-modal h3.heading {
   font-size: 24px;
@@ -2069,12 +2107,29 @@ footer .support:last-child {
 #plant-detail-modal .details .skey .sidebar .section .clear-all-btn,
 .skey .sidebar .section #plant-detail-modal .details .clear-all-btn,
 #plant-detail-modal .details .skey .sidebar .section .get-help-btn,
-.skey .sidebar .section #plant-detail-modal .details .get-help-btn {
+.skey .sidebar .section #plant-detail-modal .details .get-help-btn, #plant-detail-modal .details .modal-wrap .get-choices-ready, .modal-wrap #plant-detail-modal .details .get-choices-ready {
   font-size: 18px;
   font-size: 1.125rem;
   line-height: 1;
   margin: 15px 0 0;
   padding: 10px 40px;
+}
+
+.modal-wrap {
+  background: white;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+#notification-msg {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 5px #333333;
+  box-shadow: 0 0 5px #333333;
+  font-size: 18px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  padding: 20px;
 }
 
 /*

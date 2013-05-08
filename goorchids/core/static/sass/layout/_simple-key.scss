@@ -56,6 +56,11 @@
     position: relative;
     @include span-columns(3);
     
+    .scroll {
+      max-height: 450px;
+      overflow: scroll;
+    }
+    
     @include media(max-width 865px) {
       @include span-columns(4 of 12);
     }
@@ -502,7 +507,23 @@
     .continue {
       cursor: pointer;
     }
-  }
+    
+    .number-of-questions {
+      .button {
+        position: relative;
+      
+        &:after {
+          border-top: 25px solid transparent;
+          border-bottom: 25px solid transparent;
+          border-right: 25px solid #4e6f91;
+          content: " ";
+          position: absolute;
+          left: -30px;
+          top: 0;
+        }
+      }
+    } // .number-of-questions
+  } // #intro-overlay
   
   .toplink {
     background: rgba(255, 255, 255, .5);
@@ -524,6 +545,10 @@
     @include clearfix;
     @include font-size(13);
     padding: 25px 15px;
+    
+    .modal-wrap {
+      padding: 0;
+    }
     
     h3.heading {
       @include font-size(24);
@@ -620,4 +645,23 @@
         padding: 10px 40px;
       }
     }
+  }
+  
+  .modal-wrap {
+    background: $white;
+    border-radius: 5px;
+    padding: 20px;
+    
+    .get-choices-ready {
+      @extend .button;
+    }
+  }
+  
+  #notification-msg {
+    background: rgba(255, 255, 255, .9);
+    border-radius: 5px;
+    @include box-shadow(0 0 5px #333);
+    @include font-size(18);
+    font-weight: 600;
+    padding: 20px;
   }
