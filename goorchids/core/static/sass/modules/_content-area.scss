@@ -26,7 +26,7 @@
     }
     
     @include media(max-width 500px) {
-      @include span-columns(6);
+      @include span-columns(12);
       
       &:nth-child(3n) {
         @include span-columns(6);

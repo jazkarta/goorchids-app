@@ -47,4 +47,20 @@
       }
     }
   }
+  
+  @include media(max-width 500px) {
+    dl {
+      
+      dt,
+      dd {
+        float: none;
+        text-align: left;
+        width: 100%;
+      }
+    
+      dt {
+        padding: 15px 0 5px;
+      }
+    }
+  }
 }

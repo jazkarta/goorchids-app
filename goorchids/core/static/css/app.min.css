@@ -52,6 +52,7 @@ strong { font-weight: 600; }
 h1, h2, h3, h4, h5, h6 { color: #733944; font-family: 'Droid Serif', serif; padding: 0 0 20px; }
 
 h1 { font-size: 40px; font-size: 2.5rem; }
+@media screen and (max-width: 500px) { h1 { font-size: 30px; font-size: 1.875rem; } }
 
 h2 { font-size: 22px; font-size: 1.375rem; padding: 20px 0 10px; }
 h2:first-child { padding: 0 0 10px; }
@@ -351,6 +352,10 @@ footer .support:last-child { margin-right: 0; }
 .conservation-status tr { border-bottom: 1px solid #6f8759; }
 .conservation-status thead th:first-child { border-right: 1px solid #6f8759; }
 
+#sb-overlay { opacity: 0.8 !important; }
+
+#sb-title-inner h6 { color: white; }
+
 .skey img.arrow { display: none; }
 .skey #main { *zoom: 1; }
 .skey #main:before, .skey #main:after { content: " "; display: table; }
@@ -567,6 +572,8 @@ div.sb-message a:link, div.sb-message a:visited { color: #fff; text-decoration: 
 .characteristics dt { font-weight: 600; text-transform: uppercase; }
 @media screen and (max-width: 800px) { .characteristics dl dt { width: 40%; }
   .characteristics dl dd { width: 60%; } }
+@media screen and (max-width: 500px) { .characteristics dl dt, .characteristics dl dd { float: none; text-align: left; width: 100%; }
+  .characteristics dl dt { padding: 15px 0 5px; } }
 
 .content-area { padding: 0 0 25px; }
 .content-area h2, .content-area p, .content-area dl { padding: 0 0 10px; }
@@ -579,7 +586,7 @@ div.sb-message a:link, div.sb-message a:visited { color: #fff; text-decoration: 
 .genera > li, .species > li { display: block; float: left; margin-right: 2.35765%; width: 31.76157%; padding: 0 0 10px; }
 .genera > li:last-child, .species > li:last-child { margin-right: 0; }
 .genera > li:nth-child(3n), .species > li:nth-child(3n) { margin-right: 0; }
-@media screen and (max-width: 500px) { .genera, .species { display: block; float: left; margin-right: 2.35765%; width: 48.82117%; }
+@media screen and (max-width: 500px) { .genera, .species { display: block; float: left; margin-right: 2.35765%; width: 100%; }
   .genera:last-child, .species:last-child { margin-right: 0; }
   .genera:nth-child(3n), .species:nth-child(3n) { display: block; float: left; margin-right: 2.35765%; width: 48.82117%; }
   .genera:nth-child(3n):last-child, .species:nth-child(3n):last-child { margin-right: 0; }

@@ -148,6 +148,12 @@ h1 {
   font-size: 40px;
   font-size: 2.5rem;
 }
+@media screen and (max-width: 500px) {
+  h1 {
+    font-size: 30px;
+    font-size: 1.875rem;
+  }
+}
 
 h2 {
   font-size: 22px;
@@ -1459,6 +1465,14 @@ footer .support:last-child {
   border-right: 1px solid #6f8759;
 }
 
+#sb-overlay {
+  opacity: 0.8 !important;
+}
+
+#sb-title-inner h6 {
+  color: white;
+}
+
 .skey img.arrow {
   display: none;
 }
@@ -2421,6 +2435,17 @@ div.sb-message a:link, div.sb-message a:visited {
     width: 60%;
   }
 }
+@media screen and (max-width: 500px) {
+  .characteristics dl dt,
+  .characteristics dl dd {
+    float: none;
+    text-align: left;
+    width: 100%;
+  }
+  .characteristics dl dt {
+    padding: 15px 0 5px;
+  }
+}
 
 .content-area {
   padding: 0 0 25px;
@@ -2471,7 +2496,7 @@ div.sb-message a:link, div.sb-message a:visited {
     display: block;
     float: left;
     margin-right: 2.35765%;
-    width: 48.82117%;
+    width: 100%;
   }
   .genera:last-child,
   .species:last-child {
