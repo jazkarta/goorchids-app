@@ -245,7 +245,7 @@
         .working-area {
           background: $lightestGreen;
           @include box-shadow(inset 0 0 5px $lightGreen);
-          padding: 10px 15px;
+          padding: 10px 15px 20px;
           
           .closed {
             display: none;
@@ -253,7 +253,7 @@
           
           .drawing {
             img {
-              max-height: 15%;
+              max-height: 70px;
               max-width: none;
             }
           }

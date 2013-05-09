@@ -1725,13 +1725,13 @@ footer .support:last-child {
   background: #c7cfb1;
   -webkit-box-shadow: inset 0 0 5px #a4aa8d;
   box-shadow: inset 0 0 5px #a4aa8d;
-  padding: 10px 15px;
+  padding: 10px 15px 20px;
 }
 .skey .sidebar .option-list > li .working-area .closed {
   display: none;
 }
 .skey .sidebar .option-list > li .working-area .drawing img {
-  max-height: 15%;
+  max-height: 70px;
   max-width: none;
 }
 .skey .sidebar .option-list > li .working-area label {
