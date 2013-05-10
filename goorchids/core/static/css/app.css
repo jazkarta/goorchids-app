@@ -1735,6 +1735,27 @@ footer .support:last-child {
     text-transform: uppercase;
   }
 }
+.skey .sidebar .option-list > li .option .name,
+.skey .sidebar .option-list > li .option .value {
+  display: block;
+  line-height: 1.5;
+}
+.skey .sidebar .option-list > li .option .name .button, .skey .sidebar .option-list > li .option .name .section .get-choices, .skey .sidebar .section .option-list > li .option .name .get-choices,
+.skey .sidebar .option-list > li .option .name .section .clear-all-btn,
+.skey .sidebar .section .option-list > li .option .name .clear-all-btn,
+.skey .sidebar .option-list > li .option .name .section .get-help-btn,
+.skey .sidebar .section .option-list > li .option .name .get-help-btn, .skey .sidebar .option-list > li .option .name .modal-wrap .get-choices-ready, .modal-wrap .skey .sidebar .option-list > li .option .name .get-choices-ready,
+.skey .sidebar .option-list > li .option .value .button,
+.skey .sidebar .option-list > li .option .value .section .get-choices,
+.skey .sidebar .section .option-list > li .option .value .get-choices,
+.skey .sidebar .option-list > li .option .value .section .clear-all-btn,
+.skey .sidebar .section .option-list > li .option .value .clear-all-btn,
+.skey .sidebar .option-list > li .option .value .section .get-help-btn,
+.skey .sidebar .section .option-list > li .option .value .get-help-btn,
+.skey .sidebar .option-list > li .option .value .modal-wrap .get-choices-ready,
+.modal-wrap .skey .sidebar .option-list > li .option .value .get-choices-ready {
+  margin: 5px 0 0;
+}
 .skey .sidebar .option-list > li .working-area {
   background: #c7cfb1;
   -webkit-box-shadow: inset 0 0 5px #a4aa8d;
