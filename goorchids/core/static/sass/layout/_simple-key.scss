@@ -114,7 +114,7 @@
               text-transform: uppercase;
               content: "Select";
               position: absolute;
-                top: 5px;
+                top: 15px;
                 right: 10px;
               z-index: 10;
               
@@ -122,6 +122,10 @@
                 background: #aaa;
               }
             }
+          }
+          
+          .terms {
+            padding: 10px 0;
           }
         } // .choice
       } // .working-area
@@ -162,9 +166,48 @@
       }
     }
     
+    #question-nav {
+      @include media(max-width 500px) {
+        
+        .filter-header {
+        
+          .icon-plus,
+          .icon-minus {
+            display: block;
+          }
+          
+          &:hover {
+            background: $darkGreen;
+            @include transition(all 0.5s ease-in-out);
+            
+            h5 {
+              color: $white;
+              text-shadow: none;
+            }
+          }
+        }
+        
+        &.closed {
+          .scroll,
+          .more,
+          .family-genus,
+          .clear,
+          .close-filters {
+            height: 0;
+            padding: 0;
+            overflow: hidden;
+          }
+        }
+        
+        .scroll {
+          height: 350px;
+          @include transition(height 0.5s linear);
+        }
+      }
+    } // #question-nav
+    
     .section {
       @include media(max-width 500px) {
-        display: none;
         
         &.filter-header {
           cursor: pointer;
@@ -220,10 +263,6 @@
           
           @include media(max-width 500px) {
             
-            .value {
-              margin: 0 0 0 10px;
-            }
-            
             .icon-cancel-close {
               &:before {
                 border: 1px solid #c0c0c0;
@@ -249,6 +288,14 @@
             .button {
               margin: 5px 0 0;
             }
+          }
+          
+          .name {
+            font-weight: 600;
+          }
+          
+          .value {
+            font-style: italic;
           }
         }
         
@@ -340,6 +387,65 @@
   
   // MAIN CONTENT
   .main-content-wrapper {
+    
+    .main-content-header {
+      @include clearfix;
+      
+      h1 {
+        float: left;
+        margin: 10px 0 0;
+      }
+      
+      .species-count-heading {
+        display: inline-block;
+        margin: 10px 0 0;
+      }
+    }
+    
+    #filters-preview {
+      display: none;
+      
+      @include media(max-width 500px) {
+        display: block;
+        
+        ul.ember-view {
+          border: 1px solid $darkestGreen;
+        }
+        
+        li.ember-view {
+          border-bottom: 1px solid $darkestGreen;
+          @include clearfix;
+          @include linear-gradient($darkGreen, $darkerGreen);
+          padding: 5px 10px;
+          
+          &:last-child {
+            border-bottom: 0;
+          }
+        }
+        
+        .name,
+        .value {
+          color: $white;
+          display: block;
+          float: left;
+          text-shadow: 1px 1px 1px $darkestGreen;
+        }
+        
+        .name {
+          color: $lightestGreen;
+          font-style: italic;
+          font-weight: normal;
+          padding: 0 15px 0 0;
+          text-align: right;
+          width: 40%;
+        }
+        
+        .value {
+          font-weight: normal;
+          width: 60%;
+        }
+      }
+    }
     
     .select2-container {
       margin: 0 0 0 5px;
