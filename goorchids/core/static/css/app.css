@@ -1639,8 +1639,24 @@ footer .support:last-child {
   .skey .sidebar .working-area .choice label:after:hover {
     background: #aaa;
   }
-  .skey .sidebar .working-area .choice .terms {
+  .skey .sidebar .working-area .terms {
     padding: 10px 0;
+  }
+  .skey .sidebar .working-area .terms.none {
+    display: none;
+  }
+  .skey .sidebar .working-area .terms.closed {
+    display: block !important;
+  }
+  .skey .sidebar .working-area .terms h5 {
+    padding: 0 0 10px;
+  }
+  .skey .sidebar .working-area .terms ul li {
+    padding: 0 0 5px;
+  }
+  .skey .sidebar .working-area .terms ul li span {
+    font-weight: 600;
+    padding: 0 5px 0 0;
   }
 }
 .skey .sidebar .instructions {

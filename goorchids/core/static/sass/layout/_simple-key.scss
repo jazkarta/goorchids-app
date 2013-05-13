@@ -123,11 +123,32 @@
               }
             }
           }
-          
-          .terms {
-            padding: 10px 0;
-          }
         } // .choice
+        
+        .terms {
+          padding: 10px 0;
+          
+          &.none {
+            display: none;
+          }
+          
+          &.closed {
+            display: block !important;
+          }
+          
+          h5 {
+            padding: 0 0 10px;
+          }
+          
+          ul li {
+            padding: 0 0 5px;
+            
+            span {
+              font-weight: 600;
+              padding: 0 5px 0 0;
+            }
+          }
+        }
       } // .working-area
     } // 650px
     
