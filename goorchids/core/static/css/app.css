@@ -110,7 +110,7 @@ table {
 body {
   background: #f0f2d9;
   color: #293619;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 1.4;
@@ -140,7 +140,7 @@ strong {
 
 h1, h2, h3, h4, h5, h6 {
   color: #733944;
-  font-family: 'Droid Serif', serif;
+  font-family: "Droid Serif", serif;
   padding: 0 0 20px;
 }
 
@@ -345,7 +345,7 @@ input[type="search"] {
   box-shadow: inset 1px 1px 1px #c7c7c7;
   color: #293619;
   display: block;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 12px;
   font-size: 0.75rem;
   line-height: 1.5;
@@ -372,7 +372,7 @@ input.button, .skey .sidebar .section input.get-choices,
   box-shadow: inset 1px 1px 1px #8da8bf;
   color: white;
   display: inline-block;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-size: 14px;
   font-size: 0.875rem;
@@ -423,7 +423,7 @@ input.button.white, .skey .sidebar .section input.white.get-choices,
 .skey .sidebar .section .white.clear-all-btn,
 .skey .sidebar .section .white.get-help-btn,
 .modal-wrap .white.get-choices-ready {
-  border: 1px solid #c0c0c0;
+  border: 1px solid silver;
   -webkit-box-shadow: none;
   box-shadow: none;
   color: #293619;
@@ -1595,7 +1595,7 @@ footer .support:last-child {
   }
   .skey .sidebar .working-area .choice.checked label:after {
     background: #666;
-    border: 1px solid #333;
+    border: 1px solid #333333;
     -webkit-box-shadow: inset 1px 1px 2px #333333;
     box-shadow: inset 1px 1px 2px #333333;
     color: white;
@@ -1610,7 +1610,7 @@ footer .support:last-child {
     display: none;
   }
   .skey .sidebar .working-area .choice label:after {
-    border: 1px solid #c0c0c0;
+    border: 1px solid silver;
     -webkit-box-shadow: none;
     box-shadow: none;
     color: #293619;
@@ -1667,7 +1667,7 @@ footer .support:last-child {
 }
 .skey .sidebar .instructions h5 {
   color: #333333;
-  font-family: 'Open Sans', helvetica, arial, sans-serif;
+  font-family: "Open Sans", helvetica, arial, sans-serif;
   font-weight: 700;
   padding: 0;
 }
@@ -1773,12 +1773,12 @@ footer .support:last-child {
 }
 @media screen and (max-width: 500px) {
   .skey .sidebar .option-list > li .option .icon-cancel-close:before {
-    border: 1px solid #c0c0c0;
+    border: 1px solid silver;
     -webkit-box-shadow: none;
     box-shadow: none;
     color: #293619;
     content: "Clear";
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 11px;
     font-size: 0.6875rem;
     background-color: #e9e9e9;
@@ -2869,6 +2869,7 @@ div.scrollableArea:after {
 #species-images {
   display: inline-block;
   position: relative;
+  width: 100%;
 }
 
 .scrollWrapper {
@@ -2889,7 +2890,7 @@ div.scrollableArea:after {
 /* Text input with suggestions */
 input.suggest + div {
   background: #fff;
-  border: 1px solid #999;
+  border: 1px solid #999999;
   position: absolute;
   left: 0;
   top: 0;
@@ -2998,7 +2999,7 @@ input.suggest + div li span {
 }
 #glossary #alphabet li.current a {
   font-weight: bold;
-  text-shadow: 1px 1px 1px #eee;
+  text-shadow: 1px 1px 1px #eeeeee;
   -webkit-font-smoothing: antialiased;
 }
 #glossary #alphabet li.current a:hover {
