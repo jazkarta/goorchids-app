@@ -46,7 +46,7 @@
 
     <header class="species-header">
       <h1><span class="scientific">{{ scientific_name|italicize_plant|safe }}</span>
-      <span class="origin">{{ taxon.taxonomic_authority }}</span></h1>
+      <span class="origin">{{ taxon.taxonomic_authority|linebreaksbr }}</span></h1>
       {% if common_names %}
       <h2 class="common nogloss">{% for common_name in common_names %}{% if not forloop.first %}, {% endif %}{{ common_name }}{% endfor %}</h2>
       {% endif %}
@@ -81,7 +81,7 @@
       <section class="content-area">
       {% if partner_heading or partner_blurb %}
         <h2>{{ partner_heading }}</h2>
-        <p>{{ partner_blurb }} </p>
+        <p>{{ partner_blurb|linebreaksbr }} </p>
       {% endif %}
       </section>
       
@@ -89,7 +89,7 @@
         <h2>Facts About</h2>
         <p>
             {% if taxon.factoid|length > 0 %}
-                {{ taxon.factoid }}
+                {{ taxon.factoid|linebreaksbr }}
             {% else %}
                 N/A
             {% endif %}
@@ -99,7 +99,7 @@
       {% if taxon.variety_notes %}
       <section class="content-area">
           <h2>Notes on Subspecies and Varieties</h2>
-          <p>{{ taxon.variety_notes|italicize_plant|safe }}</p>
+          <p>{{ taxon.variety_notes|italicize_plant|safe|linebreaksbr }}</p>
       </div>
       {% endif %}
 
@@ -166,7 +166,7 @@
                             </ul>
                         {% endif %}
                         {% if character.short_name == 'flowering_phenology_om' %}
-                        <p>{{taxon.flowering_phenology}}</p>
+                        <p>{{ taxon.flowering_phenology|linebreaksbr }}</p>
                         {% endif %}
                         </dd>
                     </dl>
@@ -183,23 +183,23 @@
                 <div class="characteristics accordion-body hidden">
                     <dl>
                         <dt>Pollination</dt>
-                        <dd>{{ taxon.pollination}}</dd>
+                        <dd>{{ taxon.pollination|linebreaksbr }}</dd>
                     </dl>
                     <dl>
                         <dt>Mycorrhiza</dt>
-                        <dd>{{ taxon.mycorrhiza}}</dd>
+                        <dd>{{ taxon.mycorrhiza|linebreaksbr }}</dd>
                     </dl>
                     <dl>
                         <dt>Monitoring</dt>
-                        <dd>{{ taxon.monitoring}}</dd>
+                        <dd>{{ taxon.monitoring|linebreaksbr }}</dd>
                     </dl>
                     <dl>
                         <dt>Propagation</dt>
-                        <dd>{{ taxon.propagation}}</dd>
+                        <dd>{{ taxon.propagation|linebreaksbr }}</dd>
                     </dl>
                     <dl>
                         <dt>Restoration</dt>
-                        <dd>{{ taxon.restoration}}</dd>
+                        <dd>{{ taxon.restoration|linebreaksbr }}</dd>
                     </dl>
                 </div>
               </div>
