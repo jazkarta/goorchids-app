@@ -341,6 +341,7 @@ footer .support:last-child { margin-right: 0; }
 .species-header { padding: 0 0 20px; }
 .species-header h1 { padding: 0; }
 .species-header h1 .origin { font-size: 20px; font-size: 1.25rem; }
+.species-header h2 { padding: 0 0 10px; }
 
 #species .content-area h2, #species .content-area h4 { color: #333; padding: 0 0 10px; }
 

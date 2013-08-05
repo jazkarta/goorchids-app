@@ -27,10 +27,12 @@ Genus: {{ genus.name }} {% if common_name %}({{ common_name }}){% endif %}
 {% block body_attributes %}id="genus" class="taxa"{% endblock %}
 
 {% block main_content %}
-                <h1>Genus: <em>{{ genus.name }}</em></h1>
-                {% if common_name %}
-                    <p class="common">{{ common_name }}</p>
-                {% endif %}
+                <div class="species-header">
+                    <h1>Genus: <em>{{ genus.name }}</em></h1>
+                    {% if common_name %}
+                        <h2 class="common nogloss">{{ common_name }}</h2>
+                    {% endif %}
+                </div>
                 <p class="description">
                 {% if genus.description %}
                     {{ genus.description|linebreaksbr }}

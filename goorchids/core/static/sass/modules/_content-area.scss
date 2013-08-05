@@ -15,7 +15,7 @@
   .genera,
   .species {
     @include clearfix;
-    
+
     > li {
       @include span-columns(4);
       padding: 0 0 10px;
