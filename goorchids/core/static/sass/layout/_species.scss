@@ -91,3 +91,30 @@
     color: $white;
   }
 }
+
+body.taxa {
+   #sb-title, #sb-title-inner {
+        height: 76px;
+        line-height: 70%;
+        position: relative;
+    }
+    #sb-title-inner {
+        div {
+            bottom: 6px;
+            position: absolute;
+        }
+        h6 {
+            font-size: 16px;
+            line-height: 110%;
+            margin: 0 0 2px;
+            padding: 0;
+        }
+        span {
+            font-size: 10px;
+        }
+        a {
+            color: #fff;
+            text-decoration: underline;
+        }
+    }
+}
