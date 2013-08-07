@@ -14,6 +14,8 @@ urlpatterns = patterns(
     url(r'^key-by-location/', views.redirect_to_simple_key_by_location),
     url(r'^plant-name-suggestions/', views.plant_name_suggestions_view,
         name='plant-name-suggestions'),
+    url(r'^search-suggestions/', views.search_suggestions_view,
+        name='site-search-suggestions'),
 
     # Search results
     url(r'^search/$',

@@ -5,7 +5,9 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.shortcuts import render_to_response
 from gobotany.core import botany
+from gobotany.core.models import Family
 from gobotany.core.models import Genus
+from gobotany.core.models import GlossaryTerm
 from gobotany.core.models import Synonym
 from gobotany.core.models import CommonName
 from gobotany.core.models import PartnerSpecies
@@ -43,7 +45,7 @@ def redirect_to_simple_key_by_location(request):
     return redirect('/simple/monocots/orchid-monocots#state_distribution=%s' % location)
 
 
-def _plant_name_suggestions(query, querytype='istartswith'):
+def _plant_name_suggestions(query, querytype='istartswith', site_search=False):
     """Find matching names from multiple tables."""
     assert querytype in ('istartswith', 'icontains')
 
@@ -53,6 +55,9 @@ def _plant_name_suggestions(query, querytype='istartswith'):
         CommonName: ('common_name',),
         Synonym: ('scientific_name',),
     }
+    if site_search:
+        fieldmap[Family] = ('name', 'common_name')
+        fieldmap[GlossaryTerm] = ('term',)
 
     suggestions = []
     for model, fields in fieldmap.items():
@@ -86,6 +91,34 @@ def plant_name_suggestions_view(request):
         # This query is case-insensitive to return names as they appear
         # in the database regardless of the case of the query string.
         suggestions = _plant_name_suggestions(query, querytype='istartswith')
+
+        # If fewer than the maximum number of suggestions were found,
+        # try finding some additional ones that match anywhere in the
+        # query string.
+        if len(suggestions) < MAX_RESULTS:
+            suggestions.extend(_plant_name_suggestions(
+                query, querytype='icontains'))
+
+    suggestions = suggestions[:MAX_RESULTS]
+    return HttpResponse(json.dumps(suggestions),
+                        mimetype='application/json; charset=utf-8')
+
+
+def search_suggestions_view(request):
+    """Return some suggestions for search input."""
+
+    MAX_RESULTS = 10
+    query = request.GET.get('q', '').lower()
+
+    suggestions = []
+    if query != '':
+        # First look for suggestions that match at the start of the
+        # query string.
+
+        # This query is case-insensitive to return names as they appear
+        # in the database regardless of the case of the query string.
+        suggestions = _plant_name_suggestions(
+            query, querytype='istartswith', site_search=True)
 
         # If fewer than the maximum number of suggestions were found,
         # try finding some additional ones that match anywhere in the
