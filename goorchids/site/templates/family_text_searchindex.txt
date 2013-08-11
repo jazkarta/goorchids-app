@@ -1,0 +1,12 @@
+{% load simplekey_extras %}
+
+Family: {{ object.name }}.
+
+{% if object.common_name %}{{ object.common_name|cut:"The " }}.{% endif %}
+
+{{ object.description }}
+
+This Family's Genera:
+{% for genus in object.genera.all %}
+    {{ genus.name }}
+{% endfor %}

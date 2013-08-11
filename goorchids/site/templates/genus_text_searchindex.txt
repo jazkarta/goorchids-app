@@ -1,0 +1,14 @@
+{% load simplekey_extras %}
+
+Genus: {{ object.name }}.
+
+{% if object.common_name %}{{ object.common_name }}.{% endif %}
+
+{{ object.description }}
+
+Family: {{ object.family.name }}.
+
+This Genus's Species:
+{% for species in object.taxa.all %}
+    {{ species.scientific_name }}
+{% endfor %}
