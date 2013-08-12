@@ -15,7 +15,6 @@ define([
     // (from http://stackoverflow.com/questions/14910785/ember-select-with-custom-select-plugin-how-to-bind-the-two)
     Ember.Select.reopen({
         didInsertElement: function() {
-            this.set('value', null);
             this.$().select2();
         },
         contentChanged: function() {
