@@ -220,7 +220,7 @@
             <form>
                 <p>Select a location to view conservation status:</p>
                 <select id="region-switcher">
-                    <option value="">Select a Region</option>
+                    <option value="">Enter state or province</option>
                 {% for conservation_status in taxon.regional_conservation_statuses.all %}
                     <option value="{{conservation_status.region}}">{{conservation_status.get_region_display}}</option>
                 {% endfor %}
