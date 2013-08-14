@@ -99,7 +99,7 @@
       {% if taxon.variety_notes %}
       <section class="content-area">
           <h2>Notes on Subspecies and Varieties</h2>
-          <p>{{ taxon.variety_notes|italicize_plant|safe|linebreaksbr }}</p>
+          <p>{{ taxon.variety_notes|italicize_infraspecific_names|safe|linebreaksbr }}</p>
       </div>
       {% endif %}
 
