@@ -53,7 +53,10 @@ CANADIAN_RANK_CODES = OrderedDict((
     ('5', 'Undetermined'),
     ('6', 'Not assessed'),
     ('7', 'Exotic'),
-    ('8', 'Accidental')
+    ('8', 'Accidental'),
+    ('E', 'Endangered'),
+    ('T', 'Threatened'),
+    ('SC', 'Special Concern'),
 ))
 
 WETLAND_STATUS_CODES = OrderedDict((
@@ -96,7 +99,7 @@ class GoOrchidTaxon(Taxon):
     ca_rank = models.CharField(
         max_length=3, null=True, blank=True,
         choices=CANADIAN_RANK_CODES.items(),
-        verbose_name='Canadian rank',
+        verbose_name='Canadian Status',
     )
 
     @property
