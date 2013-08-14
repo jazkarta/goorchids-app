@@ -20,8 +20,9 @@ from django.db import (connections, router, transaction, DEFAULT_DB_ALIAS,
 from django.utils.datastructures import SortedDict
 
 from gobotany.core.models import (TaxonCharacterValue, CharacterValue,
-                                  ContentImage)
+                                  ContentImage, GlossaryTerm)
 from gobotany.site.models import PlantNameSuggestion, SearchSuggestion
+from gobotany.plantoftheday.models import PlantOfTheDay
 from gobotany.search.models import PlainPage
 from gobotany.core.importer import Importer
 from .models import RegionalConservationStatus, ImportLog
@@ -158,6 +159,8 @@ def _load(name, log_entry=None):
         SearchSuggestion.objects.all().delete()
         RegionalConservationStatus.objects.all().delete()
         PlainPage.objects.all().delete()
+        GlossaryTerm.objects.all().delete()
+        PlantOfTheDay.objects.all().delete()
 
         with connection.constraint_checks_disabled():
             objects_in_fixture = 0
