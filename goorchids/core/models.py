@@ -57,6 +57,7 @@ CANADIAN_RANK_CODES = OrderedDict((
     ('E', 'Endangered'),
     ('T', 'Threatened'),
     ('SC', 'Special Concern'),
+    ('C', 'Candidate'),
 ))
 
 WETLAND_STATUS_CODES = OrderedDict((
