@@ -87,6 +87,8 @@ STATICFILES_DIRS = [
 ]
 SOUTH_TESTS_MIGRATE = False
 
+HAYSTACK_INCLUDE_SPELLING = True
+
 if 'test' in sys.argv:
     pass
 else:
