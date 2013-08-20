@@ -84,7 +84,7 @@ def check_directory(operator, key):
         key.set_acl('private')
 
 def check_image(operator, key):
-    if not key.name.endswith('.jpg'):
+    if not key.name.endswith('.jpg') and not key.name.endswith('.JPG'):
         operator.error(key, 'Unrecognized image extension')
         return
 
