@@ -155,10 +155,15 @@ def update_potd_after_taxon_save(sender, **kw):
     """After a taxon is saved, make sure it has an entry in the plantoftheday table."""
     instance = kw['instance']
     try:
-        PlantOfTheDay.objects.filter(
+        potd = PlantOfTheDay.objects.filter(
             scientific_name=instance.scientific_name, partner_short_name='gobotany').get()
     except ObjectDoesNotExist:
-        PlantOfTheDay(scientific_name=instance.scientific_name, partner_short_name='gobotany').save()
+        potd = PlantOfTheDay(
+            scientific_name=instance.scientific_name,
+            partner_short_name='gobotany',
+            include=instance.ready_for_display)
+    potd.include = instance.ready_for_display
+    potd.save()
 
 
 class ImportLog(models.Model):
