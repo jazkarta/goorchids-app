@@ -2,4 +2,4 @@
 
 set -e
 
-django-admin.py update_index --remove --settings gobotany.settings
+django-admin.py update_index --remove --settings goorchids.settings
