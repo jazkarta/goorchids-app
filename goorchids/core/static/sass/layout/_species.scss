@@ -118,3 +118,16 @@ body.taxa {
         }
     }
 }
+
+.img-gallery {
+    .plant {
+        position: relative;
+    }
+    .frame {
+        height: 239px;
+        position: absolute;
+        top: 0;
+        width: 239px;
+        z-index: 100;
+    }
+}

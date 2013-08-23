@@ -1510,6 +1510,17 @@ body.taxa #sb-title-inner a {
   text-decoration: underline;
 }
 
+.img-gallery .plant {
+  position: relative;
+}
+.img-gallery .frame {
+  height: 239px;
+  position: absolute;
+  top: 0;
+  width: 239px;
+  z-index: 100;
+}
+
 .skey img.arrow {
   display: none;
 }

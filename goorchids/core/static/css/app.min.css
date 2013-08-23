@@ -367,6 +367,9 @@ body.taxa #sb-title-inner h6 { font-size: 16px; line-height: 110%; margin: 0 0 2
 body.taxa #sb-title-inner span { font-size: 10px; }
 body.taxa #sb-title-inner a { color: #fff; text-decoration: underline; }
 
+.img-gallery .plant { position: relative; }
+.img-gallery .frame { height: 239px; position: absolute; top: 0; width: 239px; z-index: 100; }
+
 .skey img.arrow { display: none; }
 .skey #main { *zoom: 1; }
 .skey #main:before, .skey #main:after { content: " "; display: table; }
