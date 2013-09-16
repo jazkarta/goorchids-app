@@ -23,7 +23,8 @@ from gobotany.core.models import (TaxonCharacterValue, CharacterValue,
                                   ContentImage, GlossaryTerm)
 from gobotany.site.models import PlantNameSuggestion, SearchSuggestion
 from gobotany.plantoftheday.models import PlantOfTheDay
-from gobotany.search.models import PlainPage
+from gobotany.search.models import (PlainPage, GroupsListPage,
+                                    SubgroupsListPage, SubgroupResultsPage)
 from gobotany.core.importer import Importer
 from .models import RegionalConservationStatus, ImportLog
 
@@ -159,6 +160,9 @@ def _load(name, log_entry=None):
         SearchSuggestion.objects.all().delete()
         RegionalConservationStatus.objects.all().delete()
         PlainPage.objects.all().delete()
+        GroupsListPage.objects.all().delete()
+        SubgroupsListPage.objects.all().delete()
+        SubgroupResultsPage.objects.all().delete()
         GlossaryTerm.objects.all().delete()
         PlantOfTheDay.objects.all().delete()
 
