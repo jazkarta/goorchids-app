@@ -14,3 +14,4 @@ fi
 DEV=$(dirname "$THIS")
 $DEV/utils/require-setup && source $DEV/venv/bin/activate
 export DJANGO_SETTINGS_MODULE=goorchids.settings
+export PATH=$PATH:$DEV/node/bin
