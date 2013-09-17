@@ -53,7 +53,7 @@ def taxon_edit_link(scientific_name):
                     args=(taxon.piles.all()[0].slug,
                           taxon.slug())),
             escape(taxon.scientific_name))
-    except ObjectDoesNotExist:
+    except (ObjectDoesNotExist, IndexError):
         taxon_link = escape(scientific_name)
     return mark_safe(taxon_link)
 
