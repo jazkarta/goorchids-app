@@ -42,6 +42,7 @@
     #conservation-status,
     .map {
       @include span-columns(6);
+      width: 47%;
       
       @include media(max-width 800px) {
         @include span-columns(12);

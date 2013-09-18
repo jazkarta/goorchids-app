@@ -634,7 +634,7 @@ div.sb-message a:link, div.sb-message a:visited { color: #fff; text-decoration: 
   .genera:nth-child(3n):last-child, .species:nth-child(3n):last-child { margin-right: 0; }
   .genera:nth-child(even), .species:nth-child(even) { margin-right: 0; } }
 
-.content-area #conservation-status, .content-area .map { display: block; float: left; margin-right: 2.35765%; width: 48.82117%; }
+.content-area #conservation-status, .content-area .map { display: block; float: left; margin-right: 2.35765%; width: 48.82117%; width: 47%; }
 .content-area #conservation-status:last-child, .content-area .map:last-child { margin-right: 0; }
 @media screen and (max-width: 800px) { .content-area #conservation-status, .content-area .map { display: block; float: left; margin-right: 2.35765%; width: 100%; margin: 0 0 30px; }
   .content-area #conservation-status:last-child, .content-area .map:last-child { margin-right: 0; } }
