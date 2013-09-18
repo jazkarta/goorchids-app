@@ -33,7 +33,7 @@ define([
             $('table.conservation-status').addClass('hidden');
             $('table.conservation-status[data-region="' + $('#region-switcher').val() + '"]').removeClass('hidden');
         };
-        $('#region-switcher').select2({width: 'element'}).change(function() { update_region_tables(); });
+        $('#region-switcher').select2({width: '100%'}).change(function() { update_region_tables(); });
         update_region_tables();
 
         // Set up accordions for characteristics
