@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import get_object_or_404
@@ -14,6 +15,7 @@ from gobotany.core.models import PartnerSpecies
 from gobotany.core.models import Pile
 from gobotany.core.models import PlantPreviewCharacter
 from gobotany.core.partner import which_partner
+from gobotany.plantoftheday.models import PlantOfTheDay
 from gobotany.taxa.views import _images_with_copyright_holders
 from gobotany.taxa.views import _format_character_value
 from gobotany.taxa.views import _native_to_north_america_status
@@ -23,6 +25,7 @@ from goorchids.core.models import GoOrchidTaxon
 from maps import NorthAmericanOrchidDistributionMap
 from itertools import groupby
 from operator import itemgetter
+from datetime import date
 import json
 
 
@@ -130,6 +133,36 @@ def search_suggestions_view(request):
     suggestions = suggestions[:MAX_RESULTS]
     return HttpResponse(json.dumps(suggestions),
                         mimetype='application/json; charset=utf-8')
+
+
+# Home page
+
+def home_view(request):
+    """View for the home page of the Go Botany site."""
+
+    # Get or generate today's Plant of the Day, if appropriate.
+    partner = which_partner(request)
+    plant_of_the_day = PlantOfTheDay.get_by_date.for_day(
+        date.today(), partner.short_name)
+    plant_of_the_day_taxon = None
+    if plant_of_the_day:
+        # Get the Taxon record of the Plant of the Day.
+        try:
+            plant_of_the_day_taxon = GoOrchidTaxon.objects.get(
+                scientific_name=plant_of_the_day.scientific_name)
+        except ObjectDoesNotExist:
+            pass
+
+    plant_of_the_day_image = None
+    species_images = botany.species_images(plant_of_the_day_taxon)
+    if species_images:
+        plant_of_the_day_image = botany.species_images(
+            plant_of_the_day_taxon, image_types='flowers,inflorescences')[0]
+
+    return render_to_response('gobotany/home.html', {
+        'plant_of_the_day': plant_of_the_day_taxon,
+        'plant_of_the_day_image': plant_of_the_day_image,
+        }, context_instance=RequestContext(request))
 
 
 # Species page

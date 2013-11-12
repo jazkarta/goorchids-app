@@ -2,13 +2,12 @@ from django.conf.urls.defaults import patterns, url
 from haystack.forms import HighlightedSearchForm
 from goorchids.site import views
 from gobotany.taxa import views as taxa_views
-from gobotany.site import views as site_views
 
 urlpatterns = patterns(
     '',
 
     # Home page
-    url(r'^$', site_views.home_view, name='site-home'),
+    url(r'^$', views.home_view, name='site-home'),
     url(r'^location-suggestions/', views.location_suggestions_view,
         name='site-location-suggestions'),
     url(r'^key-by-location/', views.redirect_to_simple_key_by_location),
