@@ -1,7 +1,6 @@
 from django.conf.urls.defaults import patterns, url
 from haystack.forms import HighlightedSearchForm
 from goorchids.site import views
-from gobotany.taxa import views as taxa_views
 
 urlpatterns = patterns(
     '',
@@ -27,9 +26,9 @@ urlpatterns = patterns(
 
 
     url(r'^family/(?P<family_slug>[a-z]+)/$',
-        taxa_views.family_view, name='site-family'),
+        views.family_view, name='site-family'),
     url(r'^genus/(?P<genus_slug>[a-z]+)/$',
-        taxa_views.genus_view, name='site-genus'),
+        views.genus_view, name='site-genus'),
     url(r'^species/(?P<genus_slug>[a-z]+)/(?P<epithet>[-a-z]+)/$',
         views.species_view, name='site-species'),
     url(r'^api/maps/(?P<genus>[^/-]+)-(?P<epithet>[^/]+)-na-state-distribution-map(\.svg|/)',

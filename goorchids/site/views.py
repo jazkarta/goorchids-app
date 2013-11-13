@@ -165,6 +165,81 @@ def home_view(request):
         }, context_instance=RequestContext(request))
 
 
+# Family and Genus pages
+
+def family_view(request, family_slug):
+
+    family_name = family_slug.capitalize()
+    family = get_object_or_404(Family, name=family_name)
+
+    # If it is decided that common names will not be required, change the
+    # default below to None so the template will omit the name if missing.
+    DEFAULT_COMMON_NAME = 'common name here'
+    common_name = family.common_name or DEFAULT_COMMON_NAME
+
+    family_drawings = (family.images.filter(
+                       image_type__name='example drawing'))
+    if not family_drawings:
+        # No example drawings for this family were specified.
+        # Use 2 images from the family's species instead.
+        species = family.taxa.all()
+        family_drawings = []
+        for s in species:
+            species_images = botany.species_images(s, image_types='flowers,inflorescences')
+            if len(species_images):
+                family_drawings.append(species_images[0])
+                if len(family_drawings) == 2:
+                    break
+    family_drawings = _images_with_copyright_holders(family_drawings)
+
+    pile = family.taxa.all()[0].piles.all()[0]
+    pilegroup = pile.pilegroup
+
+    return render_to_response('gobotany/family.html', {
+        'family': family,
+        'common_name': common_name,
+        'family_drawings': family_drawings,
+        'pilegroup': pilegroup,
+        'pile': pile,
+        }, context_instance=RequestContext(request))
+
+
+def genus_view(request, genus_slug):
+
+    genus_name = genus_slug.capitalize()
+    genus = get_object_or_404(Genus, name=genus_name)
+
+    # If it is decided that common names will not be required, change the
+    # default below to None so the template will omit the name if missing.
+    DEFAULT_COMMON_NAME = 'common name here'
+    common_name = genus.common_name or DEFAULT_COMMON_NAME
+
+    genus_drawings = genus.images.filter(image_type__name='example drawing')
+    if not genus_drawings:
+        # No example drawings for this genus were specified.
+        # Use 2 images from the genus's species instead.
+        species = genus.taxa.all()
+        genus_drawings = []
+        for s in species:
+            species_images = botany.species_images(s, image_types='flowers,inflorescences')
+            if len(species_images):
+                genus_drawings.append(species_images[0])
+                if len(genus_drawings) == 2:
+                    break
+    genus_drawings = _images_with_copyright_holders(genus_drawings)
+
+    pile = genus.taxa.all()[0].piles.all()[0]
+    pilegroup = pile.pilegroup
+
+    return render_to_response('gobotany/genus.html', {
+        'genus': genus,
+        'common_name': common_name,
+        'genus_drawings': genus_drawings,
+        'pilegroup': pilegroup,
+        'pile': pile,
+        }, context_instance=RequestContext(request))
+
+
 # Species page
 
 
