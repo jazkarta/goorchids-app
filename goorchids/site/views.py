@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib.flatpages.models import FlatPage
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse
 from django.template import RequestContext
@@ -140,6 +141,11 @@ def search_suggestions_view(request):
 def home_view(request):
     """View for the home page of the Go Botany site."""
 
+    try:
+        intro = FlatPage.objects.get(url='/home/').content
+    except ObjectDoesNotExist:
+        intro = None
+
     # Get or generate today's Plant of the Day, if appropriate.
     partner = which_partner(request)
     plant_of_the_day = PlantOfTheDay.get_by_date.for_day(
@@ -160,6 +166,7 @@ def home_view(request):
             plant_of_the_day_taxon, image_types='flowers,inflorescences')[0]
 
     return render_to_response('gobotany/home.html', {
+        'intro': intro,
         'plant_of_the_day': plant_of_the_day_taxon,
         'plant_of_the_day_image': plant_of_the_day_image,
         }, context_instance=RequestContext(request))

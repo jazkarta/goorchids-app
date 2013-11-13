@@ -30,6 +30,7 @@
             <div id="banner">
               <div class="banner-background">
                 <div id="overlay">
+                  {% if intro %}{{ intro|safe }}{% else %}
                   <h1>Go Orchids</h1>
                   <p><i>Go Orchids</i> is a tool to explore orchids native to the
                   U.S. and Canada. <i>Go Orchids</i> will initially focus on orchids
@@ -42,6 +43,7 @@
                   </ul>
                   <p>To explore <i>Go Orchids</i>, select one of the methods listed
                   below. Happy orchid hunting!</p>
+                  {% endif %}
                 </div><!-- /#overlay -->
               </div>
             </div><!-- /#banner -->
