@@ -468,7 +468,7 @@ body.taxa #sb-title-inner a { color: #fff; text-decoration: underline; }
 .skey .main-content-wrapper .plant-list .plant.in-results { display: block; }
 .skey .main-content-wrapper .plant-list .plant.genus_join_left { border-left: 0; }
 .skey .main-content-wrapper .plant-list .plant.genus_join_right { border-right: 0; padding-right: 12px; }
-@media screen and (max-width: 1024px) { .skey .main-content-wrapper .plant-list .plant { border: 0; -webkit-box-shadow: 0 0 3px 1px darkgrey; box-shadow: 0 0 3px 1px darkgrey; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; height: auto; min-height: 220px; padding: 5px; margin: 5px; position: relative; float: left; top: auto !important; left: auto !important; }
+@media screen and (max-width: 1024px) { .skey .main-content-wrapper .plant-list .plant { border: 0; -webkit-box-shadow: 0 0 3px 1px darkgrey; box-shadow: 0 0 3px 1px darkgrey; height: auto; min-height: 220px; padding: 5px; margin: 0 5px 5px 0; position: relative; float: left; top: auto !important; left: auto !important; }
   .skey .main-content-wrapper .plant-list .plant.genus_join_right { padding-right: 5px; } }
 @media screen and (max-width: 775px) { .skey .main-content-wrapper .plant-list .plant { width: 140px; } }
 .skey .main-content-wrapper .plant-list .plant .plant-name { line-height: 1.4; padding: 10px 0 0; }

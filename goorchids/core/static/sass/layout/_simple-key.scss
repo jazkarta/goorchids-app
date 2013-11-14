@@ -509,11 +509,10 @@
         @include media(max-width 1024px) {
           border: 0;
           @include box-shadow(0 0 3px 1px $lightGray);
-          @include box-sizing(border-box);
           height: auto;
           min-height: 220px;
           padding: 5px;
-          margin: 5px;
+          margin: 0 5px 5px 0;
           position: relative;
           float: left;
           top: auto !important;
