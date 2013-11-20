@@ -311,6 +311,7 @@ footer .support:last-child { margin-right: 0; }
 #potd h3, #potd p { padding: 0 0 5px; }
 #potd p:last-of-type { padding: 0 0 10px; }
 
+@media only screen and (max-width: 400px) { #potd .picture-wrapper { float: none; width: 100%; margin-bottom: 1em; } }
 .pics { *zoom: 1; margin: 25px 0; }
 .pics:before, .pics:after { content: " "; display: table; }
 .pics:after { clear: both; }

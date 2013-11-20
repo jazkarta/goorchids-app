@@ -55,10 +55,10 @@
                 <figure class="picture-wrapper">
                     <a href="/species/{{ plant_of_the_day.genus_name|lower }}/{{ plant_of_the_day.epithet }}/"
                         title="Learn more about {{ plant_of_the_day.scientific_name }}">
-                      <img src="{{ plant_of_the_day_image.image_medium }}"
+                      <img src="{{ plant_of_the_day_image.thumb_large }}"
                            alt="{{ plant_of_the_day.scientific_name }}">
                     </a>
-                </figure><!-- /.picture-wrapper -->
+                </figure>
                 <div class="details">
                     <h3>Featured Orchid</h3>
                     <p><em class="latin">{{ plant_of_the_day.scientific_name|italicize_plant|safe }}</em> (<span class="english">{{ plant_of_the_day.common_names.all.0 }})</span></p>
