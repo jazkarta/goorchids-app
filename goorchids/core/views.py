@@ -19,8 +19,8 @@ from django.db import (connections, router, transaction, DEFAULT_DB_ALIAS,
       IntegrityError, DatabaseError)
 from django.utils.datastructures import SortedDict
 
-from gobotany.core.models import (TaxonCharacterValue, CharacterValue,
-                                  ContentImage, GlossaryTerm)
+from gobotany.core.models import (TaxonCharacterValue, CharacterValue, CopyrightHolder,
+                                  ContentImage, GlossaryTerm, Genus)
 from gobotany.site.models import PlantNameSuggestion, SearchSuggestion
 from gobotany.plantoftheday.models import PlantOfTheDay
 from gobotany.search.models import (PlainPage, GroupsListPage,
@@ -153,8 +153,10 @@ def _load(name, log_entry=None):
         # First remove all character values, assignments, images and
         # generated values to avoid import conflicts and data
         # duplication
+        Genus.objects.all().delete()
         TaxonCharacterValue.objects.all().delete()
         CharacterValue.objects.all().delete()
+        CopyrightHolder.objects.all().delete()
         ContentImage.objects.all().delete()
         PlantNameSuggestion.objects.all().delete()
         SearchSuggestion.objects.all().delete()
