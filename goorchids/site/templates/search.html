@@ -23,7 +23,7 @@
                     <strong>{{ query }}</strong>
                 </h1>
 
-                {% if suggestion %}
+                {% if suggestion and suggestion != True %}
                 <p>Did you mean <a href=".?q={{suggestion}}">{{suggestion}}</a>?</p>
                 {% endif %}
 
