@@ -381,7 +381,7 @@ body.taxa #sb-title-inner a { color: #fff; text-decoration: underline; }
   .skey #main .select2-container + select { position: relative; left: auto; } }
 @media screen and (max-width: 865px) { .skey #main .main-content-wrapper { display: block; float: left; margin-right: 2.35765%; width: 65.88078%; margin-right: 0; }
   .skey #main .main-content-wrapper:last-child { margin-right: 0; } }
-@media screen and (max-width: 650px) { .skey #main .main-content-wrapper { border-top: 1px solid #728f50; margin: 30px 0 0; padding: 20px 0 0; display: block; float: left; margin-right: 2.35765%; width: 100%; }
+@media screen and (max-width: 650px) { .skey #main .main-content-wrapper { border-top: 1px solid #728f50; margin: 10px 0 0; padding: 20px 0 0; display: block; float: left; margin-right: 2.35765%; width: 100%; }
   .skey #main .main-content-wrapper:last-child { margin-right: 0; } }
 @media screen and (max-width: 500px) { .skey #main .results-tabs-content { padding: 10px 0; } }
 .skey .sidebar { background: #d6dcbf; border-radius: 3px; font-size: 13px; font-size: 0.8125rem; position: relative; display: block; float: left; margin-right: 2.35765%; width: 23.23176%; }
@@ -449,13 +449,14 @@ body.taxa #sb-title-inner a { color: #fff; text-decoration: underline; }
 .skey .main-content-wrapper .main-content-header:before, .skey .main-content-wrapper .main-content-header:after { content: " "; display: table; }
 .skey .main-content-wrapper .main-content-header:after { clear: both; }
 .skey .main-content-wrapper .main-content-header h1 { float: left; margin: 10px 0 0; }
-.skey .main-content-wrapper .main-content-header .species-count-heading { display: inline-block; margin: 10px 0 0; }
+.skey .main-content-wrapper .main-content-header .species-count-heading { display: inline-block; }
 .skey .main-content-wrapper #filters-preview { display: none; }
 @media screen and (max-width: 500px) { .skey .main-content-wrapper #filters-preview { display: block; }
   .skey .main-content-wrapper #filters-preview ul.ember-view { border: 1px solid #293619; }
-  .skey .main-content-wrapper #filters-preview li.ember-view { border-bottom: 1px solid #293619; *zoom: 1; background-color: #6f8759; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #6f8759), color-stop(100%, #63784f)); background-image: -webkit-linear-gradient(top, #6f8759, #63784f); background-image: -moz-linear-gradient(top, #6f8759, #63784f); background-image: -ms-linear-gradient(top, #6f8759, #63784f); background-image: -o-linear-gradient(top, #6f8759, #63784f); background-image: linear-gradient(top, #6f8759, #63784f); padding: 5px 10px; }
+  .skey .main-content-wrapper #filters-preview li.ember-view { display: none; border-bottom: 1px solid #293619; *zoom: 1; background-color: #6f8759; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #6f8759), color-stop(100%, #63784f)); background-image: -webkit-linear-gradient(top, #6f8759, #63784f); background-image: -moz-linear-gradient(top, #6f8759, #63784f); background-image: -ms-linear-gradient(top, #6f8759, #63784f); background-image: -o-linear-gradient(top, #6f8759, #63784f); background-image: linear-gradient(top, #6f8759, #63784f); padding: 5px 10px; }
   .skey .main-content-wrapper #filters-preview li.ember-view:before, .skey .main-content-wrapper #filters-preview li.ember-view:after { content: " "; display: table; }
   .skey .main-content-wrapper #filters-preview li.ember-view:after { clear: both; }
+  .skey .main-content-wrapper #filters-preview li.ember-view.answered { display: block; }
   .skey .main-content-wrapper #filters-preview li.ember-view:last-child { border-bottom: 0; }
   .skey .main-content-wrapper #filters-preview .name, .skey .main-content-wrapper #filters-preview .value { color: white; display: block; float: left; text-shadow: 1px 1px 1px #293619; }
   .skey .main-content-wrapper #filters-preview .name { color: #c7cfb1; font-style: italic; font-weight: normal; padding: 0 15px 0 0; text-align: right; width: 40%; }
@@ -471,7 +472,7 @@ body.taxa #sb-title-inner a { color: #fff; text-decoration: underline; }
 .skey .main-content-wrapper .plant-list .plant.genus_join_right { border-right: 0; padding-right: 12px; }
 @media screen and (max-width: 1024px) { .skey .main-content-wrapper .plant-list .plant { border: 0; -webkit-box-shadow: 0 0 3px 1px darkgrey; box-shadow: 0 0 3px 1px darkgrey; height: auto; min-height: 220px; padding: 5px; margin: 0 5px 5px 0; position: relative; float: left; top: auto !important; left: auto !important; }
   .skey .main-content-wrapper .plant-list .plant.genus_join_right { padding-right: 5px; } }
-@media screen and (max-width: 775px) { .skey .main-content-wrapper .plant-list .plant { width: 140px; } }
+@media screen and (max-width: 775px) { .skey .main-content-wrapper .plant-list .plant { width: 135px; } }
 .skey .main-content-wrapper .plant-list .plant .plant-name { line-height: 1.4; padding: 10px 0 0; }
 .skey .main-content-wrapper .plant-list .plant .plant-name .latin { display: block; font-style: italic; }
 .skey .main-content-wrapper .plant-list .plant .missing-image { background: #ccc; padding: 55px 30px 35px; }
@@ -490,7 +491,7 @@ body.taxa #sb-title-inner a { color: #fff; text-decoration: underline; }
 .skey .main-content-wrapper .ember-view:before, .skey .main-content-wrapper .ember-view:after { content: " "; display: table; }
 .skey .main-content-wrapper .ember-view:after { clear: both; }
 .skey .main-content-wrapper .main-content-header h1 { display: inline-block; }
-.skey .main-content-wrapper .main-content-header .species-count-heading { float: right; margin: 20px 0; }
+.skey .main-content-wrapper .main-content-header .species-count-heading { float: right; margin: 20px 0 0 0; }
 .skey #intro-overlay { position: fixed; left: 0 !important; top: 15% !important; text-align: center; width: 100%; z-index: 9999; }
 .skey #intro-overlay .continue { cursor: pointer; }
 .skey #intro-overlay .number-of-questions .button, .skey #intro-overlay .number-of-questions .sidebar .section .get-choices, .skey .sidebar .section #intro-overlay .number-of-questions .get-choices, .skey #intro-overlay .number-of-questions .sidebar .section .clear-all-btn, .skey .sidebar .section #intro-overlay .number-of-questions .clear-all-btn, .skey #intro-overlay .number-of-questions .sidebar .section .get-help-btn, .skey .sidebar .section #intro-overlay .number-of-questions .get-help-btn, .skey #intro-overlay .number-of-questions .modal-wrap .get-choices-ready, .modal-wrap .skey #intro-overlay .number-of-questions .get-choices-ready { position: relative; }

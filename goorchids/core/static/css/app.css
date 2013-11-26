@@ -1575,7 +1575,7 @@ body.taxa #sb-title-inner a {
 @media screen and (max-width: 650px) {
   .skey #main .main-content-wrapper {
     border-top: 1px solid #728f50;
-    margin: 30px 0 0;
+    margin: 10px 0 0;
     padding: 20px 0 0;
     display: block;
     float: left;
@@ -1949,7 +1949,6 @@ body.taxa #sb-title-inner a {
 }
 .skey .main-content-wrapper .main-content-header .species-count-heading {
   display: inline-block;
-  margin: 10px 0 0;
 }
 .skey .main-content-wrapper #filters-preview {
   display: none;
@@ -1962,6 +1961,7 @@ body.taxa #sb-title-inner a {
     border: 1px solid #293619;
   }
   .skey .main-content-wrapper #filters-preview li.ember-view {
+    display: none;
     border-bottom: 1px solid #293619;
     *zoom: 1;
     background-color: #6f8759;
@@ -1979,6 +1979,9 @@ body.taxa #sb-title-inner a {
   }
   .skey .main-content-wrapper #filters-preview li.ember-view:after {
     clear: both;
+  }
+  .skey .main-content-wrapper #filters-preview li.ember-view.answered {
+    display: block;
   }
   .skey .main-content-wrapper #filters-preview li.ember-view:last-child {
     border-bottom: 0;
@@ -2068,7 +2071,7 @@ body.taxa #sb-title-inner a {
 }
 @media screen and (max-width: 775px) {
   .skey .main-content-wrapper .plant-list .plant {
-    width: 140px;
+    width: 135px;
   }
 }
 .skey .main-content-wrapper .plant-list .plant .plant-name {
@@ -2159,7 +2162,7 @@ body.taxa #sb-title-inner a {
 }
 .skey .main-content-wrapper .main-content-header .species-count-heading {
   float: right;
-  margin: 20px 0;
+  margin: 20px 0 0 0;
 }
 .skey #intro-overlay {
   position: fixed;
