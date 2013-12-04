@@ -283,7 +283,7 @@ footer .support:last-child { margin-right: 0; }
   #sidebar > div form .button, #sidebar > div form .skey .sidebar .section .get-choices, .skey .sidebar .section #sidebar > div form .get-choices, #sidebar > div form .skey .sidebar .section .clear-all-btn, .skey .sidebar .section #sidebar > div form .clear-all-btn, #sidebar > div form .skey .sidebar .section .get-help-btn, .skey .sidebar .section #sidebar > div form .get-help-btn, #sidebar > div form .modal-wrap .get-choices-ready, .modal-wrap #sidebar > div form .get-choices-ready { position: absolute; top: 1px; right: 0; } }
 
 /* ==== Banner ==== */
-#banner { background-color: #293619; background: url(../images/photography/homepage-banner.jpg) no-repeat 0 0; display: table; margin: 0 0 45px; padding: 1%; height: 425px; }
+#banner { background-color: #293619; background: url(../images/photography/homepage-banner.jpg) no-repeat 40% 0; background-size: auto 100%; display: table; margin: 0 0 45px; padding: 1%; min-height: 425px; }
 @media screen and (max-width: 500px) { #banner { margin: 0 0 35px; } }
 #banner .banner-background { display: table-cell; vertical-align: middle; }
 #banner #overlay { background: #cbd2b4; background: rgba(240, 242, 217, 0.7); padding: 2%; text-shadow: 1px 1px 1px rgba(200, 208, 176, 0.6); width: 35%; }

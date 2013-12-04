@@ -2,11 +2,12 @@
 
 #banner {
   background-color: $darkestGreen;
-  background: url(../images/photography/homepage-banner.jpg) no-repeat 0 0; 
+  background: url(../images/photography/homepage-banner.jpg) no-repeat 40% 0;
+  background-size: auto 100%;
   display: table;
   @include separator;
   padding: 1%;
-  height: 425px;
+  min-height: 425px;
   
   .banner-background {
     display: table-cell;
