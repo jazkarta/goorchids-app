@@ -99,7 +99,7 @@ else:
     AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME',
                                              'goorchids')
 
-#INSTALLED_APPS.remove('gobotany.plantshare')
+INSTALLED_APPS.remove('gobotany.plantshare')
 INSTALLED_APPS.remove('piston')
 INSTALLED_APPS.remove('facebook_connect')
 INSTALLED_APPS.remove('captcha')
