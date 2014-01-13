@@ -778,12 +778,31 @@
         padding: 0 0 15px;
       }
       
+      .characteristics {
+        margin-bottom: 6em;
+      }
+
       .button {
         @include font-size(18);
         line-height: 1;
         margin: 15px 0 0;
         padding: 10px 40px;
+        position: fixed;
+        bottom: 60px;
+        z-index: 2;
       }
+
+      &:after {
+        content: "";
+        height: 9em;
+        width: 100%;
+        @include linear-gradient(rgba(0, 0, 0, 0) 0%, #fff 40%);
+        position: absolute;
+        bottom: 0;
+        display: block;
+        z-index: 1;
+      }
+
     }
   }
   
