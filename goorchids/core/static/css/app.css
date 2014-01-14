@@ -2331,8 +2331,8 @@ body.taxa #sb-title-inner a {
   line-height: 1;
   margin: 15px 0 0;
   padding: 10px 40px;
-  position: fixed;
-  bottom: 60px;
+  position: absolute;
+  bottom: 20px;
   z-index: 2;
 }
 #plant-detail-modal .details:after {
