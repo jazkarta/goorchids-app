@@ -796,7 +796,7 @@
         content: "";
         height: 9em;
         width: 100%;
-        @include linear-gradient(rgba(0, 0, 0, 0) 0%, #fff 40%);
+        @include linear-gradient(rgba(255, 255, 255, 0) 0%, #fff 40%);
         position: absolute;
         bottom: 0;
         display: block;
