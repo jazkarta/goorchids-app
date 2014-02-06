@@ -22,7 +22,6 @@ from django.utils.datastructures import SortedDict
 from gobotany.core.models import (TaxonCharacterValue, CharacterValue, CopyrightHolder,
                                   ContentImage, GlossaryTerm, Genus)
 from gobotany.site.models import PlantNameSuggestion, SearchSuggestion
-from gobotany.plantoftheday.models import PlantOfTheDay
 from gobotany.search.models import (PlainPage, GroupsListPage,
                                     SubgroupsListPage, SubgroupResultsPage)
 from gobotany.core.importer import Importer
@@ -35,7 +34,7 @@ from worker import conn
 q = Queue('low', connection=conn)
 
 
-APPS_TO_HANDLE = ['core', 'search', 'simplekey', 'plantoftheday', 'dkey',
+APPS_TO_HANDLE = ['core', 'search', 'simplekey', 'dkey',
                   'site', 'flatpages', 'sites']
 EXCLUDED_MODELS = ['core.PartnerSite', 'core.ImportLog',
                    'site.SearchSuggestion', 'site.PlantNameSuggestion']
@@ -166,7 +165,6 @@ def _load(name, log_entry=None):
         SubgroupsListPage.objects.all().delete()
         SubgroupResultsPage.objects.all().delete()
         GlossaryTerm.objects.all().delete()
-        PlantOfTheDay.objects.all().delete()
 
         with connection.constraint_checks_disabled():
             objects_in_fixture = 0
