@@ -28,7 +28,7 @@ urlpatterns = patterns(
     url(r'^accounts/', include('registration.auth_urls')),
     url(r'^', include('gobotany.search.urls')),
     url(r'^', include('gobotany.site.urls')),
-    url('^species/(?P<genus_slug>[a-z]+)/(?P<epithet>[-a-z\. ]+)/$',
+    url('^species/(?P<genus_slug>[a-z]+)/(?P<epithet>[-a-z\. \(\)]+)/$',
         taxa_views.species_view, name='taxa-species'),
     url(r'^', include('gobotany.taxa.urls')),
     url(r'^', include('gobotany.simplekey.urls')),)

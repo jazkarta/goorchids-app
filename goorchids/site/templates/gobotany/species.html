@@ -103,44 +103,37 @@
       </div>
       {% endif %}
 
+      {% with habitats=taxon.get_habitats %}
+      {% if habitats|length > 0 %}
       <section class="content-area">
         <h2>Ecosystem Type</h2>
         <p>
-          {% with habitats=taxon.get_habitats %}
-          {% if habitats|length > 0 %}
-            {{ habitats|habitat_names|join:", "|capfirst }}
-          {% else %}
-            (missing)
-          {% endif %}
-          {% endwith %}
+          {{ habitats|habitat_names|join:", "|capfirst }}
         </p>
       </section>
+      {% endif %}
+      {% endwith %}
       
+      {% if brief_characteristics %}
       <section class="content-area">
         <h2>Characteristics</h2>
         <div class="characteristics">
-            {% if brief_characteristics %}
-                {% for character in brief_characteristics %}
-                    <dl>
-                        <dt>{{ character.name }}:</dt>
-                        <dd>
-                            {% if character.values|length_is:"1" %}
-                                {{ character.values.0 }}
-                            {% else %}
-                                <ul{% if character.name in compact_multivalue_characters %} class="compact"{% endif %}>
-                                {% for val in character.values %}
-                                    <li{% if forloop.last %} class="last">{{val}}{% else %}>{{val}}{% endif %}</li>
-                                {% endfor %}
-                                </ul>
-                            {% endif %}
-                        </dd>
-                    </dl>
-                {% endfor %}
-            {% else %}
-                <p>No “plant preview characters” have been established
-                  for the “{{ pile.friendly_name }}” ({{ pile.name }})
-                  pile.</p>
-            {% endif %}
+            {% for character in brief_characteristics %}
+              <dl>
+                  <dt>{{ character.name }}:</dt>
+                  <dd>
+                      {% if character.values|length_is:"1" %}
+                          {{ character.values.0 }}
+                      {% else %}
+                          <ul{% if character.name in compact_multivalue_characters %} class="compact"{% endif %}>
+                          {% for val in character.values %}
+                              <li{% if forloop.last %} class="last">{{val}}{% else %}>{{val}}{% endif %}</li>
+                          {% endfor %}
+                          </ul>
+                      {% endif %}
+                  </dd>
+              </dl>
+            {% endfor %}
         </div>
         <div class="accordion">
           <a class="accordion-header" href="#">Show All Characteristics</a>
@@ -206,7 +199,10 @@
             </li>
           </ul>
         </div>
-        
+      </section>
+      {% endif %}
+
+      <section class="content-area">        
         <h2>Native to North America</h2>
         <p>{{ native_to_north_america }}</p>
       </section>
