@@ -49,7 +49,8 @@ class ContentImageInline(generic.GenericTabularInline):
 
 class TaxonAdmin(gobotany.core.admin.TaxonAdmin):
     __doc__ = gobotany.core.admin.TaxonAdmin.__doc__.replace('Go Botany',
-                                                             'Go Orchids')
+                                                             'Go Orchids') + \
+        '<style type="text/css">.field-piles { display: none; }</style>'
     # Replace all single line text widgets with a text area
     formfield_overrides = {
         models.CharField: {'widget': Textarea},

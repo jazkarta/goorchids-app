@@ -3,8 +3,12 @@ from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.dispatch import receiver
+from django.forms import ValidationError
 from gobotany.plantoftheday.models import PlantOfTheDay
 from gobotany.core.models import Taxon, TaxonManager
+import re
+
+SCI_NAME_RE = re.compile(r'^[A-Z][a-z]+[-a-z\. \(\)]+$')
 
 
 GLOBAL_RANK_CODES = OrderedDict((
@@ -108,8 +112,11 @@ class GoOrchidTaxon(Taxon):
         return self.taxon_ptr.images
 
     def clean(self):
-        """Trim whitespace on scientific name"""
-        self.scientific_name = self.scientific_name.strip()
+        """Trim whitespace on scientific name, and validate it"""
+        name = self.scientific_name.strip()
+        if not SCI_NAME_RE.match(name):
+            raise ValidationError("Please enter a valid scientific name.")
+        return name
 
 
 class ConservationStatusManager(TaxonManager):
