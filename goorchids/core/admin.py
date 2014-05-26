@@ -49,7 +49,8 @@ class ContentImageInline(generic.GenericTabularInline):
 
 class TaxonAdmin(gobotany.core.admin.TaxonAdmin):
     __doc__ = gobotany.core.admin.TaxonAdmin.__doc__.replace('Go Botany',
-                                                             'Go Orchids')
+                                                             'Go Orchids') + \
+        '<style type="text/css">.field-piles { display: none; }</style>'
     # Replace all single line text widgets with a text area
     formfield_overrides = {
         models.CharField: {'widget': Textarea},
@@ -76,11 +77,11 @@ class TaxonAdmin(gobotany.core.admin.TaxonAdmin):
             formfield.widget = forms.Textarea(attrs=formfield.widget.attrs)
         return formfield
 
-    # def formfield_for_manytomany(self, db_field, request, **kwargs):
-    #     if db_field.name == 'piles':
-    #         kwargs['initial'] = [Pile.objects.get()]
-    #         return db_field.formfield(**kwargs)
-    #     return super(TaxonAdmin, self).formfield_for_manytomany(db_field, request, **kwargs)
+    def formfield_for_manytomany(self, db_field, request, **kwargs):
+        if db_field.name == 'piles':
+            kwargs['initial'] = [Pile.objects.get()]
+            return db_field.formfield(**kwargs)
+        return super(TaxonAdmin, self).formfield_for_manytomany(db_field, request, **kwargs)
 
 
 class GenusAdmin(gobotany.core.admin.GenusAdmin):
@@ -92,7 +93,7 @@ class GenusAdmin(gobotany.core.admin.GenusAdmin):
 
 class FamilyAdmin(gobotany.core.admin.FamilyAdmin):
     __doc__ = gobotany.core.admin.FamilyAdmin.__doc__.replace('Go Botany',
-                                                             'Go Orchids')
+                                                              'Go Orchids')
 
     inlines = gobotany.core.admin.FamilyAdmin.inlines + [ContentImageInline]
 
