@@ -5,7 +5,7 @@ from django.forms.widgets import Textarea
 import gobotany.core.admin
 from django.contrib.contenttypes import generic
 from gobotany.core.models import (Taxon, PartnerSpecies, ContentImage,
-                                  Genus, Family, CopyrightHolder)
+                                  Genus, Family, CopyrightHolder, Pile)
 from .models import GoOrchidTaxon, RegionalConservationStatus
 
 
@@ -49,8 +49,7 @@ class ContentImageInline(generic.GenericTabularInline):
 
 class TaxonAdmin(gobotany.core.admin.TaxonAdmin):
     __doc__ = gobotany.core.admin.TaxonAdmin.__doc__.replace('Go Botany',
-                                                             'Go Orchids') + \
-        '<style type="text/css">.field-piles { display: none; }</style>'
+                                                             'Go Orchids')
     # Replace all single line text widgets with a text area
     formfield_overrides = {
         models.CharField: {'widget': Textarea},
@@ -76,6 +75,12 @@ class TaxonAdmin(gobotany.core.admin.TaxonAdmin):
                 'propagation', 'restoration', 'flowering_phenology'):
             formfield.widget = forms.Textarea(attrs=formfield.widget.attrs)
         return formfield
+
+    # def formfield_for_manytomany(self, db_field, request, **kwargs):
+    #     if db_field.name == 'piles':
+    #         kwargs['initial'] = [Pile.objects.get()]
+    #         return db_field.formfield(**kwargs)
+    #     return super(TaxonAdmin, self).formfield_for_manytomany(db_field, request, **kwargs)
 
 
 class GenusAdmin(gobotany.core.admin.GenusAdmin):
