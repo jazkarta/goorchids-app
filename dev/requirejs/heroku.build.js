@@ -46,7 +46,8 @@
                 'util/suggester_init',
                 'util/location_field_init',
                 'orchid_site/species',
-                'orchid_site/results'
+                'orchid_site/results',
+                'orchid_site/protect_images'
             ],
             create: true
         }
