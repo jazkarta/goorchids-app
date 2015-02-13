@@ -1,8 +1,8 @@
-@import url(../scripts/select2/select2.css);
 /*
   Go Orchids App Stylesheet
   == By: Fresh Tilled Soil ==
 */
+@import url(../scripts/select2/select2.css);
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -110,7 +110,7 @@ table {
 body {
   background: #f0f2d9;
   color: #293619;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 1.4;
@@ -140,7 +140,7 @@ strong {
 
 h1, h2, h3, h4, h5, h6 {
   color: #733944;
-  font-family: "Droid Serif", serif;
+  font-family: 'Droid Serif', serif;
   padding: 0 0 20px;
 }
 
@@ -209,7 +209,6 @@ header h1, header h2, header h3, header h4, header h5, header h6 {
   font-weight: normal;
   font-style: normal;
 }
-
 /* Use the following CSS code if you want to use data attributes for inserting your icons */
 [data-icon]:before {
   font-family: 'icomoon';
@@ -244,11 +243,15 @@ you can use the generic selector below, but it's slower:
 }
 
 .icon-plus:before {
-  content: "\22";
+  font-family: sans-serif;
+  font-size: 200%;
+  content: "\2b";
 }
 
 .icon-minus:before {
-  content: "\23";
+  font-family: sans-serif;
+  font-size: 200%;
+  content: "\2212";
 }
 
 .icon-checkmark:before {
@@ -345,7 +348,7 @@ input[type="search"] {
   box-shadow: inset 1px 1px 1px #c7c7c7;
   color: #293619;
   display: block;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   font-size: 0.75rem;
   line-height: 1.5;
@@ -372,7 +375,7 @@ input.button, .skey .sidebar .section input.get-choices,
   box-shadow: inset 1px 1px 1px #8da8bf;
   color: white;
   display: inline-block;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 700;
   font-size: 14px;
   font-size: 0.875rem;
@@ -423,7 +426,7 @@ input.button.white, .skey .sidebar .section input.white.get-choices,
 .skey .sidebar .section .white.clear-all-btn,
 .skey .sidebar .section .white.get-help-btn,
 .modal-wrap .white.get-choices-ready {
-  border: 1px solid silver;
+  border: 1px solid #c0c0c0;
   -webkit-box-shadow: none;
   box-shadow: none;
   color: #293619;
@@ -496,12 +499,12 @@ input.button.search-field, .skey .sidebar .section input.search-field.get-choice
   font-size: 18px;
   font-size: 1.125rem;
   background-color: #c7c7c7;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c7c7c7), color-stop(100%, darkgrey));
-  background-image: -webkit-linear-gradient(top, #c7c7c7, darkgrey);
-  background-image: -moz-linear-gradient(top, #c7c7c7, darkgrey);
-  background-image: -ms-linear-gradient(top, #c7c7c7, darkgrey);
-  background-image: -o-linear-gradient(top, #c7c7c7, darkgrey);
-  background-image: linear-gradient(top, #c7c7c7, darkgrey);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c7c7c7), color-stop(100%, darkgray));
+  background-image: -webkit-linear-gradient(top, #c7c7c7, darkgray);
+  background-image: -moz-linear-gradient(top, #c7c7c7, darkgray);
+  background-image: -ms-linear-gradient(top, #c7c7c7, darkgray);
+  background-image: -o-linear-gradient(top, #c7c7c7, darkgray);
+  background-image: linear-gradient(top, #c7c7c7, darkgray);
   padding: 4px 10px;
   text-shadow: none;
 }
@@ -513,7 +516,7 @@ input.button.search-field:hover, .skey .sidebar .section input.search-field.get-
 .skey .sidebar .section .search-field.clear-all-btn:hover,
 .skey .sidebar .section .search-field.get-help-btn:hover,
 .modal-wrap .search-field.get-choices-ready:hover {
-  background: darkgrey;
+  background: darkgray;
 }
 input.button.small, .skey .sidebar .section input.small.get-choices,
 .skey .sidebar .section input.small.clear-all-btn,
@@ -1640,7 +1643,7 @@ body.taxa #sb-title-inner a {
   }
   .skey .sidebar .working-area .choice.checked label:after {
     background: #666;
-    border: 1px solid #333333;
+    border: 1px solid #333;
     -webkit-box-shadow: inset 1px 1px 2px #333333;
     box-shadow: inset 1px 1px 2px #333333;
     color: white;
@@ -1655,7 +1658,7 @@ body.taxa #sb-title-inner a {
     display: none;
   }
   .skey .sidebar .working-area .choice label:after {
-    border: 1px solid silver;
+    border: 1px solid #c0c0c0;
     -webkit-box-shadow: none;
     box-shadow: none;
     color: #293619;
@@ -1712,7 +1715,7 @@ body.taxa #sb-title-inner a {
 }
 .skey .sidebar .instructions h5 {
   color: #333333;
-  font-family: "Open Sans", helvetica, arial, sans-serif;
+  font-family: 'Open Sans', helvetica, arial, sans-serif;
   font-weight: 700;
   padding: 0;
 }
@@ -1797,7 +1800,7 @@ body.taxa #sb-title-inner a {
   transition: background 0.5s ease-in-out;
 }
 .skey .sidebar .option-list > li.active .option:after {
-  content: "\25";
+  content: "\25b4";
 }
 .skey .sidebar .option-list > li.active .option .gloss {
   color: white;
@@ -1809,8 +1812,7 @@ body.taxa #sb-title-inner a {
   position: relative;
 }
 .skey .sidebar .option-list > li .option:after {
-  content: "\26";
-  font-family: 'icomoon';
+  content: "\25be";
   position: absolute;
   right: 15px;
   top: 17px;
@@ -1818,12 +1820,12 @@ body.taxa #sb-title-inner a {
 }
 @media screen and (max-width: 500px) {
   .skey .sidebar .option-list > li .option .icon-cancel-close:before {
-    border: 1px solid silver;
+    border: 1px solid #c0c0c0;
     -webkit-box-shadow: none;
     box-shadow: none;
     color: #293619;
     content: "Clear";
-    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 11px;
     font-size: 0.6875rem;
     background-color: #e9e9e9;
@@ -2055,8 +2057,8 @@ body.taxa #sb-title-inner a {
 @media screen and (max-width: 1024px) {
   .skey .main-content-wrapper .plant-list .plant {
     border: 0;
-    -webkit-box-shadow: 0 0 3px 1px darkgrey;
-    box-shadow: 0 0 3px 1px darkgrey;
+    -webkit-box-shadow: 0 0 3px 1px darkgray;
+    box-shadow: 0 0 3px 1px darkgray;
     height: auto;
     min-height: 220px;
     padding: 5px;
@@ -2238,7 +2240,7 @@ body.taxa #sb-title-inner a {
   padding: 13px 0 0 20px;
 }
 #plant-detail-modal h3.heading span {
-  border-left: 1px solid darkgrey;
+  border-left: 1px solid darkgray;
   font-style: normal;
   padding: 0 0 0 10px;
   margin: 0 0 0 5px;
@@ -2304,10 +2306,10 @@ body.taxa #sb-title-inner a {
   opacity: 0.4;
 }
 #plant-detail-modal .img-gallery .controls a.prev {
-  background: url(/static/images/icons/prev-larger.png) 0 0 no-repeat rgba(0, 0, 0, 0);
+  background: url(/static/images/icons/prev-larger.png) 0 0 no-repeat transparent;
 }
 #plant-detail-modal .img-gallery .controls a.next {
-  background: url(/static/images/icons/next-larger.png) 0 0 no-repeat rgba(0, 0, 0, 0);
+  background: url(/static/images/icons/next-larger.png) 0 0 no-repeat transparent;
 }
 #plant-detail-modal .details {
   float: left;
@@ -2958,7 +2960,7 @@ div.scrollableArea:after {
 /* Text input with suggestions */
 input.suggest + div {
   background: #fff;
-  border: 1px solid #999999;
+  border: 1px solid #999;
   position: absolute;
   left: 0;
   top: 0;
@@ -3067,7 +3069,7 @@ input.suggest + div li span {
 }
 #glossary #alphabet li.current a {
   font-weight: bold;
-  text-shadow: 1px 1px 1px #eeeeee;
+  text-shadow: 1px 1px 1px #eee;
   -webkit-font-smoothing: antialiased;
 }
 #glossary #alphabet li.current a:hover {
@@ -3166,7 +3168,7 @@ input.suggest + div li span {
 
 .chromeFrameInstallDefaultStyle {
   border: 4px solid #508e31;
-  border-top: 4px solid white;
+  border-top: 4px solid #fff;
   height: 600px;
   /* not too short: don't allow blue button to scroll away */
   top: 419px;

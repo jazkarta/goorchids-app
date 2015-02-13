@@ -258,7 +258,7 @@
             @include transition(background .5s ease-in-out);
             
             &:after {
-              content: "\25";
+              content: "\25b4";
             }
             
             .gloss {
@@ -274,8 +274,7 @@
           position: relative;
           
           &:after {
-            content: "\26";
-            font-family: 'icomoon';
+            content: "\25be";
             position: absolute;
               right: 15px;
               top: 17px;

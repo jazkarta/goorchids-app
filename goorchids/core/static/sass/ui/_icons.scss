@@ -47,10 +47,14 @@
   	content: "\21";
   }
   .icon-plus:before {
-  	content: "\22";
+    font-family: sans-serif;
+    font-size: 200%;
+    content: "\2b";
   }
   .icon-minus:before {
-  	content: "\23";
+    font-family: sans-serif;
+    font-size: 200%;
+  	content: "\2212";
   }
   .icon-checkmark:before {
   	content: "\24";
