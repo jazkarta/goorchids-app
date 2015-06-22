@@ -38,37 +38,47 @@
                   and Alaska will be added this year and all remaining orchids
                   in two years.</p>
                   <ul>
-                    <li><span>&gt;</span> Learn more about <a href="http://northamericanorchidcenter.org/">NAOCC</a>.</li>
                     <li><span>&gt;</span> Learn more about the <a href="/family/orchidaceae/">Orchid Family</a>.</li>
                   </ul>
                   <p>To explore <i>Go Orchids</i>, select one of the methods listed
                   below. Happy orchid hunting!</p>
                   {% endif %}
+                  <div class="center">
+                    <a class="center button" href="#" onclick="$('body').animate({scrollTop: $('#tutorial').offset().top}, 200); return false;">Go to Video Tutorial</a>
+                  </div>
                 </div><!-- /#overlay -->
               </div>
             </div><!-- /#banner -->
             <div class="three-col">
                 {% include "_key_entry.html" with page="home" %}
             </div>
-            <div id="potd">
-            {% if plant_of_the_day %}
-                <figure class="picture-wrapper">
-                    <a href="/species/{{ plant_of_the_day.genus_name|lower }}/{{ plant_of_the_day.epithet }}/"
-                        title="Learn more about {{ plant_of_the_day.scientific_name }}">
-                      <img src="{{ plant_of_the_day_image.thumb_large }}"
-                           alt="{{ plant_of_the_day.scientific_name }}">
-                    </a>
-                </figure>
-                <div class="details">
-                    <h3>Featured Orchid</h3>
-                    <p><em class="latin">{{ plant_of_the_day.scientific_name|italicize_plant|safe }}</em> (<span class="english">{{ plant_of_the_day.common_names.all.0 }})</span></p>
-                    <p>{{ plant_of_the_day.factoid|slice:":274"|linebreaksbr}}
-                    {% if plant_of_the_day.factoid|length > 274 %}...{% endif %}</p>
-                    <a class="learn-more" href="/species/{{ plant_of_the_day.genus_name|lower }}/{{ plant_of_the_day.epithet }}/">Learn More &raquo;</a>
+            <div class="row">
+              <div id="potd">
+              {% if plant_of_the_day %}
+                  <h3>Featured Orchid</h3>
+                  <figure class="picture-wrapper">
+                      <a href="/species/{{ plant_of_the_day.genus_name|lower }}/{{ plant_of_the_day.epithet }}/"
+                          title="Learn more about {{ plant_of_the_day.scientific_name }}">
+                        <img src="{{ plant_of_the_day_image.thumb_large }}"
+                             alt="{{ plant_of_the_day.scientific_name }}">
+                      </a>
+                  </figure>
+                  <div class="details">
+                      <p><em class="latin">{{ plant_of_the_day.scientific_name|italicize_plant|safe }}</em> (<span class="english">{{ plant_of_the_day.common_names.all.0 }})</span></p>
+                      <p>{{ plant_of_the_day.factoid|slice:":274"|linebreaksbr}}
+                      {% if plant_of_the_day.factoid|length > 274 %}...{% endif %}</p>
+                      <a class="learn-more" href="/species/{{ plant_of_the_day.genus_name|lower }}/{{ plant_of_the_day.epithet }}/">Learn More &raquo;</a>
+                  </div>
+              {% else %}
+                  <p>Error: Featured Orchid information missing</p>
+              {% endif %}
+              </div>
+              <div id="tutorial">
+                <h3>Tutorial on Using Go Orchids</h3>
+                <div class="video-wrapper">
+                  <iframe src="https://www.youtube.com/embed/actz0PERcvI?rel=0" frameborder="0" allowfullscreen></iframe>
                 </div>
-            {% else %}
-                <p>Error: Featured Orchid information missing</p>
-            {% endif %}
+              </div>
             </div>
         </div>
     </div>

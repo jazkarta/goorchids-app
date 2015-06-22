@@ -2,15 +2,25 @@
   Layout: Featured Section
 */
 
+.center {
+  text-align: center;
+}
+
 #potd {
   @include clearfix;
+  float: left;
+  width: 60%;
+  padding-right: 3%;
   
   .picture-wrapper {
-    @include span-columns(3);
+    @include span-columns(5);
+    img {
+      width: 100%;
+    }
   }
   
   .details {
-    @include span-columns(9);
+    @include span-columns(7);
   }
   
   .latin {
@@ -27,10 +37,39 @@
   }
 }
 
-@media only screen and (max-width: 400px) {
-    #potd .picture-wrapper {
+#tutorial {
+  width: 40%;
+  float: left;
+}
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  height: 0;
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+    #potd {
+      float: none;
+      width: 100%;
+      padding-right: 0;
+      margin-bottom: 1em;
+    }
+    #tutorial {
+      float: none;
+      width: 100%;
+    }
+}
+@media only screen and (max-width: 500px) {
+    #potd .picture-wrapper, #potd .details {
         float: none;
         width: 100%;
-        margin-bottom: 1em;
-    }
+    }  
 }
