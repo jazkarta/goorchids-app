@@ -4,7 +4,7 @@ set -e
 
 if [ -z "$*" ]
 then
-    APPS="api core dkey mapping plantoftheday plantshare search simplekey site taxa"
+    APPS="api core dkey mapping plantoftheday search simplekey site taxa"
 else
     APPS="$@"
 fi

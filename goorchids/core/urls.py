@@ -2,7 +2,7 @@ from django.conf import settings
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-from django.conf.urls.defaults import include, patterns, url
+from django.conf.urls import include, patterns, url
 
 from gobotany.taxa import views as taxa_views
 from . import views
