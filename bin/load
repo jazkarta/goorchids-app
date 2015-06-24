@@ -10,11 +10,11 @@ import subprocess
 
 def schema():
     try:
-        admin('syncdb --noinput')
+        admin('migrate --noinput')
     except subprocess.CalledProcessError:
         print >>sys.stderr, ("""
 
-        Cannot run Django's initial "syncdb" command on your database.
+        Cannot run Django's initial "migrate" command on your database.
         If you are a developer running this script locally, have you
         created a database with the following command?
 
@@ -22,7 +22,7 @@ def schema():
 
 """)
         sys.exit(1)
-    admin('migrate')
+
 
 def images():
     run('python -m gobotany.core.importer taxon-images')

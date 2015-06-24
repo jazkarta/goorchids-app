@@ -154,7 +154,7 @@ class RegionalConservationStatus(models.Model):
     def natural_key(self):
         return (self.region,) + self.taxon.natural_key()
 
-    natural_key.dependencies = ['core.GoOrchidTaxon']
+    natural_key.dependencies = ['goorchids_core.GoOrchidTaxon']
 
 
 @receiver(models.signals.post_save, sender=GoOrchidTaxon)

@@ -34,9 +34,9 @@ from worker import conn
 q = Queue('low', connection=conn)
 
 
-APPS_TO_HANDLE = ['core', 'search', 'simplekey', 'dkey',
+APPS_TO_HANDLE = ['goorchids_core', 'core', 'search', 'simplekey', 'dkey',
                   'site', 'flatpages', 'sites']
-EXCLUDED_MODELS = ['core.PartnerSite', 'core.ImportLog',
+EXCLUDED_MODELS = ['core.PartnerSite', 'goorchids_core.ImportLog',
                    'site.SearchSuggestion', 'site.PlantNameSuggestion']
 DUMP_NAME = 'goorchids-core-data-{:%Y%m%d%H%M%S}.json'
 DUMP_PATH = '/core-data/'

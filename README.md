@@ -43,8 +43,7 @@ already sitting in your way; in that case, ignore the error):
 
     dropdb gobotany
     createdb -E UTF8 gobotany
-    dev/django syncdb
-    dev/django migrate goorchids.core
+    dev/django migrate
     dev/django createsuperuser
 
 At this point you are done installing and should be able to test and
@@ -110,7 +109,7 @@ exception, because the database tables that it needs have not yet been
 created.  To set up the database, run these commands:
 
     heroku config:add DJANGO_SETTINGS_MODULE=goorchids.settings
-    heroku run django-admin.py syncdb --noinput
+    heroku run django-admin.py migrate --noinput
     heroku run python -m goorchids.core.importer zipimport
     heroku run bin/import-images.sh
     heroku run bin/import-dkey.sh
