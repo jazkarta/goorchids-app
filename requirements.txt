@@ -10,3 +10,4 @@
 # needs in order to compile.
 
 pylibmc==1.2.3
+newrelic==2.52.0.40
