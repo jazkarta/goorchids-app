@@ -53,5 +53,5 @@ def fix_staticfiles():
     django.conf.urls.static.settings = FakeSettings()
     django.contrib.staticfiles.views.settings = FakeSettings()
 
-fix_staticfiles()
-urlpatterns += staticfiles_urlpatterns()
+# fix_staticfiles()
+# urlpatterns += staticfiles_urlpatterns()

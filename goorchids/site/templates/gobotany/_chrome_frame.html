@@ -1,7 +1,8 @@
+        {% load staticfiles %}
         {# Prompt to install Chrome Frame on IE 8 and below if needed #}
         <!--[if lt IE 9]>
         <script type="text/javascript"
-            src="/static/scripts/util/chrome_frame.js"></script>
+            src="{% static 'scripts/util/chrome_frame.js' %}"></script>
         <div id="ie-note">
             <p>Welcome to <em>Go Orchids</em>! This site runs best using
             <a href="http://www.mozilla.org/en-US/firefox/">Firefox</a>,

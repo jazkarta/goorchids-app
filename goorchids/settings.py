@@ -112,6 +112,16 @@ INSTALLED_APPS = [
     'django.contrib.flatpages',
 ] + INSTALLED_APPS
 
+if os.environ.get('AWS_ACCESS_KEY_ID'):
+    INSTALLED_APPS += ['collectfast']
+    # Access information for the S3 bucket
+    AWS_PRELOAD_METADATA = True
+    STATICFILES_STORAGE = 'goorchids.s3utils.StaticRootS3BotoStorage'
+    STATIC_URL = ('http://' + AWS_STORAGE_BUCKET_NAME +
+                  '.s3.amazonaws.com/static/')
+    ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+    PARALLAX_IMAGES_URL = STATIC_URL + 'img/'
+
 MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',)
 

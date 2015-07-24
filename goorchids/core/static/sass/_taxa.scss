@@ -71,7 +71,7 @@ body.taxa {
             @include taxa-list;
         }
         .family-genera-btn {
-            background: url(/static/images/layout/family-btn.png) no-repeat scroll 0 0 transparent;
+            background: url(../images/layout/family-btn.png) no-repeat scroll 0 0 transparent;
             clear: both;
             display: block;
             float: left;
@@ -90,7 +90,7 @@ body.taxa {
             margin: 0;    
         }
         .genus-species-btn {
-            background: url(/static/images/layout/genus-btn.png) no-repeat scroll 0 0 transparent;
+            background: url(../images/layout/genus-btn.png) no-repeat scroll 0 0 transparent;
             clear: both;
             display: block;
             float: left;
@@ -142,7 +142,7 @@ body.taxa {
             width: 100%;
         }
         a.description-control {
-            background: url(/static/images/icons/plus.png) left 50% no-repeat;
+            background: url(../images/icons/plus.png) left 50% no-repeat;
             display: block;
             margin: 10px 0 12px 0;
             padding: 3px 0 3px 25px;
@@ -165,7 +165,7 @@ body.taxa {
                     background-color: #fff;
                 }
                 h5 {
-                	background: url(/static/images/icons/plus.png) left 50% no-repeat;
+                	background: url(../images/icons/plus.png) left 50% no-repeat;
                     cursor: pointer;
                     padding-left: 28px;
                     

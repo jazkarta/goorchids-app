@@ -3,6 +3,7 @@
 {% load humanize %}
 {% load search_highlight %}
 {% load simplekey_extras %}
+{% load staticfiles %}
 
 {% block title %}{{ query }}: Search{% endblock %}
 
@@ -36,45 +37,45 @@
                             <a href="{{ result.url }}">
                             {% if result.model_name == 'taxon' %}
                                 <img
-                                    src="/static/images/icons/icon-leaf.png"
+                                    src="{% static 'images/icons/icon-leaf.png' %}"
                                     alt="" title="Species page">
                             {% endif %}
                             {% if result.model_name == 'family' %}
                                 <img
-                                    src="/static/images/icons/icon-family.png"
+                                    src="{% static 'images/icons/icon-family.png' %}"
                                     alt="" title="Family page">
                             {% endif %}
                             {% if result.model_name == 'genus' %}
                                 <img
-                                    src="/static/images/icons/icon-genus.png"
+                                    src="{% static 'images/icons/icon-genus.png' %}"
                                     alt="" title="Genus page">
                             {% endif %}
                             {% if result.model_name == 'plainpage' %}
                                 <img
-                                    src="/static/images/icons/icon-help.png"
+                                    src="{% static 'images/icons/icon-help.png' %}"
                                     alt="" title="Help page">
                             {% endif %}
                             {% if result.model_name == 'glossaryterm' %}
                                 <img
-                                    src="/static/images/icons/icon-glossary.png"
+                                    src="{% static 'images/icons/icon-glossary.png' %}"
                                     alt="" title="Glossary page">
                             {% endif %}
                             {% if result.model_name == 'groupslistpage' %}
                                 <img
-                                    src="/static/images/icons/icon-groups-list.png"
+                                    src="{% static 'images/icons/icon-groups-list.png' %}"
                                     alt="" title="Simple Key plant groups page">
                             {% endif %}
                             {% if result.model_name == 'subgroupslistpage' %}
-                                <img src="/static/images/icons/icon-groups-list.png"
+                                <img src="{% static 'images/icons/icon-groups-list.png' %}"
                                     alt="" title="Simple Key plant subgroups page">
                             {% endif %}
                             {% if result.model_name == 'subgroupresultspage' %}
-                                <img src="/static/images/icons/icon-grid.png"
+                                <img src="{% static 'images/icons/icon-grid.png' %}"
                                     alt=""
                                     title="Simple Key plant group results page">
                             {% endif %}
                             {% if result.model_name == 'page' %}
-                                <img src="/static/images/icons/icon-groups-list.png"
+                                <img src="{% static 'images/icons/icon-groups-list.png' %}"
                                     alt="" title="Dichotomous Key page">
                             {% endif %}
                             {{ result.title|quick_highlight:query|safe }}

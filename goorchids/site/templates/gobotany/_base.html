@@ -1,4 +1,5 @@
 {% load gobotany_tags %}
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,7 +8,7 @@
         <meta name="viewport" content="width=device-width,
         initial-scale=1.0, minimum-scale=1.0">
 
-        <link rel="shortcut icon" href="/static/images/branding/favicon.png">
+        <link rel="shortcut icon" href="{% static 'images/branding/favicon.png' %}">
 
         {# This block is for any additional meta or link elements. #}
         {% block more_meta_link %}{% endblock %}
@@ -15,10 +16,9 @@
         {# CSS goes here. #}
         {% block css %}
 
-        {% with '/static/css/app.css' as file_path %}
+        {% static 'css/app.css' as file_path %}
         <link rel="stylesheet"
             href="{{ file_path }}?v={% file_version file_path %}">
-        {% endwith %}
         
         <!-- Google Web Fonts -->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet' type='text/css'>
@@ -55,15 +55,14 @@
         {% if not in_production %}
 
         <!-- DEVELOPMENT FILES -->
-        <script src="/static/scripts/lib/require.js"></script>
-        <script src="/static/scripts/require_config.js"></script>
+        <script src="{% static 'scripts/lib/require.js' %}"5></script>
+        <script src="{% static 'scripts/require_config.js' %}"></script>
 
         {% else %}
 
         <!-- PRODUCTION / DEPLOYMENT FILES -->
-        {% with '/static/js/gobotany.application.js' as file_path %}
+        {% static 'js/gobotany.application.js' as file_path %}
         <script src="{{ file_path }}?v={% file_version file_path %}"></script>
-        {% endwith %}
 
         {% endif %}
 

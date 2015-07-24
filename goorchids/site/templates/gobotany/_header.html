@@ -1,7 +1,9 @@
+{% load staticfiles %}
+
     <header class="global-header">
       <div class="container">
         <div class="logo-container">
-          <a href="/" class="naocc-logo"><img src="/static/images/graphics/naocc-logo.png" alt="North American Orchid Conservation Center" /></a>
+          <a href="/" class="naocc-logo"><img src="{% static 'images/graphics/naocc-logo.png' %}" alt="North American Orchid Conservation Center" /></a>
           <h1>North American Orchid Conservation Center</h1>
         </div>
         <nav class="menu-container">

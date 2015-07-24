@@ -305,7 +305,7 @@ header {
         padding: 14px 0 0 0;
         width: 154px;
         a {
-            background: url(/static/images/naocc_logo.png) no-repeat transparent;
+            background: url(../images/naocc_logo.png) no-repeat transparent;
             height: 154px;
             width: 154px;
             @include offscreen;
@@ -458,7 +458,7 @@ header {
             padding-top: $sidebar-box-vertical-padding;
         }
         &.plant-map {
-            background: url(/static/images/layout/plant-map.png) 95% 1% no-repeat;
+            background: url(../images/layout/plant-map.png) 95% 1% no-repeat;
             padding: 0 25px 16px 16px;
         }
         .left {
@@ -480,7 +480,7 @@ header {
             margin-left: 0;
         }
         &.get-help-btn {
-            background: url(/static/images/layout/get-help-btn-orange.png) 0 0 no-repeat transparent;
+            background: url(../images/layout/get-help-btn-orange.png) 0 0 no-repeat transparent;
             display: block;
             height: 32px;
             margin: 10px 0 20px;
@@ -494,7 +494,7 @@ header {
             }
         }
         &.view-map-btn {
-            background: url(/static/images/layout/view-map-btn-orange.png) 0 0 no-repeat transparent;
+            background: url(../images/layout/view-map-btn-orange.png) 0 0 no-repeat transparent;
             display: block;
             height: 32px;
             margin: 10px 0 20px;
@@ -613,7 +613,7 @@ footer {
 
 /* Wait spinners */
 .wait-spinner {
-    background: url(/static/images/icons/preloaders-dot-net-lg.gif)
+    background: url(../images/icons/preloaders-dot-net-lg.gif)
         no-repeat scroll center center transparent;
     height: 350px;
     margin: auto;

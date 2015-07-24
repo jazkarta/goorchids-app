@@ -758,10 +758,10 @@
           }
           
           &.prev {
-            background: url(/static/images/icons/prev-larger.png) 0 0 no-repeat rgba(0, 0, 0, 0);
+            background: url(../images/icons/prev-larger.png) 0 0 no-repeat rgba(0, 0, 0, 0);
           }
           &.next {
-            background: url(/static/images/icons/next-larger.png) 0 0 no-repeat rgba(0, 0, 0, 0);
+            background: url(../images/icons/next-larger.png) 0 0 no-repeat rgba(0, 0, 0, 0);
           }
         } // a
       } // .controls

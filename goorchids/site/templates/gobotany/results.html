@@ -1,5 +1,6 @@
 {% extends "gobotany/_page_no_sidebar.html" %}
 {% load verbatim %}
+{% load staticfiles %}
 
 {% block title %}{{ subgroup_results_page.title }}{% endblock %}
 
@@ -129,7 +130,7 @@
                 <form id="results-display"
                       {{bindAttr class="App3.show_list:hidden"}}>
                     <img class="icon" alt=""
-                        src="/static/images/icons/show-me.png">
+                        src="{% static 'images/icons/show-me.png' %}">
                     <label for="image-types">Show photos of:</label>
                       {{view Ember.Select viewName="select"
                         elementId="image-types"

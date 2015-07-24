@@ -8,6 +8,7 @@ requirements = [
     'redis',
     'rq',
     'honcho',
+    'Collectfast==0.2.1',
     ]
 
 packages = find_packages()
