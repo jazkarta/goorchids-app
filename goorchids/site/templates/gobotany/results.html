@@ -126,11 +126,12 @@
   
           <section class="results-tabs-content">
             <div>
+              <script>var SHOW_ICON="{% static 'images/icons/show-me.png' %}";</script>
               {% handlebars %}
                 <form id="results-display"
                       {{bindAttr class="App3.show_list:hidden"}}>
                     <img class="icon" alt=""
-                        src="{% static 'images/icons/show-me.png' %}">
+                         {{bindAttr src="SHOW_ICON"}}>
                     <label for="image-types">Show photos of:</label>
                       {{view Ember.Select viewName="select"
                         elementId="image-types"

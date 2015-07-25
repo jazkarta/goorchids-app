@@ -1,11 +1,6 @@
 from gobotany.settings import *
 import os
 
-if 'MEMCACHIER_SERVERS' in os.environ:
-    os.environ['MEMCACHE_SERVERS'] = os.environ.get('MEMCACHIER_SERVERS', '').replace(',', ';')
-    os.environ['MEMCACHE_USERNAME'] = os.environ.get('MEMCACHIER_USERNAME', '')
-    os.environ['MEMCACHE_PASSWORD'] = os.environ.get('MEMCACHIER_PASSWORD', '')
-
 SITE_ID = 1
 
 STATE_NAMES = {
@@ -111,16 +106,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
 ] + INSTALLED_APPS
-
-if os.environ.get('AWS_ACCESS_KEY_ID'):
-    INSTALLED_APPS += ['collectfast']
-    # Access information for the S3 bucket
-    AWS_PRELOAD_METADATA = True
-    STATICFILES_STORAGE = 'goorchids.s3utils.StaticRootS3BotoStorage'
-    STATIC_URL = ('http://' + AWS_STORAGE_BUCKET_NAME +
-                  '.s3.amazonaws.com/static/')
-    ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
-    PARALLAX_IMAGES_URL = STATIC_URL + 'img/'
 
 MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',)

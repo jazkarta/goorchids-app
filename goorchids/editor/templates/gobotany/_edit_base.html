@@ -1,8 +1,9 @@
 {% extends "gobotany/_page_full_sidebar.html" %}
+{% load staticfiles %}
 
 {% block css %}
-<link rel="stylesheet" href="/static/css/site.css">
-<link rel="stylesheet" href="/static/css/edit.css">
+<link rel="stylesheet" href="{% static 'css/site.css' %}">
+<link rel="stylesheet" href="{% static 'css/edit.css' %}">
 {% endblock %}
 
 {% block body_attributes %}class="edit-page"{% endblock %}
