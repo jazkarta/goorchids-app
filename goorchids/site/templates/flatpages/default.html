@@ -1,4 +1,5 @@
 {% extends "gobotany/_page_full_sidebar.html" %}
+{% load static_url %}
 
 {% block css %}
 {% include "gobotany/_new_css.html" %}
@@ -10,7 +11,7 @@
 {% block body_attributes %}id="{{url|slugify}}"{% endblock %}
 
 {% block main_content %}
-{{ flatpage.content }}
+{{ flatpage.content|static_url }}
 {% endblock %}
 
 {% block sidebar_content %}
