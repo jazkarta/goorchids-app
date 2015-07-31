@@ -112,6 +112,8 @@ if os.environ.get('FORCE_SSL', 'false').lower() != 'true':
         MIDDLEWARE_CLASSES = list(MIDDLEWARE_CLASSES)
         MIDDLEWARE_CLASSES.remove('sslify.middleware.SSLifyMiddleware')
         MIDDLEWARE_CLASSES = tuple(MIDDLEWARE_CLASSES)
+        SESSION_COOKIE_SECURE = False
+        CSRF_COOKIE_SECURE = False
     except ValueError:
         pass
     AWS_S3_SECURE_URLS = False
