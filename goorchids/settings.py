@@ -94,10 +94,6 @@ INSTALLED_APPS.remove('facebook_connect')
 INSTALLED_APPS.remove('captcha')
 
 # Disable SSL
-if os.environ.get('FORCE_SSL', 'false').lower() != 'true':
-    INSTALLED_APPS.remove('sslify.middleware.SSLifyMiddleware')
-    AWS_S3_SECURE_URLS = False
-
 INSTALLED_APPS = [
     'goorchids.core',
     'goorchids.site',
@@ -110,3 +106,12 @@ MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',)
 
 LOGIN_URL = '/accounts/login'
+
+if os.environ.get('FORCE_SSL', 'false').lower() != 'true':
+    try:
+        MIDDLEWARE_CLASSES = list(MIDDLEWARE_CLASSES)
+        MIDDLEWARE_CLASSES.remove('sslify.middleware.SSLifyMiddleware')
+        MIDDLEWARE_CLASSES = tuple(MIDDLEWARE_CLASSES)
+    except ValueError:
+        pass
+    AWS_S3_SECURE_URLS = False
