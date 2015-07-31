@@ -88,16 +88,15 @@ SOUTH_TESTS_MIGRATE = False
 
 HAYSTACK_INCLUDE_SPELLING = True
 
-if 'test' in sys.argv:
-    pass
-else:
-    AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME',
-                                             'goorchids')
-
 INSTALLED_APPS.remove('gobotany.plantshare')
 INSTALLED_APPS.remove('piston')
 INSTALLED_APPS.remove('facebook_connect')
 INSTALLED_APPS.remove('captcha')
+
+# Disable SSL
+if os.environ.get('FORCE_SSL', 'false').lower() != 'true':
+    INSTALLED_APPS.remove('sslify.middleware.SSLifyMiddleware')
+    AWS_S3_SECURE_URLS = False
 
 INSTALLED_APPS = [
     'goorchids.core',
