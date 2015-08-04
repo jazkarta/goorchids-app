@@ -1,6 +1,7 @@
 {% extends "gobotany/_page_full_sidebar.html" %}
 {% load simplekey_extras %}
 {% load taxon_extras %}
+{% load taxa_tags %}
 
 {% block title %}
 Genus: {{ genus.name }} {% if common_name %}({{ common_name }}){% endif %}
