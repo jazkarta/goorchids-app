@@ -15,8 +15,8 @@ import socket
 import time
 from StringIO import StringIO
 
-import Image
-import ImageOps
+from PIL import Image
+from PIL import ImageOps
 import boto
 import requests
 
