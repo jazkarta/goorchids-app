@@ -45,7 +45,7 @@ DUMP_PATH = '/core-data/'
 def dumpdata(request):
     # Rebuild the search suggestion tables before dump
     Importer().import_search_suggestions()
-    Importer().import_plant_name_suggestions(None)
+    Importer().import_plant_name_suggestions()
     try:
         job = q.enqueue(_dump)
         message = 'Export job started (job id: %s)'%job.id
@@ -237,7 +237,7 @@ def _load(name, log_entry=None):
 
     # Rebuild the search suggestion tables
     Importer().import_search_suggestions()
-    Importer().import_plant_name_suggestions(None)
+    Importer().import_plant_name_suggestions()
 
     end_time = time.time()
     msg = 'Successfully Loaded %s objects from fixture %s in %d seconds'%(
