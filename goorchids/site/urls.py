@@ -1,10 +1,9 @@
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls import url
 from haystack.forms import HighlightedSearchForm
 from goorchids.site import views
+from django.contrib.flatpages import views as flatpages_views
 
-urlpatterns = patterns(
-    '',
-
+urlpatterns = [
     # Home page
     url(r'^$', views.home_view, name='site-home'),
     url(r'^location-suggestions/', views.location_suggestions_view,
@@ -23,8 +22,6 @@ urlpatterns = patterns(
         ),
         name='search',
     ),
-
-
     url(r'^family/(?P<family_slug>[a-z]+)/$',
         views.family_view, name='site-family'),
     url(r'^genus/(?P<genus_slug>[a-z]+)/$',
@@ -34,9 +31,7 @@ urlpatterns = patterns(
     url(r'^api/maps/(?P<genus>[^/-]+)-(?P<epithet>[^/]+)-na-state-distribution-map(\.svg|/)',
         views.north_american_distribution_map,
         name='na-state-distribution-map'),
-    ) + patterns(
-    'django.contrib.flatpages.views',
-    url(r'^about/$', 'flatpage', {'url': '/about/'}, name='site-about'),
-    url(r'^privacy/$', 'flatpage', {'url': '/privacy/'}, name='site-privacy'),
-    url(r'^terms-of-use/$', 'flatpage', {'url': '/terms-of-use/'}, name='site-terms-of-use'),
-    )
+    url(r'^about/$', flatpages_views.flatpage, {'url': '/about/'}, name='site-about'),
+    url(r'^privacy/$', flatpages_views.flatpage, {'url': '/privacy/'}, name='site-privacy'),
+    url(r'^terms-of-use/$', flatpages_views.flatpage, {'url': '/terms-of-use/'}, name='site-terms-of-use'),
+]

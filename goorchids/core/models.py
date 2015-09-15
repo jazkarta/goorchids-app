@@ -82,6 +82,7 @@ class GoOrchidTaxon(Taxon):
     class Meta:
         verbose_name = "taxon"
         verbose_name_plural = "taxa"
+        db_table = "core_goorchidtaxon"
 
     ready_for_display = models.BooleanField(default=False)
     pollination = models.CharField(max_length=1000, blank=True)
@@ -141,6 +142,7 @@ class RegionalConservationStatus(models.Model):
     objects = ConservationStatusManager()
 
     class Meta:
+        db_table = "core_regionalconservationstatus"
         verbose_name_plural = 'regional conservation statuses'
         ordering = ('region', 'status', 'rank')
         unique_together = (
@@ -154,7 +156,7 @@ class RegionalConservationStatus(models.Model):
     def natural_key(self):
         return (self.region,) + self.taxon.natural_key()
 
-    natural_key.dependencies = ['core.GoOrchidTaxon']
+    natural_key.dependencies = ['goorchids_core.GoOrchidTaxon']
 
 
 @receiver(models.signals.post_save, sender=GoOrchidTaxon)
@@ -180,3 +182,6 @@ class ImportLog(models.Model):
     duration = models.IntegerField(null=True)
     success = models.NullBooleanField(null=True)
     message = models.TextField(null=True)
+
+    class Meta:
+        db_table = "core_importlog"

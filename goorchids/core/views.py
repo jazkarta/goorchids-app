@@ -12,7 +12,6 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponse
 from django.core import serializers
-from django.core.management.commands.dumpdata import sort_dependencies
 from django.core.management.color import no_style
 from django.core.files.storage import default_storage
 from django.db import (connections, router, transaction, DEFAULT_DB_ALIAS,
@@ -34,9 +33,9 @@ from worker import conn
 q = Queue('low', connection=conn)
 
 
-APPS_TO_HANDLE = ['core', 'search', 'simplekey', 'dkey',
-                  'site', 'flatpages', 'sites']
-EXCLUDED_MODELS = ['core.PartnerSite', 'core.ImportLog',
+APPS_TO_HANDLE = ['goorchids_core', 'core', 'search', 'simplekey', 'dkey',
+                  'goorchids_site', 'site', 'flatpages', 'sites']
+EXCLUDED_MODELS = ['core.PartnerSite', 'goorchids_core.ImportLog',
                    'site.SearchSuggestion', 'site.PlantNameSuggestion']
 DUMP_NAME = 'goorchids-core-data-{:%Y%m%d%H%M%S}.json'
 DUMP_PATH = '/core-data/'
@@ -70,7 +69,7 @@ def _dump():
         app_list[app] = None
 
     objects = []
-    for model in sort_dependencies(app_list.items()):
+    for model in serializers.sort_dependencies(app_list.items()):
         if model in excluded_models:
             continue
         if not model._meta.proxy and router.allow_syncdb(DEFAULT_DB_ALIAS, model):

@@ -12,8 +12,6 @@ Genus: {{ genus.name }} {% if common_name %}({{ common_name }}){% endif %}
         API_URL = '{% url 'api-base' %}';
     </script>
 
-    {# TODO: eventually move elsewhere #}
-    {% include "simplekey/_partner_site_js.html" %}
 {% endblock %}
 
 {% block js_require %}

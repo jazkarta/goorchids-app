@@ -84,13 +84,9 @@ STATICFILES_DIRS = [
     os.path.join(os.path.dirname(__file__), 'core', 'static'),
     os.path.join(os.path.dirname(__file__), '..', 'external', 'gobotany-app', 'gobotany', 'static'),
 ]
-SOUTH_TESTS_MIGRATE = False
-
-HAYSTACK_INCLUDE_SPELLING = True
 
 INSTALLED_APPS.remove('gobotany.plantshare')
-INSTALLED_APPS.remove('piston')
-INSTALLED_APPS.remove('facebook_connect')
+# INSTALLED_APPS.remove('facebook_connect')
 INSTALLED_APPS.remove('captcha')
 
 # Disable SSL
@@ -98,7 +94,6 @@ INSTALLED_APPS = [
     'goorchids.core',
     'goorchids.site',
     'goorchids.editor',
-    'django.contrib.sites',
     'django.contrib.flatpages',
 ] + INSTALLED_APPS
 

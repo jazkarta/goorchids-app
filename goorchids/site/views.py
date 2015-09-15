@@ -160,10 +160,18 @@ def home_view(request):
             pass
 
     plant_of_the_day_image = None
-    species_images = botany.species_images(plant_of_the_day_taxon)
+
+    if hasattr(plant_of_the_day_taxon, 'taxon_ptr'):
+        species_images = botany.species_images(
+            plant_of_the_day_taxon.taxon_ptr,
+            image_types='flowers,inflorescences')
+    if len(species_images) == 0:
+        species_images = botany.species_images(
+            plant_of_the_day_taxon,
+            image_types='flowers,inflorescences')
+
     if species_images:
-        plant_of_the_day_image = botany.species_images(
-            plant_of_the_day_taxon, image_types='flowers,inflorescences')[0]
+        plant_of_the_day_image = species_images[0]
 
     return render_to_response('gobotany/home.html', {
         'intro': intro,
@@ -327,8 +335,12 @@ def species_view(request, genus_slug, epithet):
             key = 'simple'
         else:
             key = 'full'
-    
-    species_images = botany.species_images(taxon)
+
+    if hasattr(taxon, 'taxon_ptr'):
+        species_images = botany.species_images(taxon.taxon_ptr)
+    if len(species_images) == 0:
+        species_images = botany.species_images(taxon)
+
     images = _images_with_copyright_holders(species_images)
 
     # Get the set of preview characteristics.
