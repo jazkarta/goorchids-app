@@ -3,6 +3,7 @@ import sys
 import argparse
 import traceback
 import time
+import warnings
 from datetime import datetime
 from StringIO import StringIO
 from contextlib import contextmanager, closing
@@ -10,16 +11,17 @@ from contextlib import contextmanager, closing
 from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.http import HttpResponse
+from django.http import JsonResponse
 from django.core import serializers
-from django.core.management.color import no_style
+from django.core.management.commands.loaddata import Command as LoadCommand
 from django.core.files.storage import default_storage
 from django.db import (connections, router, transaction, DEFAULT_DB_ALIAS,
-      IntegrityError, DatabaseError)
-from django.utils.datastructures import SortedDict
+                       DatabaseError, IntegrityError)
+from django.utils.encoding import force_text
 
-from gobotany.core.models import (TaxonCharacterValue, CharacterValue, CopyrightHolder,
-                                  ContentImage, GlossaryTerm, Genus)
+from gobotany.core.models import (TaxonCharacterValue, CharacterValue,
+                                  CopyrightHolder, ContentImage, GlossaryTerm,
+                                  Genus)
 from gobotany.site.models import PlantNameSuggestion, SearchSuggestion
 from gobotany.search.models import (PlainPage, GroupsListPage,
                                     SubgroupsListPage, SubgroupResultsPage)
@@ -40,6 +42,7 @@ EXCLUDED_MODELS = ['core.PartnerSite', 'goorchids_core.ImportLog',
 DUMP_NAME = 'goorchids-core-data-{:%Y%m%d%H%M%S}.json'
 DUMP_PATH = '/core-data/'
 
+
 @permission_required('superuser')
 def dumpdata(request):
     # Rebuild the search suggestion tables before dump
@@ -47,32 +50,32 @@ def dumpdata(request):
     Importer().import_plant_name_suggestions()
     try:
         job = q.enqueue(_dump)
-        message = 'Export job started (job id: %s)'%job.id
+        message = 'Export job started (job id: %s)' % job.id
     except ConnectionError:
         message = _dump()
 
-    return HttpResponse(message,
-                        mimetype='text/plain; charset=utf-8')
+    return JsonResponse(message,
+                        content_type='text/plain; charset=utf-8')
+
 
 def _dump():
     s_time = time.time()
-    from django.db.models import get_app, get_model
+    from django.apps import apps
+    from django.db.models import get_model
     excluded_models = set()
     for exclude in EXCLUDED_MODELS:
         app_label, model_name = exclude.split('.', 1)
         model_obj = get_model(app_label, model_name)
         excluded_models.add(model_obj)
 
-    app_list = SortedDict()
-    for app_label in APPS_TO_HANDLE:
-        app = get_app(app_label)
-        app_list[app] = None
+    app_list = [(c, None) for c in apps.get_app_configs() if c.label in
+                set(APPS_TO_HANDLE)]
 
     objects = []
-    for model in serializers.sort_dependencies(app_list.items()):
+    for model in serializers.sort_dependencies(app_list):
         if model in excluded_models:
             continue
-        if not model._meta.proxy and router.allow_syncdb(DEFAULT_DB_ALIAS, model):
+        if not model._meta.proxy and router.allow_migrate(DEFAULT_DB_ALIAS, model):
             objects.extend(model._default_manager.using(DEFAULT_DB_ALIAS).all())
 
     f_name = DUMP_NAME.format(datetime.now())
@@ -80,7 +83,7 @@ def _dump():
         with gzip.GzipFile(filename=f_name, mode='wb',
                            fileobj=compressed_data) as compressor:
             compressor.write(serializers.serialize('json', objects, indent=2,
-                                                   use_natural_keys=True))
+                                                   use_natural_foreign_keys=True))
         compressed_data.seek(0)
         default_storage.save(DUMP_PATH + f_name + '.gz', compressed_data)
 
@@ -93,6 +96,7 @@ def list_data_files():
     return list(reversed(sorted([ f for f in filenames if
                                   f.endswith('.json.gz') ])))
 
+
 @contextmanager
 def get_latest_fixture(name=None):
     if name is None:
@@ -104,6 +108,7 @@ def get_latest_fixture(name=None):
     finally:
         decompressor.close()
         compressed.close()
+
 
 @permission_required('superuser')
 def loaddata(request):
@@ -128,91 +133,107 @@ def loaddata(request):
                                                           'logs': latest_logs},
                               context_instance=RequestContext(request))
 
-def _load(name, log_entry=None):
-    # code blatantly stolen from django.core.management.commands.loaddatax
-    style = no_style()
-    using = DEFAULT_DB_ALIAS
-    connection = connections[DEFAULT_DB_ALIAS]
-    models = set()
 
-    # Get a cursor (even though we don't need one yet). This has
-    # the side effect of initializing the test database (if
-    # it isn't already initialized).
-    cursor = connection.cursor()
+class GoOrchidsLoader(LoadCommand):
 
-    # Start transaction management. All fixtures are installed in a
-    # single transaction to ensure that all references are resolved.
-    transaction.commit_unless_managed(using=using)
-    transaction.enter_transaction_management(using=using)
-    transaction.managed(True, using=using)
+    def load_label(self, fixture_label, ser_fmt='json'):
+        """
+        Uses get_latest_fixture to load fixture data
+        """
 
-    s_time = time.time()
-    try:
-        # First remove all character values, assignments, images and
-        # generated values to avoid import conflicts and data
-        # duplication
-        Genus.objects.all().delete()
-        TaxonCharacterValue.objects.all().delete()
-        CharacterValue.objects.all().delete()
-        CopyrightHolder.objects.all().delete()
-        ContentImage.objects.all().delete()
-        PlantNameSuggestion.objects.all().delete()
-        SearchSuggestion.objects.all().delete()
-        RegionalConservationStatus.objects.all().delete()
-        PlainPage.objects.all().delete()
-        GroupsListPage.objects.all().delete()
-        SubgroupsListPage.objects.all().delete()
-        SubgroupResultsPage.objects.all().delete()
-        GlossaryTerm.objects.all().delete()
+        with get_latest_fixture(fixture_label) as fixture:
+            try:
+                self.fixture_name = fixture.name
+                self.fixture_count += 1
+                objects_in_fixture = 0
+                loaded_objects_in_fixture = 0
+                if self.verbosity >= 2:
+                    self.stdout.write("Installing %s fixture." % (
+                        fixture.name
+                    ))
 
-        with connection.constraint_checks_disabled():
-            objects_in_fixture = 0
-            loaded_objects_in_fixture = 0
-            with get_latest_fixture(name) as fixture:
-                fixture_name = fixture.name
-                objects = serializers.deserialize('json', fixture,
-                                                  using=using)
+                objects = serializers.deserialize(
+                    ser_fmt, fixture, using=self.using,
+                    ignorenonexistent=self.ignore
+                )
+
                 for obj in objects:
                     objects_in_fixture += 1
-                    if router.allow_syncdb(using, obj.object.__class__):
+                    if router.allow_migrate_model(self.using,
+                                                  obj.object.__class__):
                         loaded_objects_in_fixture += 1
-                        models.add(obj.object.__class__)
+                        self.models.add(obj.object.__class__)
                         try:
-                            obj.save(using=using)
-                        except (DatabaseError, IntegrityError), e:
-                            msg = "Could not load %(app_label)s.%(object_name)s(pk=%(pk)s): %(error_msg)s" % {
+                            obj.save(using=self.using)
+                        except (DatabaseError, IntegrityError) as e:
+                            e.args = ("Could not load %(app_label)s.%(object_name)s(pk=%(pk)s): %(error_msg)s" % {
                                 'app_label': obj.object._meta.app_label,
                                 'object_name': obj.object._meta.object_name,
                                 'pk': obj.object.pk,
-                                'error_msg': e
-                            }
-                            raise e.__class__, e.__class__(msg), sys.exc_info()[2]
+                                'error_msg': force_text(e)
+                            },)
+                            raise
 
+                self.loaded_object_count += loaded_objects_in_fixture
+                self.fixture_object_count += objects_in_fixture
+            except Exception as e:
+                e.args = ("Problem installing fixture '%s': %s" % (fixture.name, e),)
+                raise
+            finally:
+                fixture.close()
+
+            # Warn if the fixture we loaded contains 0 objects.
+            if objects_in_fixture == 0:
+                warnings.warn(
+                    "No fixture data found for '%s'. (File format may be "
+                    "invalid.)" % fixture.name,
+                    RuntimeWarning
+                )
+
+
+def _load(name, log_entry=None, verbosity=2):
+    using = DEFAULT_DB_ALIAS
+    loader = GoOrchidsLoader()
+    loader.using = using
+    loader.ignore = False
+    loader.app_label = None
+    loader.hide_empty = False
+    loader.verbosity = verbosity
+    s_time = time.time()
+    try:
+        with transaction.atomic(using=using):
+            # First remove all character values, assignments, images and
+            # generated values to avoid import conflicts and data
+            # duplication
+            Genus.objects.all().delete()
+            TaxonCharacterValue.objects.all().delete()
+            CharacterValue.objects.all().delete()
+            CopyrightHolder.objects.all().delete()
+            ContentImage.objects.all().delete()
+            PlantNameSuggestion.objects.all().delete()
+            SearchSuggestion.objects.all().delete()
+            RegionalConservationStatus.objects.all().delete()
+            PlainPage.objects.all().delete()
+            GroupsListPage.objects.all().delete()
+            SubgroupsListPage.objects.all().delete()
+            SubgroupResultsPage.objects.all().delete()
+            GlossaryTerm.objects.all().delete()
+
+            # Load the data
+            loader.loaddata([name])
 
             # If the fixture we loaded contains 0 objects, assume that an
-            # error was encountered during fixture loading.
-            if objects_in_fixture == 0:
-                transaction.rollback(using=using)
-                transaction.leave_transaction_management(using=using)
-                msg = "No fixture data found. (File format may be invalid.)"
-                if log_entry:
-                    log_entry.success = False
-                    log_entry.message = msg
-                    log_entry.duration = time.time() - s_time
-                    log_entry.save()
-                return msg
+            # error was encountered during fixture loading and raise a DB
+            # error to force a rollback.
+            if loader.fixture_object_count == 0:
+                raise DatabaseError("No fixture data found. (File format may be invalid.)")
 
-        # Since we disabled constraint checks, we must manually check for
-        # any invalid keys that might have been added
-        table_names = [model._meta.db_table for model in models]
-        connection.check_constraints(table_names=table_names)
-
+        if transaction.get_autocommit(using):
+            connections[using].close()
     except (SystemExit, KeyboardInterrupt):
         raise
-    except Exception:
-        transaction.rollback(using=using)
-        transaction.leave_transaction_management(using=using)
-        msg = "Problem installing fixture: %s" %(
+    except:
+        msg = "Problem installing fixture: %s" % (
             ''.join(traceback.format_exception(sys.exc_type,
                                                sys.exc_value,
                                                sys.exc_traceback)))
@@ -223,25 +244,14 @@ def _load(name, log_entry=None):
             log_entry.save()
         return msg
 
-    # If we found even one object in a fixture, we need to reset the
-    # database sequences.
-    if loaded_objects_in_fixture > 0:
-        sequence_sql = connection.ops.sequence_reset_sql(style, models)
-        if sequence_sql:
-            for line in sequence_sql:
-                cursor.execute(line)
-
-    transaction.commit(using=using)
-    transaction.leave_transaction_management(using=using)
-
     # Rebuild the search suggestion tables
     Importer().import_search_suggestions()
     Importer().import_plant_name_suggestions()
 
     end_time = time.time()
     msg = 'Successfully Loaded %s objects from fixture %s in %d seconds'%(
-        loaded_objects_in_fixture,
-        fixture_name, end_time - s_time)
+        loader.loaded_object_count, loader.fixture_name, end_time - s_time
+    )
 
     if log_entry:
         log_entry.success = True
@@ -251,11 +261,12 @@ def _load(name, log_entry=None):
 
     return msg
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         prog="importer",
         description='Import GoOrchids fixture by name'
-        )
+    )
 
     parser.add_argument('filename', nargs="?")
     args = parser.parse_args()
@@ -263,4 +274,4 @@ if __name__ == '__main__':
         name = list_data_files()[0]
     else:
         name = args.filename
-    print _load(name)
+    print(_load(name))
