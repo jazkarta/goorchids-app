@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.contrib.flatpages.models import FlatPage
 from django.core.exceptions import ObjectDoesNotExist
-from django.http import HttpResponse
+from django.http import JsonResponse
 from django.template import RequestContext
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
@@ -27,7 +27,6 @@ from maps import NorthAmericanOrchidDistributionMap
 from itertools import groupby
 from operator import itemgetter
 from datetime import date
-import json
 
 
 def location_suggestions_view(request):
@@ -39,8 +38,7 @@ def location_suggestions_view(request):
         if state.lower().startswith(query):
             suggestions.append(state)
 
-    return HttpResponse(json.dumps(suggestions),
-                        mimetype='application/json; charset=utf-8')
+    return JsonResponse(suggestions, safe=False)
 
 
 def redirect_to_simple_key_by_location(request):
@@ -104,8 +102,7 @@ def plant_name_suggestions_view(request):
                 query, querytype='icontains'))
 
     suggestions = suggestions[:MAX_RESULTS]
-    return HttpResponse(json.dumps(suggestions),
-                        mimetype='application/json; charset=utf-8')
+    return JsonResponse(suggestions, safe=False)
 
 
 def search_suggestions_view(request):
@@ -132,8 +129,7 @@ def search_suggestions_view(request):
                 query, querytype='icontains'))
 
     suggestions = suggestions[:MAX_RESULTS]
-    return HttpResponse(json.dumps(suggestions),
-                        mimetype='application/json; charset=utf-8')
+    return JsonResponse(suggestions, safe=False)
 
 
 # Home page

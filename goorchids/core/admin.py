@@ -3,7 +3,8 @@ from django import forms
 from django.db import models
 from django.forms.widgets import Textarea
 import gobotany.core.admin
-from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.forms import BaseGenericInlineFormSet
+from django.contrib.contenttypes.admin import GenericTabularInline
 from gobotany.core.models import (Taxon, PartnerSpecies, ContentImage,
                                   Genus, Family, CopyrightHolder, Pile)
 from .models import GoOrchidTaxon, RegionalConservationStatus
@@ -22,7 +23,7 @@ class TaxonPartnerInline(admin.TabularInline):
     verbose_plural = 'Partner sites'
 
 
-class GoOrchidTaxonGenericInlineFormset(generic.BaseGenericInlineFormSet):
+class GoOrchidTaxonGenericInlineFormset(BaseGenericInlineFormSet):
     """We need the GenericRelation to point to the parent ContentType 'Taxon',
     not the subclass"""
 
@@ -42,7 +43,7 @@ class GoOrchidTaxonGenericInlineFormset(generic.BaseGenericInlineFormSet):
                                                                 **kw)
 
 
-class ContentImageInline(generic.GenericTabularInline):
+class ContentImageInline(GenericTabularInline):
     model = ContentImage
     formset = GoOrchidTaxonGenericInlineFormset
 

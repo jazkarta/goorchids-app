@@ -1,7 +1,7 @@
 import json
 from django.utils import timezone
 from datetime import timedelta
-from django import template
+from django.template import base as template
 from gobotany.core.models import Taxon, Character, Edit, Pile
 from gobotany.editor import views as edit_views
 from django.core.urlresolvers import reverse

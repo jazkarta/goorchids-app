@@ -1,4 +1,4 @@
-from django import template
+from django.template import base as template
 from gobotany.core.models import Genus, Taxon
 from django.core.urlresolvers import reverse
 

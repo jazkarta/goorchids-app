@@ -1,5 +1,5 @@
 import re
-from django import template
+from django.template import base as template
 from django.conf import settings
 from django.template.defaultfilters import stringfilter
 
