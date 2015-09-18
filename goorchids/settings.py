@@ -102,6 +102,13 @@ MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
 
 LOGIN_URL = '/accounts/login'
 
+TEMPLATES[0]['OPTIONS']['loaders'] = [
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+    'goorchids.core.app_template_loader.Loader',
+]
+TEMPLATES[0]['APP_DIRS'] = False
+
 if os.environ.get('FORCE_SSL', 'false').lower() != 'true':
     try:
         MIDDLEWARE_CLASSES = list(MIDDLEWARE_CLASSES)
