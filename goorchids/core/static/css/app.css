@@ -393,6 +393,7 @@ input.button, .skey .sidebar .section input.get-choices,
   vertical-align: middle;
   -webkit-font-smoothing: antialiased;
   width: auto;
+  cursor: pointer;
 }
 input.button:hover, .skey .sidebar .section input.get-choices:hover,
 .skey .sidebar .section input.clear-all-btn:hover,
