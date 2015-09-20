@@ -85,6 +85,9 @@ STATICFILES_DIRS = [
     os.path.join(os.path.dirname(__file__), '..', 'external', 'gobotany-app', 'gobotany', 'static'),
 ]
 SOUTH_TESTS_MIGRATE = False
+SOUTH_MIGRATION_MODULES = {
+    'registration': 'registration.south_migrations',
+}
 
 HAYSTACK_INCLUDE_SPELLING = True
 
