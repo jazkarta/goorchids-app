@@ -149,6 +149,13 @@
             }
           }
         }
+        .actions {
+          width: 100%;
+          text-align: center;
+          a.apply-btn.disabled {
+            display: none;
+          }
+        }
       } // .working-area
     } // 650px
     
