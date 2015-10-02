@@ -60,6 +60,18 @@
       max-height: 450px;
       overflow: scroll;
     }
+    .working-area {
+      .actions {
+        width: 100%;
+        text-align: center;
+        a.apply-btn.disabled {
+          display: none;
+        }
+      }
+      .terms.none {
+        display: none;
+      }
+    }
     
     @include media(max-width 865px) {
       @include span-columns(4 of 12);
@@ -147,13 +159,6 @@
               font-weight: 600;
               padding: 0 5px 0 0;
             }
-          }
-        }
-        .actions {
-          width: 100%;
-          text-align: center;
-          a.apply-btn.disabled {
-            display: none;
           }
         }
       } // .working-area

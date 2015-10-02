@@ -1656,6 +1656,16 @@ body.taxa #sb-title-inner a {
   max-height: 450px;
   overflow: scroll;
 }
+.skey .sidebar .working-area .actions {
+  width: 100%;
+  text-align: center;
+}
+.skey .sidebar .working-area .actions a.apply-btn.disabled {
+  display: none;
+}
+.skey .sidebar .working-area .terms.none {
+  display: none;
+}
 @media screen and (max-width: 865px) {
   .skey .sidebar {
     display: block;
@@ -1748,13 +1758,6 @@ body.taxa #sb-title-inner a {
   .skey .sidebar .working-area .terms ul li span {
     font-weight: 600;
     padding: 0 5px 0 0;
-  }
-  .skey .sidebar .working-area .actions {
-    width: 100%;
-    text-align: center;
-  }
-  .skey .sidebar .working-area .actions a.apply-btn.disabled {
-    display: none;
   }
 }
 .skey .sidebar .instructions {
