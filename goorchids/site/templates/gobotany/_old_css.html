@@ -1,5 +1,9 @@
 {% load gobotany_tags %}
 {% load staticfiles %}
-{% static 'css/site.css' as file_path %}
+{% if in_production %}
+    {% static 'css/app.min.css' as file_path %}
+{% else %}
+    {% static 'css/app.css' as file_path %}
+{% endif %}
 <link rel="stylesheet"
-    href="{{ file_path }}?v={% file_version file_path %}">
+    href="{{ file_path }}?v={% file_version 'css/app.css' %}">

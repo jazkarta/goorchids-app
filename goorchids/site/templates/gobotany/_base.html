@@ -16,9 +16,13 @@
         {# CSS goes here. #}
         {% block css %}
 
-        {% static 'css/app.css' as file_path %}
+        {% if in_production %}
+            {% static 'css/app.min.css' as file_path %}
+        {% else %}
+            {% static 'css/app.css' as file_path %}
+        {% endif %}
         <link rel="stylesheet"
-            href="{{ file_path }}?v={% file_version file_path %}">
+            href="{{ file_path }}?v={% file_version 'css/app.css' %}">
         
         <!-- Google Web Fonts -->
         <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet" type='text/css'>
