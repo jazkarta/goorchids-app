@@ -1690,7 +1690,7 @@ body.taxa #sb-title-inner a {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #63784f), color-stop(100%, #ffffff));
   background: -moz-linear-gradient(center top, #63784f, #ffffff);
   border: 1px solid #63784f;
-  height: 4px;
+  height: 3px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   -o-border-radius: 2px;
@@ -1711,7 +1711,7 @@ body.taxa #sb-title-inner a {
   left: 3px;
   position: absolute;
   text-align: center;
-  top: 41px;
+  top: 40px;
   width: 15px;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
