@@ -1562,6 +1562,9 @@ body.taxa #sb-title-inner a {
   color: #fff;
   text-decoration: underline;
 }
+body.taxa #sb-title-inner a.contact {
+  display: none;
+}
 
 .img-gallery .plant {
   position: relative;
