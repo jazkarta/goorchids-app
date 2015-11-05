@@ -55,6 +55,7 @@ def dumpdata(request):
         message = _dump()
 
     return JsonResponse(message,
+                        safe=False,
                         content_type='text/plain; charset=utf-8')
 
 
