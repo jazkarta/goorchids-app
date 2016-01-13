@@ -85,7 +85,7 @@ class GoOrchidTaxon(Taxon):
         db_table = "core_goorchidtaxon"
 
     ready_for_display = models.BooleanField(default=False)
-    pollination = models.CharField(max_length=1000, blank=True)
+    pollination = models.CharField(max_length=2500, blank=True)
     mycorrhiza = models.CharField(max_length=1000, blank=True)
     monitoring = models.CharField(max_length=1000, blank=True)
     propagation = models.CharField(max_length=1000, blank=True)
