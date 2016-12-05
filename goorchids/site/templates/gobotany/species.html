@@ -95,11 +95,18 @@
         </p>
       </section>
 
+      {% if taxon.pollination %}
+      <section class="content-area">
+        <h2>Pollination</h2>
+        <p>{{ taxon.pollination|linebreaksbr }}</p>
+      </section>
+      {% endif %}
+
       {% if taxon.variety_notes %}
       <section class="content-area">
           <h2>Notes on Subspecies and Varieties</h2>
           <p>{{ taxon.variety_notes|italicize_infraspecific_names|safe|linebreaksbr }}</p>
-      </div>
+      </section>
       {% endif %}
 
       {% with habitats=taxon.get_habitats %}
@@ -173,10 +180,6 @@
                   <h5>Facts and Uses</h5>
                 </a>
                 <div class="characteristics accordion-body hidden">
-                    <dl>
-                        <dt>Pollination</dt>
-                        <dd>{{ taxon.pollination|linebreaksbr }}</dd>
-                    </dl>
                     <dl>
                         <dt>Mycorrhiza</dt>
                         <dd>{{ taxon.mycorrhiza|linebreaksbr }}</dd>
