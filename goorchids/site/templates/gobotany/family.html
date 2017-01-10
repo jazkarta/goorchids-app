@@ -32,7 +32,7 @@ Family: {{ family.name }} {% if common_name %}({{ common_name|cut:"The "|lower }
                 </header>
                 <p class="description">
                 {% if family.description %}
-                    {{ family.description|linebreaksbr }}
+                    {{ family.description.strip|linebreaksbr }}
                 {% else %}
                     (Description coming soon)
                 {% endif %}

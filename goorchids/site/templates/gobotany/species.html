@@ -45,7 +45,7 @@
 
     <header class="species-header">
       <h1><span class="scientific">{{ scientific_name|italicize_plant|safe }}</span>
-      <span class="origin">{{ taxon.taxonomic_authority|linebreaksbr }}</span></h1>
+      <span class="origin">{{ taxon.taxonomic_authority.strip|linebreaksbr }}</span></h1>
       {% if common_names %}
       <h2 class="common nogloss">{% for common_name in common_names %}{% if not forloop.first %}, {% endif %}{{ common_name }}{% endfor %}</h2>
       {% endif %}
@@ -80,7 +80,7 @@
       <section class="content-area">
       {% if partner_heading or partner_blurb %}
         <h2>{{ partner_heading }}</h2>
-        <p>{{ partner_blurb|linebreaksbr }} </p>
+        <p>{{ partner_blurb.strip|linebreaksbr }} </p>
       {% endif %}
       </section>
       
@@ -88,7 +88,7 @@
         <h2>Facts About</h2>
         <p>
             {% if taxon.factoid|length > 0 %}
-                {{ taxon.factoid|linebreaksbr }}
+                {{ taxon.factoid.strip|linebreaksbr }}
             {% else %}
                 N/A
             {% endif %}
@@ -98,14 +98,14 @@
       {% if taxon.pollination %}
       <section class="content-area">
         <h2>Pollination</h2>
-        <p>{{ taxon.pollination|linebreaksbr }}</p>
+        <p>{{ taxon.pollination.strip|linebreaksbr }}</p>
       </section>
       {% endif %}
 
       {% if taxon.variety_notes %}
       <section class="content-area">
           <h2>Notes on Subspecies and Varieties</h2>
-          <p>{{ taxon.variety_notes|italicize_infraspecific_names|safe|linebreaksbr }}</p>
+          <p>{{ taxon.variety_notes.strip|italicize_infraspecific_names|safe|linebreaksbr }}</p>
       </section>
       {% endif %}
 
@@ -165,7 +165,7 @@
                             </ul>
                         {% endif %}
                         {% if character.name == 'Flowering date' %}
-                        <p>{{ taxon.flowering_phenology|linebreaksbr }}</p>
+                        <p>{{ taxon.flowering_phenology.strip|linebreaksbr }}</p>
                         {% endif %}
                         </dd>
                     </dl>
@@ -182,19 +182,19 @@
                 <div class="characteristics accordion-body hidden">
                     <dl>
                         <dt>Mycorrhiza</dt>
-                        <dd>{{ taxon.mycorrhiza|linebreaksbr }}</dd>
+                        <dd>{{ taxon.mycorrhiza.strip|linebreaksbr }}</dd>
                     </dl>
                     <dl>
                         <dt>Monitoring</dt>
-                        <dd>{{ taxon.monitoring|linebreaksbr }}</dd>
+                        <dd>{{ taxon.monitoring.strip|linebreaksbr }}</dd>
                     </dl>
                     <dl>
                         <dt>Propagation</dt>
-                        <dd>{{ taxon.propagation|linebreaksbr }}</dd>
+                        <dd>{{ taxon.propagation.strip|linebreaksbr }}</dd>
                     </dl>
                     <dl>
                         <dt>Restoration</dt>
-                        <dd>{{ taxon.restoration|linebreaksbr }}</dd>
+                        <dd>{{ taxon.restoration.strip|linebreaksbr }}</dd>
                     </dl>
                 </div>
               </div>

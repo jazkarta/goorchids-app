@@ -34,7 +34,7 @@ Genus: {{ genus.name }} {% if common_name %}({{ common_name }}){% endif %}
                 </div>
                 <p class="description">
                 {% if genus.description %}
-                    {{ genus.description|linebreaksbr }}
+                    {{ genus.description.strip|linebreaksbr }}
                 {% else %}
                     (Description coming soon)
                 {% endif %}
