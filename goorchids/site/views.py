@@ -44,7 +44,8 @@ def location_suggestions_view(request):
 def redirect_to_simple_key_by_location(request):
     """Redirect to the simple key with a particular location selected."""
     location = request.GET.get('state_distribution', '')
-    return redirect('/simple/monocots/orchid-monocots/#state_distribution=%s' % location.title())
+    return redirect('/simple/monocots/orchid-monocots/#state_distribution=%s' %
+                    (location[:1].upper() + location[1:]))
 
 
 def _plant_name_suggestions(query, querytype='istartswith', site_search=False):
