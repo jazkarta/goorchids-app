@@ -118,4 +118,4 @@ if os.environ.get('FORCE_SSL', 'false').lower() != 'true':
         CSRF_COOKIE_SECURE = False
     except ValueError:
         pass
-    AWS_S3_SECURE_URLS = False
+    # AWS_S3_SECURE_URLS = False
