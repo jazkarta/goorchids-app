@@ -31,7 +31,7 @@ lxml==3.4.4
 newrelic==2.52.0.40
 pilkit==1.1.12
 Pillow==2.4.0
-psycopg2==2.6.1
+psycopg2==2.7.7
 pylibmc==1.2.3
 pysolr==2.0.15
 python-dateutil==2.4.2
