@@ -9,6 +9,7 @@ requirements = [
     'rq',
     'honcho',
     'Collectfast==0.2.1',
+    'django-appconf==0.5',
     ]
 
 packages = find_packages()

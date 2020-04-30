@@ -86,9 +86,12 @@ so that you can run the ``heroku`` command, then use the following
 command to create and provision a new app on Heroku:
 
     heroku create
-    heroku addons:add heroku-postgresql:basic
-    heroku addons:add memcache:5mb
-    heroku addons:add websolr:cobalt
+    heroku addons:add heroku-postgresql:hobby-basic
+    heroku addons:add memcachier:dev
+    heroku addons:add redistogo:nano
+    heroku addons:add scheduler:standard
+    heroku addons:add sendgrid:starter
+    heroku addons:add websolr:cobalt # Production only
     heroku pg:wait
     git push heroku master
 
