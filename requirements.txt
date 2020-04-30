@@ -5,15 +5,47 @@
 -e external/gobotany-app
 -e .
 
-# If Heroku does not see this requirement out here in the requirements
-# file, then it will fail to provide the library that this dependency
-# needs in order to compile.
-
-pylibmc==1.2.3
+BeautifulSoup==3.2.1
+boto==2.2.2
+click==4.1
+Collectfast==0.2.1
+cssselect==0.9.1
+Django==1.8.3
+django-appconf==1.0.1
+django-debug-toolbar==1.3.2
+django-email-confirmation==0.2
+django-haystack==2.4.0
+django-imagekit==3.2.6
+django-piston==0.2.2.1
+django-pylibmc-sasl==0.2.4
+django-recaptcha==1.0.4
+django-registration==1.0
+django-registration-redux==1.2
+django-sslify==0.2.7
+django-storages==1.1.4
+django-tinymce==1.5.3
+gobotany==0.0.0
+goorchids==0.0.0
+gunicorn==0.17.2
+honcho==0.6.6
+inflect==0.2.5
+lxml==3.4.4
 newrelic==2.52.0.40
-
-# By default, pip versions > 1.5 won't install externally hosted files
-# or those without a checksum to guarantee validity. Without these options
-# the Heroku build process will fail with a "Could not find a version that
-# satisfies the requirement" error message.
-
+pilkit==1.1.12
+Pillow==2.4.0
+psycopg2==2.6.1
+pylibmc==1.2.3
+pysolr==2.0.15
+python-dateutil==2.4.2
+python-magic==0.4.6
+python-memcached==1.54
+pytz==2015.4
+redis==2.10.3
+requests==2.7.0
+rq==0.5.4
+s3cmd==1.5.2
+six==1.9.0
+South==0.7.6
+sqlparse==0.1.15
+tablib==0.9.11
+xlrd==0.9.4
