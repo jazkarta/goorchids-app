@@ -28,7 +28,7 @@ django-tinymce==1.5.3
 gunicorn==0.17.2
 honcho==0.6.6
 inflect==0.2.5
-lxml==3.4.4
+lxml==4.6.3
 newrelic==2.52.0.40
 pilkit==1.1.12
 Pillow==2.4.0
