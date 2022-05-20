@@ -23,3 +23,5 @@ node_modules
 # Django app
 dev/venv
 dev/usr
+
+.direnv

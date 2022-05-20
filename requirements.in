@@ -1,8 +1,8 @@
--e external/gobotany-app
--e .
+-e file:external/gobotany-app
+-e file:.
 
 setuptools==50.3.2
 setuptools_scm==4.1.2
 
 # Fix the `render() got an unexpected keyword argument 'renderer'` error
-django-tinymce==2.7.0
+django-tinymce==2.7.1

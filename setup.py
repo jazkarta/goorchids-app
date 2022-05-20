@@ -3,7 +3,6 @@ from setuptools import find_packages
 
 requirements = [
     'gobotany',
-
     # Job queue for export/import
     'redis',
     'rq',
@@ -22,4 +21,4 @@ setup(
     packages=packages,
     package_data=package_data,
     install_requires=requirements,
-    )
+)
