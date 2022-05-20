@@ -5,11 +5,11 @@ import traceback
 import time
 import warnings
 from datetime import datetime
-from StringIO import StringIO
+from io import StringIO
 from contextlib import contextmanager, closing
 
 from django.contrib.auth.decorators import permission_required
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.template import RequestContext
 from django.http import JsonResponse
 from django.core import serializers
@@ -129,7 +129,7 @@ def loaddata(request):
             message += ' (async data load failed)'
 
     latest_logs = ImportLog.objects.order_by('-start')[:5]
-    return render_to_response('goorchids/loaddata.html', {'files': files,
+    return render(request, 'goorchids/loaddata.html', {'files': files,
                                                           'message': message,
                                                           'logs': latest_logs},
                               context_instance=RequestContext(request))

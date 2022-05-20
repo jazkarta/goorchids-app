@@ -1,8 +1,9 @@
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls.static import static
 
-from django.conf.urls import include, url
+from django.urls import include, path
 
 from gobotany.taxa import views as taxa_views
 from . import views
@@ -14,33 +15,29 @@ handler500 = 'django.views.defaults.server_error'
 admin.autodiscover()
 
 urlpatterns = [
-    url(r'^', include('goorchids.site.urls')),
-    url(r'^edit/', include('goorchids.editor.urls')),
-    url(r'^loaddata/', views.loaddata,
-        name='goorchids-loaddata'),
-    url(r'^dumpdata/', views.dumpdata,
-        name='goorchids-dumpdata'),
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^api/', include('gobotany.api.urls')),
-    url(r'^edit/', include('gobotany.editor.urls')),
-    url(r'^plantoftheday/', include('gobotany.plantoftheday.urls')),
-    url(r'^accounts/', include('registration.auth_urls')),
-    url(r'^', include('gobotany.search.urls')),
-    url(r'^', include('gobotany.site.urls')),
-    url('^species/(?P<genus_slug>[a-z]+)/(?P<epithet>[-a-z\. \(\)]+)/$',
+    path('', include('goorchids.site.urls')),
+    path('edit/', include('goorchids.editor.urls')),
+    path('loaddata/', views.loaddata, name='goorchids-loaddata'),
+    path('dumpdata/', views.dumpdata, name='goorchids-dumpdata'),
+    path('admin/', admin.site.urls),
+    path('api/', include('gobotany.api.urls')),
+    path('edit/', include('gobotany.editor.urls')),
+    path('plantoftheday/', include('gobotany.plantoftheday.urls')),
+    # path('accounts/', include('registration.auth_urls')),
+    path('', include('gobotany.search.urls')),
+    path('', include('gobotany.site.urls')),
+    path('species/(?P<genus_slug>[a-z]+)/(?P<epithet>[-a-z\.\s\(\)]+)/',
         taxa_views.species_view, name='taxa-species'),
-    url(r'^', include('gobotany.taxa.urls')),
-    url(r'^', include('gobotany.simplekey.urls')),
+    path('', include('gobotany.taxa.urls')),
+    path('', include('gobotany.simplekey.urls')),
+    path('plantshare/', include('gobotany.plantshare.urls')),
 ]
 
 
 # Serve uploaded media files as static files in development
 if settings.DEBUG:
-    urlpatterns += [
-        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.MEDIA_ROOT,
-        }),
-    ]
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 # For now, always have staticfiles turned on, even in production.
 
 class FakeSettings():

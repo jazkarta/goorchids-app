@@ -130,7 +130,7 @@ class RegionalConservationStatus(models.Model):
 
     STATE_NAMES = sorted(settings.STATE_NAMES.items(), key=lambda x: x[1])
 
-    taxon = models.ForeignKey(GoOrchidTaxon, related_name='regional_conservation_statuses')
+    taxon = models.ForeignKey(GoOrchidTaxon, related_name='regional_conservation_statuses', on_delete=models.PROTECT)
     region = models.CharField(choices=STATE_NAMES, max_length=80)
     status = models.CharField(choices=STATE_STATUS_CODES.items(), max_length=2,
                               default=None, null=True, blank=True)

@@ -6,15 +6,11 @@ from django.db import models, migrations
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('core', '0002_auto_20150915_1038'),
-    ]
-
     operations = [
         migrations.CreateModel(
             name='GoOrchidTaxon',
             fields=[
-                ('taxon_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='core.Taxon')),
+                ('taxon_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='core.Taxon', on_delete=models.PROTECT)),
                 ('ready_for_display', models.BooleanField(default=False)),
                 ('pollination', models.CharField(max_length=1000, blank=True)),
                 ('mycorrhiza', models.CharField(max_length=1000, blank=True)),
@@ -55,7 +51,7 @@ class Migration(migrations.Migration):
                 ('status', models.CharField(default=None, max_length=2, null=True, blank=True, choices=[(b'E', b'Endangered'), (b'T', b'Threatened'), (b'X', b'Extirpated'), (b'SC', b'Species of Concern'), (b'H', b'Historical')])),
                 ('rank', models.CharField(default=None, max_length=2, null=True, blank=True, choices=[(b'SX', b'Presumed Extirpated'), (b'SH', b'Possible Extirpated'), (b'S1', b'Highly State Rare'), (b'S2', b'State Rare'), (b'S3', b'Watch List'), (b'S4', b'Apparently Secure'), (b'S5', b'Secure')])),
                 ('wetland_status', models.CharField(default=None, max_length=4, null=True, blank=True, choices=[(b'OBL', b'Obligate Wetland'), (b'FACW', b'Facultative Wetland'), (b'FAC', b'Facultative'), (b'FACU', b'Facultative Upland'), (b'UPL', b'Upland')])),
-                ('taxon', models.ForeignKey(related_name='regional_conservation_statuses', to='goorchids_core.GoOrchidTaxon')),
+                ('taxon', models.ForeignKey(related_name='regional_conservation_statuses', to='goorchids_core.GoOrchidTaxon', on_delete=models.PROTECT)),
             ],
             options={
                 'ordering': ('region', 'status', 'rank'),

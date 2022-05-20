@@ -2,9 +2,9 @@
 {% load dkey_filters %}
 {% load simplekey_extras %}
 {% load taxa_tags %}
-{% load staticfiles %}
+{% load static %}
 
-{% block title %}{{ scientific_name }} 
+{% block title %}{{ scientific_name }}
 ({% for common_name in common_names %}{% if not forloop.first %}, {% endif %}{{ common_name }}{% endfor %}){% endblock %}
 
 {% block body_attributes %}id="species" class="taxa"{% endblock %}
@@ -50,7 +50,7 @@
       <h2 class="common nogloss">{% for common_name in common_names %}{% if not forloop.first %}, {% endif %}{{ common_name }}{% endfor %}</h2>
       {% endif %}
     </header><!-- /.species-header -->
-    
+
     <div id="species-images">
         {% for i in images %}
             <a href="{{ i.image_medium }}"
@@ -63,7 +63,7 @@
     </div>
 
     <div class="row">
-        
+
       <aside id="sidebar" class="taxonomy">
         <div class="category">
           <h4>Family</h4>
@@ -76,14 +76,14 @@
               >{{ taxon.genus }}</a></em></p>
         </div>
       </aside><!-- /.sidebar -->
-        
+
       <section class="content-area">
       {% if partner_heading or partner_blurb %}
         <h2>{{ partner_heading }}</h2>
         <p>{{ partner_blurb.strip|linebreaksbr }} </p>
       {% endif %}
       </section>
-      
+
       <section class="content-area">
         <h2>Facts About</h2>
         <p>
@@ -119,7 +119,7 @@
       </section>
       {% endif %}
       {% endwith %}
-      
+
       {% if brief_characteristics %}
       <section class="content-area">
         <h2>Characteristics</h2>
@@ -204,7 +204,7 @@
       </section>
       {% endif %}
 
-      <section class="content-area">        
+      <section class="content-area">
         <h2>Native to North America</h2>
         <p>{{ native_to_north_america }}</p>
       </section>
@@ -283,7 +283,7 @@
         </table>
         {% endfor %}
         </div>
-        
+
         <div class="map namap">
           <h4>North America Distribution</h4>
           {% include "gobotany/_map_attribution.html" %}

@@ -26,7 +26,7 @@ CANADIAN_PROVINCES = {
 
 PRESENT_COLOR = '#78bf47'
 ABSENT_COLOR = '#fff'
-STATES_MAP = dict((v, k) for k, v in settings.STATE_NAMES.iteritems())
+STATES_MAP = dict((v, k) for k, v in settings.STATE_NAMES.items())
 
 
 class NorthAmericanOrchidDistributionMap(NorthAmericanPlantDistributionMap):

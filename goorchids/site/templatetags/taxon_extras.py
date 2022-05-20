@@ -1,13 +1,14 @@
-from django.template import base as template
+from django.template.library import Library
+from django.template.exceptions import TemplateSyntaxError
 from gobotany.core.models import Genus, Taxon
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
-register = template.Library()
+register = Library()
 
 @register.simple_tag
 def genus_link(genus):
     if not isinstance(genus, Genus):
-        raise template.TemplateSyntaxError(
+        raise TemplateSyntaxError(
             "genus_link tag requires a single Genus as argument")
     if genus.taxa.filter(goorchidtaxon__ready_for_display=True).count():
         return '<a href="%s">%s</a>'%(reverse('site-genus',
@@ -19,7 +20,7 @@ def genus_link(genus):
 @register.simple_tag
 def species_link(species):
     if not isinstance(species, Taxon):
-        raise template.TemplateSyntaxError(
+        raise TemplateSyntaxError(
             "species_link tag requires a single Taxon as argument")
     species = getattr(species, 'goorchidtaxon', species)
     is_ready = getattr(species, 'ready_for_display', False)

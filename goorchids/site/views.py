@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from django.template import RequestContext
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from gobotany.core import botany
 from gobotany.core.models import Family
 from gobotany.core.models import Genus
@@ -23,7 +23,7 @@ from gobotany.taxa.views import _native_to_north_america_status
 from gobotany.api.views import _distribution_map
 from gobotany.search.views import GoBotanySearchView
 from goorchids.core.models import GoOrchidTaxon
-from maps import NorthAmericanOrchidDistributionMap
+from goorchids.site.maps import NorthAmericanOrchidDistributionMap
 from itertools import groupby
 from operator import itemgetter
 from datetime import date
@@ -157,6 +157,7 @@ def home_view(request):
             pass
 
     plant_of_the_day_image = None
+    species_images = []
 
     if hasattr(plant_of_the_day_taxon, 'taxon_ptr'):
         species_images = botany.species_images(
@@ -170,11 +171,11 @@ def home_view(request):
     if species_images:
         plant_of_the_day_image = species_images[0]
 
-    return render_to_response('gobotany/home.html', {
+    return render(request, 'gobotany/home.html', {
         'intro': intro,
         'plant_of_the_day': plant_of_the_day_taxon,
         'plant_of_the_day_image': plant_of_the_day_image,
-        }, context_instance=RequestContext(request))
+    })
 
 
 # Family and Genus pages
@@ -207,7 +208,7 @@ def family_view(request, family_slug):
     pile = family.taxa.all()[0].piles.all()[0]
     pilegroup = pile.pilegroup
 
-    return render_to_response('gobotany/family.html', {
+    return render(request, 'gobotany/family.html', {
         'family': family,
         'common_name': common_name,
         'family_drawings': family_drawings,
@@ -243,7 +244,7 @@ def genus_view(request, genus_slug):
     pile = genus.taxa.all()[0].piles.all()[0]
     pilegroup = pile.pilegroup
 
-    return render_to_response('gobotany/genus.html', {
+    return render(request, 'gobotany/genus.html', {
         'genus': genus,
         'common_name': common_name,
         'genus_drawings': genus_drawings,
@@ -333,6 +334,7 @@ def species_view(request, genus_slug, epithet):
         else:
             key = 'full'
 
+    species_images = []
     if hasattr(taxon, 'taxon_ptr'):
         species_images = botany.species_images(taxon.taxon_ptr)
     if len(species_images) == 0:
@@ -398,7 +400,7 @@ def species_view(request, genus_slug, epithet):
 
     native_to_north_america = _native_to_north_america_status(taxon)
 
-    return render_to_response('gobotany/species.html', {
+    return render(request, 'gobotany/species.html', {
         'pilegroup': pilegroup,
         'pile': pile,
         'scientific_name': scientific_name,

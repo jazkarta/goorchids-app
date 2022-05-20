@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django import forms
 from django.db import models
-from django.forms.widgets import Textarea
 import gobotany.core.admin
 from django.contrib.contenttypes.forms import BaseGenericInlineFormSet
 from django.contrib.contenttypes.admin import GenericTabularInline
@@ -54,7 +53,7 @@ class TaxonAdmin(gobotany.core.admin.TaxonAdmin):
         '<style type="text/css">.field-piles { display: none; }</style>'
     # Replace all single line text widgets with a text area
     formfield_overrides = {
-        models.CharField: {'widget': Textarea},
+        models.CharField: {'widget': forms.Textarea},
     }
 
     inlines = [
@@ -80,7 +79,9 @@ class TaxonAdmin(gobotany.core.admin.TaxonAdmin):
 
     def formfield_for_manytomany(self, db_field, request, **kwargs):
         if db_field.name == 'piles':
-            kwargs['initial'] = [Pile.objects.get()]
+            kwargs = {}
+            if Pile.objects.count():
+                kwargs['initial'] = [Pile.objects.get()]
             return db_field.formfield(**kwargs)
         return super(TaxonAdmin, self).formfield_for_manytomany(db_field, request, **kwargs)
 

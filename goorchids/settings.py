@@ -85,19 +85,18 @@ STATICFILES_DIRS = [
     os.path.join(os.path.dirname(__file__), '..', 'external', 'gobotany-app', 'gobotany', 'static'),
 ]
 
-INSTALLED_APPS.remove('gobotany.plantshare')
+# INSTALLED_APPS.remove('gobotany.plantshare')
 # INSTALLED_APPS.remove('facebook_connect')
-INSTALLED_APPS.remove('captcha')
+# INSTALLED_APPS.remove('captcha')
 
-# Disable SSL
 INSTALLED_APPS = [
-    'goorchids.core',
     'goorchids.site',
     'goorchids.editor',
+    'goorchids.core',
     'django.contrib.flatpages',
 ] + INSTALLED_APPS
 
-MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
+MIDDLEWARE = MIDDLEWARE + (
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',)
 
 LOGIN_URL = '/accounts/login'
@@ -105,15 +104,15 @@ LOGIN_URL = '/accounts/login'
 TEMPLATES[0]['OPTIONS']['loaders'] = [
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-    'goorchids.core.app_template_loader.Loader',
+    # 'goorchids.core.app_template_loader.Loader',
 ]
 TEMPLATES[0]['APP_DIRS'] = False
 
 if os.environ.get('FORCE_SSL', 'false').lower() != 'true':
     try:
-        MIDDLEWARE_CLASSES = list(MIDDLEWARE_CLASSES)
-        MIDDLEWARE_CLASSES.remove('sslify.middleware.SSLifyMiddleware')
-        MIDDLEWARE_CLASSES = tuple(MIDDLEWARE_CLASSES)
+        MIDDLEWARE = list(MIDDLEWARE)
+        MIDDLEWARE.remove('sslify.middleware.SSLifyMiddleware')
+        MIDDLEWARE = tuple(MIDDLEWARE)
         SESSION_COOKIE_SECURE = False
         CSRF_COOKIE_SECURE = False
     except ValueError:
