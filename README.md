@@ -72,6 +72,35 @@ Our various tests can be run with three commands:
     dev/test-js
     dev/test-python
 
+Running Go Orchids on your workstation with Docker
+--------------------------------------------------
+
+Ensure you have Docker (tested with version 20.10.15) installed.
+
+Fetch the repository and Git submodules:
+
+    git clone git@github.com:jazkarta/goorchids-app.git
+    cd goorchids-app
+    git submodule init
+    git submodule update
+
+Build with:
+
+    docker-compose build goorchids
+
+Start with:
+
+    docker-compose up -d
+
+Run in foreground (usefull to debug with pdb):
+
+    docker-compose exec goorchids python manage.py 0:8001
+
+Run database migrations (only the first time):
+
+    docker-compose exec goorchids python manage.py migrate
+
+TODO: Load fixtures to populate the database with initial data (do it manually from the Django admin panel for now)
 
 Installing Go Orchids on Heroku
 ------------------------------
