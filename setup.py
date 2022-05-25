@@ -1,14 +1,15 @@
+import os
+
 from distutils.core import setup
 from setuptools import find_packages
 
 requirements = [
-    'gobotany',
     # Job queue for export/import
     'redis',
     'rq',
     'honcho',
-    'Collectfast==0.2.1',
-    ]
+    'Collectfast',
+]
 
 packages = find_packages()
 package_data = {package: ['templates/*.*']

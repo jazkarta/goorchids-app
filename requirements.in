@@ -1,5 +1,5 @@
--e file:external/gobotany-app
 -e file:.
+-e file:external/gobotany-app
 
 setuptools==50.3.2
 setuptools_scm==4.1.2
