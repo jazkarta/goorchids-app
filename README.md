@@ -100,7 +100,18 @@ Run database migrations (only the first time):
 
     docker-compose exec goorchids python manage.py migrate
 
-TODO: Load fixtures to populate the database with initial data (do it manually from the Django admin panel for now)
+Create a solr core:
+
+    docker-compose run --rm solr bash -c "bin/solr start && bin/solr create -c gobotany_solr_core -d /opt/solr/server/solr/configsets/basic_configs/"
+
+Update solr config and schema:
+
+    docker-compose up -d solr
+    docker-compose run -v goorchids-app_solr_data:/opt/solr/ --rm goorchids python manage.py build_solr_schema --configure-directory=/opt/solr/gobotany_solr_core/conf --reload-core=gobotany_solr_core
+
+Rebuild solr index:
+
+    docker-compose run --rm goorchids python manage.py rebuild_index --noinput
 
 Installing Go Orchids on Heroku
 ------------------------------

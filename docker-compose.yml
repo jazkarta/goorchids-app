@@ -2,8 +2,12 @@ version: '3.5'
 services:
   solr:
     image: solr:6.6.5
+    ports:
+      - 8983:8983
     networks:
       - goorchirds
+    volumes:
+      - solr_data:/opt/solr/server/solr:rw
 
   postgres:
     image: postgres:14.3
@@ -25,8 +29,8 @@ services:
       - solr
       - postgres
     ports:
-      - '8000:8000'
-      - '8001:8001'
+      - 8000:8000
+      - 8001:8001
     volumes:
       - ./goorchids:/opt/goorchids/goorchids
       - ./external:/opt/goorchids/external
@@ -37,6 +41,7 @@ services:
 
 volumes:
   postgres_data:
+  solr_data:
 
 networks:
   goorchirds:
