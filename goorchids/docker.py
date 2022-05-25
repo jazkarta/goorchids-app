@@ -14,4 +14,4 @@ if 'test' not in sys.argv:
     HAYSTACK_CONNECTIONS['default']['URL'] = 'http://solr:8983/solr/gobotany_solr_core'
     HAYSTACK_CONNECTIONS['default']['ADMIN_URL'] = 'http://solr:8983/solr/#/~cores'
 
-    ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*"]

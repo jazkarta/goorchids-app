@@ -180,7 +180,7 @@ class ImportLog(models.Model):
     filename = models.CharField(max_length=100)
     start = models.DateTimeField()
     duration = models.IntegerField(null=True)
-    success = models.NullBooleanField(null=True)
+    success = models.BooleanField(null=True)
     message = models.TextField(null=True)
 
     class Meta:
