@@ -118,3 +118,7 @@ if os.environ.get('FORCE_SSL', 'false').lower() != 'true':
     except ValueError:
         pass
     # AWS_S3_SECURE_URLS = False
+
+ADMINS = (
+    ('Go Orchids Dev', 'chiruzzi.marco@gmail.com'),
+)
