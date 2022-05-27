@@ -85,6 +85,14 @@ STATICFILES_DIRS = [
     os.path.join(os.path.dirname(__file__), 'core', 'static'),
     os.path.join(os.path.dirname(__file__), '..', 'external', 'gobotany-app', 'gobotany', 'static'),
 ]
+# Fix S3 staticfiles configuration
+if DEFAULT_FILE_STORAGE == 'storages.backends.s3boto.S3BotoStorage':
+    AWS_S3_CUSTOM_DOMAIN = '{}.s3.amazonaws.com'.format(AWS_STORAGE_BUCKET_NAME)
+    AWS_S3_OBJECT_PARAMETERS = {
+        'CacheControl': 'max-age=86400',
+    }
+    AWS_LOCATION = 'static'
+    STATIC_URL = 'https://{}/{}/'.format(AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 
 # INSTALLED_APPS.remove('gobotany.plantshare')
 # INSTALLED_APPS.remove('facebook_connect')
