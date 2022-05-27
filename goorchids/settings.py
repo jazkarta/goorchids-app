@@ -76,6 +76,7 @@ STATE_NAMES = {
 ALLOWED_HOSTS = [
     'goorchids.northamericanorchidcenter.org',
     'goorchids-staging.herokuapp.com',
+    'goorchids-dev.herokuapp.com',
     'goorchids.herokuapp.com',
 ]
 
