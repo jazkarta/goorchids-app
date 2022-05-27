@@ -87,6 +87,8 @@ STATICFILES_DIRS = [
 ]
 # Fix S3 staticfiles configuration
 if DEFAULT_FILE_STORAGE == 'storages.backends.s3boto.S3BotoStorage':
+    # Let django-storages update staticfiles to S3 when running collectstatic
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     AWS_S3_CUSTOM_DOMAIN = '{}.s3.amazonaws.com'.format(AWS_STORAGE_BUCKET_NAME)
     AWS_S3_OBJECT_PARAMETERS = {
         'CacheControl': 'max-age=86400',
