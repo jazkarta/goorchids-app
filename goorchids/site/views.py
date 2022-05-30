@@ -27,6 +27,7 @@ from goorchids.site.maps import NorthAmericanOrchidDistributionMap
 from itertools import groupby
 from operator import itemgetter
 from datetime import date
+from functools import cmp_to_key
 
 
 def location_suggestions_view(request):
@@ -381,7 +382,7 @@ def species_view(request, genus_slug, epithet):
                 'group': character.character_group.name,
                 'name': character.friendly_name,
                 'values': sorted((_format_character_value(v) for v in seq2),
-                                 cmp=_compare_character_values),
+                                 key=cmp_to_key(_compare_character_values)),
                 'in_preview': character.id in plant_preview_characters,
                 'preview_order': plant_preview_characters.get(character.id, -1),
             })
