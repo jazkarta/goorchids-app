@@ -1,6 +1,7 @@
 from django.template.library import Library
 from django.template.exceptions import TemplateSyntaxError
 from gobotany.core.models import Genus, Taxon
+from django.utils.html import format_html
 from django.urls import reverse
 
 register = Library()
@@ -25,8 +26,11 @@ def species_link(species):
     species = getattr(species, 'goorchidtaxon', species)
     is_ready = getattr(species, 'ready_for_display', False)
     if is_ready:
-        return '<a href="%s">%s</a>'%(reverse('site-species',
-                                              args=[species.genus.slug, species.epithet]),
-                                      species.scientific_name)
+        return format_html(
+            '<a href="%s">%s</a>' % (
+                reverse('site-species', args=[species.genus.slug, species.epithet]),
+                species.scientific_name
+            )
+        )
     else:
         return species.scientific_name
