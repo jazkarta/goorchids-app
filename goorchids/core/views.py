@@ -129,10 +129,13 @@ def loaddata(request):
             message += ' (async data load failed)'
 
     latest_logs = ImportLog.objects.order_by('-start')[:5]
-    return render(request, 'goorchids/loaddata.html', {'files': files,
-                                                          'message': message,
-                                                          'logs': latest_logs},
-                              context_instance=RequestContext(request))
+    return render(request, 'goorchids/loaddata.html',
+        {
+            'files': files,
+            'message': message,
+            'logs': latest_logs
+        },
+    )
 
 
 class GoOrchidsLoader(LoadCommand):

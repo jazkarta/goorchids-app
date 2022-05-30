@@ -214,7 +214,8 @@ def family_view(request, family_slug):
         'family_drawings': family_drawings,
         'pilegroup': pilegroup,
         'pile': pile,
-        }, context_instance=RequestContext(request))
+        }
+    )
 
 
 def genus_view(request, genus_slug):
@@ -250,7 +251,8 @@ def genus_view(request, genus_slug):
         'genus_drawings': genus_drawings,
         'pilegroup': pilegroup,
         'pile': pile,
-        }, context_instance=RequestContext(request))
+        }
+    )
 
 
 # Species page
@@ -420,7 +422,7 @@ def species_view(request, genus_slug, epithet):
         'all_characteristics': all_characteristics,
         'epithet': epithet,
         'native_to_north_america': native_to_north_america
-    }, context_instance=RequestContext(request))
+    })
 
 
 def north_american_distribution_map(request, genus, epithet):
