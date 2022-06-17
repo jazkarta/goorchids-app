@@ -82,8 +82,8 @@ ALLOWED_HOSTS = [
 
 ROOT_URLCONF = 'goorchids.core.urls'
 STATICFILES_DIRS = [
-    os.path.join(os.path.dirname(__file__), 'core', 'static'),
-    os.path.join(os.path.dirname(__file__), '..', 'external', 'gobotany-app', 'gobotany', 'static'),
+    os.path.join(os.path.dirname(__file__), '..', 'core', 'static'),
+    os.path.join(os.path.dirname(__file__), '..', '..', 'external', 'gobotany-app', 'gobotany', 'static'),
 ]
 # Fix S3 staticfiles configuration
 if IS_AWS_AUTHENTICATED and DEFAULT_FILE_STORAGE == 'storages.backends.s3boto.S3BotoStorage':
