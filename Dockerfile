@@ -37,6 +37,6 @@ RUN mkdir -p dev/node/bin && \
 RUN bash -c "source ~/.bashrc && dev/jsbuild"
 
 WORKDIR /opt/goorchids/goorchids
-ENV DJANGO_SETTINGS_MODULE=goorchids.docker
+ENV DJANGO_SETTINGS_MODULE=goorchids.settings.docker
 EXPOSE 8000
 CMD python manage.py runserver 0:8000

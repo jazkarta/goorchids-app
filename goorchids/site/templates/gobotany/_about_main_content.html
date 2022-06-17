@@ -1,0 +1,126 @@
+{% load static %}
+
+{% block section1 %}
+    <h1>About Go Botany</h1>
+
+    <h2>A new flora for New England</h2>
+
+    <img class="bookcover"
+        src="{% static '{% static 'images/layout/about_page_bookcover.jpg' %}" alt="Book
+        cover: Flora Novae Angliae">
+
+    <ul>
+        <li>Go Botany is a four-year project funded by the
+        <a href="http://www.nsf.gov/awardsearch/showAward.do?AwardNumber=0840186"
+            >National Science Foundation</a> and aims to open plant study to a
+            larger and more diverse segment of the population.</li>
+        <li>The project builds upon the work in our printed manual, <em>Flora Novae Angliae</em>
+            by research botanist Arthur Haines. This manual is the first
+            comprehensive scientific reference published in the last 25 years
+            on the region's plant species, and is available for purchase at
+            Native Plant Trust’s
+            <a
+            href="http://www.nativeplanttrust.org/for-your-garden/books/">
+            Garden Shop</a>.</li>
+    </ul>
+{% endblock %}
+
+{% block section2 %}
+    <h2>The Go Botany toolkit</h2>
+
+    <img src="{% static 'images/layout/about_page_photo1.jpg' %}"
+        alt="Two people inspecting and photographing a plant in the woods">
+
+    <ul>
+        <li>Our <a href="{% url 'level1' 'simple' %}">Simple Key</a> is an easy to use
+            plant identification tool and contains 1,200 of the most common species in
+            New England. Aimed at beginners and professionals, it works by the user answering
+            questions, which narrows down the matching selection of plants.
+        <a href="{% url 'level1' 'simple' %}">Get Started</a>!</li>
+        <li>Using our <a href="{% url 'advanced-id-tools' %}">Advanced ID Tools</a>,
+            you can use a traditional, albeit electronic,
+            <a href="{% url 'site-help-dkey' %}">Dichotomous Key</a>
+            to identify genera
+            within families and species within genera, and more than 3,500 species,
+            subspecies and varieties of plants. Or you can use our
+            <a href="{% url 'level1' 'full' %}">Full Key</a>, which
+            works like the Simple Key, but like the Dichotomous Key, contains more than
+            3,500 species.</li>
+        <li>Exploring our species pages,
+            <a href="/species/acer/rubrum/">Acer rubrum</a> for example,
+            allows you to learn about the habitats, characteristics,
+            uses of plants, to view photos and maps of their distributions, and much more.</li>
+    </ul>
+{% endblock %}
+
+{% block section3 %}
+    <h2>Resources for teachers</h2>
+
+    <img src="{% static 'images/layout/about_page_photo2.jpg' %}"
+        alt="An instructor showing a blooming plant to a group of
+        children in the garden">
+
+    <ul>
+        <li>Go Botany is designed for students and informal learners age 15
+        and older, from beginners to professionals. But educators can
+        incorporate our tools into lessons for all ages. Develop your own
+        curricula, lab modules, and field workshops using Go Botany.</li>
+        <li>New England Wild Flower Society is teaming up with three partners,
+        <a href="http://www.montshire.org/"
+            >Montshire Museum of Science</a>, <a
+            href="http://peabody.yale.edu/">Yale Peabody
+            Museum of Natural History</a>, and the
+        <a href="http://www.chewonki.org/">Chewonki
+            Foundation</a> to create customized floras, educational displays,
+        and teaching tools.</li>
+        <li>Share your ideas with other educators using
+        <a href="{% url 'ps-main' %}">PlantShare</a> and posting
+        to our <a href="{% url 'site-teaching' %}">Teaching</a> page.</li>
+        <li>In 2012 and 2013, Native Plant Trust (then named New England
+            Wild Flower Society) trained
+            educators throughout New England on how to use Go Botany.</li>
+    </ul>
+{% endblock %}
+
+{% block section4 %}
+    <h2>Technical resources</h2>
+
+    <ul>
+        <li>Go Botany uses a collection of mature and powerful
+            <a href="http://en.wikipedia.org/wiki/Open_source">open
+            source</a> technologies. The application is written in the
+            <a href="https://www.python.org/">Python</a> programming language,
+            using the web framework <a href="https://www.djangoproject.com/">
+            Django</a> and the <a href="http://www.postgresql.org/">PostgreSQL</a>
+            database system.
+
+        </li>
+        <li>The Go Botany application itself is also open source. The source
+            code is managed and available on
+            <a href="https://github.com/newfs/gobotany-app">GitHub</a> and has
+            attracted the attention of various organizations.
+
+            One, the <a href="http://www.serc.si.edu">Smithsonian Environmental
+            Research Center</a>, working with a group of
+            <a href="https://github.com/jazkarta/goorchids-app">web developers</a>,
+            used the Go Botany source code to
+            <a href="http://northamericanorchidcenter.org/naocc-interactive-website-under-development">
+            develop</a> the site
+            <a href="http://goorchids.northamericanorchidcenter.org">Go Orchids</a>.
+        </li>
+        <li>
+            In addition, without the need to make source code modifications or
+            hire web developers, our Go Botany server has the capability to host a
+            customized Simple Key, one that includes a subset of New England
+            species. For example, for their <em>Early Spring: Henry Thoreau and
+            Climate Change</em> exhibit, the
+            <a href="http://www.concordmuseum.org/">Concord Museum</a> worked
+            with us to develop the <em>Go Botany Concord Flora</em>,
+            a comprehensive list of and identification tool for the plants of
+            Concord, Massachusetts.
+        </li>
+        <li>Interested in knowing more? Email us at
+            <a class="email">gobotany [at] nativeplanttrust [dot] org</a>.
+        </li>
+    </ul>
+{% endblock %}

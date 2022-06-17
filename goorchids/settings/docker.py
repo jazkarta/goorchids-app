@@ -1,4 +1,4 @@
-from goorchids.settings import *
+from goorchids.settings.settings import *
 
 if 'test' not in sys.argv:
     DATABASES = {
