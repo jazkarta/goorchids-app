@@ -1,2 +1,2 @@
-web: gunicorn goorchids.wsgi -b "0.0.0.0:$PORT" -w 3
+web: gunicorn goorchids.wsgi -b "0.0.0.0:$PORT" --max-requests 1200 --preload
 worker: python worker.py
