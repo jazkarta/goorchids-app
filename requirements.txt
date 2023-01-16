@@ -48,3 +48,4 @@ South==0.7.6
 sqlparse==0.1.15
 tablib==0.9.11
 xlrd==0.9.4
+futures==3.4.0
