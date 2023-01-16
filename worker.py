@@ -18,5 +18,5 @@ if __name__ == '__main__':
         worker = Worker(map(Queue, listen))
         try:
             worker.work()
-        except redis.exceptions.RedisError as e:
-            traceback.print_exception(e)
+        except redis.exceptions.RedisError:
+            traceback.print_exc
