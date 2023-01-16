@@ -20,5 +20,6 @@ if __name__ == '__main__':
         try:
             worker.work()
         except redis.exceptions.RedisError:
+            raise
             logger.exception('Error connecting to redis')
             pass
