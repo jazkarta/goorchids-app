@@ -25,7 +25,7 @@ django-registration-redux==1.2
 django-sslify==0.2.7
 django-storages==1.1.4
 django-tinymce==1.5.3
-gunicorn==0.17.2
+gunicorn[gthread]==0.17.2
 honcho==0.6.6
 inflect==0.2.5
 lxml==3.4.4
