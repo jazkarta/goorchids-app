@@ -2,8 +2,8 @@
 
 FROM python:3.9.13
 
-RUN apt-get update
-RUN apt-get install -y \
+RUN apt-get update && \
+    apt-get install -y \
     build-essential \
     gcc \
     g++ \
@@ -13,10 +13,11 @@ RUN apt-get install -y \
     libmemcached-dev \
     python3-lxml \
     openssl \
-    git
+    git && \
+    rm -rf /var/lib/apt/lists/*
 
-RUN pip install --upgrade pip
-RUN pip install \
+RUN --mount=type=cache,target=/root/.cache/pip pip install --upgrade pip
+RUN --mount=type=cache,target=/root/.cache/pip pip install \
     setuptools==50.3.2 \
     setuptools_scm==4.1.2
 
