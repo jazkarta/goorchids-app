@@ -4,8 +4,6 @@ services:
     image: solr:6.6.5
     ports:
       - 8983:8983
-    networks:
-      - goorchirds
     volumes:
       - solr_data:/opt/solr/server/solr:rw
 
@@ -19,8 +17,6 @@ services:
       POSTGRES_DB: gobotany
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: secret
-    networks:
-      - goorchirds
 
   goorchids:
     build: .
@@ -36,12 +32,7 @@ services:
       - ./external:/opt/goorchids/external
     environment:
       GOBOTANY_DJANGO_SECRET_KEY: "secret"
-    networks:
-      - goorchirds
 
 volumes:
   postgres_data:
   solr_data:
-
-networks:
-  goorchirds:
