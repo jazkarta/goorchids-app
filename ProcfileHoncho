@@ -1,2 +1,2 @@
 web: gunicorn goorchids.wsgi -b "0.0.0.0:$PORT" -w 2 --threads 4 --preload --worker-class=gthread --max-requests 1200 --max-requests-jitter 300
-worker: python worker.py
+worker: python2 worker.py
