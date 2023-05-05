@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  httpserver:
+    image: traefik:v2.9
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - letsencrypt-certs:/letsencrypt/
+      - ./var/log:/data/log
+    command:
+      - "--log.level=DEBUG"
+      - "--log.filePath=/data/log/traefik.log"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.goorchids-ep.address=:443"
+      - "--entrypoints.goorchids-ep.http.tls=true"
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      - "--certificatesresolvers.myresolver.acme.email=${LETSENCRYPT_EMAIL:-info@jazkarta.com}"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.web.http.redirections.entrypoint.to=goorchids"
+      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+
+  goorchids:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.goorchids.tls.certresolver=myresolver"
+      - "traefik.http.routers.goorchids.rule=Host(`${SERVER_NAME:-goorchids.localhost}`)"
+      - "traefik.http.routers.goorchids.entrypoints=goorchids-ep"
+      - "traefik.http.routers.goorchids.middlewares=add-compression"
+      - "traefik.http.middlewares.add-compression.compress=true"
+
+
+volumes:
+  letsencrypt-certs:

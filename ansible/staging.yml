@@ -16,13 +16,28 @@
       tags:
         - users
 
-    - name: Clone git repository
+    - name: Determine current branch to use
+      changed_when: false
+      ansible.builtin.command: git rev-parse --abbrev-ref HEAD
+      delegate_to: 127.0.0.1
+      register: goorchids_branch
+
+    - name: Clone git repository at branch {{ goorchids_branch }}
       ansible.builtin.git:
         repo: https://github.com/Jazkarta/goorchids-app.git
         dest: /home/{{ goorchids_user }}/goorchids-app
-        version: "{{ lookup('env', 'GOORCHIDS_VERSION') or 'master' }}"
+        version: "{{ goorchids_branch.stdout or 'master' }}"
       become_user: "{{ goorchids_user }}"
       become: true
+
+    - name: Add .env file to include staging services
+      ansible.builtin.copy:
+        content: |
+          COMPOSE_FILE=./docker-compose.yml:./docker-compose.staging.yml
+          SERVER_NAME=66.94.96.44.sslip.io
+        dest: /home/{{ goorchids_user }}/goorchids-app/.env
+        owner: "{{ goorchids_user }}"
+        mode: "0644"
 
     - name: Start dev server
       become: true
