@@ -1,0 +1,41 @@
+
+- name: "Create users"
+  ansible.builtin.user:
+    name: "{{ item.username }}"
+    state: present
+    shell: /bin/bash
+    groups:
+      - docker
+      - sudo
+  with_items:
+    - username: silvio
+    - username: witekdev
+    - username: marco
+
+- name: Ensure /home/<user>/.ssh exists
+  ansible.builtin.file:
+    dest: /home/{{ item.username }}/.ssh
+    state: directory
+    owner: "{{ item.username }}"
+    group: "{{ item.username }}"
+    mode: "0700"
+  with_items:
+    - username: silvio
+    - username: witekdev
+    - username: marco
+  become: true
+
+- name: Place ssh keys
+  ansible.builtin.copy:
+    dest: /home/{{ item.username }}/.ssh/authorized_keys
+    content: "{{ item.key }}"
+    owner: "{{ item.username }}"
+    group: "{{ item.username }}"
+    mode: "0700"
+  with_items:
+    - username: silvio
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCmgUxx70scoenssiRLjGGE4+pEDD5M016xEMZ9r4zmDxOY7bhssMCqBMJbBVj0oX3HIs9jdPZEOMW/RNkshRJgqyDt3GNZbCG1SnZH3KV0C/TldvMMRlF/60M0IWgm5WSVrmGrzI3GAbqaIBebWTY0wwBUrCCYR1SI3eXv61H1MS0LbWEzdo4klqEvEyVThu0YksFFcfXa5lfaRDv2B+fvQzdXBWgxP5hTDgJX6vq3S3IeEGBloVP+kghe07aELpIankPz1Hyuderd3q6pXSj7jmEIzMl1VO7YhcBLtbpECTWFGmHPvNZVRSKBqk47J5DHSEEbNAjQozg/iWJDthQidI4HME1Lk4BsOo4fObwWycEOOs8+FbAbLsjODVYWqMgdr6d5QJIfgRRaPG+RlIE4qPSoQ93+jRhv261tUE11zZzIReqT03uKZQq5KaWwrlVOIseXps5P2pF7gPh5bpZ0qEcHu40mtPQw6wVcacMgbqmHIkiV/1N41rNTjcNsLzU= silvio@spitspot
+    - username: witekdev
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC4E6/MWeIvyrj83cBNWpGafj785AC1V5p6Y6eV0l6JbxjHb9Af9/5EXDQ/XLf4Z7C56Vl/BEA0V9vwEXS/DphW6kkCAlVYCCnLtOH20WMc/LmkY4UjJ15SgiAXAzri0a22bPYC/kZyGs8cnazosqOzYLeVyM4i3oZLF/JdBs9UVJRvJKN8SfwxQbIR6IE0FPMVxR/0/aTP/SJW2TUvdcejWtZ70wZFkqfnKRAz7nIKhboieXRnjUrWEPq/z6uoCttfh9eC6oTvtLuLKCS/E6ecRc7IEQiNFS8gwtHU/Oa+k5y1S1SoftIyf+simFGs4/G6HOyRPkCdmGsRb1qTGVhFp0sxEHsQIv9H5bKfpGYZrL/LFWXJuzk4ZfeAHZy3JBs5gDYBdh/oIHT9Yrd4Z3Yp3GO1z8peLArRKRcoRl8NnsogFMXPIlMAVmNOGPI499WDzaaPwJenQE+LwDdKF12L/oY9ne5GU21QkEQA1dwcnTbizcvCnGTnUoMefkdR8nd6gFxNERUP1s9gc7OyTtN+JKsM31TWhjCnvy/syR5WyUiZPRATUOhXo0eytJ7YFolONhhdNAZr/GG7d0ox5mYE5GkCfL4iisO/T5iez3ft85FSU+fd7WuKJJLzKRw/Y012XBR505Cfoez+/6etyqUXyVch5I0gbf67KzxJRbBE4Q==
+    - username: marco
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDav16s5/3VniqxCy0VE4w6l64zQ96+4/CKEuIsP88svNO+0uuHp2m4Q5Xy0JTZYmImHfThtXEHjFpbHmBV5HCcDMQAEZW+AIveeKGkzkjZZNV+bsf96NSyxG8aZG3iRjxfoDryFNuKjKnRtJ9zzJsaGVr3Dq+4xsvvxl1mOWp9RO6YL2/yEaAz8GWQ+ypdF5/38S+rTHNibdhRMuCVFEiwOTAnRCTwV+nqRHEc5UcO2EhkUzzK+2OZMEucjH6k3mmLbpmhSmfK2A24+ahvLjD2Iw64DD8bsxbvZumUFzHoYkQJ41XdPhs2s/QoxntVdLgLisj6Ss/iVz7UKrxUYS+v

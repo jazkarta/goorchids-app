@@ -20,7 +20,7 @@ services:
 
   goorchids:
     build: .
-    image: goorchids:latest
+    image: ghcr.io/jazkarta/goorchids:latest
     depends_on:
       - solr
       - postgres
