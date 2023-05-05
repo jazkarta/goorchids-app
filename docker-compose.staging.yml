@@ -28,6 +28,7 @@ services:
       - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
 
   goorchids:
+    command: gunicorn goorchids.wsgi -b "0.0.0.0:8000" -w 3
     environment:
       AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
       AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
@@ -35,6 +36,10 @@ services:
       GOBOTANY_DJANGO_SECRET_KEY: "${GOBOTANY_DJANGO_SECRET_KEY}"
       SENDGRID_USERNAME: "${SENDGRID_USERNAME}"
       SENDGRID_PASSWORD: "${SENDGRID_PASSWORD}"
+      # This variable is used by Go Botany just to set the
+      # IN_PRODUCTION Django setting, which will make use of
+      # bundled and minified staticfiles
+      PORT: define-to-set-in-production
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.goorchids.tls.certresolver=myresolver"
