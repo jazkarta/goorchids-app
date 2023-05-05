@@ -24,7 +24,7 @@ services:
       - "--certificatesresolvers.myresolver.acme.email=${LETSENCRYPT_EMAIL:-info@jazkarta.com}"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
       - "--entrypoints.web.address=:80"
-      - "--entrypoints.web.http.redirections.entrypoint.to=goorchids"
+      - "--entrypoints.web.http.redirections.entrypoint.to=goorchids-ep"
       - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
 
   goorchids:
