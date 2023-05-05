@@ -30,11 +30,20 @@
       become_user: "{{ goorchids_user }}"
       become: true
 
+    - name: Include secrets
+      ansible.builtin.include_vars: ../vars/vault.yml
+
     - name: Add .env file to include staging services
       ansible.builtin.copy:
         content: |
           COMPOSE_FILE=./docker-compose.yml:./docker-compose.staging.yml
           SERVER_NAME=66.94.96.44.sslip.io
+          AWS_ACCESS_KEY_ID="{{ goorchids_aws_access_key_id }}"
+          AWS_SECRET_ACCESS_KEY="{{ goorchids_aws_secret_access_key }}"
+          AWS_STORAGE_BUCKET_NAME="goorchids-dev"
+          GOBOTANY_DJANGO_SECRET_KEY='{{ goorchids_django_secret_key }}'
+          SENDGRID_USERNAME="app39258032@heroku.com"
+          SENDGRID_PASSWORD="{{ goorchids_sendgrid_password }}"
         dest: /home/{{ goorchids_user }}/goorchids-app/.env
         owner: "{{ goorchids_user }}"
         mode: "0644"
