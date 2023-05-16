@@ -32,6 +32,24 @@ services:
       - ./external:/opt/goorchids/external
     environment:
       GOBOTANY_DJANGO_SECRET_KEY: "secret"
+      REDIS_URL: redis://redis:6379
+
+  worker:
+    build: .
+    image: ghcr.io/jazkarta/goorchids:latest
+    command: python worker.py
+    depends_on:
+      - redis
+    volumes:
+      - ./goorchids:/opt/goorchids/goorchids
+      - ./external:/opt/goorchids/external
+    environment:
+      GOBOTANY_DJANGO_SECRET_KEY: "secret"
+      REDIS_URL: redis://redis:6379
+
+  redis:
+    image: redis:7.0.11-alpine
+    command: redis-server --save 60 1 --loglevel warning
 
 volumes:
   postgres_data:
