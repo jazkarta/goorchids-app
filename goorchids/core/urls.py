@@ -3,10 +3,12 @@ from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 
+from django.apps import apps
+
 from django.urls import include, path, re_path
 
 from gobotany.taxa import views as taxa_views
-from . import views
+from goorchids.core import views as goorchids_views
 
 
 handler404 = 'django.views.defaults.page_not_found'
@@ -14,11 +16,23 @@ handler500 = 'django.views.defaults.server_error'
 
 admin.autodiscover()
 
+# Remove useless apps from the Admin panel
+for app_config in apps.get_app_configs():
+    if app_config.name in [
+        "account",
+        "gobotany.plantshare",
+        "gobotany.dkey",
+        "gobotany.site"
+    ]:
+        for model in app_config.get_models():
+            if admin.site.is_registered(model):
+                admin.site.unregister(model)
+
 urlpatterns = [
     path('', include('goorchids.site.urls')),
     path('edit/', include('goorchids.editor.urls')),
-    path('loaddata/', views.loaddata, name='goorchids-loaddata'),
-    path('dumpdata/', views.dumpdata, name='goorchids-dumpdata'),
+    path('loaddata/', goorchids_views.loaddata, name='goorchids-loaddata'),
+    path('dumpdata/', goorchids_views.dumpdata, name='goorchids-dumpdata'),
     path('admin/', admin.site.urls),
     path('api/', include('gobotany.api.urls')),
     path('edit/', include('gobotany.editor.urls')),
