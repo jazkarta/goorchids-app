@@ -26,6 +26,8 @@ services:
       - "--entrypoints.web.address=:80"
       - "--entrypoints.web.http.redirections.entrypoint.to=goorchids-ep"
       - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+    networks:
+      - goorchirds
 
   goorchids:
     command: gunicorn goorchids.wsgi -b "0.0.0.0:8000" -w 3
