@@ -25,3 +25,4 @@ dev/venv
 dev/usr
 
 .direnv
+ansible/vault_password.txt

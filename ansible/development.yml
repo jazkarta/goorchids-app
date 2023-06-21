@@ -1,5 +1,5 @@
 - name: Deploy
-  hosts: staging
+  hosts: development
   vars:
     goorchids_user: goorchids
   tasks:
