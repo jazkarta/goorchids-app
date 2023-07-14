@@ -12,9 +12,9 @@ def genus_link(genus):
         raise TemplateSyntaxError(
             "genus_link tag requires a single Genus as argument")
     if genus.taxa.filter(goorchidtaxon__ready_for_display=True).count():
-        return '<a href="%s">%s</a>'%(reverse('site-genus',
+        return format_html('<a href="%s">%s</a>'%(reverse('site-genus',
                                               args=[genus.slug]),
-                                      genus.name)
+                                      genus.name))
     else:
         return genus.name
 

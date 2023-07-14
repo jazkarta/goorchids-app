@@ -10,6 +10,7 @@
       - docker
       - sudo
   with_items: "{{ remote_users }}"
+  become: true
 
 - name: Ensure /home/<user>/.ssh exists
   ansible.builtin.file:
@@ -29,11 +30,13 @@
     group: "{{ item.username }}"
     mode: "0700"
   with_items: "{{ remote_users }}"
+  become: true
 
 - name: Ensure user can sudo without password
   ansible.builtin.lineinfile:
     dest: /etc/sudoers.d/{{ item.username }}
     state: present
+    create: true
     regexp: '^{{ item.username }} ALL='
     line: '{{ item.username }} ALL=(ALL) NOPASSWD: ALL'
     validate: 'visudo -cf %s'

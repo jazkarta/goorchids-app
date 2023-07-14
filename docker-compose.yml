@@ -6,6 +6,8 @@ services:
       - 8983:8983
     volumes:
       - solr_data:/opt/solr/server/solr:rw
+    networks:
+      - goorchirds
 
   postgres:
     image: postgres:14.3
@@ -17,6 +19,16 @@ services:
       POSTGRES_DB: gobotany
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: secret
+    networks:
+      - goorchirds
+
+  redis:
+    image: redis:7.0.11-alpine
+    command: redis-server --save 60 1 --loglevel warning
+    volumes:
+      - redis_data:/data
+    networks:
+      - goorchirds
 
   goorchids:
     build: .
@@ -32,7 +44,29 @@ services:
       - ./external:/opt/goorchids/external
     environment:
       GOBOTANY_DJANGO_SECRET_KEY: "secret"
+      REDIS_URL: redis://redis:6379
+    networks:
+      - goorchirds
+
+  worker:
+    build: .
+    image: ghcr.io/jazkarta/goorchids:latest
+    command: python worker.py
+    depends_on:
+      - redis
+    volumes:
+      - ./goorchids:/opt/goorchids/goorchids
+      - ./external:/opt/goorchids/external
+    environment:
+      GOBOTANY_DJANGO_SECRET_KEY: "secret"
+      REDIS_URL: redis://redis:6379
+    networks:
+      - goorchirds
 
 volumes:
   postgres_data:
   solr_data:
+  redis_data:
+
+networks:
+  goorchirds:

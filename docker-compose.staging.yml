@@ -26,6 +26,8 @@ services:
       - "--entrypoints.web.address=:80"
       - "--entrypoints.web.http.redirections.entrypoint.to=goorchids-ep"
       - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+    networks:
+      - goorchirds
 
   goorchids:
     command: gunicorn goorchids.wsgi -b "0.0.0.0:8000" -w 3
@@ -40,6 +42,7 @@ services:
       # IN_PRODUCTION Django setting, which will make use of
       # bundled and minified staticfiles
       PORT: define-to-set-in-production
+      REDIS_URL: redis://redis:6379
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.goorchids.tls.certresolver=myresolver"
@@ -48,6 +51,21 @@ services:
       - "traefik.http.routers.goorchids.middlewares=add-compression"
       - "traefik.http.middlewares.add-compression.compress=true"
 
+  worker:
+    build: .
+    image: ghcr.io/jazkarta/goorchids:latest
+    command: python worker.py
+    depends_on:
+      - redis
+    volumes:
+      - ./goorchids:/opt/goorchids/goorchids
+      - ./external:/opt/goorchids/external
+    environment:
+      AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
+      AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
+      AWS_STORAGE_BUCKET_NAME: "${AWS_STORAGE_BUCKET_NAME}"
+      GOBOTANY_DJANGO_SECRET_KEY: "${GOBOTANY_DJANGO_SECRET_KEY}"
+      REDIS_URL: redis://redis:6379
 
 volumes:
   letsencrypt-certs:
