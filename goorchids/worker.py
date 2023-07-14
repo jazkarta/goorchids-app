@@ -1,11 +1,10 @@
 import django
 import os
-import logging
 import redis
+import traceback
 
 from rq import Worker, Queue, Connection
 
-logger = logging.getLogger(__name__)
 listen = ['high', 'default', 'low']
 
 redis_url = os.getenv('REDIS_URL', 'redis://localhost:6379')
@@ -20,5 +19,4 @@ if __name__ == '__main__':
         try:
             worker.work()
         except redis.exceptions.RedisError:
-            logger.exception('Error connecting to redis')
-            pass
+            traceback.print_exc()
