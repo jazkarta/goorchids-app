@@ -131,3 +131,5 @@ if os.environ.get('FORCE_SSL', 'false').lower() != 'true':
 ADMINS = (
     ('Go Orchids Dev', 'chiruzzi.marco@gmail.com'),
 )
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

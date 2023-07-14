@@ -42,8 +42,6 @@
           AWS_SECRET_ACCESS_KEY="{{ goorchids_aws_secret_access_key }}"
           AWS_STORAGE_BUCKET_NAME="goorchids-dev"
           GOBOTANY_DJANGO_SECRET_KEY='{{ goorchids_django_secret_key }}'
-          SENDGRID_USERNAME="app39258032@heroku.com"
-          SENDGRID_PASSWORD="{{ goorchids_sendgrid_password }}"
         dest: /home/{{ goorchids_user }}/goorchids-app/.env
         owner: "{{ goorchids_user }}"
         mode: "0644"

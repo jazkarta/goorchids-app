@@ -36,8 +36,6 @@ services:
       AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
       AWS_STORAGE_BUCKET_NAME: "${AWS_STORAGE_BUCKET_NAME}"
       GOBOTANY_DJANGO_SECRET_KEY: "${GOBOTANY_DJANGO_SECRET_KEY}"
-      SENDGRID_USERNAME: "${SENDGRID_USERNAME}"
-      SENDGRID_PASSWORD: "${SENDGRID_PASSWORD}"
       # This variable is used by Go Botany just to set the
       # IN_PRODUCTION Django setting, which will make use of
       # bundled and minified staticfiles
