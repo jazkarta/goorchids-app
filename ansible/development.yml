@@ -1,0 +1,57 @@
+- name: Deploy
+  hosts: development
+  vars:
+    goorchids_user: goorchids
+  tasks:
+    - name: Install docker
+      ansible.builtin.include_tasks: tasks/docker.yml
+    - name: Create users
+      ansible.builtin.include_tasks: tasks/users.yml
+
+    - name: Create user {{ goorchids_user }}
+      ansible.builtin.user:
+        name: "{{ goorchids_user }}"
+        state: present
+        group: docker
+      tags:
+        - users
+
+    - name: Determine current branch to use
+      changed_when: false
+      ansible.builtin.command: git rev-parse --abbrev-ref HEAD
+      delegate_to: 127.0.0.1
+      register: goorchids_branch
+
+    - name: Clone git repository at branch {{ goorchids_branch }}
+      ansible.builtin.git:
+        repo: https://github.com/Jazkarta/goorchids-app.git
+        dest: /home/{{ goorchids_user }}/goorchids-app
+        version: "{{ goorchids_branch.stdout or 'master' }}"
+      become_user: "{{ goorchids_user }}"
+      become: true
+
+    - name: Include secrets
+      ansible.builtin.include_vars: ../vars/vault.yml
+
+    - name: Add .env file to include staging services
+      ansible.builtin.copy:
+        content: |
+          COMPOSE_FILE=./docker-compose.yml:./docker-compose.staging.yml
+          SERVER_NAME="{{ SERVER_NAME }}"
+          AWS_ACCESS_KEY_ID="{{ goorchids_aws_access_key_id }}"
+          AWS_SECRET_ACCESS_KEY="{{ goorchids_aws_secret_access_key }}"
+          AWS_STORAGE_BUCKET_NAME="goorchids-dev"
+          GOBOTANY_DJANGO_SECRET_KEY='{{ goorchids_django_secret_key }}'
+        dest: /home/{{ goorchids_user }}/goorchids-app/.env
+        owner: "{{ goorchids_user }}"
+        mode: "0644"
+
+    - name: Start dev server
+      become: true
+      become_user: "{{ goorchids_user }}"
+      ansible.builtin.command: docker compose up -d
+      changed_when: false
+      args:
+        chdir: /home/{{ goorchids_user }}/goorchids-app
+      tags:
+        - users

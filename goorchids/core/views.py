@@ -1,3 +1,4 @@
+import functools
 import gzip
 import sys
 import argparse
@@ -5,14 +6,16 @@ import traceback
 import time
 import warnings
 from datetime import datetime
-from StringIO import StringIO
+from io import BytesIO
 from contextlib import contextmanager, closing
 
 from django.contrib.auth.decorators import permission_required
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.template import RequestContext
 from django.http import JsonResponse
 from django.core import serializers
+from django.core.management.base import CommandError
+from django.core.management.utils import parse_apps_and_model_labels
 from django.core.management.commands.loaddata import Command as LoadCommand
 from django.core.files.storage import default_storage
 from django.db import (connections, router, transaction, DEFAULT_DB_ALIAS,
@@ -21,19 +24,19 @@ from django.utils.encoding import force_text
 
 from gobotany.core.models import (TaxonCharacterValue, CharacterValue,
                                   CopyrightHolder, ContentImage, GlossaryTerm,
-                                  Genus)
+                                  Genus, Synonym, CommonName, Lookalike, ConservationStatus,
+                                  PartnerSpecies)
 from gobotany.site.models import PlantNameSuggestion, SearchSuggestion
 from gobotany.search.models import (PlainPage, GroupsListPage,
                                     SubgroupsListPage, SubgroupResultsPage)
 from gobotany.core.importer import Importer
-from .models import RegionalConservationStatus, ImportLog
+from goorchids.core.models import GoOrchidTaxon, RegionalConservationStatus, ImportLog
 
 from rq import Queue
 from redis.exceptions import ConnectionError
 from worker import conn
 
 q = Queue('low', connection=conn)
-
 
 APPS_TO_HANDLE = ['goorchids_core', 'core', 'search', 'simplekey', 'dkey',
                   'goorchids_site', 'site', 'flatpages', 'sites']
@@ -62,11 +65,10 @@ def dumpdata(request):
 def _dump():
     s_time = time.time()
     from django.apps import apps
-    from django.db.models import get_model
     excluded_models = set()
     for exclude in EXCLUDED_MODELS:
         app_label, model_name = exclude.split('.', 1)
-        model_obj = get_model(app_label, model_name)
+        model_obj = apps.get_model(app_label, model_name)
         excluded_models.add(model_obj)
 
     app_list = [(c, None) for c in apps.get_app_configs() if c.label in
@@ -80,11 +82,14 @@ def _dump():
             objects.extend(model._default_manager.using(DEFAULT_DB_ALIAS).all())
 
     f_name = DUMP_NAME.format(datetime.now())
-    with closing(StringIO()) as compressed_data:
+    with closing(BytesIO()) as compressed_data:
         with gzip.GzipFile(filename=f_name, mode='wb',
                            fileobj=compressed_data) as compressor:
-            compressor.write(serializers.serialize('json', objects, indent=2,
-                                                   use_natural_foreign_keys=True))
+            compressor.write(
+                serializers.serialize(
+                'json', objects,
+                indent=2, use_natural_foreign_keys=True).encode('utf-8')
+            )
         compressed_data.seek(0)
         default_storage.save(DUMP_PATH + f_name + '.gz', compressed_data)
 
@@ -129,19 +134,27 @@ def loaddata(request):
             message += ' (async data load failed)'
 
     latest_logs = ImportLog.objects.order_by('-start')[:5]
-    return render_to_response('goorchids/loaddata.html', {'files': files,
-                                                          'message': message,
-                                                          'logs': latest_logs},
-                              context_instance=RequestContext(request))
+    return render(request, 'goorchids/loaddata.html',
+        {
+            'files': files,
+            'message': message,
+            'logs': latest_logs
+        },
+    )
 
 
 class GoOrchidsLoader(LoadCommand):
 
-    def load_label(self, fixture_label, ser_fmt='json'):
-        """
-        Uses get_latest_fixture to load fixture data
-        """
+    @functools.lru_cache(maxsize=None)
+    def find_fixtures(self, fixture_label):
+        return fixture_label in list_data_files()
 
+    def load_label(self, fixture_label, ser_fmt='json'):
+        """Load fixtures files for a given label."""
+        _, self.included_apps = parse_apps_and_model_labels(APPS_TO_HANDLE)
+        self.excluded_models, _ = parse_apps_and_model_labels(EXCLUDED_MODELS)
+
+        show_progress = self.verbosity >= 3
         with get_latest_fixture(fixture_label) as fixture:
             try:
                 self.fixture_name = fixture.name
@@ -149,36 +162,49 @@ class GoOrchidsLoader(LoadCommand):
                 objects_in_fixture = 0
                 loaded_objects_in_fixture = 0
                 if self.verbosity >= 2:
-                    self.stdout.write("Installing %s fixture." % (
-                        fixture.name
-                    ))
+                    self.stdout.write(
+                        "Installing %s fixture '%s'."
+                        % (ser_fmt, fixture.name)
+                    )
 
                 objects = serializers.deserialize(
-                    ser_fmt, fixture, using=self.using,
-                    ignorenonexistent=self.ignore
+                    ser_fmt, fixture, using=self.using, ignorenonexistent=self.ignore,
+                    handle_forward_references=True,
                 )
 
                 for obj in objects:
                     objects_in_fixture += 1
-                    if router.allow_migrate_model(self.using,
-                                                  obj.object.__class__):
+                    if (obj.object._meta.app_config not in self.included_apps or
+                            type(obj.object) in self.excluded_models):
+                        continue
+                    if router.allow_migrate_model(self.using, obj.object.__class__):
                         loaded_objects_in_fixture += 1
                         self.models.add(obj.object.__class__)
                         try:
                             obj.save(using=self.using)
-                        except (DatabaseError, IntegrityError) as e:
+                            if show_progress:
+                                self.stdout.write(
+                                    '\rProcessed %i object(s).' % loaded_objects_in_fixture,
+                                    ending=''
+                                )
+                        # psycopg2 raises ValueError if data contains NUL chars.
+                        except (DatabaseError, IntegrityError, ValueError) as e:
                             e.args = ("Could not load %(app_label)s.%(object_name)s(pk=%(pk)s): %(error_msg)s" % {
                                 'app_label': obj.object._meta.app_label,
                                 'object_name': obj.object._meta.object_name,
                                 'pk': obj.object.pk,
-                                'error_msg': force_text(e)
+                                'error_msg': e,
                             },)
                             raise
-
+                    if obj.deferred_fields:
+                        self.objs_with_deferred_fields.append(obj)
+                if objects and show_progress:
+                    self.stdout.write()  # Add a newline after progress indicator.
                 self.loaded_object_count += loaded_objects_in_fixture
                 self.fixture_object_count += objects_in_fixture
             except Exception as e:
-                e.args = ("Problem installing fixture '%s': %s" % (fixture.name, e),)
+                if not isinstance(e, CommandError):
+                    e.args = ("Problem installing fixture '%s': %s" % (fixture_label, e),)
                 raise
             finally:
                 fixture.close()
@@ -187,7 +213,7 @@ class GoOrchidsLoader(LoadCommand):
             if objects_in_fixture == 0:
                 warnings.warn(
                     "No fixture data found for '%s'. (File format may be "
-                    "invalid.)" % fixture.name,
+                    "invalid.)" % fixture_label,
                     RuntimeWarning
                 )
 
@@ -206,14 +232,23 @@ def _load(name, log_entry=None, verbosity=2):
             # First remove all character values, assignments, images and
             # generated values to avoid import conflicts and data
             # duplication
-            Genus.objects.all().delete()
+
+            # Since some foreign keys relations are protected from deletion
+            # we need to delete models in a specific order
+            PartnerSpecies.objects.all().delete()
+            Synonym.objects.all().delete()
+            CommonName.objects.all().delete()
+            Lookalike.objects.all().delete()
             TaxonCharacterValue.objects.all().delete()
-            CharacterValue.objects.all().delete()
+            ConservationStatus.objects.all().delete()
+            RegionalConservationStatus.objects.all().delete()
+            GoOrchidTaxon.objects.all().delete()
+            Genus.objects.all().delete()
             CopyrightHolder.objects.all().delete()
             ContentImage.objects.all().delete()
+            CharacterValue.objects.all().delete()
             PlantNameSuggestion.objects.all().delete()
             SearchSuggestion.objects.all().delete()
-            RegionalConservationStatus.objects.all().delete()
             PlainPage.objects.all().delete()
             GroupsListPage.objects.all().delete()
             SubgroupsListPage.objects.all().delete()
@@ -235,9 +270,8 @@ def _load(name, log_entry=None, verbosity=2):
         raise
     except:
         msg = "Problem installing fixture: %s" % (
-            ''.join(traceback.format_exception(sys.exc_type,
-                                               sys.exc_value,
-                                               sys.exc_traceback)))
+            ''.join(traceback.format_exc())
+        )
         if log_entry:
             log_entry.success = False
             log_entry.message = msg

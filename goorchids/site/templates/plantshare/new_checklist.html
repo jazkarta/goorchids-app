@@ -1,0 +1,135 @@
+{% extends "gobotany/_page_free_sidebar.html" %}
+{% load mapping_tags %}
+{% load static %}
+
+{% block title %}Create New Plant Checklist: PlantShare{% endblock %}
+
+{% block more_meta_link %}
+<link rel="stylesheet" href="{% static 'css/smoothness/jquery-ui-1.9.2.custom.min.css' %}">
+{% endblock %}
+
+{% block js_require %}
+    require([
+        'util/suggester_init',
+        'plantshare/new_checklist'
+    ]);
+{% endblock %}
+
+{% block body_attributes %}id="new-checklist" class="plantshare checklists"{% endblock %}
+
+{% block main_content %}
+<h1>Create New Plant Checklist</h1>
+
+<div class="checklists-section">
+{% include "_image_upload_form.html" with image_form=entry_image_form %}
+    <div id="form-template">
+        <table>
+            <tbody>
+                {% with empty_form=entry_formset.empty_form %}
+                <tr>
+                    <td class="name">
+                        {{ empty_form.plant_name }}
+                    </td><!-- /.name -->
+                    <td class="image">
+                        {{ empty_form.plant_photo }}
+                        <a href="#" rel=".image-modal"
+                            class="upload-image-thumb btn">Upload Image</a>
+                    </td><!-- /.image -->
+                    <td class="date-sighted">
+                        {{ empty_form.date_found }}
+                    </td><!-- /.date-sighted -->
+                    <td class="location">
+                        {{ empty_form.location }}
+                    </td><!-- /.location -->
+                    <td class="date-posted">
+                        {{ empty_form.date_posted }}
+                    </td><!-- /.date-posted -->
+                    <td class="note">
+                        <div class="note-field">{{ empty_form.note }}</div>
+                        <a href="#" class="note-link">Note</a>
+                        <a href="#" class="close-btn row-btn">Close</a>
+                    </td><!-- /.note -->
+                </tr>
+                {% endwith %}
+            </tbody>
+        </table>
+    </div>
+    <form name="checklist-fillout" id="checklist-fillout" method="POST">
+        {% csrf_token %}
+        <header>
+            {{ checklist_form.non_field_errors }}
+            <label>Checklist title (required)</label>
+            {{ checklist_form.name }}
+            {{ checklist_form.name.errors }}
+            <label>Comments</label>
+            {{ checklist_form.comments }}
+            {{ checklist_form.comments.errors }}
+        </header>
+        <table id="add-sightings-table">
+            <thead>
+                <tr>
+                    <th class="name">Plant Name <span>(required)</span></th>
+                    <th class="image">Image</th>
+                    <th class="date-sighted">Date Sighted</th>
+                    <th class="location">Location</th>
+                    <th class="date-posted">Date Posted</th>
+                    <th class="note">Note</th>
+                    <th class="close">&nbsp;</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="7">
+                        <a href="#" class="add-new-row"
+                            tabindex="500">Add New Row &#43;</a>
+                    </td>
+                </tr>
+            </tfoot>
+            <tbody id="formset">
+                {{ entry_formset.management_form }}
+                {% for entry_form in entry_formset %}
+                {{ entry_form.non_field_errors }}
+                <tr>
+                    <td class="name">
+                        {{ entry_form.plant_name }}
+                        {{ entry_form.plant_name.errors }}
+                    </td><!-- /.name -->
+                    <td class="image">
+                        {{ entry_form.plant_photo }}
+                        <a href="#" rel=".image-modal"
+                            class="upload-image-thumb btn">Upload Image</a>
+                    </td><!-- /.image -->
+                    <td class="date-sighted">
+                        {{ entry_form.date_found }}
+                        {{ entry_form.date_found.errors }}
+                    </td><!-- /.date-sighted -->
+                    <td class="location">
+                        {{ entry_form.location }}
+                        {{ entry_form.location.errors }}
+                    </td><!-- /.location -->
+                    <td class="date-posted">
+                        {{ entry_form.date_posted }}
+                        {{ entry_form.date_posted.errors }}
+                    </td><!-- /.date-posted -->
+                    <td class="note">
+                        <div class="note-field">{{ entry_form.note }}</div>
+                        <a href="#" class="note-link">Note</a>
+                        <a href="#" class="close-btn row-btn">Close</a>
+                    </td><!-- /.note -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table><!-- /#add-sightings-table -->
+        <div class="form-actions">
+            <input type="submit" class="ps-button orange-button caps"
+            id="save-btn" value="Save" tabindex="510">
+            <a href="{% url 'ps-checklists' %}" class="cancel-link"
+                tabindex="520">Cancel</a>
+        </div><!-- /.form-actions -->
+    </form><!-- /#checklist-fillout -->
+</div><!-- /.ps-section -->
+{% endblock %}
+
+{% block sidebar_content %}
+    {% include "_plantshare_navigation.html" %}
+{% endblock %}

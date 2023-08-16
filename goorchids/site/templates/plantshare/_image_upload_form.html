@@ -1,0 +1,26 @@
+{%load static %}
+
+<div class="image-modal">
+    <a href="#" class="close">close</a>
+    <img src="{% static 'images/icons/no-image.png' %}" alt="image">
+    <h2>Upload Image</h2>
+    <form id="upload-image-form" method="POST"
+        action="{% url 'ps-ajax-image-upload' %}">
+        {% csrf_token %}
+        <div class="screening-notify">
+            <p>All images are screened by PlantShare Staff before being displayed publicly.</p>
+        </div>
+        <div style="display: none;">
+            {{ image_form.image }}
+            {{ image_form.image_type }}
+            <img id="hidden_image" src="{% static 'images/icons/no-image.png' %}">
+            <canvas id="image_canvas"></canvas>
+        </div>
+        <a class="button file-select">CHOOSE FILE</a>
+        <a class="button disabled" id="upload-image-submit">UPLOAD</a>
+    </form>
+    <div class="modal-footer">
+        File:
+        <div class="file-path">None Selected</div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+{% load gobotany_tags %}
+{% load static %}
+
+        {# To use production JS locally, use 'if 1 == 0' instead: #}
+        {% if not in_production %}
+
+        <!-- DEVELOPMENT FILES -->
+        <script src="/static/scripts/lib/require.js"></script>
+        <script src="/static/scripts/require_config.js"></script>
+
+        {% else %}
+
+        <!-- PRODUCTION / DEPLOYMENT FILES -->
+        <!--
+            Unfortunately django-storages 1.7.2 still doesn't implement S3ManifestStaticStorage
+        {% with '/static/js/gobotany.application.js' as file_path %}
+        <script src="{{ file_path }}?v={% file_version file_path %}"></script>
+        -->
+        <script src="{% static 'js/gobotany.application.js' %}"></script>
+        {% endwith %}
+
+        {% endif %}

@@ -1,5 +1,5 @@
 {% load gobotany_tags %}
-{% load staticfiles %}
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,11 +23,11 @@
         {% endif %}
         <link rel="stylesheet"
             href="{{ file_path }}?v={% file_version 'css/app.css' %}">
-        
+
         <!-- Google Web Fonts -->
         <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet" type='text/css'>
         <link href="//fonts.googleapis.com/css?family=Droid+Serif:400,400italic" rel='stylesheet' type='text/css'>
-        
+
         {% endblock %}
 
         {# JS goes here. #}

@@ -1,0 +1,196 @@
+{% extends "gobotany/_page_no_sidebar.html" %}
+{% load dkey_filters %}
+{% load static %}
+
+{% block title %}{% if page.title == 'Key to the Families' %}Dichotomous Key to Families{% else %}{{ page.title|expand_group_title }}: Dichotomous Key{% endif %}{% endblock %}
+{% block script_name %}dkey{% endblock %}
+{% block js_require %}
+  require(['dkey/dkey']);
+{% endblock %}
+{% block body_attributes %}
+    id="dkey"
+    class="dkey"
+{% endblock %}
+{% block main_content %}
+
+{% with title=page|display_title|expand_group_title %}
+
+<div class="offer-help-aside">
+  <span>What’s a dichotomous key?</span>
+  <a href="/help/dkey/" class="button">Help</a>
+  <div id="jump-nav">
+    <div class="groupbox">
+      <select>
+        <option value="instructions">Jump to a Major Group…</option>
+      </select>
+      <ul>
+        {% for group in groups %}
+          <li>
+            <a href="{{ group.name|dkey_url }}">
+              <b>{{ group.name }}</b>{{ group.text }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <select class="jumpbox" disabled="disabled">
+      <option value="instructions">Jump to a family…</option>
+    </select>
+    <select class="jumpbox" disabled="disabled">
+      <option value="instructions">Jump to a genus…</option>
+    </select>
+    {# List of Carex sections: only shown on Carex pages #}
+    <select class="jumpbox" disabled="disabled">
+      <option value="instructions">Jump to a Carex section…</option>
+    </select>
+  </div>
+</div>
+
+{% if title != 'Key to the Families' %}
+  <div id="breadcrumb">
+    {% include "dkey/_breadcrumbs.html" %}
+    {% if title == 'List of Family Groups' %}
+      <a href="{% url 'dkey' %}">« Return to the dichotomous key</a>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% if title == 'Key to the Families' %}
+  <h1>Dichotomous Key to Families</h1>
+{% elif page.rank == 'family' %}
+  <h1><a href="{% url 'taxa-family' page.title|lastword|slugify %}"
+         >{{ title }}</a></h1>
+{% elif page.rank == 'genus' %}
+  <h1><a href="{% url 'taxa-genus' page.title|slugify %}"
+         ><i>{{ title }}</i></a></h1>
+{% else %}
+  <h1>{{ title }}</h1>
+{% endif %}
+
+{% if rank_beneath != 'species' and leads|length == 1 %}
+  <p data-rank="{{ page.rank }}" data-title="{{ page.title }}">This
+    {{ page.rank }} contains exactly one {{ next_page.rank }},
+    {{ page|display_title }}.</p>
+{% endif %}
+{% if rank_beneath != 'species' and leads|length == 1 %}
+  <p data-rank="{{ page.rank }}" data-title="{{ page.title }}">This
+    {{ page.rank }} contains exactly one {{ next_page.rank }},
+    {{ page|display_title }}.</p>
+{% endif %}
+
+{% if taxa_beneath|length > 1 %}
+  <a href="." class="what-lies-beneath" data-taxa="{{ taxa_beneath|json }}">
+    See list of {{ taxa_beneath|length }} {{ rank_beneath|taxon_plural }}
+    in this {% if page.rank == 'top' %}key{% elif page.rank == 'subgroup' %}group{% else %}{{ page.rank }}{% endif %}
+  </a>
+{% elif taxa_beneath|length == 1 %}
+  <div class="what-lies-beneath" data-taxa="{{ taxa_beneath|json }}">
+  </div>
+{% endif %}
+
+<div class="flora-novae-angliae-text">
+{{ page.text|render_floating_figures|render_figure_links|safe }}
+</div>
+
+{% if leads %}
+  <ul class="couplets couplet" id="c1"
+      data-rank="{{ page.rank }}" data-title="{{ page.title }}">
+  {% for lead in lead_hierarchy %}
+    {% if lead.0 %}
+      {% with literal_string=lead %}
+        {{ literal_string|safe }}
+      {% endwith %}
+    {% else %}
+      {% with p=lead.goto_page %}
+      <div class="lead">
+        <div class="button-block">
+          {% if lead.taxa_beneath and lead.rank_beneath == p.rank and lead.taxa_beneath|length == 1 %}
+            <a class="what-lies-beneath" href="{{ p.title|dkey_url }}">
+              Choose this {{ lead.rank_beneath }}
+            </a>
+          <br>
+          {% elif lead.rank_beneath %}
+            <a class="what-lies-beneath" href="."
+               data-taxa="{{ lead.taxa_beneath|json }}">
+              See list of {{ lead.taxa_beneath|length }}
+              {{ lead.rank_beneath|taxon_plural }}
+              {% if lead.letter %}
+                in {{ lead.letter }}
+              {% endif %}
+            </a>
+          <br>
+          {% endif %}
+          <a class="button"
+          {% spaceless %}
+          {% if lead.child_couplet_number %}
+            href="#c{{ lead.child_couplet_number }}">CHOOSE THIS LEAD
+          {% elif lead.goto_num %}
+            href="#c{{ lead.goto_num }}">JUMP TO {{ lead.goto_num }}
+          {% elif p.rank == 'species' %}
+            href="{% url 'taxa-species' p.title|genus_slug p.title|species_slug %}?key=dichotomous#dkey"
+              ><i>{{ p.title|abbreviate_title }}</i>
+          {% elif not p %}
+            >—
+          {% else %}
+            href="{% url 'dkey_page' p|slug %}"
+            {% if p.rank == 'group' %}
+              >{{ p.title|upper }}
+            {% elif p.rank == 'subkey' %}
+              >VISIT KEY
+            {% elif p.rank == 'family' %}
+              >{{ p.title }}
+            {% elif p.rank == 'subgroup' and page.rank == 'family' %}
+              >{{ p.title|abbreviate_title }}
+            {% elif p.rank == 'genus' %}
+              ><i>{{ p.title }}</i>
+            {% elif p.rank == 'subgroup' and page.rank == 'genus' %}
+              ><i>{{ p.title|abbreviate_title }}</i>
+            {% elif p.rank == 'section' %}
+              >{{ p.title }}
+            {% else %}
+              >MALFUNCTION
+            {% endif %}
+          {% endif %}
+          </a>
+          {% endspaceless %}
+        </div>
+        {% if lead.letter %}
+          <span class="letter">{{ lead.letter }}.</span>
+          {{ lead.text|render_figure_links|safe }}
+        {% elif lead.goto_page.rank == 'subkey' %}
+          {{ lead.goto_page.title }}
+        {% elif leads|length == 1 %}
+          This {{ page.rank }} contains exactly one {{ next_page.rank }}.
+        {% endif %}
+      </div>
+      {% endwith %}
+    {% endif %}
+  {% endfor %}
+  </ul>
+
+  {% if leads|length > 2 %}
+    <p><a class="show-all-button" href="#all">Show All Couplets</a></p>
+  {% endif %}
+
+{% endif %}
+
+<p class="image-type-selector">
+  <img src="{% static 'images/icons/show-me.png' %}">
+   Show photos of: <select></select> 
+  {% if rank_beneath %}
+    Each photo represents <b>one {{ rank_beneath }}</b> in this {{ page.rank }}.
+  {% endif %}
+</p>
+
+<div class="plant-grid">
+</div>
+
+{% endwith %}
+{% include "plantpreview/_popup.html" %}
+<script>
+  /* While jQuery and JS are loading, hide couplets with a spinner.
+     If JS is turned off, then couplets all display without a spinner. */
+  document.getElementById('c1').className += ' wait-spinner';
+</script>
+<div class="wait"></div>
+{% endblock %}

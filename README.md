@@ -72,6 +72,46 @@ Our various tests can be run with three commands:
     dev/test-js
     dev/test-python
 
+Running Go Orchids on your workstation with Docker
+--------------------------------------------------
+
+Ensure you have Docker (tested with version 20.10.15) installed.
+
+Fetch the repository and Git submodules:
+
+    git clone git@github.com:jazkarta/goorchids-app.git
+    cd goorchids-app
+    git submodule init
+    git submodule update
+
+Build with:
+
+    docker compose build goorchids
+
+Start with:
+
+    docker compose up -d
+
+Run in foreground (usefull to debug with pdb):
+
+    docker compose exec goorchids python manage.py 0:8001
+
+Run database migrations (only the first time):
+
+    docker compose exec goorchids python manage.py migrate
+
+Create a solr core:
+
+    docker compose run --rm solr bash -c "bin/solr start && bin/solr create -c gobotany_solr_core -d /opt/solr/server/solr/configsets/basic_configs/"
+
+Update solr config and schema:
+
+    docker compose up -d solr
+    docker compose run -v goorchids-app_solr_data:/opt/solr/ --rm goorchids python manage.py build_solr_schema --configure-directory=/opt/solr/gobotany_solr_core/conf --reload-core=gobotany_solr_core
+
+Rebuild solr index:
+
+    docker compose run --rm goorchids python manage.py rebuild_index --noinput
 
 Installing Go Orchids on Heroku
 ------------------------------

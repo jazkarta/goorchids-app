@@ -1,15 +1,16 @@
 import json
 from django.utils import timezone
 from datetime import timedelta
-from django.template import base as template
+from django.template.library import Library
+from django.template.exceptions import TemplateSyntaxError
 from gobotany.core.models import Taxon, Character, Edit, Pile
 from gobotany.editor import views as edit_views
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.utils.html import escape
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.safestring import mark_safe
 
-register = template.Library()
+register = Library()
 
 BASE_TABLE = u"""
   <table>
@@ -75,7 +76,7 @@ def character_edit_link(short_name):
 @register.simple_tag
 def taxon_edits(taxon):
     if not isinstance(taxon, Taxon):
-        raise template.TemplateSyntaxError(
+        raise TemplateSyntaxError(
             "taxon_edits tag requires a single Taxon as argument")
     edits = Edit.objects.filter(coordinate1=taxon.scientific_name,
                                 itemtype='character-value').order_by(
@@ -101,7 +102,7 @@ def taxon_edits(taxon):
 @register.simple_tag
 def character_edits(character):
     if not isinstance(character, Character):
-        raise template.TemplateSyntaxError(
+        raise TemplateSyntaxError(
             "character_edits tag requires a single CharacterValue as argument")
     edits = Edit.objects.filter(coordinate2=character.short_name,
                                 itemtype='character-value').order_by(

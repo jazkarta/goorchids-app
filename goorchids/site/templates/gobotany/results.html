@@ -1,6 +1,6 @@
 {% extends "gobotany/_page_no_sidebar.html" %}
 {% load verbatim %}
-{% load staticfiles %}
+{% load static %}
 
 {% block title %}{{ subgroup_results_page.title }}{% endblock %}
 
@@ -56,11 +56,11 @@
                     {% endhandlebars %}
                 </div>
             </div>
-    
+
             <div class="section clear">
                 Start Over: <a href="#" class="clear-all-btn left">Clear All</a>
             </div>
-    
+
             <div class="section help hidden">
                 Need help? <a href="{% url 'site-getting-started' %}"
                     class="get-help-btn left">Get Help</a>
@@ -69,7 +69,7 @@
             <div class="section instructions close-filters">Close filters</div>
 
         </div><!-- /#question-nav -->
-        
+
         <div class="working-area modal" aria-live="polite" aria-relevant="additions removals" style="display: none">
 
           <h4 class="question"></h4>
@@ -96,7 +96,7 @@
           </div>
         </div><!-- /.working-area -->
       </aside><!-- /.sidebar -->
-                
+
       <div class="main-content-wrapper">
         <header class="main-content-header">
           <h1>{{ subgroup_results_page.main_heading|capfirst }}</h1>
@@ -110,7 +110,7 @@
             </span>
           </h3>
         </header>
-        
+
         <div id="filters-preview"></div>
 
         <div id="results-tabs" class="hidden">
@@ -120,10 +120,10 @@
             <li><a {{bindAttr class="App3.show_list:current"}}
                    {{action choose_list_view}}>List</a></li>
           {% endhandlebars %}
-        </div><!-- /#results-tabs -->        
-  
+        </div><!-- /#results-tabs -->
+
         <div id="results-section">
-  
+
           <section class="results-tabs-content">
             <div>
               <script>var SHOW_ICON="{% static 'images/icons/show-me.png' %}";</script>
@@ -142,7 +142,7 @@
                 </form>
               {% endhandlebars %}
             </div>
-    
+
             <div class="plant-list">
                 <div class="wait"></div>
             </div>

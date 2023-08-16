@@ -1,9 +1,9 @@
 import re
-from django.template import base as template
 from django.conf import settings
+from django.template.library import Library
 from django.template.defaultfilters import stringfilter
 
-register = template.Library()
+register = Library()
 STATIC_RE = re.compile(r'(\{\{\s*STATIC_URL\s*\}\})|(/static/)')
 
 

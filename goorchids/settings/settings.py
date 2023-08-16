@@ -76,28 +76,36 @@ STATE_NAMES = {
 ALLOWED_HOSTS = [
     'goorchids.northamericanorchidcenter.org',
     'goorchids-staging.herokuapp.com',
+    'goorchids-dev.herokuapp.com',
     'goorchids.herokuapp.com',
 ]
 
 ROOT_URLCONF = 'goorchids.core.urls'
 STATICFILES_DIRS = [
-    os.path.join(os.path.dirname(__file__), 'core', 'static'),
-    os.path.join(os.path.dirname(__file__), '..', 'external', 'gobotany-app', 'gobotany', 'static'),
+    os.path.join(os.path.dirname(__file__), '..', 'core', 'static'),
+    os.path.join(os.path.dirname(__file__), '..', '..', 'external', 'gobotany-app', 'gobotany', 'static'),
 ]
+# Fix S3 staticfiles configuration
+if IS_AWS_AUTHENTICATED and DEFAULT_FILE_STORAGE == 'storages.backends.s3boto.S3BotoStorage':
+    AWS_DEFAULT_ACL = "public-read"
+    AWS_S3_CUSTOM_DOMAIN = '{}.s3.amazonaws.com'.format(AWS_STORAGE_BUCKET_NAME)
+    AWS_S3_OBJECT_PARAMETERS = {
+        'CacheControl': 'max-age=86400',
+    }
+    STATIC_URL = '//{}/static/'.format(AWS_S3_CUSTOM_DOMAIN)
 
-INSTALLED_APPS.remove('gobotany.plantshare')
+# INSTALLED_APPS.remove('gobotany.plantshare')
 # INSTALLED_APPS.remove('facebook_connect')
-INSTALLED_APPS.remove('captcha')
+# INSTALLED_APPS.remove('captcha')
 
-# Disable SSL
 INSTALLED_APPS = [
-    'goorchids.core',
     'goorchids.site',
     'goorchids.editor',
+    'goorchids.core',
     'django.contrib.flatpages',
 ] + INSTALLED_APPS
 
-MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
+MIDDLEWARE = MIDDLEWARE + (
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',)
 
 LOGIN_URL = '/accounts/login'
@@ -105,17 +113,23 @@ LOGIN_URL = '/accounts/login'
 TEMPLATES[0]['OPTIONS']['loaders'] = [
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-    'goorchids.core.app_template_loader.Loader',
+    # 'goorchids.core.app_template_loader.Loader',
 ]
 TEMPLATES[0]['APP_DIRS'] = False
 
 if os.environ.get('FORCE_SSL', 'false').lower() != 'true':
     try:
-        MIDDLEWARE_CLASSES = list(MIDDLEWARE_CLASSES)
-        MIDDLEWARE_CLASSES.remove('sslify.middleware.SSLifyMiddleware')
-        MIDDLEWARE_CLASSES = tuple(MIDDLEWARE_CLASSES)
+        MIDDLEWARE = list(MIDDLEWARE)
+        MIDDLEWARE.remove('sslify.middleware.SSLifyMiddleware')
+        MIDDLEWARE = tuple(MIDDLEWARE)
         SESSION_COOKIE_SECURE = False
         CSRF_COOKIE_SECURE = False
     except ValueError:
         pass
     # AWS_S3_SECURE_URLS = False
+
+ADMINS = (
+    ('Go Orchids Dev', 'chiruzzi.marco@gmail.com'),
+)
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
