@@ -1,4 +1,3 @@
 -r requirements.in
 
-docker-compose
 pip-tools
