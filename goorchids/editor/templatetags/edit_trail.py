@@ -86,7 +86,7 @@ def taxon_edits(taxon):
     start = end - timedelta(7)
     edits = edits.filter(datetime__range=[start, end])
     if not edits:
-        return '<p>No recent edits</p>'
+        return mark_safe('<p>No recent edits</p>')
 
     rows = []
     for i, edit in enumerate(edits):
@@ -97,7 +97,7 @@ def taxon_edits(taxon):
                             old_value=format_old_value(edit.old_value),
                             coord=character_link,
                             row_class=i%2 and 'even' or 'odd'))
-    return BASE_TABLE%('Character', u'\n'.join(rows))
+    return mark_safe(BASE_TABLE%('Character', u'\n'.join(rows)))
 
 @register.simple_tag
 def character_edits(character):
@@ -112,7 +112,7 @@ def character_edits(character):
     start = end - timedelta(7)
     edits = edits.filter(datetime__range=[start, end])
     if not edits:
-        return '<p>No recent edits</p>'
+        return mark_safe('<p>No recent edits</p>')
 
     rows = []
     for i, edit in enumerate(edits):
@@ -123,4 +123,4 @@ def character_edits(character):
                             old_value=format_old_value(edit.old_value),
                             coord=taxon_link,
                             row_class=i%2 and 'even' or 'odd'))
-    return BASE_TABLE%('Taxon', u'\n'.join(rows))
+    return mark_safe(BASE_TABLE%('Taxon', u'\n'.join(rows)))
