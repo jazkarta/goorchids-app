@@ -46,8 +46,9 @@
     - name: Add .env file to include staging services
       ansible.builtin.copy:
         content: |
-          COMPOSE_FILE=./docker-compose.yml:./docker-compose.staging.yml
+          COMPOSE_FILE="{{ COMPOSE_FILE }}"
           SERVER_NAME="{{ SERVER_NAME }}"
+          WWW_SERVER_NAME="www.{{ SERVER_NAME }}"
           AWS_ACCESS_KEY_ID="{{ goorchids_aws_access_key_id }}"
           AWS_SECRET_ACCESS_KEY="{{ goorchids_aws_secret_access_key }}"
           AWS_STORAGE_BUCKET_NAME="goorchids"

@@ -1,1 +1,2 @@
 SERVER_NAME: goorchids-staging.jazkarta.com
+COMPOSE_FILE: "./docker-compose.yml:./docker-compose.staging.yml"

@@ -1,1 +1,2 @@
 SERVER_NAME: goorchids.northamericanorchidcenter.org
+COMPOSE_FILE: "./docker-compose.yml:./docker-compose.staging.yml:./docker-compose.production.yml"

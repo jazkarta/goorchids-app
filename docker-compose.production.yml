@@ -1,0 +1,6 @@
+services:
+  goorchids:
+    labels:
+      - >
+        traefik.http.routers.goorchids.rule=Host(`${SERVER_NAME}`)
+        || Host(`${WWW_SERVER_NAME}`)
