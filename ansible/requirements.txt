@@ -10,9 +10,9 @@ ansible-core==2.15.13
     # via
     #   -r requirements.in
     #   ansible
-cffi==1.15.1
+cffi==2.0.0
     # via cryptography
-cryptography==44.0.2
+cryptography==46.0.5
     # via
     #   -r requirements.in
     #   ansible-core
@@ -30,3 +30,5 @@ pyyaml==6.0.1
     # via ansible-core
 resolvelib==1.0.1
     # via ansible-core
+typing-extensions==4.15.0
+    # via cryptography
