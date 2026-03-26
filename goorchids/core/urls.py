@@ -29,11 +29,11 @@ for app_config in apps.get_app_configs():
                 admin.site.unregister(model)
 
 urlpatterns = [
-    path('', include('goorchids.site.urls')),
-    path('edit/', include('goorchids.editor.urls')),
+    path('admin/', admin.site.urls),
     path('loaddata/', goorchids_views.loaddata, name='goorchids-loaddata'),
     path('dumpdata/', goorchids_views.dumpdata, name='goorchids-dumpdata'),
-    path('admin/', admin.site.urls),
+    path('', include('goorchids.site.urls')),
+    path('edit/', include('goorchids.editor.urls')),
     path('api/', include('gobotany.api.urls')),
     path('edit/', include('gobotany.editor.urls')),
     path('plantoftheday/', include('gobotany.plantoftheday.urls')),
