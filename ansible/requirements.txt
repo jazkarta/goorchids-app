@@ -12,7 +12,7 @@ ansible-core==2.15.13
     #   ansible
 cffi==2.0.0
     # via cryptography
-cryptography==46.0.5
+cryptography==46.0.7
     # via
     #   -r requirements.in
     #   ansible-core
