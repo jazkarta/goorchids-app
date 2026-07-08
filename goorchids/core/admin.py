@@ -2,6 +2,7 @@ from django.contrib import admin
 from django import forms
 from django.db import models
 import gobotany.core.admin
+from django.core.exceptions import ValidationError
 from django.contrib.contenttypes.forms import BaseGenericInlineFormSet
 from django.contrib.contenttypes.admin import GenericTabularInline
 from gobotany.core.models import (Taxon, PartnerSpecies, ContentImage,
@@ -41,9 +42,56 @@ class GoOrchidTaxonGenericInlineFormset(BaseGenericInlineFormSet):
                                                                 instance=instance,
                                                                 **kw)
 
+    def clean(self):
+        super(GoOrchidTaxonGenericInlineFormset, self).clean()
+
+        for form in self.forms:
+            if not hasattr(form, 'cleaned_data'):
+                continue
+            if self._should_delete_form(form):
+                continue
+            if form.errors:
+                continue
+            if not form.has_changed():
+                continue
+
+            instance = form.instance
+            try:
+                instance.clean()
+            except ValidationError as e:
+                form.add_error(None, e)
+                raise forms.ValidationError(
+                    'Please correct the image errors below.')
+
+
+class ContentImageAdminForm(forms.ModelForm):
+    class Meta:
+        model = ContentImage
+        fields = '__all__'
+
+    def _post_clean(self):
+        try:
+            super(ContentImageAdminForm, self)._post_clean()
+        except ContentImage.image_type.RelatedObjectDoesNotExist:
+            self.add_error(
+                'image_type',
+                'This field is required when uploading an image.')
+
+    def clean(self):
+        cleaned_data = super(ContentImageAdminForm, self).clean()
+
+        image = cleaned_data.get('image')
+        if image and not cleaned_data.get('image_type'):
+            self.add_error(
+                'image_type',
+                'This field is required when uploading an image.')
+
+        return cleaned_data
+
 
 class ContentImageInline(GenericTabularInline):
     model = ContentImage
+    form = ContentImageAdminForm
     formset = GoOrchidTaxonGenericInlineFormset
 
 
