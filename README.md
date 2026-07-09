@@ -1,219 +1,175 @@
 Go Orchids
 ==========
 
-Running Go Orchids on your workstation
---------------------------------------
+Go Orchids is a Django application built on top of the vendored
+Go Botany codebase in `external/gobotany-app`. The current development
+and deployment workflow uses Docker Compose.
 
-First, check out the repository and run `dev/setup` to install the
-application and its dependencies in a Python virtual environment (that
-lives inside of `dev/venv` in case you ever need to access it):
+Repository setup
+----------------
 
-    git clone git@github.com:newfs/goorchids-app.git
-    cd goorchids-app
-    git submodule init
-    git submodule update
-    dev/setup
-
-Next, make sure that you can access your local PostgreSQL server, which
-you can confirm with a quick `psql -l`, and then start up a Solr full
-text index server with:
-
-    dev/start-solr
-
-At this point the application should at least run, even though most
-pages will give errors if your database is not set up yet.  To start the
-application, simply run:
-
-    dev/django runserver
-
-You should then be able to visit the application at:
-
-    http://localhost:8000/
-
-Before importing data into your database, ensure you have your AWS
-credentials set in your environment variables, which is often accomplished
-by sourcing a shell script kept outside the repository. This is needed to
-ensure that image importing will work.
-
-If you are starting fresh and have no database set up yet, or want to
-start over because some tables have changed or Sid had released a new
-CSV file, then you can rebuild the database with these commands (the
-first one will give an error if you do not have a `gobotany` database
-already sitting in your way; in that case, ignore the error):
-
-    dropdb gobotany
-    createdb -E UTF8 gobotany
-    dev/django syncdb
-    dev/django migrate goorchids.core
-    dev/django createsuperuser
-
-At this point you are done installing and should be able to test and
-develop the application!
-
-You can load initial data by visiting `/admin/core` and following the
-`Import Data` link.  Choose the latest `auth` export to load user
-data, click `Import`; Then choose the latest `core` export and
-click `Import` to load the Orchid data.
-
-If you ever need to activate the virtual environment so that Python
-prompts or scripts run from your shell have access to the Go Orchids
-application and its dependencies, then enter:
-
-    source dev/activate
-
-If you want to rebuild our minified JavaScript in preparation for a
-deploy to production, run:
-
-    dev/jsbuild
-
-Our various tests can be run with three commands:
-
-    dev/test-browser
-    dev/test-js
-    dev/test-python
-
-Running Go Orchids on your workstation with Docker
---------------------------------------------------
-
-Ensure you have Docker (tested with version 20.10.15) installed.
-
-Fetch the repository and Git submodules:
+Clone the repository and initialize the Go Botany submodule:
 
     git clone git@github.com:jazkarta/goorchids-app.git
     cd goorchids-app
-    git submodule init
-    git submodule update
+    git submodule update --init --recursive
 
-Build with:
+Install Docker Engine or Docker Desktop with Docker Compose v2 support.
+The project has been run with Docker 20.10+.
+
+Local development with Docker
+-----------------------------
+
+Build the application image:
 
     docker compose build goorchids
 
-Start with:
+Start the local stack:
 
     docker compose up -d
 
-Run in foreground (usefull to debug with pdb):
+The local stack includes:
 
-    docker compose exec goorchids python manage.py 0:8001
+* `goorchids`: Django development server on `http://localhost:8000/`
+* `worker`: RQ worker for background jobs
+* `postgres`: PostgreSQL database named `gobotany`
+* `solr`: Solr 6.6.5 on `http://localhost:8983/`
+* `redis`: Redis for background jobs
 
-Run database migrations (only the first time):
-
-    docker compose exec goorchids python manage.py migrate
-
-Create a solr core:
+Create the Solr core the first time a local volume is created:
 
     docker compose run --rm solr bash -c "bin/solr start && bin/solr create -c gobotany_solr_core -d /opt/solr/server/solr/configsets/basic_configs/"
 
-Update solr config and schema:
+Update the Solr schema from Django:
 
     docker compose up -d solr
     docker compose run -v goorchids-app_solr_data:/opt/solr/ --rm goorchids python manage.py build_solr_schema --configure-directory=/opt/solr/gobotany_solr_core/conf --reload-core=gobotany_solr_core
 
-Rebuild solr index:
+Run database migrations:
 
-    docker compose run --rm goorchids python manage.py rebuild_index --noinput
+    docker compose exec goorchids python manage.py migrate
 
-Installing Go Orchids on Heroku
-------------------------------
+Create an admin user if you are using an empty database:
 
-Start by checking out this "goorchids-app" repository on your machine:
+    docker compose exec goorchids python manage.py createsuperuser
 
-    git clone git@github.com:jazkarta/goorchids-app.git
-    cd goorchids-app
+Rebuild the search index after loading or restoring data:
 
-Follow steps 1–3 at `http://devcenter.heroku.com/articles/quickstart`_
-so that you can run the ``heroku`` command, then use the following
-command to create and provision a new app on Heroku:
+    docker compose exec goorchids python manage.py rebuild_index --noinput
 
-    heroku create
-    heroku addons:add heroku-postgresql:hobby-basic
-    heroku addons:add memcachier:dev
-    heroku addons:add redistogo:nano
-    heroku addons:add scheduler:standard
-    heroku addons:add sendgrid:starter
-    heroku addons:add websolr:cobalt # Production only
-    heroku pg:wait
-    git push heroku master
+Visit the site at:
 
-Once the Postgres database is up and running, note its color (like "RED"
-or "SILVER"), and promote it to being the "main database" for the app:
+    http://localhost:8000/
 
-    heroku pg:promote <color>
+Visit the admin at:
 
-Add three configuration variables to your Heroku app, so that Go Orchids
-will be able to scan its S3 image repository:
+    http://localhost:8000/admin/
 
-    heroku config:add AWS_ACCESS_KEY_ID=...
-    heroku config:add AWS_SECRET_ACCESS_KEY=...
-    heroku config:add AWS_STORAGE_BUCKET_NAME=newfs
+Using a staging database locally
+--------------------------------
 
-The application will now be up and running.  You can find its URL with
-the ``heroku apps:info`` command.  When you visit, you will see an
-exception, because the database tables that it needs have not yet been
-created.  To set up the database, run these commands:
+For realistic local testing, ask a maintainer for a current staging
+PostgreSQL custom-format dump. Do not commit database dumps to this
+repository.
 
-    heroku config:add DJANGO_SETTINGS_MODULE=goorchids.settings
-    heroku run django-admin.py syncdb --noinput
-    heroku run python -m goorchids.core.importer zipimport
-    heroku run bin/import-images.sh
-    heroku run bin/import-dkey.sh
+To create a dump from the staging server, run this on the server from the
+`goorchids-app` directory:
 
-Prepare Solr by first generating your Solr schema:
+    docker compose exec -T postgres pg_dump -Fc -U postgres gobotany > goorchids-staging-$(date +%Y%m%d).dump
 
-    heroku run django-admin.py build_solr_schema > schema.xml
+Copy the dump to your workstation, place it in the repository root, and
+restore it into the local Docker database:
 
-Once this file exists, you can visit the Heroku web site, navigate to
-your app's configuration, select the addon "Websolr", choose the section
-"Advanced Configuration", and paste in the contents of ``schema.xml``
-that you just created.  Once the schema is installed (give it a few
-minutes to make sure the change has the chance to propagate to WebSolr's
-servers), you can build the Solr index and thereby activate the Go
-Orchids site's search field:
+    docker compose stop goorchids worker
+    docker compose exec -T postgres dropdb -U postgres --if-exists gobotany
+    docker compose exec -T postgres createdb -U postgres gobotany
+    docker compose exec -T postgres pg_restore -U postgres --no-owner --no-acl -d gobotany < goorchids-staging-YYYYMMDD.dump
+    docker compose up -d
+    docker compose exec goorchids python manage.py migrate --check
+    docker compose exec goorchids python manage.py rebuild_index --noinput
 
-    heroku run django-admin.py rebuild_index --noinput
+If the dump contains server-specific extensions that do not exist in the
+local container, inspect the dump table of contents before restoring:
 
+    docker compose exec -T postgres pg_restore -l < goorchids-staging-YYYYMMDD.dump
 
-Running the automated tests
+Then create a filtered restore list and pass it to `pg_restore` with
+`-L`. Ask a maintainer before filtering anything other than known
+environment-specific extensions.
+
+Common development commands
 ---------------------------
 
-To run our Python tests you can either:
+Open a Django shell:
 
-    dev/test-python             # to run all tests
-    dev/test-python api site    # to hand-pick Django apps to test
+    docker compose exec goorchids python manage.py shell
 
-To run our JavaScript tests, run:
+Run the Python tests:
 
-    dev/test-js                 # to run all tests
-    dev/test-js test/Filter.js  # to select which modules to test
+    docker compose exec -e PYTHONDONTWRITEBYTECODE=1 goorchids python manage.py test
 
-Our selenium-powered browser tests are intended to cover things that
-cannot be tested without a browser and JavaScript.  To run them:
+Run tests for one app:
 
-    dev/test-browser                           # to run all tests
-    dev/test-browser.sh FilterFunctionalTests  # select which tests
+    docker compose exec -e PYTHONDONTWRITEBYTECODE=1 goorchids python manage.py test goorchids.core
 
-Detailed notes about testing under selenium can be found in:
+Run a management command:
 
-    externals/gobotany-app/gobotany/simplekey/testdir/README-SELENIUM.txt
+    docker compose exec goorchids python manage.py <command>
 
+Watch logs:
 
-Testing and adjusting the search feature
-----------------------------------------
+    docker compose logs -f goorchids
+
+Restart the app containers after changing dependencies or environment:
+
+    docker compose restart goorchids worker
+
+Stop the local stack:
+
+    docker compose down
+
+Remove local Docker volumes and all local data:
+
+    docker compose down -v
+
+S3 and media
+------------
+
+Content images are stored in S3 when AWS credentials and
+`AWS_STORAGE_BUCKET_NAME` are configured. Local development can run
+without those credentials, but features that read or write production-like
+media will not work.
+
+Keep AWS credentials out of the repository. Use shell environment
+variables, a local `.env` file that is not committed, or the deployment
+vaults managed outside this public documentation.
+
+Deployment
+----------
+
+Current deployment uses Docker Compose overlays and Ansible. Public,
+non-secret deployment notes live in:
+
+    docs/deployment.md
+
+Deployment credentials, vault passwords, AWS access keys, DNS account
+access, and any destructive cleanup procedure must be kept in the private
+project runbook or password manager, not in this public repository.
+
+Testing and adjusting search
+----------------------------
 
 The Go Orchids search feature uses Haystack and Solr.
 
-Our unit and functional tests aim to ensure various aspects of the search
-feature including desired ranking.
+Ranking relies mostly on Haystack document boosts in `search_indexes.py`.
+Some hidden repeated keywords are also included in the `search_*.txt`
+templates.
 
-Ranking relies mostly on Haystack document boost, as seen in several
-places in our `search_indexes.py`. For more fine-grained control where
-boost is not enough, some hidden repeated keywords are added to search
-indexes such as in the `search_text_species.txt` template.
+When adjusting ranking, rebuild the index and use the Solr admin
+interface to inspect results:
 
-To adjust ranking: cycle through running the functional tests, adjusting
-the boosts in `search_indexes.py`, and, if necessary, adjusting the
-hidden-keyword sections at the end of `search_*.txt` templates. The Solr
-Admin full interface, which allows examining details including ranking
-scores, may also be helpful:
+    docker compose exec goorchids python manage.py rebuild_index --noinput
 
-    http://localhost:8983/solr/admin/form.jsp
+Solr admin:
+
+    http://localhost:8983/solr/
