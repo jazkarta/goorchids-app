@@ -141,8 +141,9 @@ without those credentials, but features that read or write production-like
 media will not work.
 
 Keep AWS credentials out of the repository. Use shell environment
-variables, a local `.env` file that is not committed, or the deployment
-vaults managed outside this public documentation.
+variables or a local `.env` file that is not committed. On deployed
+environments, Ansible reads the credentials and Django secret key from
+Ansible Vault and writes them to the target server's `.env` file.
 
 Deployment
 ----------
@@ -153,8 +154,9 @@ non-secret deployment notes live in:
     docs/deployment.md
 
 Deployment credentials, vault passwords, AWS access keys, DNS account
-access, and any destructive cleanup procedure must be kept in the private
-project runbook or password manager, not in this public repository.
+access, and any destructive cleanup procedure must be kept in Ansible
+Vault, the private project runbook, or the password manager, not in this
+public repository.
 
 Testing and adjusting search
 ----------------------------

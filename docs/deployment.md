@@ -50,21 +50,28 @@ environment:
 * DNS provider access for hostname changes
 * Any private runbook for database import/export and media cleanup
 
-Do not add those values to this repository.
+The application secrets are stored in Ansible Vault files and are loaded
+by the deployment playbooks:
+
+* `ansible/development.yml` loads `ansible/vars/vault.yml`
+* `ansible/production.yml` loads `ansible/vars/vault_production.yml`
+
+Do not add plaintext secret values to this repository.
 
 Environment variables
 ---------------------
 
-The deployment playbooks write a `.env` file on the target host. The
-Compose stack reads these variables:
+The deployment playbooks write a `.env` file on the target host at
+`/home/goorchids/goorchids-app/.env`. The Compose stack reads these
+variables from that file:
 
 * `COMPOSE_FILE`: compose files to combine
 * `SERVER_NAME`: primary hostname
 * `WWW_SERVER_NAME`: production `www` hostname
-* `AWS_ACCESS_KEY_ID`: S3 access key
-* `AWS_SECRET_ACCESS_KEY`: S3 secret key
+* `AWS_ACCESS_KEY_ID`: S3 access key from Ansible Vault
+* `AWS_SECRET_ACCESS_KEY`: S3 secret key from Ansible Vault
 * `AWS_STORAGE_BUCKET_NAME`: S3 bucket for media/static files
-* `GOBOTANY_DJANGO_SECRET_KEY`: Django secret key
+* `GOBOTANY_DJANGO_SECRET_KEY`: Django secret key from Ansible Vault
 * `LETSENCRYPT_EMAIL`: optional Traefik ACME contact email
 
 Staging currently uses:
@@ -118,7 +125,8 @@ Deploy to production:
     ansible-playbook production.yml --limit production
 
 The playbook installs Docker, creates the deployment user, clones the
-repository, writes `.env`, and runs:
+repository, loads secrets from Ansible Vault, writes the target server
+`.env`, and runs:
 
     docker compose up -d
 
