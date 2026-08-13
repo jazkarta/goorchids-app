@@ -302,6 +302,64 @@ def _compare_character_values(a, b):
     return 0  # default value (no sort)
 
 
+def _conservation_status_rows(taxon, conservation_status=None):
+    """Build the rows of one conservation status table.
+
+    Rows without a value are left out, so that the species page does not
+    display rows of "N/A" for the many taxa that have no rank or status
+    for a given jurisdiction.
+    """
+    rows = [
+        ('Global Rank', taxon.get_global_rank_display()),
+        ('US Status', taxon.get_us_status_display()),
+    ]
+    if conservation_status is not None:
+        region_name = conservation_status.get_region_display()
+        rows.append(('%s Rank' % region_name,
+                     conservation_status.get_rank_display()))
+        rows.append(('%s Status' % region_name,
+                     conservation_status.get_status_display()))
+    rows.append(('Canadian Status', taxon.get_ca_rank_display()))
+    if conservation_status is not None:
+        rows.append(('Wetland Status',
+                     conservation_status.get_wetland_status_display()))
+
+    return [{'label': label, 'value': value} for label, value in rows
+            if value]
+
+
+def _conservation_status_tables(taxon):
+    """Build the conservation status tables for a species page.
+
+    The first table holds the statuses that apply everywhere, and is the
+    one shown before a region is selected; the rest hold the statuses for
+    a single region. A table with no rows to show is left out entirely.
+    """
+    tables = []
+
+    rows = _conservation_status_rows(taxon)
+    if rows:
+        tables.append({
+            'region': '',
+            'region_name': '',
+            'heading': 'Conservation and Wetland Status',
+            'rows': rows,
+        })
+
+    for conservation_status in taxon.regional_conservation_statuses.all():
+        rows = _conservation_status_rows(taxon, conservation_status)
+        if rows:
+            region_name = conservation_status.get_region_display()
+            tables.append({
+                'region': conservation_status.region,
+                'region_name': region_name,
+                'heading': 'Conservation status for: %s' % region_name,
+                'rows': rows,
+            })
+
+    return tables
+
+
 def species_view(request, genus_slug, epithet):
 
     COMPACT_MULTIVALUE_CHARACTERS = ['Habitat', 'New England state',
@@ -422,7 +480,8 @@ def species_view(request, genus_slug, epithet):
         'brief_characteristics': preview_characters,
         'all_characteristics': all_characteristics,
         'epithet': epithet,
-        'native_to_north_america': native_to_north_america
+        'native_to_north_america': native_to_north_america,
+        'conservation_status_tables': _conservation_status_tables(taxon),
     })
 
 
