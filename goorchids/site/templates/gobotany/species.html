@@ -84,16 +84,14 @@
       {% endif %}
       </section>
 
+      {% if taxon.factoid.strip %}
       <section class="content-area">
         <h2>Facts About</h2>
         <p>
-            {% if taxon.factoid|length > 0 %}
-                {{ taxon.factoid.strip|linebreaksbr }}
-            {% else %}
-                N/A
-            {% endif %}
+            {{ taxon.factoid.strip|linebreaksbr }}
         </p>
       </section>
+      {% endif %}
 
       {% if taxon.pollination %}
       <section class="content-area">
@@ -215,73 +213,40 @@
 
         <div id="conservation-status">
             <h4>Conservation Status</h4>
+            {% if conservation_status_tables %}
             <form>
                 <p>Select a location to view conservation status:</p>
                 <select id="region-switcher">
                     <option value="">Enter state or province</option>
-                {% for conservation_status in taxon.regional_conservation_statuses.all %}
-                    <option value="{{conservation_status.region}}">{{conservation_status.get_region_display}}</option>
+                {% for table in conservation_status_tables %}
+                    {% if table.region %}
+                    <option value="{{table.region}}">{{table.region_name}}</option>
+                    {% endif %}
                 {% endfor %}
                 </select>
             </form>
-            <table class="conservation-status" data-region="">
+            {% for table in conservation_status_tables %}
+            <table class="conservation-status{% if table.region %} hidden{% endif %}" data-region="{{table.region}}">
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Conservation and Wetland Status</th>
+                        <th>{{table.heading}}</th>
                     </tr>
                 </thead>
                 <tbody>
+                {% for row in table.rows %}
                     <tr>
-                        <th>Global Rank</th>
-                        <td>{{taxon.get_global_rank_display|default_if_none:"N/A"}}</td>
+                        <th>{{row.label}}</th>
+                        <td>{{row.value}}</td>
                     </tr>
-                    <tr>
-                        <th>US Status</th>
-                        <td>{{taxon.get_us_status_display|default_if_none:"N/A"}}</td>
-                    </tr>
-                    <tr>
-                        <th>Canadian Status</th>
-                        <td>{{taxon.get_ca_rank_display|default_if_none:"N/A"}}</td>
-                    </tr>
+                {% endfor %}
                 </tbody>
             </table>
-        {% for conservation_status in taxon.regional_conservation_statuses.all %}
-        <table class="conservation-status hidden" data-region="{{conservation_status.region}}">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Conservation status for: {{conservation_status.get_region_display}}</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>Global Rank</th>
-                    <td>{{taxon.get_global_rank_display|default_if_none:"N/A"}}</td>
-                </tr>
-                <tr>
-                    <th>US Status</th>
-                    <td>{{taxon.get_us_status_display|default_if_none:"N/A"}}</td>
-                </tr>
-                <tr>
-                    <th>{{conservation_status.get_region_display}} Rank</th>
-                    <td>{{conservation_status.get_rank_display|default_if_none:"N/A"}}</td>
-                </tr>
-                <tr>
-                    <th>{{conservation_status.get_region_display}} Status</th>
-                    <td>{{conservation_status.get_status_display|default_if_none:"N/A"}}</td>
-                </tr>
-                <tr>
-                    <th>Canadian Status</th>
-                    <td>{{taxon.get_ca_rank_display|default_if_none:"N/A"}}</td>
-                </tr>
-                <tr>
-                    <th>Wetland Status</th>
-                    <td>{{conservation_status.get_wetland_status_display|default_if_none:"N/A"}}</td>
-                </tr>
-            </tbody>
-        </table>
-        {% endfor %}
+            {% endfor %}
+            {% else %}
+            <p>No conservation status information is available for this
+                species.</p>
+            {% endif %}
         </div>
 
         <div class="map namap">
