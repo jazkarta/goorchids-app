@@ -1,0 +1,11 @@
+# Docker packages are pinned and held: an unplanned upgrade to Docker
+# Engine 29 on 2026-10-22 broke Traefik v2.9 and took the sites down.
+# To upgrade deliberately, bump these versions and test on staging first.
+docker_distro_suffix: "ubuntu.{{ ansible_distribution_version }}~{{ ansible_distribution_release }}"
+docker_packages:
+  - "docker-ce=5:29.9.2-1~{{ docker_distro_suffix }}"
+  - "docker-ce-cli=5:29.9.2-1~{{ docker_distro_suffix }}"
+  - "docker-ce-rootless-extras=5:29.9.2-1~{{ docker_distro_suffix }}"
+  - "containerd.io=2.4.2-3~{{ docker_distro_suffix }}"
+  - "docker-buildx-plugin=0.38.1-1~{{ docker_distro_suffix }}"
+  - "docker-compose-plugin=5.6.1-1~{{ docker_distro_suffix }}"
