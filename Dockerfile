@@ -1,6 +1,7 @@
 # syntax = docker/dockerfile:experimental
 
-FROM python:3.9.13
+# Python >= 3.10 is required by pip >= 26.2.2 (eMudhra/emSign CA distrust)
+FROM python:3.10.22-bookworm
 
 RUN apt-get update && \
     apt-get install -y \
@@ -13,10 +14,13 @@ RUN apt-get update && \
     libmemcached-dev \
     python3-lxml \
     openssl \
+    ca-certificates \
     git && \
     rm -rf /var/lib/apt/lists/*
 
-RUN --mount=type=cache,target=/root/.cache/pip pip install --upgrade pip
+# Pinned by hash: pip < 26.2.2 trusts the compromised emSign CA via its
+# vendored certifi. See https://discuss.python.org/t/109576
+RUN pip install "pip @ https://files.pythonhosted.org/packages/3f/06/3e4420302363fbb71be3c7f35ce042f54bfca330e3e66b3a2e3c4cca579f/pip-26.2.2-py3-none-any.whl#sha256=fd7f4dfa8190e014013b9f08f3e973f4e4c26ffd179a204895533a7254813a70"
 RUN --mount=type=cache,target=/root/.cache/pip pip install \
     setuptools==50.3.2 \
     setuptools_scm==4.1.2
