@@ -20,7 +20,7 @@ bleach==3.3.0
     # via gobotany
 boto==2.49.0
     # via gobotany
-certifi==2023.7.22
+certifi==2026.10.19
     # via requests
 charset-normalizer==3.2.0
     # via requests
