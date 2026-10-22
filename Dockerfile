@@ -35,6 +35,10 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | b
 # Node v0.8.14 is really too old, npm won't be able to install packages due to
 # https://github.blog/2021-08-23-npm-registry-deprecating-tls-1-0-tls-1-1/
 ENV NODE_VERSION=v14.19.3
+# Node and npm (used by dev/jsbuild to npm install build tools) trust only
+# the system CA store, not Node's bundled roots, which still include the
+# compromised emSign ECC Root CA - G3. See https://discuss.python.org/t/109576
+ENV NODE_OPTIONS=--use-openssl-ca
 RUN bash -c "source ~/.bashrc && nvm install ${NODE_VERSION}"
 RUN mkdir -p dev/node/bin && \
     ln -s /root/.nvm/versions/node/${NODE_VERSION}/bin/node dev/node/bin/node && \
