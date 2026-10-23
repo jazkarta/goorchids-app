@@ -130,6 +130,19 @@ repository, loads secrets from Ansible Vault, writes the target server
 
     docker compose up -d
 
+Docker version and log rotation
+-------------------------------
+
+The playbooks install pinned Docker package versions, set in
+`ansible/group_vars/all.yml`, and put them on apt hold, so a system
+`apt upgrade` leaves Docker alone. To upgrade Docker, bump the versions
+there, run the playbook against staging, check Traefik and the site, then
+run it against production.
+
+The playbooks also install `/etc/logrotate.d/goorchids-traefik`, which
+rotates `var/log/traefik.log` daily (or when it exceeds 100 MB when
+logrotate runs) and keeps 14 compressed copies.
+
 Manual deploy commands
 ----------------------
 

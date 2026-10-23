@@ -11,13 +11,17 @@
     state: present
     filename: docker
 
-- name: Update apt and install docker-ce
+- name: Update apt and install pinned docker-ce
   become: true
   ansible.builtin.apt:
-    name:
-      - docker-ce
-      - docker-ce-cli
-      - containerd.io
-      - docker-compose-plugin
+    name: "{{ docker_packages }}"
     state: present
     update_cache: true
+    allow_change_held_packages: true
+
+- name: Hold docker packages so apt upgrade does not change them
+  become: true
+  ansible.builtin.dpkg_selections:
+    name: "{{ item }}"
+    selection: hold
+  loop: "{{ docker_packages | map('regex_replace', '=.*$', '') | list }}"

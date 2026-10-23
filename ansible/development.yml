@@ -5,6 +5,8 @@
   tasks:
     - name: Install docker
       ansible.builtin.include_tasks: tasks/docker.yml
+    - name: Rotate logs
+      ansible.builtin.include_tasks: tasks/logrotate.yml
     - name: Create users
       ansible.builtin.include_tasks: tasks/users.yml
 
